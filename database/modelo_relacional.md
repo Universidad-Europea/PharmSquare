@@ -13,20 +13,20 @@ A menos que se especifique, todos los cambios son obligatorios.
 |teléfono|-|
 |mail|-|
 
-### Historial(id, fecha, dni, categoría, diagnóstico)
+### Historial(id, fecha, dni, categoria, diagnóstico)
 |Atributo|Especial|
 |:---:|---|
 |id|clave primaria|
 |fecha|-|
 |dni|-|
-|categoría|-|
+|categoria|Multivaluado y con dominio definido|
 |diagnóstico|-|
 
-### Producto(id, categoría, utilidad, nombre, laboratorio, precio, stock, foto, necesita_login)
+### Producto(id, categoria, utilidad, nombre, laboratorio, precio, stock, foto, necesita_login)
 |Atributo|Especial|
 |:---:|---|
 |id|clave primaria|
-|categoría|-|
+|categoria|Multivaluado y con dominio definido.|
 |utilidad|-|
 |nombre|-|
 |laboratorio|-|
@@ -60,11 +60,11 @@ A menos que se especifique, todos los cambios son obligatorios.
 |cantidad|-|
 |pago|-|
 
-### Personal(dni, nombre, categoría)
+### Personal(dni, nombre, categoria)
 |Atributo|Especial|
 |:---:|---|
 |dni|-|
 |nombre|-|
-|categoría|-|
+|categoria|Dominio definido: 'EMPLEADO' y 'ADMINISTRATIVO'.|
 
 
