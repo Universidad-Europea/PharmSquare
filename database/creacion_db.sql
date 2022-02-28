@@ -96,21 +96,13 @@ CREATE TABLE transaccion (
 	pago VARCHAR2(50)
 );
 
--- CREATE TABLE transaccion (
+
+CREATE TABLE PERSONAL(
+	dni VARCHAR2(9) CONSTRAINT PERSONAL_DNI_PK PRIMARY KEY,
+	nombre VARCHAR2(50) NOT NULL,
+	categoria VARCHAR2(50),
 	
--- )
-
-
--- #### Personal
--- - dni- 
--- - nombre
--- - categoría: administrador, empleado
-
--- CREATE TABLE personal (
---     dni varchar(9) NOT NULL,
---     nombre varchar(50) NOT NULL,
---     categoria varchar(50) NOT NULL,
---     PRIMARY KEY (dni)
--- );
+	CONSTRAINT PERSONAL_CATE_CHK CHECK categoria IN ('EMPLEADO', 'ADMINISTRATIVO')
+);
 
 
