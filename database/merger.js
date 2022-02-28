@@ -238,7 +238,254 @@ let tablas = [
 			]
 		}
 	},
-	
+	{
+		nombreTabla: "PRODUCTO",
+		estructura: [
+			"id",
+			"nombre",
+			"utilidad",
+			"laboratorio",
+			"precio",
+			"stock",
+			"foto",
+			"necesita_login"
+		],
+		showEstructura: true,
+		datos: {
+			total: 14,
+			id: "ID",
+			nombre: [
+				"Bendaje de piel",
+				"Ibuprofeno",
+				"Paracetamol",
+				"Aspirina",
+				"Ebastel",
+				"Crema solar",
+				"Suero",
+				"Cafeina",
+				"Suplemento alimenticio bebes",
+				"Suplemento alimenticio adultos",
+				"Suplemento alimenticio niños",
+				"Crema hidratante",
+				"Tiritas",
+				"Apósitos de nitrato de plata"
+			],
+			utilidad: [
+				"Utilidad 1",
+				"Utilidad 2",
+				"Utilidad 3",
+				"Utilidad 4",
+				"Utilidad 5",
+				"Utilidad 6",
+				"Utilidad 7",
+				"Utilidad 8",
+				"Utilidad 9",
+				"Utilidad 10",
+				"Utilidad 11",
+				"Utilidad 12",
+				"Utilidad 13",
+				"Utilidad 14"
+			],
+			laboratorio: [
+				"Laboratorio 1",
+				"Laboratorio 1",
+				"Laboratorio 3",
+				"Laboratorio 4",
+				"Laboratorio 5",
+				"Laboratorio 6",
+				"Laboratorio 5",
+				"Laboratorio 6",
+				"Laboratorio 6",
+				"Laboratorio 2",
+				"Laboratorio 3",
+				"Laboratorio 4",
+				"Laboratorio 5",
+				"Laboratorio 6"
+			],
+			precio: [
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99,
+				9.99
+			],
+			stock: [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			foto: [
+				"./res/img/productos/bendaje.jpg",
+				"./res/img/productos/ibuprofeno.jpg",
+				"./res/img/productos/paracetamol.jpg",
+				"./res/img/productos/aspirina.jpg",
+				"./res/img/productos/ebastel.jpg",
+				"./res/img/productos/crema_solar.jpg",
+				"./res/img/productos/suero.jpg",
+				"./res/img/productos/cafeina.jpg",
+				"./res/img/productos/suplemento_bebes.jpg",
+				"./res/img/productos/suplemento_adultos.jpg",
+				"./res/img/productos/suplemento_ninos.jpg",
+				"./res/img/productos/crema_hidratante.jpg",
+				"./res/img/productos/tiritas.jpg",
+				"./res/img/productos/apositos.jpg"
+			],
+			necesita_login: [
+				"S",
+				"S",
+				"S",
+				"S",
+				"S",
+				"N",
+				"S",
+				"S",
+				"N",
+				"N",
+				"N",
+				"N",
+				"N",
+				"N"
+			]
+		}
+	},
+	{
+		nombreTabla: "CATEGORIA_PRODUCTO",
+		estructura: [
+			"id",
+			"nombre",
+		],
+		showEstructura: false,
+		datos: {
+			total: 4,
+			id: "ID",
+			nombre: [
+				"Suplementos",
+				"Higiene",
+				"Medicamentos",
+				"Belleza"
+			]
+		}
+	},
+	{
+		nombreTabla: "CATEGORIAS_PRODUCTO",
+		estructura: [
+			"id_producto",
+			"id_categoria"
+		],
+		showEstructura: false,
+		datos: {
+			total: 14,
+			id_producto: [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			],
+			id_categoria: [
+				1,
+				1,
+				1,
+				1,
+				2,
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4
+			]
+		}
+	},
+	{
+		nombreTabla: "TERMINAL",
+		estructura: [
+			"term_id",
+		],
+		showEstructura: false,
+		datos: {
+			total: 5,
+			term_id: "ID"
+		}
+	},
+	{
+		nombreTabla: "TRANSACCION",
+		estructura: [
+			"dni_cliente",
+			"id_producto",
+			"terminal_id",
+			"fecha",
+			"cantidad"
+		],
+		showEstructura: true,
+		datos: {
+			total: 0,
+			dni_cliente: [],
+			id_producto: [],
+			terminal_id: [],
+			fecha: [],
+			cantidad: []
+		}
+	},
+	{
+		nombreTabla: "PERSONAL",
+		estructura: [
+			"dni",
+			"nombre",
+			"categoria"
+		],
+		showEstructura: false,
+		datos: {
+			total: 3,
+			dni: [
+				"123456789E",
+				"123456789C",
+				"123456789D",
+			],
+			nombre: [
+				"EMPLEADO 1",
+				"EMPLEADO 1",
+				"ADMINISTRADOR 1"
+			],
+			categoria: [
+				"EMPLEADO",
+				"EMPLEADO",
+				"ADMINISTRADOR"
+			]
+		}
+	}
 ];
 
 function data2sql(data) {
