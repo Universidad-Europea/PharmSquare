@@ -1,10 +1,9 @@
 A menos que se especifique, todos los cambios son obligatorios.
 
-#### Cliente (dni, nombre, fecha alta, dirección, nacimiento, contraseña, sexo, teléfono, mail)
-
+### Cliente(dni, nombre, fecha alta, dirección, nacimiento, contraseña, sexo, teléfono, mail)
 |Atributo|Especial|
-|
-|dni|clave primaria
+|:---:|---|
+|dni|clave primaria|
 |nombre|-|
 |fecha alta|-|
 |dirección|-|
@@ -14,60 +13,58 @@ A menos que se especifique, todos los cambios son obligatorios.
 |teléfono|-|
 |mail|-|
 
-#### Historial médico(id, fecha, dni, categoría, diagnóstico)
-- id
-- fecha
-- dni
-- categoría
-- diagnóstico
+### Historial(id, fecha, dni, categoría, diagnóstico)
+|Atributo|Especial|
+|:---:|---|
+|id|clave primaria|
+|fecha|-|
+|dni|-|
+|categoría|-|
+|diagnóstico|-|
 
-#### Productos()
-- id
-- categoría
-- utilidad
-- nombre
-- laboratorio
-- precio
-- stock
-- foto
-- necesita_login
+### Producto(id, categoría, utilidad, nombre, laboratorio, precio, stock, foto, necesita_login)
+|Atributo|Especial|
+|:---:|---|
+|id|clave primaria|
+|categoría|-|
+|utilidad|-|
+|nombre|-|
+|laboratorio|-|
+|precio|-|
+|stock|-|
+|foto|-|
+|necesita_login|-|
 
-#### terminal pago()
-- moneda_1c
-- moneda_2c
-- moneda_5c
-- moneda_10c
-- moneda_20c
-- moneda_50c
-- moneda_1e
-- billete_5e
-- billete_10e
-- billete_50e
-- billete_100e
+### Terminal(term_id, moneda_1c, moneda_2c, moneda_5c, moneda_10c, moneda_20c, moneda_50c, moneda_1e, billete_5e, billete_10e, billete_50e, billete_100e)
+|Atributo|Especial|
+|:---:|---|
+|term_id|clave primaria|
+|moneda_1c|-|
+|moneda_2c|-|
+|moneda_5c|-|
+|moneda_10c|-|
+|moneda_20c|-|
+|moneda_50c|-|
+|moneda_1e|-|
+|billete_5e|-|
+|billete_10e|-|
+|billete_50e|-|
+|billete_100e|-|
 
+### Transacción(dni_cliente, producto_id, cantidad, fecha, pago)
+|Atributo|Especial|
+|:---:|---|
+|dni_cliente|clave primaria|
+|producto_id|clave primaria|
+|fecha|clave primaria|
+|cantidad|-|
+|pago|-|
 
+### Personal(dni, nombre, categoría)
+|Atributo|Especial|
+|:---:|---|
+|dni|-|
+|nombre|-|
+|categoría|-|
 
-#### transacción()
-- dni_cliente
-- producto_id
-- cantidad
-- fecha
-- pago
-
-CREATE TABLE transaccion (
-    
-)
-
-
-#### Personal()
-- dni- 
-- nombre
-- categoría
-
-CREATE TABLE personal (
-    dni varchar(9) NOT NULL,
-    nombre varchar(50) NOT NULL,
-    categoria varchar(50) NOT NULL,
-    PRIMARY KEY (dni)
-);
 
