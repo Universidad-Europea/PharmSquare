@@ -9,7 +9,7 @@ A menos que se especifique, todos los cambios son obligatorios.
 |dirección|-|
 |nacimiento|-|
 |contraseña|-|
-|sexo|-|
+|sexo|Dominio definido: 'H', 'M', 'O'|
 |teléfono|-|
 |mail|-|
 

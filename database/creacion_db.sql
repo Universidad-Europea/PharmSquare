@@ -1,22 +1,14 @@
--- nombre
--- - dni
--- - fecha alta
--- - dirección
--- - nacimiento
--- - contraseña
--- - sexo
--- - teléfono
--- - mail
-
-CREATE TABLE nombre (
-    dni VARCHAR2(9) PRIMARY KEY,
+CREATE TABLE CLIENTE (
+    dni VARCHAR2(9) CONSTRAINT CLIENTE_DNI_PK PRIMARY KEY,
     fecha_alta DATE,
     direccion VARCHAR2(50),
     nacimiento DATE,
     contrasena VARCHAR2(50),
     sexo VARCHAR2(1),
     telefono VARCHAR2(9),
-    mail VARCHAR2(50)
+    mail VARCHAR2(50),
+
+    CONSTRAINT CLIENTE_SEXO_CHK sexo in ('H', 'M', 'O')
 );
 
 -- #### historial médico:
