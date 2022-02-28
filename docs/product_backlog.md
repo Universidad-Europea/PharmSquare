@@ -1,0 +1,21 @@
+# Product backlog:
+- Añadir cliente.
+- Eliminar cliente.
+	- Requiere login (administrativo).
+- Añadir empleado:
+	- Requiere login (administrativo).
+- Añadir producto.
+	- Requiere login (administrativo).
+- Modificar/eliminar producto.
+	- Requiere login (empleado y administradores).
+- Modificar/eliminar empleado.
+	- Requiere login (administrativo).
+- Hacer pedido.
+- Gestionar caja: (añadir cambio…)
+	- Requiere login (empleado).
+- Ver historial transacciones.
+	- Requiere login (empleado y administradores).
+- Ver clientes, empleados y administradores
+	- Requiere login (empleado y administradores).
+- Gestionar stock (Ver, eliminar, modificar…)
+	- Requiere login (empleado y administradores).
