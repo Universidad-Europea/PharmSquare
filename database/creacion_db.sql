@@ -11,19 +11,13 @@ CREATE TABLE CLIENTE (
     CONSTRAINT CLIENTE_SEXO_CHK sexo in ('H', 'M', 'O')
 );
 
--- #### historial médico:
--- - id
--- - fecha
--- - dni
--- - categoría: alergia, enfermedad, dolencia…
--- - diagnóstico: tiene alergia a ldjflskjfklsd
-
-CREATE TABLE historial_medico (
-    id INTEGER PRIMARY KEY,
+CREATE TABLE HISTORIAL (
+    id NUMBER(5) CONSTRAINT HISTORIAL_ID_PK PRIMARY KEY,
     fecha DATE,
     dni VARCHAR2(9),
-    categoria VARCHAR2(50),
-    diagnostico VARCHAR2(300)
+    diagnostico VARCHAR2(300),
+
+    CONSTRAINT HISTORIAL_DNI_FK FOREIGN KEY (dni) REFERENCES CLIENTE(dni)
 );
 
 -- #### Productos:

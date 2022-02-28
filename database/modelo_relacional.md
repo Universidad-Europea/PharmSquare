@@ -18,7 +18,7 @@ A menos que se especifique, todos los cambios son obligatorios.
 |:---:|---|
 |id|clave primaria|
 |fecha|-|
-|dni|-|
+|dni|clave foránea de **cliente**|
 |diagnóstico|-|
 <!-- Las categorías van en Categorias_historial -->
 
