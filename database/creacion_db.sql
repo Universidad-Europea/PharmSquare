@@ -1,46 +1,37 @@
 CREATE TABLE CLIENTE (
-    dni VARCHAR2(9) CONSTRAINT CLIENTE_DNI_PK PRIMARY KEY,
-    fecha_alta DATE,
-    direccion VARCHAR2(50),
-    nacimiento DATE,
-    contrasena VARCHAR2(50),
-    sexo VARCHAR2(1),
-    telefono VARCHAR2(9),
-    mail VARCHAR2(50),
+	dni VARCHAR2(9) CONSTRAINT CLIENTE_DNI_PK PRIMARY KEY,
+	fecha_alta DATE,
+	direccion VARCHAR2(50),
+	nacimiento DATE,
+	contrasena VARCHAR2(50),
+	sexo VARCHAR2(1),
+	telefono VARCHAR2(9),
+	mail VARCHAR2(50),
 
-    CONSTRAINT CLIENTE_SEXO_CHK sexo in ('H', 'M', 'O')
+	CONSTRAINT CLIENTE_SEXO_CHK CHECK sexo in ('H', 'M', 'O')
 );
 
 CREATE TABLE HISTORIAL (
-    id NUMBER(5) CONSTRAINT HISTORIAL_ID_PK PRIMARY KEY,
-    fecha DATE,
-    dni VARCHAR2(9),
-    diagnostico VARCHAR2(300),
+	id NUMBER(5) CONSTRAINT HISTORIAL_ID_PK PRIMARY KEY,
+	fecha DATE,
+	dni VARCHAR2(9),
+	diagnostico VARCHAR2(300),
 
-    CONSTRAINT HISTORIAL_DNI_FK FOREIGN KEY (dni) REFERENCES CLIENTE(dni)
+	CONSTRAINT HISTORIAL_DNI_FK FOREIGN KEY (dni) REFERENCES CLIENTE(dni)
 );
 
--- #### Productos:
--- - id
--- - categoría: multivaluado (fármaco, 
--- - utilidad: tratamiento alergias
--- - nombre
--- - laboratorio
--- - precio
--- - stock: number
--- - foto: url
--- - necesita_login: TRUE o FALSE- 
+CREATE TABLE PRODUCTOS (
+	id NUMBER(5) CONSTRAINT PRODUCTO_ID_PK PRIMARY KEY,
+	utilidad VARCHAR2(50),
+	nombre VARCHAR2(50),
+	laboratorio VARCHAR2(50),
+	precio NUMBER(5,2),
+	stock NUMBER(3),
+	foto VARCHAR2(150),
+	necesita_login VARCHAR2(2),
+	-- CATEGORIA
 
-CREATE TABLE productos (
-    id INTEGER PRIMARY KEY,
-    categoria VARCHAR2(50),
-    utilidad VARCHAR2(50),
-    nombre VARCHAR2(50),
-    laboratorio VARCHAR2(50),
-    precio INTEGER,
-    stock INTEGER,
-    foto VARCHAR2(50),
-    necesita_login BOOLEAN
+	CONSTRAINT PROD_NECE_LOG_CHK CHECK necesita_login IN ('SI', 'NO')
 );
 
 -- #### terminal pago:
@@ -57,17 +48,17 @@ CREATE TABLE productos (
 -- - billete_100e
 
 CREATE TABLE terminal_pago (
-    moneda_1c INTEGER,
-    moneda_2c INTEGER,
-    moneda_5c INTEGER,
-    moneda_10c INTEGER,
-    moneda_20c INTEGER,
-    moneda_50c INTEGER,
-    moneda_1e INTEGER,
-    billete_5e INTEGER,
-    billete_10e INTEGER,
-    billete_50e INTEGER,
-    billete_100e INTEGER
+	moneda_1c INTEGER,
+	moneda_2c INTEGER,
+	moneda_5c INTEGER,
+	moneda_10c INTEGER,
+	moneda_20c INTEGER,
+	moneda_50c INTEGER,
+	moneda_1e INTEGER,
+	billete_5e INTEGER,
+	billete_10e INTEGER,
+	billete_50e INTEGER,
+	billete_100e INTEGER
 );
 
 
@@ -80,15 +71,15 @@ CREATE TABLE terminal_pago (
 -- - pago: 1billete
 
 CREATE TABLE transaccion (
-    dni_cliente VARCHAR2(9),
-    producto_id INTEGER,
-    cantidad INTEGER,
-    fecha DATE,
-    pago VARCHAR2(50)
+	dni_cliente VARCHAR2(9),
+	producto_id INTEGER,
+	cantidad INTEGER,
+	fecha DATE,
+	pago VARCHAR2(50)
 );
 
 -- CREATE TABLE transaccion (
-    
+	
 -- )
 
 
