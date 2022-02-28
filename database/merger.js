@@ -141,7 +141,104 @@ let tablas = [
 				"diagnostico 14"
 			]
 		}
-	}
+	},
+	{
+		nombreTabla: "CATEGORIA_HISTORIAL",
+		estructura: [
+			"id",
+			"nombre"
+		],
+		showEstructura: false,
+		datos: {
+			total: 14,
+			id: "ID",
+			nombre: [
+				"CIRUGIA",
+				"CONSULTA",
+				"ODONTOLOGIA",
+				"PSICOLOGIA",
+				"TRAUMATOLOGIA",
+				"OFTALMOLOGIA",
+				"OTORRINOLARINGOLOGIA",
+				"NEUROLOGIA",
+				"NEFROLOGIA",
+				"NEUROCIRUGIA",
+				"NEUROPATOLOGIA",
+				"FISIOTERIAPIA",
+				"ALERGIA",
+				"CARDIOPATIA"
+			]
+		}
+	},
+	{
+		nombreTabla: "CATEGORIAS_HISTORIAL",
+		estructura: [
+			"id_historial",
+			"id_categoria",
+		],
+		showEstructura: false,
+		datos: {
+			total: 25,
+			id_historial: [
+				1,
+				1,
+				1,
+				2,
+				2,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				20
+			],
+			id_categoria: [
+				3,
+				1,
+				2,
+				1,
+				2,
+				3,
+				1,
+				2,
+				7,
+				9,
+				5,
+				6,
+				8,
+				4,
+				3,
+				1,
+				2,
+				3,
+				1,
+				9,
+				5,
+				6,
+				8,
+				4,
+				3,
+				1,
+				2,
+				3
+			]
+		}
+	},
+	
 ];
 
 function data2sql(data) {
