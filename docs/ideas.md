@@ -1,2 +1,2 @@
 # Ideas:
-- Los usuarios que no están registrados compran como un usuario con el mismo id (ej: -1 o 0).
+- Los clientes que no están registrados compran como un usuario con el mismo dni (ej: 000000000A).
