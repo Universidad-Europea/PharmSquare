@@ -1,0 +1,121 @@
+-- nombre
+-- - dni
+-- - fecha alta
+-- - dirección
+-- - nacimiento
+-- - contraseña
+-- - sexo
+-- - teléfono
+-- - mail
+
+CREATE TABLE nombre (
+    dni VARCHAR2(9) PRIMARY KEY,
+    fecha_alta DATE,
+    direccion VARCHAR2(50),
+    nacimiento DATE,
+    contrasena VARCHAR2(50),
+    sexo VARCHAR2(1),
+    telefono VARCHAR2(9),
+    mail VARCHAR2(50)
+);
+
+-- #### historial médico:
+-- - id
+-- - fecha
+-- - dni
+-- - categoría: alergia, enfermedad, dolencia…
+-- - diagnóstico: tiene alergia a ldjflskjfklsd
+
+CREATE TABLE historial_medico (
+    id INTEGER PRIMARY KEY,
+    fecha DATE,
+    dni VARCHAR2(9),
+    categoria VARCHAR2(50),
+    diagnostico VARCHAR2(300)
+);
+
+-- #### Productos:
+-- - id
+-- - categoría: multivaluado (fármaco, 
+-- - utilidad: tratamiento alergias
+-- - nombre
+-- - laboratorio
+-- - precio
+-- - stock: number
+-- - foto: url
+-- - necesita_login: TRUE o FALSE- 
+
+CREATE TABLE productos (
+    id INTEGER PRIMARY KEY,
+    categoria VARCHAR2(50),
+    utilidad VARCHAR2(50),
+    nombre VARCHAR2(50),
+    laboratorio VARCHAR2(50),
+    precio INTEGER,
+    stock INTEGER,
+    foto VARCHAR2(50),
+    necesita_login BOOLEAN
+);
+
+-- #### terminal pago:
+-- - moneda_1c
+-- - moneda_2c
+-- - moneda_5c
+-- - moneda_10c
+-- - moneda_20c
+-- - moneda_50c
+-- - moneda_1e
+-- - billete_5e
+-- - billete_10e
+-- - billete_50e
+-- - billete_100e
+
+CREATE TABLE terminal_pago (
+    moneda_1c INTEGER,
+    moneda_2c INTEGER,
+    moneda_5c INTEGER,
+    moneda_10c INTEGER,
+    moneda_20c INTEGER,
+    moneda_50c INTEGER,
+    moneda_1e INTEGER,
+    billete_5e INTEGER,
+    billete_10e INTEGER,
+    billete_50e INTEGER,
+    billete_100e INTEGER
+);
+
+
+
+-- #### transacción:
+-- - dni_cliente: puede ser un id null (-1 = no registrado)
+-- - producto_id
+-- - cantidad:
+-- - fecha
+-- - pago: 1billete
+
+CREATE TABLE transaccion (
+    dni_cliente VARCHAR2(9),
+    producto_id INTEGER,
+    cantidad INTEGER,
+    fecha DATE,
+    pago VARCHAR2(50)
+);
+
+-- CREATE TABLE transaccion (
+    
+-- )
+
+
+-- #### Personal
+-- - dni- 
+-- - nombre
+-- - categoría: administrador, empleado
+
+-- CREATE TABLE personal (
+--     dni varchar(9) NOT NULL,
+--     nombre varchar(50) NOT NULL,
+--     categoria varchar(50) NOT NULL,
+--     PRIMARY KEY (dni)
+-- );
+
+
