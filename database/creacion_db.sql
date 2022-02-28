@@ -1,6 +1,7 @@
 -- Cliente
 CREATE TABLE CLIENTE (
 	dni 		VARCHAR2(9) CONSTRAINT CLIENTE_DNI_PK PRIMARY KEY,
+	nombre		VARCHAR2(30),
 	fecha_alta 	DATE,
 	direccion 	VARCHAR2(50),
 	nacimiento 	DATE,
