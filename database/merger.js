@@ -533,6 +533,11 @@ function data2sql(data) {
 	// return str + "END";
 }
 
+// Get the name of this file
+let fileName = __filename.split("/").pop();
+
+console.log("-- Script generado usando nodejs\n-- Para editar el archivo, usa el commando:\n--\t\tnodejs " +
+			fileName + " > datos_db.js\n\n")
 for (let i = 0; i < tablas.length; i++) {
 	console.log(data2sql(tablas[i]));
 }
