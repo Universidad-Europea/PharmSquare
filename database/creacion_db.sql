@@ -64,8 +64,8 @@ CREATE TABLE CATEGORIAS_PRODUCTO(
 
 
 
-CREATE TABLE TERMINAL (
-	id				NUMBER(1) CONSTRAINT TERMINAL_ID_PK PRIMARY KEY,
+CREATE TABLE TERMINAL(
+	term_id			NUMBER(1) CONSTRAINT TERMINAL_ID_PK PRIMARY KEY,
 	moneda_1c		NUMBER(2) DEFAULT 0,
 	moneda_2c		NUMBER(2) DEFAULT 0,
 	moneda_5c		NUMBER(2) DEFAULT 0,
@@ -81,19 +81,14 @@ CREATE TABLE TERMINAL (
 
 
 
--- #### transacción:
--- - dni_cliente: puede ser un id null (-1 = no registrado)
--- - producto_id
--- - cantidad:
--- - fecha
--- - pago: 1billete
+CREATE TABLE TRANSACCION(
+	dni_cliente	VARCHAR2(9),
+	producto_id	NUMBER(5),
+	term_id		NUMBER(1),
+	fecha		DATETIME,
+	cantidad	NUMBER(3),
 
-CREATE TABLE transaccion (
-	dni_cliente VARCHAR2(9),
-	producto_id INTEGER,
-	cantidad INTEGER,
-	fecha DATE,
-	pago VARCHAR2(50)
+	CONSTRAINT TRANSACCION_PK PRIMARY KEY (dni_cliente, producto_id, term_id, fecha)
 );
 
 

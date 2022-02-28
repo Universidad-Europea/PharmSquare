@@ -82,7 +82,7 @@ A menos que se especifique, todos los cambios son obligatorios.
 |billete_100e|Opcional con valor por defecto 0.|
 
 
-### Transacción(dni_cliente, producto_id, terminal_id, cantidad, fecha, pago)
+### Transacción(dni_cliente, producto_id, terminal_id, cantidad, fecha)
 |Atributo|Especial|
 |:---:|---|
 |dni_cliente|clave primaria|
@@ -90,7 +90,6 @@ A menos que se especifique, todos los cambios son obligatorios.
 |terminal_id|clave primaria|
 |fecha|clave primaria|
 |cantidad|-|
-|pago|-|
 
 ### Personal(dni, nombre, categoria)
 |Atributo|Especial|
