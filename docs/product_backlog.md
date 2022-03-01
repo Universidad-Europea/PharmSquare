@@ -1,25 +1,25 @@
 # Product backlog:
-- Añadir cliente.
-- Eliminar cliente.
+- [ ] Añadir cliente.
+- [ ] Eliminar cliente.
 	- Requiere login (administrativo).
-- Añadir/eliminar empleado:
+- [ ] Añadir/eliminar empleado:
 	- Requiere login (administrativo).
-- Añadir producto, categoría_producto, categoría_historial.
+- [ ] Añadir producto, categoría_producto, categoría_historial.
 	- Requiere login (administrativo).
-- Añadir historial.
+- [ ] Añadir historial.
 	- Requiere login (empleado).
-- Modificar/eliminar producto.
+- [ ] Modificar/eliminar producto.
 	- Requiere login (empleado y administradores).
-- Modificar/eliminar empleado.
+- [ ] Modificar/eliminar empleado.
 	- Requiere login (administrativo).
-- Hacer pedido.
-- Gestionar terminal: (añadir cambio…)
+- [ ] Hacer pedido.
+- [ ] Gestionar terminal: (añadir cambio…)
 	- Requiere login (empleado).
-- Ver historial transacciones.
+- [ ] Ver historial transacciones.
 	- Requiere login (empleado y administradores).
-- Ver historial de cliente.
+- [ ] Ver historial de cliente.
 	- Requiere login (empleado).
-- Ver clientes, empleados y administradores
+- [ ] Ver clientes, empleados y administradores
 	- Requiere login (empleado y administradores).
-- Gestionar stock (Ver, eliminar, modificar…)
+- [ ] Gestionar stock (Ver, eliminar, modificar…)
 	- Requiere login (empleado y administradores).
