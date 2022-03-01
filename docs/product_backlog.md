@@ -2,19 +2,23 @@
 - Añadir cliente.
 - Eliminar cliente.
 	- Requiere login (administrativo).
-- Añadir empleado:
+- Añadir/eliminar empleado:
 	- Requiere login (administrativo).
-- Añadir producto.
+- Añadir producto, categoría_producto, categoría_historial.
 	- Requiere login (administrativo).
+- Añadir historial.
+	- Requiere login (empleado).
 - Modificar/eliminar producto.
 	- Requiere login (empleado y administradores).
 - Modificar/eliminar empleado.
 	- Requiere login (administrativo).
 - Hacer pedido.
-- Gestionar caja: (añadir cambio…)
+- Gestionar terminal: (añadir cambio…)
 	- Requiere login (empleado).
 - Ver historial transacciones.
 	- Requiere login (empleado y administradores).
+- Ver historial de cliente.
+	- Requiere login (empleado).
 - Ver clientes, empleados y administradores
 	- Requiere login (empleado y administradores).
 - Gestionar stock (Ver, eliminar, modificar…)
