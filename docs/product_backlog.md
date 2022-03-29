@@ -6,10 +6,8 @@
 	- Requiere login (administrativo).
 - [ ] Añadir/eliminar empleado:
 	- Requiere login (administrativo).
-- [ ] Añadir producto, categoría_producto, categoría_historial.
+- [ ] Añadir producto, categoría_producto.
 	- Requiere login (administrativo).
-- [ ] Añadir historial.
-	- Requiere login (empleado).
 - [ ] Modificar/eliminar producto.
 	- Requiere login (empleado y administradores).
 - [ ] Modificar/eliminar empleado.
@@ -19,8 +17,6 @@
 	- Requiere login (empleado).
 - [ ] Ver historial transacciones.
 	- Requiere login (empleado y administradores).
-- [ ] Ver historial de cliente.
-	- Requiere login (empleado).
 - [ ] Ver clientes, empleados y administradores
 	- Requiere login (empleado y administradores).
 - [ ] Gestionar stock (Ver, eliminar, modificar…)
