@@ -7,7 +7,7 @@ let tablas = [
 			"fecha_alta",
 			"direccion",
 			"nacimiento",
-			"contraseña",
+			"passwd",
 			"sexo",
 			"telefono",
 			"mail"
@@ -50,7 +50,7 @@ let tablas = [
 				"1990-01-01",
 				"1990-01-01"
 			],
-			contraseña: [
+			passwd: [
 				null,
 				"12ab34!!",
 				"12ab34!!",
@@ -464,6 +464,7 @@ let tablas = [
 		estructura: [
 			"dni",
 			"nombre",
+			"passwd",
 			"categoria"
 		],
 		showEstructura: false,
@@ -478,6 +479,11 @@ let tablas = [
 				"EMPLEADO 1",
 				"EMPLEADO 1",
 				"ADMINISTRADOR 1"
+			],
+			passwd: [
+				"1234",
+				"aBc23!@",
+				"pfSG$%@"
 			],
 			categoria: [
 				"EMPLEADO",
