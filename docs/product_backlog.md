@@ -1,23 +1,25 @@
 # Product backlog:
-- [x] Inicio
-- [x] Añadir cliente.
-- [x] Login staff.
-- [ ] Eliminar cliente.
-	- Requiere login (administrativo).
-- [ ] Añadir/eliminar empleado:
-	- Requiere login (administrativo).
-- [ ] Añadir producto, categoría_producto.
-	- Requiere login (administrativo).
-- [ ] Modificar/eliminar producto.
-	- Requiere login (empleado y administradores).
-- [ ] Modificar/eliminar empleado.
-	- Requiere login (administrativo).
-- [ ] Hacer pedido.
-- [ ] Gestionar terminal: (añadir cambio…)
-	- Requiere login (empleado).
-- [ ] Ver historial transacciones.
-	- Requiere login (empleado y administradores).
-- [ ] Ver clientes, empleados y administradores
-	- Requiere login (empleado y administradores).
-- [ ] Gestionar stock (Ver, eliminar, modificar…)
-	- Requiere login (empleado y administradores).
+- [x] Inicio / login cliente -> Menu compra
+	- [x] Login staff. -> Menu Staff
+	- [x] Añadir cliente.
+	- [ ] Sin login.
+
+- [x] Menu Staff (requiere login)
+	- [ ] Añadir producto.
+	- [ ] Añadir/modificar categoria producto.
+	- [ ] Modificar/eliminar producto.
+
+	- [ ] Eliminar/modificar cliente.
+	- [ ] Ver historial transacciones.
+
+	- [x] Añadir empleado.
+	- [ ] Modificar/eliminar empleado.
+	- [ ] Ver clientes, empleados, administradores.
+
+- [ ] Menu compra
+	- [ ] Ver productos.
+	- [ ] Añadir producto al carrito.
+	- [ ] Eliminar producto del carrito.
+	- [ ] Ver carrito.
+	- [ ] Pagar.
+	- [ ] Ver historial transacciones.
