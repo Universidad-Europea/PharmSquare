@@ -1,4 +1,5 @@
 # Product backlog:
+- [x] Inicio
 - [ ] Añadir cliente.
 - [ ] Eliminar cliente.
 	- Requiere login (administrativo).
