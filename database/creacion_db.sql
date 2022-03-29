@@ -5,7 +5,7 @@ CREATE TABLE CLIENTE (
 	fecha_alta 	DATE,
 	direccion 	VARCHAR2(50),
 	nacimiento 	DATE,
-	contrasena 	VARCHAR2(50),
+	passwd 	VARCHAR2(50),
 	sexo 		VARCHAR2(1),
 	telefono 	VARCHAR2(9),
 	mail 		VARCHAR2(50),
@@ -97,7 +97,7 @@ CREATE TABLE PERSONAL(
 	dni VARCHAR2(9) CONSTRAINT PERSONAL_DNI_PK PRIMARY KEY,
 	nombre VARCHAR2(50) NOT NULL,
 	categoria VARCHAR2(50),
-	password VARCHAR2(50),
+	passwd VARCHAR2(50),
 	
 	CONSTRAINT PERSONAL_CATE_CHK CHECK categoria IN ('EMPLEADO', 'ADMINISTRATIVO')
 );

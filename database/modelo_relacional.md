@@ -8,7 +8,7 @@ A menos que se especifique, todos los cambios son obligatorios.
 |fecha alta|-|
 |dirección|-|
 |nacimiento|-|
-|contraseña|-|
+|passwd|-|
 |sexo|Dominio definido: 'H', 'M', 'O'|
 |teléfono|-|
 |mail|-|
@@ -91,11 +91,12 @@ A menos que se especifique, todos los cambios son obligatorios.
 |fecha|clave primaria|
 |cantidad|-|
 
-### Personal(dni, nombre, categoria)
+### Personal(dni, nombre, passwd, categoria)
 |Atributo|Especial|
 |:---:|---|
 |dni|clave primaria|
 |nombre|-|
+|passwd|-|
 |categoria|Dominio definido: 'EMPLEADO' y 'ADMINISTRATIVO'.|
 
 
