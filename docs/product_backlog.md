@@ -1,6 +1,7 @@
 # Product backlog:
 - [x] Inicio
 - [x] Añadir cliente.
+- [x] Login staff.
 - [ ] Eliminar cliente.
 	- Requiere login (administrativo).
 - [ ] Añadir/eliminar empleado:
