@@ -16,10 +16,14 @@
 	- [ ] Modificar/eliminar empleado.
 	- [ ] Ver clientes, empleados, administradores.
 
-- [ ] Menu compra
+- [ ] Menu compra PRO
 	- [ ] Ver productos.
 	- [ ] Añadir producto al carrito.
 	- [ ] Eliminar producto del carrito.
 	- [ ] Ver carrito.
 	- [ ] Pagar.
 	- [ ] Ver historial transacciones.
+
+- [ ] Menu compra normal:
+    - [ ] Ver productos.
+    - [ ] Pagar.
