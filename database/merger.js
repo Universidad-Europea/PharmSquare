@@ -81,164 +81,6 @@ let tablas = [
 		}
 	},
 	{
-		nombreTabla: "HISTORIAL",
-		estructura: [
-			"id",
-			"fecha",
-			"dni",
-			"diagnostico"
-		],
-		showEstructura: false,
-		datos: {
-			total: 14,
-			id: "ID",
-			fecha: [
-				"2019-01-01",
-				"2019-01-02",
-				"2019-01-03",
-				"2019-01-04",
-				"2019-01-05",
-				"2019-01-06",
-				"2019-01-07",
-				"2019-01-08",
-				"2019-01-09",
-				"2019-01-10",
-				"2019-01-11",
-				"2019-01-12",
-				"2019-01-13",
-				"2019-01-14"
-			],
-			dni: [
-				"123456789A",
-				"123456789A",
-				"123456789B",
-				"123456789B",
-				"987654321A",
-				"123456789B",
-				"987654321B",
-				"123456789A",
-				"123456789A",
-				"123456789B",
-				"123456789B",
-				"987654321A",
-				"123456789B",
-				"987654321B"
-			],
-			diagnostico: [
-				"diagnostico 1",
-				"diagnostico 2",
-				"diagnostico 3",
-				"diagnostico 4",
-				"diagnostico 5",
-				"diagnostico 6",
-				"diagnostico 7",
-				"diagnostico 8",
-				"diagnostico 9",
-				"diagnostico 10",
-				"diagnostico 11",
-				"diagnostico 12",
-				"diagnostico 13",
-				"diagnostico 14"
-			]
-		}
-	},
-	{
-		nombreTabla: "CATEGORIA_HISTORIAL",
-		estructura: [
-			"id",
-			"nombre"
-		],
-		showEstructura: false,
-		datos: {
-			total: 14,
-			id: "ID",
-			nombre: [
-				"CIRUGIA",
-				"CONSULTA",
-				"ODONTOLOGIA",
-				"PSICOLOGIA",
-				"TRAUMATOLOGIA",
-				"OFTALMOLOGIA",
-				"OTORRINOLARINGOLOGIA",
-				"NEUROLOGIA",
-				"NEFROLOGIA",
-				"NEUROCIRUGIA",
-				"NEUROPATOLOGIA",
-				"FISIOTERIAPIA",
-				"ALERGIA",
-				"CARDIOPATIA"
-			]
-		}
-	},
-	{
-		nombreTabla: "CATEGORIAS_HISTORIAL",
-		estructura: [
-			"id_historial",
-			"id_categoria",
-		],
-		showEstructura: false,
-		datos: {
-			total: 25,
-			id_historial: [
-				1,
-				1,
-				1,
-				2,
-				2,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-				17,
-				18,
-				19,
-				20,
-				20
-			],
-			id_categoria: [
-				3,
-				1,
-				2,
-				1,
-				2,
-				3,
-				1,
-				2,
-				7,
-				9,
-				5,
-				6,
-				8,
-				4,
-				3,
-				1,
-				2,
-				3,
-				1,
-				9,
-				5,
-				6,
-				8,
-				4,
-				3,
-				1,
-				2,
-				3
-			]
-		}
-	},
-	{
 		nombreTabla: "PRODUCTO",
 		estructura: [
 			"id",
@@ -430,22 +272,10 @@ let tablas = [
 		}
 	},
 	{
-		nombreTabla: "TERMINAL",
-		estructura: [
-			"term_id",
-		],
-		showEstructura: false,
-		datos: {
-			total: 5,
-			term_id: "ID"
-		}
-	},
-	{
 		nombreTabla: "TRANSACCION",
 		estructura: [
 			"dni_cliente",
 			"id_producto",
-			"terminal_id",
 			"fecha",
 			"cantidad"
 		],
@@ -454,7 +284,6 @@ let tablas = [
 			total: 0,
 			dni_cliente: [],
 			id_producto: [],
-			terminal_id: [],
 			fecha: [],
 			cantidad: []
 		}
@@ -543,7 +372,7 @@ function data2sql(data) {
 let fileName = __filename.split("/").pop();
 
 console.log("-- Script generado usando nodejs\n-- Para editar el archivo, usa el commando:\n--\t\tnodejs " +
-			fileName + " > datos_db.js\n\n")
+			fileName + " > datos_db.sql\n\n")
 for (let i = 0; i < tablas.length; i++) {
 	console.log(data2sql(tablas[i]));
 }
