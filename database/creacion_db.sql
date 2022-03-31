@@ -48,7 +48,7 @@ CREATE TABLE TRANSACCION(
 	fecha		DATETIME,
 	cantidad	NUMBER(3),
 
-	CONSTRAINT TRANSACCION_PK PRIMARY KEY (dni_cliente, producto_id, term_id, fecha)
+	CONSTRAINT TRANSACCION_PK PRIMARY KEY (dni_cliente, producto_id, fecha)
 );
 
 -- Personal
