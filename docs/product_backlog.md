@@ -27,3 +27,4 @@
 - [ ] Menu compra normal:
     - [ ] Ver productos.
     - [ ] Pagar.
+	- [ ] Ver historial transacciones.
