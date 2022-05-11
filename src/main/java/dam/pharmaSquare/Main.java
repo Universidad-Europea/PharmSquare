@@ -1,4 +1,4 @@
-package com.github.pharmasquare;
+package dam.pharmaSquare;
 
 public class Main {
     public static void main(String[] args) {
