@@ -20,9 +20,10 @@
     - [x] Estructura de Views.
     - [ ] Modelos/Pojos.
     - [ ] Base de datos.
-      - [ ] General.
+      - [x] General.
       - [ ] Específica.
-    - [ ] Custom Exceptions.
+    - [x] Custom Exceptions.
+
 ## Sprint 4. (25-03-2022 - 07-04-2022) 
 
 - [ ] Creación de las clases que representan el modelo. (Depende de Sprint3)
