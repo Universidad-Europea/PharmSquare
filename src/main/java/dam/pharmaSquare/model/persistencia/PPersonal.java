@@ -8,4 +8,6 @@ public class PPersonal {
 
     public static final String PK = DNI;
     public static final String TABLE_NAME = "PERSONAL";
+
+    public static final String[] CATEGORIAS_CHK = {"EMPLEADO", "ADMINISTRATIVO"};
 }

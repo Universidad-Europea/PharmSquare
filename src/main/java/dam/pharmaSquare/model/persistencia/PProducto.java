@@ -12,4 +12,7 @@ public class PProducto {
 
     public static final String PK = ID;
     public static final String TABLE_NAME = "PRODUCTOS";
+
+    public static final String[] NECESITA_LOGIN_CHK = {"SI", "NO"};
+
 }

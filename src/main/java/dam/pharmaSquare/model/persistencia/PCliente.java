@@ -13,4 +13,6 @@ public class PCliente {
 
     public static final String PK = DNI;
     public static final String TABLE_NAME = "CLIENTE";
+
+    public static final String[] SEXO_CHK = {"H", "M", "O"};
 }
