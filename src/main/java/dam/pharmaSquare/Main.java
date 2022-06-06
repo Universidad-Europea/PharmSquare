@@ -1,6 +1,9 @@
 package dam.pharmaSquare;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.view.window.VWindows;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +11,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel(new FlatDarculaLaf());
+            UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -16,15 +19,15 @@ public class Main {
             @Override
             public void run() {
                 System.out.println("Starting application");
-//                View window = new View();
+                VWindows vWindows = new VWindows();
 
 //                PharmaDB db = new PharmaDB();
 
-//                Controller controller = new Controller(
-//                    db
-//                );
-//                window.setController(controller);
-//                window.setVisible(true);
+                Controller controller = new Controller(
+                    vWindows
+                );
+                vWindows.setController(controller);
+                vWindows.setVisible(true);
             }
         });
     }
