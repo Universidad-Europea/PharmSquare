@@ -1,6 +1,5 @@
 package dam.pharmaSquare;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.view.window.VWindows;
