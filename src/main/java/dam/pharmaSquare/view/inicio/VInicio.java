@@ -1,6 +1,9 @@
 package dam.pharmaSquare.view.inicio;
 
+import dam.pharmaSquare.model.MessagesConfig;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class VInicio extends JPanel {
     private JPanel jpBody;
@@ -14,8 +17,13 @@ public class VInicio extends JPanel {
     private JButton btnSubmmit;
     private JButton btnNewCliente;
     private JButton btnNoLogin;
+    private JLabel lblUsuario;
+    private JLabel lblPassword;
+    private MessagesConfig msg;
 
     public VInicio() {
         add(jpBody);
     }
+
+
 }

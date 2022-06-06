@@ -39,8 +39,4 @@ public class VWindows extends JFrame {
     }
 
     // TODO: Controlador no implementado, será implementado en caso necesario.
-
-    public void setMsg(MessagesConfig msg) {
-        this.msg = msg;
-    }
 }
