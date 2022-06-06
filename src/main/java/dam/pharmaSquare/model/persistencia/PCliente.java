@@ -1,4 +1,4 @@
-package dam.pharmaSquare.model;
+package dam.pharmaSquare.model.persistencia;
 
 public class PCliente {
     public static final String DNI = "DNI";
@@ -10,4 +10,7 @@ public class PCliente {
     public static final String SEXO = "SEXO";
     public static final String TELEFONO = "TELELEFONO";
     public static final String MAIL = "MAIL";
+
+    public static final String ID = DNI;
+    public static final String TABLE_NAME = "CLIENTE";
 }
