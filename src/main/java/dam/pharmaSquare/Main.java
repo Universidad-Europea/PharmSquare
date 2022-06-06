@@ -32,7 +32,7 @@ public class Main {
                     vWindows
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vconsultarPersonal);
+                vWindows.loadPanel(vaddPersonal);
             }
         });
     }
