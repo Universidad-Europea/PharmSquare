@@ -43,10 +43,10 @@ public class Producto {
     }
 
     private void setUtilidad(String utilidad) {
-        if (!DataValidation.isValidDescription(utilidad, PProducto.MIN_UTILIDAD))
+        if (!DataValidation.isStringValid(utilidad, PProducto.MIN_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que ser una frase de, al menos, " +
                     PProducto.MIN_UTILIDAD + " caracteres.");
-        if (!DataValidation.isValidDescription(utilidad, PProducto.MIN_UTILIDAD, PProducto.MAX_UTILIDAD))
+        if (!DataValidation.isStringValid(utilidad, PProducto.MIN_UTILIDAD, PProducto.MAX_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que tener entre " +
                     PProducto.MIN_UTILIDAD + " y " + PProducto.MAX_UTILIDAD + " caracteres.");
         this.utilidad = utilidad;
