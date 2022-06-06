@@ -65,7 +65,7 @@ public class Producto {
     }
 
     private void setPrecio(double precio) {
-        if (!DataValidation.isNatural(precio))
+        if (!DataValidation.isPositive(precio))
             throw new InvalidDataException("El precio tiene que ser un natural mayor que 0.");
         this.precio = precio;
     }
