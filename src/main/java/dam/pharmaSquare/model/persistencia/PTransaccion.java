@@ -6,6 +6,6 @@ public class PTransaccion {
     public static final String FECHA = "FECHA";
     public static final String CANTIDAD = "CANTIDAD";
 
-    public static final String[] ID = {DNI, ID_PRODUCTO, FECHA};
-    public static final String TABLE_NAME = "CLIENTE";
+    public static final String[] PK = {DNI, ID_PRODUCTO, FECHA};
+    public static final String TABLE_NAME = "TRANSACCION";
 }

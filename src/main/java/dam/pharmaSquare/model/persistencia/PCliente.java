@@ -11,6 +11,6 @@ public class PCliente {
     public static final String TELEFONO = "TELELEFONO";
     public static final String MAIL = "MAIL";
 
-    public static final String ID = DNI;
+    public static final String PK = DNI;
     public static final String TABLE_NAME = "CLIENTE";
 }

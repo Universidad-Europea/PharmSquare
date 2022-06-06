@@ -10,5 +10,6 @@ public class PProducto {
 //    public static final String FOTO = "";
     public static final String NECESITA_LOGIN = "NECESITA_LOGIN";
 
+    public static final String PK = ID;
     public static final String TABLE_NAME = "PRODUCTOS";
 }
