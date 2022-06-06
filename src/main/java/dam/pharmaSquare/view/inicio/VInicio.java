@@ -2,7 +2,7 @@ package dam.pharmaSquare.view.inicio;
 
 import javax.swing.*;
 
-public class ViewInicio {
+public class VInicio extends JPanel {
     private JPanel jpBody;
     private JPanel jpForm;
     private JPanel jpTopElements;
@@ -14,4 +14,8 @@ public class ViewInicio {
     private JButton btnSubmmit;
     private JButton btnNewCliente;
     private JButton btnNoLogin;
+
+    public VInicio() {
+        add(jpBody);
+    }
 }

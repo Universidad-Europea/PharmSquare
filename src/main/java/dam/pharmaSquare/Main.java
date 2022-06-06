@@ -2,6 +2,7 @@ package dam.pharmaSquare;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.window.VWindows;
 
 import javax.swing.*;
@@ -19,14 +20,15 @@ public class Main {
             public void run() {
                 System.out.println("Starting application");
                 VWindows vWindows = new VWindows();
+                VInicio vInicio = new VInicio();
 
 //                PharmaDB db = new PharmaDB();
 
                 Controller controller = new Controller(
                     vWindows
                 );
-                vWindows.setController(controller);
                 vWindows.setVisible(true);
+                vWindows.loadPanel(vInicio);
             }
         });
     }
