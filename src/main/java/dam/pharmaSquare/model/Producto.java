@@ -9,12 +9,12 @@ public class Producto {
     private String utilidad;
     private String nombre;
     private String laboratorio;
-    private int precio;
+    private double precio;
     private int stock;
     private String foto;
     private boolean necesitaLogin;
 
-    public Producto(Integer id, String utilidad, String nombre, String laboratorio, int precio, int stock, String foto, String necesitaLogin) {
+    public Producto(Integer id, String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
         this.setId(id);
         this.setUtilidad(utilidad);
         this.setNombre(nombre);
@@ -25,7 +25,7 @@ public class Producto {
         this.setNecesitaLogin(necesitaLogin);
     }
 
-    public Producto(String utilidad, String nombre, String laboratorio, int precio, int stock, String foto, String necesitaLogin) {
+    public Producto(String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
         this.setUtilidad(utilidad);
         this.setNombre(nombre);
         this.setLaboratorio(laboratorio);
@@ -36,45 +36,55 @@ public class Producto {
     }
 
     // SETTERS
-    public void setId(int id) {
+    private void setId(int id) {
         if (!DataValidation.isNatural(id))
             throw new InvalidDataException("El id tiene que ser un natural mayor que 0.");
         this.id = id;
     }
 
-    public void setUtilidad(String utilidad) {
-        if (!DataValidation.isValidDescription(PProducto.MIN_UTILIDAD))
+    private void setUtilidad(String utilidad) {
+        if (!DataValidation.isValidDescription(utilidad, PProducto.MIN_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que ser una frase de, al menos, " +
                     PProducto.MIN_UTILIDAD + " caracteres.");
-        if (!DataValidation.isValidDescription(PProducto.MIN_UTILIDAD, PProducto.MAX_UTILIDAD))
+        if (!DataValidation.isValidDescription(utilidad, PProducto.MIN_UTILIDAD, PProducto.MAX_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que tener entre " +
                     PProducto.MIN_UTILIDAD + " y " + PProducto.MAX_UTILIDAD + " caracteres.");
         this.utilidad = utilidad;
     }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         if (!DataValidation.isNameValid(nombre))
             throw new InvalidDataException("Este nombre introducido no es válido.");
         this.nombre = nombre;
     }
 
-    public void setLaboratorio(String laboratorio) {
+    private void setLaboratorio(String laboratorio) {
+        if (!DataValidation.isStringValid(laboratorio))
+            throw new InvalidDataException("El laboratorio no es un valor válido");
         this.laboratorio = laboratorio;
     }
 
-    public void setPrecio(int precio) {
+    private void setPrecio(double precio) {
+        if (!DataValidation.isNatural(precio))
+            throw new InvalidDataException("El precio tiene que ser un natural mayor que 0.");
         this.precio = precio;
     }
 
-    public void setStock(int stock) {
+    private void setStock(int stock) {
+        if (!DataValidation.isNatural(stock))
+            throw new InvalidDataException("El stock tiene que ser un natural mayor que 0.");
         this.stock = stock;
     }
 
-    public void setFoto(String foto) {
+    private void setFoto(String foto) {
+        if (!DataValidation.isStringValid(foto))
+            throw new InvalidDataException("La foto introducida no es válida.");
         this.foto = foto;
     }
 
-    public void setNecesitaLogin(String necesitaLogin) {
-        this.necesitaLogin = necesitaLogin;
+    private void setNecesitaLogin(String necesitaLogin) {
+        if (!DataValidation.isStringIn(necesitaLogin, PProducto.NECESITA_LOGIN_CHK))
+            throw new InvalidDataException("El campo necesitaLogin debe ser %s", PProducto.NECESITA_LOGIN_CHK);
+        this.necesitaLogin = necesitaLogin.equals(PProducto.NECESITA_LOGIN_CHK[0]);
     }
 }
