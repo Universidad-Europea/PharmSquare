@@ -1,4 +1,4 @@
-package dam.pharmaSquare.main;
+package dam.pharmaSquare;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 

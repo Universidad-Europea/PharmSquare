@@ -1,6 +1,6 @@
 package dam.db;
 
-import dam.jkutkut.exception.SQLiteQueryException;
+import dam.exception.SQLiteQueryException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
