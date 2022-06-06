@@ -19,6 +19,8 @@
     - [x] Controlador.
     - [x] Estructura de Views.
     - [ ] Modelos/Pojos.
+      - [x] Persistencia.
+      - [ ] Pojos.
     - [ ] Base de datos.
       - [x] General.
       - [ ] Específica.
