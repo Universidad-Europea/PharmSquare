@@ -16,24 +16,31 @@
 - [x] Creación del repositorio en Github para el desarrollo
 - [x] Creación del proyecto 
 - [ ] Creación de paquetes necesarios para almacenar las clases que se vayan definiendo de manera que el proyecto quede bien organizado.
-
+    - [x] Controlador.
+    - [x] Estructura de Views.
+    - [ ] Modelos/Pojos.
+    - [ ] Base de datos.
+      - [ ] General.
+      - [ ] Específica.
+    - [ ] Custom Exceptions.
 ## Sprint 4. (25-03-2022 - 07-04-2022) 
 
-- [ ] Creación de las clases que representan el modelo.
+- [ ] Creación de las clases que representan el modelo. (Depende de Sprint3)
 
 ## Sprint 5. (08-04-2022 - 24-04-2022)
 
-- [ ] Creación de las clases que representan la interfaz gráfica.
-- [ ] Planteamiento de las clases que representan el control de la interfaz gráfica.
+- [ ] Creación de las clases que representan la interfaz gráfica. (Depende de Sprint3)
+- [ ] Planteamiento de las clases que representan el control de la interfaz gráfica. (Depende de Sprint3)
 
 
 ## Sprint 6. (25-04-2022 - 14-05-2022)
 
-- [ ] Incluir librerías para el uso de una base de datos
+- [x] Incluir librerías para el uso de una base de datos.
+  - Mediante Maven y clases custom.
 - [ ] Creación de clases que representen la persistencia de datos.
 - [ ] Autenticación de usuarios.
 - [ ] Realización de pruebas unitarias y documentación de las mismas.
-- [ ] Realización del JavaDoc  
+- [ ] Realización del JavaDoc.
 
 
 ## Sprint 7. (15-05-2021 - 04-06-2021)
