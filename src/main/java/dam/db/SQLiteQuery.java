@@ -8,7 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Clase con lógica para simplificar la consulta y modificación de una base de datos SQLite.
+ */
 public class SQLiteQuery {
+    /**
+     * Obtiene los valores de la base de datos requeridos.
+     * @param db Base de datos a usar.
+     * @param outputLength Tamaño que tiene cada resultado (número de columnas).
+     * @param query String SQL con la sentencia SELECT a realizar.
+     * @param input Conjunto de valores a sustituir en la query (las ?).
+     * @return Arraylist con filas en forma de Array[Object] con el resultado.
+     * @throws SQLiteQueryException
+     */
     private static ArrayList<Object[]> getFromDB(AccessDB db, int outputLength, String query, Object[] input) throws SQLiteQueryException {
         ArrayList<Object[]> output = new ArrayList<>();
 
@@ -20,18 +32,18 @@ public class SQLiteQuery {
             con = db.getConnection();
 
             pstmt = con.prepareStatement(query);
-            for (int i = 0; i < input.length; i++) {
+            for (int i = 0; i < input.length; i++) { // Fill the query
                 pstmt.setObject(i + 1, input[i]);
             }
 
             rslt = pstmt.executeQuery();
 
-            while (rslt.next()) {
-                Object[] row = new Object[outputLength];
-                for (int i = 0; i < outputLength; i++) {
+            while (rslt.next()) { // Get the results
+                Object[] row = new Object[outputLength]; // New object with the colunms of a row.
+                for (int i = 0; i < outputLength; i++) { // Fill the row
                     row[i] = rslt.getObject(i + 1);
                 }
-                output.add(row);
+                output.add(row); // Add the row to the rows
             }
         }
         catch (ClassNotFoundException e) {
@@ -51,26 +63,28 @@ public class SQLiteQuery {
         }
         return output;
     }
+
+    /**
+     * Función protectora de getFromDB para poder habilitar la entrada de argumentos de manera variable.
+     * @param db Base de datos a usar.
+     * @param outputLength Tamaño que tiene cada resultado (número de columnas).
+     * @param query String SQL con la sentencia SELECT a realizar.
+     * @param input Conjunto de valores a sustituir en la query (las ?).
+     * @return Arraylist con filas en forma de Array[Object] con el resultado.
+     * @throws SQLiteQueryException
+     */
     public static ArrayList<Object[]> get(AccessDB db, int outputLength, String query, Object... input) throws SQLiteQueryException {
         return getFromDB(db, outputLength, query, input);
     }
-    public static ArrayList<Object[]> getWhere(AccessDB db, int outputLength, String tableName, Object... conditions) throws SQLiteQueryException {
-        String query = "SELECT * FROM " + tableName;
-        Object[] input = new Object[conditions.length / 2];
 
-        if (conditions.length > 0) {
-            query += " WHERE ";
-            query += conditions[0] + " = ?";
-            input[0] = conditions[1];
-
-            for (int i = 2; i < conditions.length; i += 2) {
-                query += " AND " + conditions[i] + " = ?";
-                input[i / 2] = conditions[i + 1];
-            }
-        }
-        System.out.println(query);
-        return getFromDB(db, outputLength, query, input);
-    }
+    /**
+     * Ejecuta un cambio en la base de datos.
+     * @param db Base de datos a usar.
+     * @param query Query deseada
+     * @param input Conjunto de valores a sustituir en la query (las ?)
+     * @return Código de resultado dado por la base de datos.
+     * @throws SQLiteQueryException
+     */
     public static int execute(AccessDB db, String query, Object... input) throws SQLiteQueryException {
         int result;
 
