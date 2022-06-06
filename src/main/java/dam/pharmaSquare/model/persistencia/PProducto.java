@@ -1,5 +1,8 @@
 package dam.pharmaSquare.model.persistencia;
 
+/**
+ * Representación de un producto en la base de datos.
+ */
 public class PProducto {
     public static final String ID = "ID";
     public static final String UTILIDAD = "UTILIDAD";
