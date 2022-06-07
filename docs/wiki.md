@@ -11,6 +11,8 @@ Cada clase contine, además de los atributos de la clase, un atributo con el nom
 
 [Ubicación](../src/main/java/dam/pharmaSquare/model/)
 
-Cuando se construye una instancia de una de estas clases, los atributos son verificados. Si alguno no cumple las condiciones, se lanzan excepciones con el mensaje de error correspondiente.
+- Cuando se construye una instancia de una de estas clases, los atributos son verificados. 
+Si alguno no cumple las condiciones, se lanzan excepciones con el mensaje de error correspondiente.
 
-
+- Para cada atributo, tienen un método `public static void isXxxValid(Object Xxx)` que lanza excepciones si el dato introducido es inválido. 
+Estos están pensados para la verificación anterior y para verificar a priori los formularios.
