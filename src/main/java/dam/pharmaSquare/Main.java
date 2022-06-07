@@ -3,13 +3,14 @@ package dam.pharmaSquare;
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.view.addCliente.VAddCliente;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.addPersonal.VAddPersonal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
-import dam.pharmaSquare.view.window.VWindows;
+import dam.pharmaSquare.view.inicio.VWindows;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,16 +28,12 @@ public class Main {
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
                 VAddPersonal vAddPersonal = new VAddPersonal();
+                VAddCliente vAddCliente = new VAddCliente();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeLoginProducts vSeeLoginProducts = new VSeeLoginProducts();
                 VSeeNoLogProducts vSeeNoLogProducts = new VSeeNoLogProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
-
-                //             PharmaDB db = new PharmaDB();
-                //     public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal
-                //     vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts
-                //     , ArrayList<Personal> listaPersonal, PharmaSquareDB pharmaSquareDB) {
 
                 Controller controller = new Controller(
                     vWindows,
@@ -45,6 +42,7 @@ public class Main {
                     vCheckPersonal,
                     vSeeNoLogProducts,
                     vSeeLoginProducts,
+                    vAddCliente,
                     pharmaSquareDB
                 );
 
@@ -55,6 +53,7 @@ public class Main {
                 vStaffLogin.setController(controller);
                 vSeeLoginProducts.setController(controller);
                 vSeeNoLogProducts.setController(controller);
+                vAddCliente.setController(controller);
             }
         });
     }

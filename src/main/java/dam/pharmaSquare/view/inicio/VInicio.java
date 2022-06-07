@@ -101,4 +101,8 @@ public class VInicio extends JPanel {
     public JButton getBtnStaff() {
         return btnStaff;
     }
+
+    public JButton getBtnNewCliente() {
+        return btnNewCliente;
+    }
 }

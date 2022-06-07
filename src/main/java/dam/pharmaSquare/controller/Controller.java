@@ -2,12 +2,14 @@ package dam.pharmaSquare.controller;
 
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
+import dam.pharmaSquare.view.addCliente.VAddCliente;
+import dam.pharmaSquare.view.addPersonal.VAddPersonal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
-import dam.pharmaSquare.view.window.VWindows;
+import dam.pharmaSquare.view.inicio.VWindows;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,19 +25,21 @@ public class Controller implements ActionListener {
     private VCheckPersonal vCheckPersonal;
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
+    private VAddCliente vAddCliente;
     private ArrayList<Personal> listaPersonal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
         this.vCheckPersonal = vCheckPersonal;
         this.vSeeNoLogProducts = vSeeNoLogProducts;
         this.vSeeLoginProducts = vSeeLoginProducts;
+        this.vAddCliente = vAddCliente;
         this.pharmaSquareDB = pharmaSquareDB;
     }
 
@@ -56,6 +60,8 @@ public class Controller implements ActionListener {
             } else if (button == vInicio.getBtnNoLogin()) {
                 vWindows.loadPanel(vSeeNoLogProducts);
                 vInicio.setDefault();
+            } else if (button == vInicio.getBtnNewCliente()) {
+                vWindows.loadPanel(vAddCliente);
             }else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();

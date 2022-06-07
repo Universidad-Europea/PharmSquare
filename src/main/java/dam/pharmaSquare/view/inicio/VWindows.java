@@ -1,4 +1,4 @@
-package dam.pharmaSquare.view.window;
+package dam.pharmaSquare.view.inicio;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.MessagesConfig;
