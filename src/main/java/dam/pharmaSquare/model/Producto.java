@@ -38,56 +38,129 @@ public class Producto {
         this.setNecesitaLogin(necesitaLogin);
     }
 
-    // SETTERS
-    private void setId(int id) {
+    // CHECKERS
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param id
+     * @throws InvalidDataException
+     */
+    public static void isIdValid(Integer id) {
         if (!DataValidation.isNatural(id))
             throw new InvalidDataException("El id tiene que ser un natural mayor que 0.");
-        this.id = id;
     }
 
-    private void setUtilidad(String utilidad) {
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param utilidad
+     * @throws InvalidDataException
+     */
+    public static void isUtilidadValid(String utilidad) {
         if (!DataValidation.isStringValid(utilidad, PProducto.MIN_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que ser una frase de, al menos, " +
                     PProducto.MIN_UTILIDAD + " caracteres.");
         if (!DataValidation.isStringValid(utilidad, PProducto.MIN_UTILIDAD, PProducto.MAX_UTILIDAD))
             throw new InvalidDataException("La utilidad tiene que tener entre " +
                     PProducto.MIN_UTILIDAD + " y " + PProducto.MAX_UTILIDAD + " caracteres.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param nombre
+     * @throws InvalidDataException
+     */
+    public static void isNombreValid(String nombre) {
+        if (!DataValidation.isNameValid(nombre))
+            throw new InvalidDataException("Este nombre introducido no es válido.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param laboratorio
+     * @throws InvalidDataException
+     */
+    public static void isLaboratorioValid(String laboratorio) {
+        if (!DataValidation.isStringValid(laboratorio))
+            throw new InvalidDataException("El laboratorio no es un valor válido");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param precio
+     * @throws InvalidDataException
+     */
+    public static void isPrecioValid(Double precio) {
+        if (!DataValidation.isPositive(precio))
+            throw new InvalidDataException("El precio tiene que ser un natural mayor que 0.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param stock
+     * @throws InvalidDataException
+     */
+    public static void isStockValid(Integer stock) {
+        if (!DataValidation.isNatural(stock))
+            throw new InvalidDataException("El stock tiene que ser un natural mayor que 0.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param foto
+     * @throws InvalidDataException
+     */
+    public static void isFotoValid(String foto) {
+        if (!DataValidation.isStringValid(foto))
+            throw new InvalidDataException("La foto introducida no es válida.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param necesitaLogin
+     * @throws InvalidDataException
+     */
+    public static void isNecesitaLoginValid(String necesitaLogin) {
+        if (!DataValidation.isStringIn(necesitaLogin, PProducto.NECESITA_LOGIN_CHK))
+            throw new InvalidDataException("El campo necesitaLogin debe ser %s", PProducto.NECESITA_LOGIN_CHK);
+    }
+
+    // SETTERS
+    private void setId(int id) {
+        isIdValid(id);
+        this.id = id;
+    }
+
+    private void setUtilidad(String utilidad) {
+        isUtilidadValid(utilidad);
         this.utilidad = utilidad;
     }
 
     private void setNombre(String nombre) {
-        if (!DataValidation.isNameValid(nombre))
-            throw new InvalidDataException("Este nombre introducido no es válido.");
+        isNombreValid(nombre);
         this.nombre = nombre;
     }
 
     private void setLaboratorio(String laboratorio) {
-        if (!DataValidation.isStringValid(laboratorio))
-            throw new InvalidDataException("El laboratorio no es un valor válido");
+        isLaboratorioValid(laboratorio);
         this.laboratorio = laboratorio;
     }
 
     private void setPrecio(double precio) {
-        if (!DataValidation.isPositive(precio))
-            throw new InvalidDataException("El precio tiene que ser un natural mayor que 0.");
+        isPrecioValid(precio);
         this.precio = precio;
     }
 
     private void setStock(int stock) {
-        if (!DataValidation.isNatural(stock))
-            throw new InvalidDataException("El stock tiene que ser un natural mayor que 0.");
+        isStockValid(stock);
         this.stock = stock;
     }
 
     private void setFoto(String foto) {
-        if (!DataValidation.isStringValid(foto))
-            throw new InvalidDataException("La foto introducida no es válida.");
+        isFotoValid(foto);
         this.foto = foto;
     }
 
     private void setNecesitaLogin(String necesitaLogin) {
-        if (!DataValidation.isStringIn(necesitaLogin, PProducto.NECESITA_LOGIN_CHK))
-            throw new InvalidDataException("El campo necesitaLogin debe ser %s", PProducto.NECESITA_LOGIN_CHK);
+        isNecesitaLoginValid(necesitaLogin);
         this.necesitaLogin = necesitaLogin.equals(PProducto.NECESITA_LOGIN_CHK[0]);
     }
 }
