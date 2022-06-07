@@ -10,10 +10,10 @@ public class VStaffLogin extends JPanel {
     private JPanel jpForm;
     private JPanel jpTopElements;
     private JLabel lblTime;
-    private JButton btnStaff;
+    private JButton btnBack;
     private JLabel lblTitle;
-    private JTextField txtfMail;
-    private JPasswordField passwfPassword;
+    private JTextField txtDNI;
+    private JPasswordField btnPassword;
     private JButton btnSubmmit;
     private JButton btnNewCliente;
     private JButton btnNoLogin;
@@ -30,21 +30,21 @@ public class VStaffLogin extends JPanel {
     }
 
     private void configFields() {
-        txtfMail.setText("DNI");
-        txtfMail.setForeground(new java.awt.Color(153, 153, 153));
-        passwfPassword.setText("Contraseña");
-        passwfPassword.setForeground(new java.awt.Color(153, 153, 153));
-        txtfMail.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtDNI.setText("DNI");
+        txtDNI.setForeground(new java.awt.Color(153, 153, 153));
+        btnPassword.setText("Contraseña");
+        btnPassword.setForeground(new java.awt.Color(153, 153, 153));
+        txtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtfMail.setText("");
-                txtfMail.setForeground(new java.awt.Color(0, 0, 0));
+                txtDNI.setText("");
+                txtDNI.setForeground(new java.awt.Color(0, 0, 0));
             }
         });
 
-        passwfPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+        btnPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                passwfPassword.setText("");
-                passwfPassword.setForeground(new java.awt.Color(0, 0, 0));
+                btnPassword.setText("");
+                btnPassword.setForeground(new java.awt.Color(0, 0, 0));
             }
         });
     }
@@ -84,7 +84,28 @@ public class VStaffLogin extends JPanel {
     }
 
     public void setController(Controller controller) {
-        btnStaff.addActionListener(controller);
+        btnBack.addActionListener(controller);
         btnSubmmit.addActionListener(controller);
     }
+
+    // Geetters
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public void setTxtDNI(JTextField txtDNI) {
+        this.txtDNI = txtDNI;
+    }
+
+    public void setBtnPassword(JPasswordField btnPassword) {
+        this.btnPassword = btnPassword;
+    }
+
+    public void setDefault() {
+        txtDNI.setText("DNI");
+        txtDNI.setForeground(new java.awt.Color(153, 153, 153));
+        btnPassword.setText("Contraseña");
+        btnPassword.setForeground(new java.awt.Color(153, 153, 153));
+    }
+
 }

@@ -29,6 +29,9 @@ public class Controller implements ActionListener {
         if (e.getSource() instanceof JButton) {
             if (e.getActionCommand().equals(vInicio.getBtnStaff().getText())) {
                 vWindows.loadPanel(vStaffLogin);
+            } else if (e.getActionCommand().equals(vStaffLogin.getBtnBack().getText())) {
+                vWindows.loadPanel(vInicio);
+                vStaffLogin.setDefault();
             }
         }
 
