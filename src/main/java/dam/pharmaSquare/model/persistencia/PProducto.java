@@ -16,7 +16,7 @@ public class PProducto {
     public static final String PK = ID;
     public static final String TABLE_NAME = "PRODUCTOS";
 
-    public static final String[] NECESITA_LOGIN_CHK = {"SI", "NO"};
+    public static final String[] NECESITA_LOGIN_CHK = {"S", "N"};
 
     public static final int MIN_UTILIDAD = 30;
     public static final int MAX_UTILIDAD = 200; // TODO verificar con DB que es válido.

@@ -18,17 +18,18 @@ public class Producto {
     private boolean necesitaLogin;
 
     public Producto(Integer id, String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
-        this.setId(id);
-        this.setUtilidad(utilidad);
-        this.setNombre(nombre);
-        this.setLaboratorio(laboratorio);
-        this.setPrecio(precio);
-        this.setStock(stock);
-        this.setFoto(foto);
+        this.id = id;
+        this.utilidad = utilidad;
+        this.nombre = nombre;
+        this.laboratorio = laboratorio;
+        this.precio = precio;
+        this.stock = stock;
+        this.foto = foto;
         this.setNecesitaLogin(necesitaLogin);
     }
 
     public Producto(String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
+        this.id = -1; // Invalid ID
         this.setUtilidad(utilidad);
         this.setNombre(nombre);
         this.setLaboratorio(laboratorio);
@@ -164,8 +165,7 @@ public class Producto {
         this.necesitaLogin = necesitaLogin.equals(PProducto.NECESITA_LOGIN_CHK[0]);
     }
 
-    // Pruebas ALEX
-
+    // GETTERS
 
     public Integer getId() {
         return id;
@@ -197,5 +197,13 @@ public class Producto {
 
     public boolean isNecesitaLogin() {
         return necesitaLogin;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+          "Producto: %s\n  id: %s\n  utilidad: %s\n  laboratorio: %s\n  precio: %f\n  stock: %d\n  foto: %s\n necesitaLogin: " + this.isNecesitaLogin(),
+          getNombre(), getId(), getUtilidad(), getLaboratorio(), getPrecio(), getStock(), getFoto()
+        );
     }
 }
