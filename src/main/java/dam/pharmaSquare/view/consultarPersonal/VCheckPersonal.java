@@ -31,7 +31,6 @@ public class VCheckPersonal extends JPanel {
 
     private JPanel jpBody;
     private JPanel jpElements;
-    private JLabel lblTime;
     private JButton btnExit;
     private JPanel jpTable;
     private JScrollPane scrpTable;
@@ -40,10 +39,10 @@ public class VCheckPersonal extends JPanel {
     private JTextField txtSearchName;
     private JButton btnAddPer;
     private JButton btnSearch;
+    private JButton btnClock;
     private DefaultTableModel dtmPer;
     private  ButtonRenderer btnEdit;
     private  ButtonRenderer btnDelt;
-
 
     public VCheckPersonal() {
         /**
@@ -56,6 +55,7 @@ public class VCheckPersonal extends JPanel {
         init();
         add(jpBody);
         fillTable();
+        updateHour();
     }
 
     private void init() {
@@ -67,7 +67,6 @@ public class VCheckPersonal extends JPanel {
 
         //  add Array of String that contain the multiple options
         cmbOrder.setModel(new DefaultComboBoxModel<String> (ORDER));
-
 
         configTable();
     }
@@ -95,7 +94,6 @@ public class VCheckPersonal extends JPanel {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-
         // declare ButtonRenderer
         btnEdit = new ButtonRenderer(EDIT);
         btnEdit.setActionCommand(EDIT);
@@ -107,7 +105,6 @@ public class VCheckPersonal extends JPanel {
         btnSearch.setActionCommand(SEARCH);
         btnExit.setActionCommand(EXIT);
         btnAddPer.setActionCommand(ADD_PERSONAL);
-
 
         // declare DefaultTableModel and disable cell editing
         dtmPer = new DefaultTableModel(){
@@ -172,11 +169,9 @@ public class VCheckPersonal extends JPanel {
         String nombre = nombrebbdd.substring(0, idx);
         String apellido  = nombrebbdd.substring(idx + 1);
 
-
         fila[0] = categoria;
         fila[1] = nombre;
         fila[2] = apellido;
-
 
         dtmPer.addRow(fila);
         dtmPer.addRow(fila);
@@ -223,6 +218,41 @@ public class VCheckPersonal extends JPanel {
 
             return this;
         }
+    }
+
+    public void updateHour() {
+
+        btnClock.setText("00:00h");
+        Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClock.setText(getCurrentHour());
+            }
+        });
+        timer.start();
+
+    }
+
+    private String getCurrentHour() {
+        //Get hour and minutes from the system
+        String hour = "";
+        String minutes = "";
+
+        hour = String.valueOf(java.time.LocalTime.now().getHour());
+        minutes = String.valueOf(java.time.LocalTime.now().getMinute());
+
+        if (hour.length() == 1) {
+            hour = "0" + hour;
+        } else {
+            hour = hour;
+        }
+
+        if (minutes.length() == 1) {
+            minutes = "0" + minutes;
+        } else {
+            minutes = minutes;
+        }
+
+        return hour + ":" + minutes + "h";
     }
 
 }

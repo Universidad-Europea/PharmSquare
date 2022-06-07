@@ -23,6 +23,7 @@ public class Controller implements ActionListener {
         if (e.getSource() instanceof JButton) {
             if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
 
+
             }
         }
 

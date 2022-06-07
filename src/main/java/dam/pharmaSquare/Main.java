@@ -24,7 +24,7 @@ public class Main {
                 System.out.println("Starting application");
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
-                VAddPersonal vaddPersonal = new VAddPersonal();
+                VAddPersonal vAddPersonal = new VAddPersonal();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeProducts vSeeProducts = new VSeeProducts();
 
@@ -34,7 +34,7 @@ public class Main {
                     vWindows
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(vCheckPersonal);
                 vCheckPersonal.setController(controller);
             }
         });

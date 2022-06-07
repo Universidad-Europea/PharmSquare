@@ -18,7 +18,6 @@ public class VSeeProducts extends JPanel {
     private JLabel lblDesc;
     private JButton btnComprar;
 
-
     public VSeeProducts() {
         add(panel1);
         // Temporal, ya que no está implementado SQL
@@ -93,10 +92,7 @@ public class VSeeProducts extends JPanel {
 
             }
         });
-
         confiAnchoColumnas();
-
-
     }
 
     private void ocultarProductInfo(boolean b) {
