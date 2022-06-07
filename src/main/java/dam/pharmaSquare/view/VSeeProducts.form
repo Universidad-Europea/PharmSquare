@@ -23,6 +23,7 @@
           <component id="b1862" class="javax.swing.JTable" binding="jtableProduct">
             <constraints/>
             <properties>
+              <gridColor color="-1"/>
               <preferredScrollableViewportSize width="780" height="400"/>
               <showHorizontalLines value="false"/>
               <showVerticalLines value="false"/>
@@ -64,16 +65,24 @@
       </component>
       <component id="3b38d" class="javax.swing.JButton" binding="btnComprar">
         <constraints>
-          <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="135" height="100"/>
+            <preferred-size width="135" height="100"/>
+            <maximum-size width="135" height="100"/>
+          </grid>
         </constraints>
         <properties>
+          <icon value="img/buttons/capitalist.png"/>
+          <iconTextGap value="4"/>
+          <label value=""/>
           <name value=""/>
-          <text value="Comprar"/>
+          <text value=""/>
+          <verticalTextPosition value="3"/>
         </properties>
       </component>
       <component id="f936e" class="javax.swing.JLabel" binding="lblImage">
         <constraints>
-          <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="6" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value=""/>
