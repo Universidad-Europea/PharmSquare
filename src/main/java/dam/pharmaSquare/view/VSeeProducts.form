@@ -30,16 +30,6 @@
           </component>
         </children>
       </scrollpane>
-      <component id="b25fc" class="javax.swing.JLabel" binding="lblImage">
-        <constraints>
-          <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <horizontalTextPosition value="2"/>
-          <opaque value="true"/>
-          <text value=""/>
-        </properties>
-      </component>
       <component id="7216a" class="javax.swing.JLabel" binding="lblNombre">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -79,6 +69,14 @@
         <properties>
           <name value=""/>
           <text value="Comprar"/>
+        </properties>
+      </component>
+      <component id="f936e" class="javax.swing.JLabel" binding="lblImage">
+        <constraints>
+          <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="6" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
         </properties>
       </component>
     </children>

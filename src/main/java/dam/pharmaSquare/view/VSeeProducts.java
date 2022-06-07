@@ -25,6 +25,7 @@ public class VSeeProducts extends JPanel {
 
     }
 
+
     private void configTable() {
 
         ArrayList<Producto> products = new ArrayList<>();
