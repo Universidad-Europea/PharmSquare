@@ -176,8 +176,11 @@ public class VCheckPersonal extends JPanel {
 
         for (Personal personal: listaPersonal) {
             fila[0] = personal.getCategoria();
-            fila[1] = personal.getNombre();
-            fila[2] = personal.getNombre();
+            int idx = personal.getNombre().indexOf(' ');
+            String nombre = personal.getNombre().substring(0, idx);
+            String apellido  = personal.getNombre().substring(idx + 1);
+            fila[1] = nombre;
+            fila[2] = apellido;
 
             dtmPer.addRow(fila);
         }
