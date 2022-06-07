@@ -29,7 +29,7 @@ public class Main {
                 VSeeProducts vSeeProducts = new VSeeProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
 
-                PharmaDB db = new PharmaDB();
+                //             PharmaDB db = new PharmaDB();
 
                 Controller controller = new Controller(
                     vWindows,
