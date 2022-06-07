@@ -20,6 +20,7 @@ public class VAddPersonal extends JPanel {
     private JLabel lblTime;
     private  JButton btnCancel;
     private  JLabel lblTitle;
+    private JButton btnBorrar;
 
     public VAddPersonal() {
         add(jpBody);
