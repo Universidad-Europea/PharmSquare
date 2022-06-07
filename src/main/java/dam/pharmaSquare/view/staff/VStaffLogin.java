@@ -25,6 +25,28 @@ public class VStaffLogin extends JPanel {
     public VStaffLogin() {
         add(jpBody);
         updateHour();
+        configFields();
+
+    }
+
+    private void configFields() {
+        txtfMail.setText("DNI");
+        txtfMail.setForeground(new java.awt.Color(153, 153, 153));
+        passwfPassword.setText("Contraseña");
+        passwfPassword.setForeground(new java.awt.Color(153, 153, 153));
+        txtfMail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtfMail.setText("");
+                txtfMail.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        passwfPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwfPassword.setText("");
+                passwfPassword.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
     }
 
     public void updateHour() {
@@ -61,26 +83,8 @@ public class VStaffLogin extends JPanel {
         return hour + ":" + minutes + "h";
     }
 
-    public JButton getBtnStaff() {
-        return btnStaff;
-    }
-
-    public JButton getBtnSubmmit() {
-        return btnSubmmit;
-    }
-
-    public JButton getBtnNewCliente() {
-        return btnNewCliente;
-    }
-
-    public JButton getBtnNoLogin() {
-        return btnNoLogin;
-    }
-
     public void setController(Controller controller) {
         btnStaff.addActionListener(controller);
         btnSubmmit.addActionListener(controller);
-        btnNewCliente.addActionListener(controller);
-        btnNoLogin.addActionListener(controller);
     }
 }
