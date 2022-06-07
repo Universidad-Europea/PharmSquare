@@ -38,8 +38,6 @@ public class PersonalTest {
         ));
     }
 
-
-
     // TOOLS
     private static void printPersonal(ArrayList<Personal> personal) {
         for (Personal p : personal) {

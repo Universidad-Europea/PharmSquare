@@ -5,7 +5,9 @@ import dam.db.AccessDB;
 import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.Personal;
+import dam.pharmaSquare.model.Producto;
 import dam.pharmaSquare.model.persistencia.PPersonal;
+import dam.pharmaSquare.model.persistencia.PProducto;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ public class PharmaSquareDB extends AccessDB {
     public PharmaSquareDB() {
         super(FILE_PATH);
     }
+
+    // GET
 
     /**
      * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS
@@ -57,6 +61,25 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2personal(SQLiteQuery.get(this, 4, query));
     }
 
+    public ArrayList<Producto> getProductos(boolean necesitaLogin) {
+        String filter = "";
+        if (necesitaLogin)
+            filter = String.format(
+                " WHERE %s = '%s'",
+                    PProducto.NECESITA_LOGIN,
+                    PProducto.NECESITA_LOGIN_CHK[0]
+            );
+
+        String query = String.format(
+            "SELECT * FROM %s%s;",
+            PProducto.TABLE_NAME,
+            filter
+        );
+
+        return sqlite2producto(SQLiteQuery.get(this, 8, query));
+    }
+
+    // ADD
 
     /**
      * TODO en proceso.
@@ -92,4 +115,24 @@ public class PharmaSquareDB extends AccessDB {
         }
         return personal;
     }
+
+    private static ArrayList<Producto> sqlite2producto(ArrayList<Object[]> data) {
+        ArrayList<Producto> productos = new ArrayList<>();
+        Producto p;
+        for (Object[] r : data) {
+            p = new Producto(
+                    (int) r[0], // id
+                    (String) r[1], // utilidad
+                    (String) r[2], // nombre
+                    (String) r[3], // laboratorio
+                    (double) r[4], // precio
+                    (int) r[5], // stock
+                    (String) r[6], // foto
+                    (String) r[7] // necesitaLogin
+            );
+            productos.add(p);
+        }
+        return productos;
+    }
+
 }
