@@ -20,6 +20,7 @@ public class CategoriaProducto {
     /**
      * Lanza una InvalidDataException si el atributo introducido no es válido.
      * @param id
+     * @throws InvalidDataException
      */
     public static void isIdValid(Integer id) {
         if (!DataValidation.isNatural(id))
@@ -29,6 +30,7 @@ public class CategoriaProducto {
     /**
      * Lanza una InvalidDataException si el atributo introducido no es válido.
      * @param nombre
+     * @throws InvalidDataException
      */
     public static void isNombreValid(String nombre) {
         if (!DataValidation.isStringValid(nombre))
