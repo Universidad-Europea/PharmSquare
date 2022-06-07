@@ -27,15 +27,16 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() instanceof JButton) {
-            if (e.getActionCommand().equals(vInicio.getBtnStaff().getText())) {
+            JButton button = (JButton) e.getSource();
+
+            if (button == vInicio.getBtnStaff()) {
                 vWindows.loadPanel(vStaffLogin);
-            } else if (e.getActionCommand().equals(vStaffLogin.getBtnBack().getText())) {
+                vInicio.setDefault();
+            } else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             }
+
         }
-
-
-
     }
 }

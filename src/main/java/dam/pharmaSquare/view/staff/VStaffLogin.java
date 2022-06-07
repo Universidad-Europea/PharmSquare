@@ -30,10 +30,7 @@ public class VStaffLogin extends JPanel {
     }
 
     private void configFields() {
-        txtDNI.setText("DNI");
-        txtDNI.setForeground(new java.awt.Color(153, 153, 153));
-        btnPassword.setText("Contraseña");
-        btnPassword.setForeground(new java.awt.Color(153, 153, 153));
+        setDefault();
         txtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtDNI.setText("");
@@ -51,13 +48,13 @@ public class VStaffLogin extends JPanel {
 
     public void updateHour() {
 
+        btnClock.setText("00:00h");
         Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClock.setText(getCurrentHour());
             }
         });
         timer.start();
-
     }
 
     private String getCurrentHour() {
@@ -93,18 +90,10 @@ public class VStaffLogin extends JPanel {
         return btnBack;
     }
 
-    public void setTxtDNI(JTextField txtDNI) {
-        this.txtDNI = txtDNI;
-    }
-
-    public void setBtnPassword(JPasswordField btnPassword) {
-        this.btnPassword = btnPassword;
-    }
-
     public void setDefault() {
-        txtDNI.setText("DNI");
+        txtDNI.setText("123456789D");
         txtDNI.setForeground(new java.awt.Color(153, 153, 153));
-        btnPassword.setText("Contraseña");
+        btnPassword.setText("***********");
         btnPassword.setForeground(new java.awt.Color(153, 153, 153));
     }
 
