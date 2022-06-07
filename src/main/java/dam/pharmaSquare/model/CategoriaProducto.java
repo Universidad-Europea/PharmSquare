@@ -3,6 +3,9 @@ package dam.pharmaSquare.model;
 import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 
+/**
+ * Categoria de un producto de la aplicación PharmaSquare.
+ */
 public class CategoriaProducto {
     private Integer id;
     private String nombre;

@@ -4,6 +4,9 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 
+/**
+ * Personal de la aplicación PharmaSquare.
+ */
 public class Personal {
     private String dni;
     private String nombre;

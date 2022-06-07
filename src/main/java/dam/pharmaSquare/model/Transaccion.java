@@ -2,6 +2,9 @@ package dam.pharmaSquare.model;
 
 import dam.dataValidation.DataValidation;
 
+/**
+ * Transacción de la aplicación PharmaSquare.
+ */
 public class Transaccion {
     private String dni;
     private int idProducto;

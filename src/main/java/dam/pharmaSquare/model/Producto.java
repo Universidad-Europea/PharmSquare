@@ -4,6 +4,9 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PProducto;
 
+/**
+ * Producto de la aplicación PharmaSquare.
+ */
 public class Producto {
     private Integer id;
     private String utilidad;

@@ -4,6 +4,9 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PCliente;
 
+/**
+ * Cliente de la aplicación PharmaSquare.
+ */
 public class Cliente {
 
     private String dni;
