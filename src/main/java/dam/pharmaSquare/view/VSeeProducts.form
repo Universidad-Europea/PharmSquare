@@ -18,13 +18,14 @@
           <enabled value="false"/>
           <visible value="true"/>
         </properties>
-        <border type="empty"/>
+        <border type="none"/>
         <children>
           <component id="b1862" class="javax.swing.JTable" binding="jtableProduct">
             <constraints/>
             <properties>
               <gridColor color="-1"/>
-              <preferredScrollableViewportSize width="780" height="400"/>
+              <preferredScrollableViewportSize width="790" height="400"/>
+              <requestFocusEnabled value="false"/>
               <showHorizontalLines value="false"/>
               <showVerticalLines value="false"/>
             </properties>

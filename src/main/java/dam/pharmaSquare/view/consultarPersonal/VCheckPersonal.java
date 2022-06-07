@@ -31,7 +31,6 @@ public class VCheckPersonal extends JPanel {
 
     private JPanel jpBody;
     private JPanel jpElements;
-    private JLabel lblTime;
     private JButton btnExit;
     private JPanel jpTable;
     private JScrollPane scrpTable;
@@ -40,10 +39,10 @@ public class VCheckPersonal extends JPanel {
     private JTextField txtSearchName;
     private JButton btnAddPer;
     private JButton btnSearch;
+    private JButton btnClock;
     private DefaultTableModel dtmPer;
     private  ButtonRenderer btnEdit;
     private  ButtonRenderer btnDelt;
-
 
     public VCheckPersonal() {
         /**
@@ -56,27 +55,29 @@ public class VCheckPersonal extends JPanel {
         init();
         add(jpBody);
         fillTable();
+        updateHour();
     }
 
+    /**
+     * method that initializes the swing components
+     */
     private void init() {
-        /**
-         * method that initializes the swing components
-         */
+
         // specify the scrollable child that's going to be displayed in the scrollpane
         scrpTable.setViewportView(tablePer);
 
         //  add Array of String that contain the multiple options
         cmbOrder.setModel(new DefaultComboBoxModel<String> (ORDER));
 
-
         configTable();
     }
 
+    /**
+     * Configure the JTable by adding specific columns
+     * @return nothing
+     */
     private void configTable() {
-        /**
-         * Configure the JTable by adding specific columns
-         * @return nothing
-         */
+
         // addMouseListener to be able to click  the icons buttons  (btnEdit & btnDelt)
         // according to the cell clicked
         tablePer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,7 +96,6 @@ public class VCheckPersonal extends JPanel {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-
         // declare ButtonRenderer
         btnEdit = new ButtonRenderer(EDIT);
         btnEdit.setActionCommand(EDIT);
@@ -107,7 +107,6 @@ public class VCheckPersonal extends JPanel {
         btnSearch.setActionCommand(SEARCH);
         btnExit.setActionCommand(EXIT);
         btnAddPer.setActionCommand(ADD_PERSONAL);
-
 
         // declare DefaultTableModel and disable cell editing
         dtmPer = new DefaultTableModel(){
@@ -145,10 +144,11 @@ public class VCheckPersonal extends JPanel {
         tablePer.setRowHeight(30);
     }
 
+    /**
+     * method that receives a controller and applies it to the elements to be heard
+     */
     public void setController(Controller c) {
-        /**
-         * method that receives a controller and applies it to the elements to be heard
-         */
+
         btnDelt.addActionListener(c);
         btnEdit.addActionListener(c);
         btnExit.addActionListener(c);
@@ -156,12 +156,12 @@ public class VCheckPersonal extends JPanel {
         btnSearch.addActionListener(c);
     }
 
-
+    /**
+     * This method fill the table adding rows
+     * @return nothing
+     */
     public void fillTable() {
-        /**
-         * This method fill the table adding rows
-         * @return nothing
-         */
+
         Object[] fila = new Object[5];
 
         // test case, without calling the db
@@ -172,11 +172,9 @@ public class VCheckPersonal extends JPanel {
         String nombre = nombrebbdd.substring(0, idx);
         String apellido  = nombrebbdd.substring(idx + 1);
 
-
         fila[0] = categoria;
         fila[1] = nombre;
         fila[2] = apellido;
-
 
         dtmPer.addRow(fila);
         dtmPer.addRow(fila);
@@ -191,12 +189,12 @@ public class VCheckPersonal extends JPanel {
          * @return nothing
          */
 
+        /**
+         * this method edits the layout of the button and applies an icon to it
+         * @return nothing
+         * @exception Exception is trowed if the image is not founded in the resource folder
+         */
         public ButtonRenderer(String icon) {
-            /**
-             * this method edits the layout of the button and applies an icon to it
-             * @return nothing
-             * @exception Exception is trowed if the image is not founded in the resource folder
-             */
             setOpaque(true);
             setBorderPainted(false);
 
@@ -213,16 +211,49 @@ public class VCheckPersonal extends JPanel {
             }
         }
 
-
+        /**
+         * method implementing TableCellRenderer
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
-            /**
-             * method implementing TableCellRenderer
-             */
-
             return this;
         }
+    }
+
+    public void updateHour() {
+
+        btnClock.setText("00:00h");
+        Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClock.setText(getCurrentHour());
+            }
+        });
+        timer.start();
+
+    }
+
+    private String getCurrentHour() {
+        //Get hour and minutes from the system
+        String hour = "";
+        String minutes = "";
+
+        hour = String.valueOf(java.time.LocalTime.now().getHour());
+        minutes = String.valueOf(java.time.LocalTime.now().getMinute());
+
+        if (hour.length() == 1) {
+            hour = "0" + hour;
+        } else {
+            hour = hour;
+        }
+
+        if (minutes.length() == 1) {
+            minutes = "0" + minutes;
+        } else {
+            minutes = minutes;
+        }
+
+        return hour + ":" + minutes + "h";
     }
 
 }
