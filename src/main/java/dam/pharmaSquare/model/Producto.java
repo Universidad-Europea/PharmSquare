@@ -163,4 +163,39 @@ public class Producto {
         isNecesitaLoginValid(necesitaLogin);
         this.necesitaLogin = necesitaLogin.equals(PProducto.NECESITA_LOGIN_CHK[0]);
     }
+
+    // Pruebas ALEX
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUtilidad() {
+        return utilidad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getLaboratorio() {
+        return laboratorio;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public boolean isNecesitaLogin() {
+        return necesitaLogin;
+    }
 }
