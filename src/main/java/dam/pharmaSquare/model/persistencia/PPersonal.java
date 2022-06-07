@@ -1,5 +1,8 @@
 package dam.pharmaSquare.model.persistencia;
 
+/**
+ * Representación del personal en la base de datos.
+ */
 public class PPersonal {
     public static final String DNI = "DNI";
     public static final String NOMBRE = "NOMBRE";

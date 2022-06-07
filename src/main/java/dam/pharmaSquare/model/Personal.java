@@ -4,6 +4,9 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 
+/**
+ * Personal de la aplicación PharmaSquare.
+ */
 public class Personal {
     private String dni;
     private String nombre;
@@ -17,26 +20,64 @@ public class Personal {
         this.setPasswd(passwd);
     }
 
-    private void setDni(String dni) {
+    // CHECKERS
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param dni
+     * @throws InvalidDataException
+     */
+    public static void isDniValid(String dni) {
         if (!DataValidation.isDniValid(dni))
-            throw new InvalidDataException("The DNI given is not valid.");
+            throw new InvalidDataException("El DNI introducido no es válido.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param nombre
+     * @throws InvalidDataException
+     */
+    public static void isNombreValid(String nombre) {
+        if (!DataValidation.isNameValid(nombre))
+            throw new InvalidDataException("El nombre introducido no es válido");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param categoria
+     * @throws InvalidDataException
+     */
+    public static void isCategoriaValid(String categoria) {
+        if (!DataValidation.isStringIn(categoria, PPersonal.CATEGORIAS_CHK))
+            throw new InvalidDataException("La categoría introducida no es válida.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param passwd
+     * @throws InvalidDataException
+     */
+    public static void isPasswdValid(String passwd) {
+        // TODO validar password?
+    }
+
+    // SETTERS
+    private void setDni(String dni) {
+        isDniValid(dni);
         this.dni = dni;
     }
 
     private void setNombre(String nombre) {
-        if (!DataValidation.isNameValid(nombre))
-            throw new InvalidDataException("El nombre introducido no es válido.");
+        isNombreValid(nombre);
         this.nombre = nombre;
     }
 
     private void setCategoria(String categoria) {
-        if (!DataValidation.isStringIn(categoria, PPersonal.CATEGORIAS_CHK))
-            throw new InvalidDataException("La categoría introducida no es válida.");
+        isCategoriaValid(categoria);
         this.categoria = categoria;
     }
 
     private void setPasswd(String passwd) {
-        // TODO validar password?
+        isPasswdValid(passwd);
         this.passwd = passwd;
     }
 }

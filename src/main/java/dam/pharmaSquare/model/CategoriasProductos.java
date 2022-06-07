@@ -1,6 +1,26 @@
 package dam.pharmaSquare.model;
 
+import java.util.ArrayList;
+
+/**
+ * Clase que contiene un producto, así como todas sus categorías.
+ */
 public class CategoriasProductos {
-    private String id_producto;
-    private String id_categoria;
+    private Producto producto;
+    private ArrayList<CategoriaProducto> categorias;
+
+    public CategoriasProductos(Producto producto, ArrayList<CategoriaProducto> categorias) {
+        this.producto = producto;
+        this.categorias = categorias;
+    }
+
+    // GETTERS
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public ArrayList<CategoriaProducto> getCategorias() {
+        return categorias;
+    }
 }
