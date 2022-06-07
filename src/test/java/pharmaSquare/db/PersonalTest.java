@@ -9,7 +9,7 @@ public class PersonalTest {
     public static void main(String[] args) {
         PharmaSquareDB db = new PharmaSquareDB();
 
-        for (String type : PharmaSquareDB.PERSONAL_SORT_TYPES) {
+        for (String type : PharmaSquareDB.PERSONAL_FILTERS) {
             System.out.println("--------------------------");
             System.out.println(type);
             printPersonal(db.getPersonal(type));

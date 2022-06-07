@@ -16,12 +16,18 @@ public class PharmaSquareDB extends AccessDB {
     /**
      * Criterios de ordenación que pueden tener los empleados en el menu VCheckPersonal
      */
-    public static final String[] PERSONAL_SORT_TYPES = {"A-Z", "Z-A", "EMPLEADO", "ADMINISTRATIVO"};
+    public static final String[] PERSONAL_FILTERS = {"A-Z", "Z-A", "EMPLEADO", "ADMINISTRATIVO"};
 
     public PharmaSquareDB() {
         super(FILE_PATH);
     }
 
+    /**
+     * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS
+     * @param type Filtro a aplicar.
+     * @return ArrayList con todos los empleados requeridos.
+     * @throws InvalidDataException si el typo no está en el array.
+     */
     public ArrayList<Personal> getPersonal(String type) throws InvalidDataException {
         /**
          * Restricciones que aplicar según el tipo de selección indicado.
@@ -34,12 +40,12 @@ public class PharmaSquareDB extends AccessDB {
                 String.format("WHERE %s = '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1])
         };
 
-        if (!DataValidation.isStringIn(type, PERSONAL_SORT_TYPES))
+        if (!DataValidation.isStringIn(type, PERSONAL_FILTERS))
             throw new InvalidDataException("El criterio de búsqueda elegido no es conocido.");
 
         int index;
-        for (index = 0; index < PERSONAL_SORT_TYPES.length; index++)
-            if (PERSONAL_SORT_TYPES[index].equals(type))
+        for (index = 0; index < PERSONAL_FILTERS.length; index++)
+            if (PERSONAL_FILTERS[index].equals(type))
                 break;
 
         String query = String.format(
