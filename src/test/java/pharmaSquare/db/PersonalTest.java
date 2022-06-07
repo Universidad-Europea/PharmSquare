@@ -7,7 +7,6 @@ import dam.pharmaSquare.model.persistencia.PPersonal;
 import org.junit.*;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class PersonalTest {
     private static PharmaSquareDB db;
