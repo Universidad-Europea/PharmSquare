@@ -57,6 +57,27 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2personal(SQLiteQuery.get(this, 4, query));
     }
 
+
+    /**
+     * TODO en proceso.
+     * @param p
+     * @return
+     */
+    public int addPersonal(Personal p) {
+        String query = String.format(
+            "INSERT INTO $s (%s, %s, %s, %s) VALUES (?, ?, ?, ?);",
+            PPersonal.TABLE_NAME,
+            PPersonal.DNI,
+            PPersonal.NOMBRE,
+            PPersonal.CATEGORIA,
+            PPersonal.PASSWD
+        );
+
+        return SQLiteQuery.execute(this, query, p.getDni(), p.getNombre(), p.getCategoria(), p.getPasswd());
+    }
+
+    // sqlite2model
+
     private static ArrayList<Personal> sqlite2personal(ArrayList<Object[]> data) {
         ArrayList<Personal> personal = new ArrayList<>();
         Personal p;
