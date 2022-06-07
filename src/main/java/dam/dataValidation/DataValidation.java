@@ -25,7 +25,7 @@ public class DataValidation {
     /**
      * Regex expression to verify a valid human name.
      */
-    private static final String NOMBRE_REGEX = "^[A-Za-z]+ ?[A-Za-z]+( ?[A-Za-z]+)?$";
+    private static final String NOMBRE_REGEX = "^[A-Za-z]+( ?[A-Za-z]+( ?[A-Za-z]+)?)?$";
 
 
     // Personal information
