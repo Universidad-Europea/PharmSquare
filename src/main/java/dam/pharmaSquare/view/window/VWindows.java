@@ -2,6 +2,7 @@ package dam.pharmaSquare.view.window;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.MessagesConfig;
+import dam.pharmaSquare.view.staff.VStaffLogin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ public class VWindows extends JFrame {
     private JPanel jpBody;
     private JScrollPane jspContainer;
     private MessagesConfig msg;
+    private VStaffLogin vStaffLogin;
 
     public VWindows() {
         configWindow();
@@ -38,5 +40,4 @@ public class VWindows extends JFrame {
         setLocation((pantalla.width - ventana.width) / 2,  (pantalla.height - ventana.height) / 2);
     }
 
-    // TODO: Controlador no implementado, será implementado en caso necesario.
 }

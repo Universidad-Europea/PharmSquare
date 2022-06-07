@@ -1,6 +1,8 @@
 package dam.pharmaSquare.view.consultarPersonal;
 
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 
 import javax.imageio.ImageIO;
@@ -9,6 +11,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * <h1>VconsultarPersonal</h1>
@@ -21,7 +24,6 @@ public class VCheckPersonal extends JPanel {
      * Import Swing elements of VconsultarPersonal.form and declares them,
      * also initialize some final String used in bellow methods
      */
-    private static final String[] ORDER = {"A-Z", "Z-A", "EMPLEADO", "ADMINISTRATIVO"};
     private static final String LASTNAME = "APELLIDO";
     public static final String EDIT = "EDITAR";
     public static final String DELETE = "BORRAR";
@@ -54,7 +56,6 @@ public class VCheckPersonal extends JPanel {
          */
         init();
         add(jpBody);
-        fillTable();
         updateHour();
     }
 
@@ -67,7 +68,7 @@ public class VCheckPersonal extends JPanel {
         scrpTable.setViewportView(tablePer);
 
         //  add Array of String that contain the multiple options
-        cmbOrder.setModel(new DefaultComboBoxModel<String> (ORDER));
+        cmbOrder.setModel(new DefaultComboBoxModel<String> (PharmaSquareDB.PERSONAL_FILTERS));
 
         configTable();
     }
@@ -157,27 +158,32 @@ public class VCheckPersonal extends JPanel {
     }
 
     /**
+     * method that return a String with the value of the JComboBox
+     */
+
+    public String getComboBoxValue(){
+        String type = (String) cmbOrder.getSelectedItem();
+        return  type;
+    }
+
+    /**
      * This method fill the table adding rows
      * @return nothing
      */
-    public void fillTable() {
+    public void fillTable(ArrayList<Personal> listaPersonal) {
 
         Object[] fila = new Object[5];
 
-        // test case, without calling the db
-        String categoria = "Empleado";
+        for (Personal personal: listaPersonal) {
+            fila[0] = personal.getCategoria();
+            fila[1] = personal.getNombre();
+            fila[2] = personal.getNombre();
 
-        String nombrebbdd= "Juan Alberto Perez";
-        int idx = nombrebbdd.indexOf(' ');
-        String nombre = nombrebbdd.substring(0, idx);
-        String apellido  = nombrebbdd.substring(idx + 1);
+            dtmPer.addRow(fila);
+        }
 
-        fila[0] = categoria;
-        fila[1] = nombre;
-        fila[2] = apellido;
 
-        dtmPer.addRow(fila);
-        dtmPer.addRow(fila);
+
     }
 
 

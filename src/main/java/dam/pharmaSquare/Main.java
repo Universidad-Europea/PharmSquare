@@ -2,10 +2,12 @@ package dam.pharmaSquare;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.view.VSeeProducts;
 import dam.pharmaSquare.view.addPersonal.VAddPersonal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
+import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.window.VWindows;
 
 import javax.swing.*;
@@ -21,21 +23,28 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Starting application");
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
                 VAddPersonal vAddPersonal = new VAddPersonal();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeProducts vSeeProducts = new VSeeProducts();
+                VStaffLogin vStaffLogin = new VStaffLogin();
+                PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
 
-//                PharmaDB db = new PharmaDB();
+                //             PharmaDB db = new PharmaDB();
 
                 Controller controller = new Controller(
-                    vWindows
+                    vWindows,
+                    vInicio,
+                    vStaffLogin,
+                    vCheckPersonal,
+                    pharmaSquareDB
                 );
                 vWindows.setVisible(true);
                 vWindows.loadPanel(vCheckPersonal);
                 vCheckPersonal.setController(controller);
+                vInicio.setController(controller);
+                vStaffLogin.setController(controller);
             }
         });
     }

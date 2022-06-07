@@ -1,5 +1,6 @@
 package dam.pharmaSquare.view.inicio;
 
+import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.MessagesConfig;
 
 import javax.swing.*;
@@ -23,11 +24,30 @@ public class VInicio extends JPanel {
 
     public VInicio() {
         add(jpBody);
+        configFields();
         updateHour();
+    }
+
+    private void configFields() {
+        setDefault();
+        txtfMail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtfMail.setText("");
+                txtfMail.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        passwfPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwfPassword.setText("");
+                passwfPassword.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
     }
 
     public void updateHour() {
 
+        btnClock.setText("00:00h");
         Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClock.setText(getCurrentHour());
@@ -60,5 +80,34 @@ public class VInicio extends JPanel {
         return hour + ":" + minutes + "h";
     }
 
+    public JButton getBtnStaff() {
+        return btnStaff;
+    }
+
+    public JButton getBtnSubmmit() {
+        return btnSubmmit;
+    }
+
+    public JButton getBtnNewCliente() {
+        return btnNewCliente;
+    }
+
+    public JButton getBtnNoLogin() {
+        return btnNoLogin;
+    }
+
+    public void setController(Controller controller) {
+        btnStaff.addActionListener(controller);
+        btnSubmmit.addActionListener(controller);
+        btnNewCliente.addActionListener(controller);
+        btnNoLogin.addActionListener(controller);
+    }
+
+    public void setDefault() {
+        txtfMail.setText("no-reply@uem.es");
+        txtfMail.setForeground(new java.awt.Color(153, 153, 153));
+        passwfPassword.setText("***********");
+        passwfPassword.setForeground(new java.awt.Color(153, 153, 153));
+    }
 
 }
