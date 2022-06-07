@@ -25,11 +25,12 @@ public class Controller implements ActionListener {
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
         this.vCheckPersonal = vCheckPersonal;
+        this.pharmaSquareDB = pharmaSquareDB;
     }
 
     @Override
