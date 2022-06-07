@@ -23,19 +23,22 @@ public class VCheckPersonal extends JPanel {
      */
     private static final String[] ORDER = {"A-Z", "Z-A", "EMPLEADO", "ADMINISTRATIVO"};
     private static final String LASTNAME = "APELLIDO";
-    private static final String EDIT = "EDITAR";
-    private static final String DELETE = "BORRAR";
+    public static final String EDIT = "EDITAR";
+    public static final String DELETE = "BORRAR";
+    public static final String SEARCH = "BUSCAR";
+    public static final String EXIT = "SALIR";
+    public static final String ADD_PERSONAL = "AÑADIR PERSONAL";
+
     private JPanel jpBody;
     private JPanel jpElements;
     private JLabel lblTime;
-    private JButton btnCancel;
+    private JButton btnExit;
     private JPanel jpTable;
     private JScrollPane scrpTable;
     private JTable tablePer;
     private JComboBox cmbOrder;
     private JTextField txtSearchName;
     private JButton btnAddPer;
-    private JButton button1;
     private JButton btnSearch;
     private DefaultTableModel dtmPer;
     private  ButtonRenderer btnEdit;
@@ -74,14 +77,37 @@ public class VCheckPersonal extends JPanel {
          * Configure the JTable by adding specific columns
          * @return nothing
          */
-
+        // addMouseListener to be able to click  the icons buttons  (btnEdit & btnDelt)
+        // according to the cell clicked
+        tablePer.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tablePer.rowAtPoint(evt.getPoint());
+                int col = tablePer.columnAtPoint(evt.getPoint());
+               if (col == 3) {
+                   btnEdit.doClick();
+               } else if (col == 4) {
+                   btnDelt.doClick();
+               }
+            }
+        });
         // initialize DefaultTableCellRenderer
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
+
         // declare ButtonRenderer
         btnEdit = new ButtonRenderer(EDIT);
+        btnEdit.setActionCommand(EDIT);
         btnDelt = new ButtonRenderer(DELETE);
+
+        // add addActionCommand to the buttons to be able to control the button in the controller class
+        btnEdit.setActionCommand(EDIT);
+        btnDelt.setActionCommand(DELETE);
+        btnSearch.setActionCommand(SEARCH);
+        btnExit.setActionCommand(EXIT);
+        btnAddPer.setActionCommand(ADD_PERSONAL);
+
 
         // declare DefaultTableModel and disable cell editing
         dtmPer = new DefaultTableModel(){
@@ -103,7 +129,7 @@ public class VCheckPersonal extends JPanel {
         dtmPer.addColumn(DELETE);
 
         //Setting table columns
-        tablePer.getColumn(PPersonal.CATEGORIA).setPreferredWidth(20);
+        tablePer.getColumn(PPersonal.CATEGORIA).setPreferredWidth(30);
         tablePer.getColumn(PPersonal.CATEGORIA).setCellRenderer(centerRenderer);
         tablePer.getColumn(PPersonal.NOMBRE).setPreferredWidth(20);
         tablePer.getColumn(PPersonal.NOMBRE).setCellRenderer(centerRenderer);
@@ -125,7 +151,7 @@ public class VCheckPersonal extends JPanel {
          */
         btnDelt.addActionListener(c);
         btnEdit.addActionListener(c);
-        btnCancel.addActionListener(c);
+        btnExit.addActionListener(c);
         btnAddPer.addActionListener(c);
         btnSearch.addActionListener(c);
     }
@@ -156,6 +182,8 @@ public class VCheckPersonal extends JPanel {
         dtmPer.addRow(fila);
     }
 
+
+
     class ButtonRenderer extends JButton implements TableCellRenderer {
         /**
          * implements a ButtonRenderer which is inserted inside the JTable
@@ -171,6 +199,7 @@ public class VCheckPersonal extends JPanel {
              */
             setOpaque(true);
             setBorderPainted(false);
+
             try {
                 if (icon == EDIT) {
                     Image img = ImageIO.read(getClass().getResource("/img/buttons/edit.png"));
@@ -184,6 +213,7 @@ public class VCheckPersonal extends JPanel {
             }
         }
 
+
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
@@ -194,7 +224,5 @@ public class VCheckPersonal extends JPanel {
             return this;
         }
     }
-
-
 
 }

@@ -25,7 +25,7 @@ public class Main {
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
                 VAddPersonal vaddPersonal = new VAddPersonal();
-                VCheckPersonal VCheckPersonal = new VCheckPersonal();
+                VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeProducts vSeeProducts = new VSeeProducts();
 
 //                PharmaDB db = new PharmaDB();
@@ -34,7 +34,8 @@ public class Main {
                     vWindows
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vSeeProducts);
+                vWindows.loadPanel(vInicio);
+                vCheckPersonal.setController(controller);
             }
         });
     }
