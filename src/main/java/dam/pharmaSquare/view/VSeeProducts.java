@@ -12,6 +12,11 @@ public class VSeeProducts extends JPanel {
     private JPanel panel1;
     private JTable jtableProduct;
     private JLabel lblImage;
+    private JLabel lblNombre;
+    private JLabel lblPrecio;
+    private JLabel lblStock;
+    private JLabel lblDesc;
+    private JButton btnComprar;
 
 
     public VSeeProducts() {
@@ -19,7 +24,6 @@ public class VSeeProducts extends JPanel {
         configTable();
 
     }
-
 
     private void configTable() {
 
@@ -38,7 +42,8 @@ public class VSeeProducts extends JPanel {
         model.addColumn("Foto");
 
         for (Producto product : products) {
-            model.addRow(new Object[]{product.getUtilidad(),
+            model.addRow(new Object[]{
+                    product.getUtilidad(),
                     product.getNombre(),
                     product.getLaboratorio(),
                     product.getPrecio() + "€",
@@ -51,7 +56,53 @@ public class VSeeProducts extends JPanel {
         jtableProduct.getTableHeader().setReorderingAllowed(false);
         jtableProduct.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
         jtableProduct.setDefaultEditor(Object.class, null);
+        // ---
+        jtableProduct.getColumnModel().getColumn(4).setMinWidth(0);
+        jtableProduct.getColumnModel().getColumn(4).setMaxWidth(0);
+        jtableProduct.getColumnModel().getColumn(4).setPreferredWidth(0);
+        // ---
+        jtableProduct.getColumnModel().getColumn(2).setMinWidth(0);
+        jtableProduct.getColumnModel().getColumn(2).setMaxWidth(0);
+        jtableProduct.getColumnModel().getColumn(2).setPreferredWidth(0);
+        // ---
+        jtableProduct.getColumnModel().getColumn(0).setMinWidth(0);
+        jtableProduct.getColumnModel().getColumn(0).setMaxWidth(0);
+        jtableProduct.getColumnModel().getColumn(0).setPreferredWidth(0);
 
+
+
+        // Get select row and display in label
+        jtableProduct.getSelectionModel().addListSelectionListener(e -> {
+            int row = jtableProduct.getSelectedRow();
+            if (row >= 0) {
+                lblImage.setIcon(new ImageIcon(jtableProduct.getValueAt(row, 5).toString()));
+                lblNombre.setText("Nombre del producto: " + jtableProduct.getValueAt(row, 1).toString());
+                lblDesc.setText("Descripción: " + jtableProduct.getValueAt(row, 0).toString());
+                lblPrecio.setText("Precio: " + jtableProduct.getValueAt(row, 3).toString());
+
+                if (Integer.parseInt(jtableProduct.getValueAt(row, 4).toString()) > 0) {
+                    lblStock.setText("Stock: " + jtableProduct.getValueAt(row, 4).toString());
+                } else {
+                    lblStock.setText("Stock: No disponible");
+                }
+
+                lblImage.setPreferredSize(new Dimension(100, 100));
+
+            }
+        });
+
+        jtableProduct.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jtableProduct.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jtableProduct.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jtableProduct.getColumnModel().getColumn(3).setPreferredWidth(50);
+        jtableProduct.getColumnModel().getColumn(4).setPreferredWidth(50); // Stock
+        jtableProduct.getColumnModel().getColumn(5).setPreferredWidth(100);
+
+
+    }
+
+    private int getSelectedRow() {
+        return jtableProduct.getSelectedRow();
     }
 
     private class ImageRender extends DefaultTableCellRenderer {

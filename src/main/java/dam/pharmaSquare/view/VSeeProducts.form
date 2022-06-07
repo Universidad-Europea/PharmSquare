@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="dam.pharmaSquare.view.VSeeProducts">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
-    <border type="none"/>
+    <properties>
+      <maximumSize width="68" height="76"/>
+    </properties>
+    <border type="empty"/>
     <children>
       <scrollpane id="301f0">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <enabled value="false"/>
+          <visible value="true"/>
+        </properties>
         <border type="empty"/>
         <children>
           <component id="b1862" class="javax.swing.JTable" binding="jtableProduct">
@@ -27,10 +32,53 @@
       </scrollpane>
       <component id="b25fc" class="javax.swing.JLabel" binding="lblImage">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <horizontalTextPosition value="2"/>
+          <opaque value="true"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="7216a" class="javax.swing.JLabel" binding="lblNombre">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Label"/>
+        </properties>
+      </component>
+      <component id="f1d37" class="javax.swing.JLabel" binding="lblPrecio">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="5581a" class="javax.swing.JLabel" binding="lblStock">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="3b9ad" class="javax.swing.JLabel" binding="lblDesc">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="3b38d" class="javax.swing.JButton" binding="btnComprar">
+        <constraints>
+          <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <name value=""/>
+          <text value="Comprar"/>
         </properties>
       </component>
     </children>
