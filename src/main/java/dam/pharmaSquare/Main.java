@@ -3,7 +3,7 @@ package dam.pharmaSquare;
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.view.addPersonal.VAddPersonal;
-import dam.pharmaSquare.view.consultarPersonal.VconsultarPersonal;
+import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.window.VWindows;
 
@@ -24,7 +24,7 @@ public class Main {
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
                 VAddPersonal vaddPersonal = new VAddPersonal();
-                VconsultarPersonal vconsultarPersonal = new VconsultarPersonal();
+                VCheckPersonal VCheckPersonal = new VCheckPersonal();
 
 //                PharmaDB db = new PharmaDB();
 
@@ -32,7 +32,7 @@ public class Main {
                     vWindows
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(VCheckPersonal);
             }
         });
     }

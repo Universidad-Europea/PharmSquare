@@ -2,7 +2,7 @@ package dam.pharmaSquare.view.consultarPersonal;
 
 import javax.swing.*;
 
-public class VconsultarPersonal extends JPanel {
+public class VCheckPersonal extends JPanel {
     private JPanel jpBody;
     private JPanel jpElements;
     private JLabel lblTime;
@@ -14,7 +14,7 @@ public class VconsultarPersonal extends JPanel {
     private JTextField txtSearchName;
     private JButton btnAddEmpleado;
 
-    public VconsultarPersonal() {
+    public VCheckPersonal() {
         add(jpBody);
     }
 }
