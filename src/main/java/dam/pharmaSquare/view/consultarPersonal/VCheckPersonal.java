@@ -35,6 +35,8 @@ public class VCheckPersonal extends JPanel {
     private JComboBox cmbOrder;
     private JTextField txtSearchName;
     private JButton btnAddPer;
+    private JButton button1;
+    private JButton btnSearch;
     private DefaultTableModel dtmPer;
     private  ButtonRenderer btnEdit;
     private  ButtonRenderer btnDelt;
@@ -125,7 +127,7 @@ public class VCheckPersonal extends JPanel {
         btnEdit.addActionListener(c);
         btnCancel.addActionListener(c);
         btnAddPer.addActionListener(c);
-
+        btnSearch.addActionListener(c);
     }
 
 
@@ -172,12 +174,10 @@ public class VCheckPersonal extends JPanel {
             try {
                 if (icon == EDIT) {
                     Image img = ImageIO.read(getClass().getResource("/img/buttons/edit.png"));
-                    Image imgScaled = img.getScaledInstance(20, 20, Image.SCALE_DEFAULT);
-                    setIcon(new ImageIcon(imgScaled));
+                    setIcon(new ImageIcon(img));
                 } else {
                     Image img = ImageIO.read(getClass().getResource("/img/buttons/delete.png"));
-                    Image imgScaled = img.getScaledInstance(26, 25, Image.SCALE_DEFAULT);
-                    setIcon(new ImageIcon(imgScaled));
+                    setIcon(new ImageIcon(img));
                 }
             }catch (Exception ex) {
                 System.out.println("image not found");
