@@ -58,10 +58,11 @@ public class VCheckPersonal extends JPanel {
         updateHour();
     }
 
+    /**
+     * method that initializes the swing components
+     */
     private void init() {
-        /**
-         * method that initializes the swing components
-         */
+
         // specify the scrollable child that's going to be displayed in the scrollpane
         scrpTable.setViewportView(tablePer);
 
@@ -71,11 +72,12 @@ public class VCheckPersonal extends JPanel {
         configTable();
     }
 
+    /**
+     * Configure the JTable by adding specific columns
+     * @return nothing
+     */
     private void configTable() {
-        /**
-         * Configure the JTable by adding specific columns
-         * @return nothing
-         */
+
         // addMouseListener to be able to click  the icons buttons  (btnEdit & btnDelt)
         // according to the cell clicked
         tablePer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,10 +144,11 @@ public class VCheckPersonal extends JPanel {
         tablePer.setRowHeight(30);
     }
 
+    /**
+     * method that receives a controller and applies it to the elements to be heard
+     */
     public void setController(Controller c) {
-        /**
-         * method that receives a controller and applies it to the elements to be heard
-         */
+
         btnDelt.addActionListener(c);
         btnEdit.addActionListener(c);
         btnExit.addActionListener(c);
@@ -153,12 +156,12 @@ public class VCheckPersonal extends JPanel {
         btnSearch.addActionListener(c);
     }
 
-
+    /**
+     * This method fill the table adding rows
+     * @return nothing
+     */
     public void fillTable() {
-        /**
-         * This method fill the table adding rows
-         * @return nothing
-         */
+
         Object[] fila = new Object[5];
 
         // test case, without calling the db
@@ -186,12 +189,12 @@ public class VCheckPersonal extends JPanel {
          * @return nothing
          */
 
+        /**
+         * this method edits the layout of the button and applies an icon to it
+         * @return nothing
+         * @exception Exception is trowed if the image is not founded in the resource folder
+         */
         public ButtonRenderer(String icon) {
-            /**
-             * this method edits the layout of the button and applies an icon to it
-             * @return nothing
-             * @exception Exception is trowed if the image is not founded in the resource folder
-             */
             setOpaque(true);
             setBorderPainted(false);
 
@@ -208,14 +211,12 @@ public class VCheckPersonal extends JPanel {
             }
         }
 
-
+        /**
+         * method implementing TableCellRenderer
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
-            /**
-             * method implementing TableCellRenderer
-             */
-
             return this;
         }
     }
