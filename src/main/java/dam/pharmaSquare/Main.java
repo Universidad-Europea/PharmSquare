@@ -29,15 +29,16 @@ public class Main {
                 VSeeProducts vSeeProducts = new VSeeProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
 
-//                PharmaDB db = new PharmaDB();
+                PharmaDB db = new PharmaDB();
 
                 Controller controller = new Controller(
                     vWindows,
                     vInicio,
-                    vStaffLogin
+                    vStaffLogin,
+                    vCheckPersonal
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(vCheckPersonal);
                 vCheckPersonal.setController(controller);
                 vInicio.setController(controller);
                 vStaffLogin.setController(controller);
