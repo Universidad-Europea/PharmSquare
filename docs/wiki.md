@@ -16,3 +16,10 @@ Si alguno no cumple las condiciones, se lanzan excepciones con el mensaje de err
 
 - Para cada atributo, tienen un método `public static void isXxxValid(Object Xxx)` que lanza excepciones si el dato introducido es inválido. 
 Estos están pensados para la verificación anterior y para verificar a priori los formularios.
+
+
+## Base de datos:
+
+[Ubicación](../src/main/java/dam/pharmaSquare/db/)
+
+La lógica de la base de datos está formada por una serie de clases y métodos que simplifican la consulta y modificación de esta de manera que resulte sencillo su implementación en el proyecto.
