@@ -2,7 +2,7 @@ package dam.pharmaSquare.view.addPersonal;
 
 import javax.swing.*;
 
-public class VaddPersonal extends JPanel {
+public class VAddPersonal extends JPanel {
 
     private  JPanel jpBody;
     private JPanel jpForm;
@@ -21,7 +21,7 @@ public class VaddPersonal extends JPanel {
     private  JButton btnCancel;
     private  JLabel lblTitle;
 
-    public VaddPersonal() {
+    public VAddPersonal() {
         add(jpBody);
     }
 }
