@@ -1,14 +1,15 @@
-package dam.pharmaSquare.view;
+package dam.pharmaSquare.view.products;
 
+import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Producto;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.ArrayList;
 
-public class VSeeProducts extends JPanel {
+public class VSeeLoginProducts extends JPanel {
     private JPanel panel1;
     private JTable jtableProduct;
     private JLabel lblImage;
@@ -17,28 +18,23 @@ public class VSeeProducts extends JPanel {
     private JLabel lblStock;
     private JLabel lblDesc;
     private JButton btnComprar;
+    private JButton btnExit;
+    private static PharmaSquareDB db;
 
-    public VSeeProducts() {
+    public VSeeLoginProducts() {
         add(panel1);
-        // Temporal, ya que no está implementado SQL
         addData();
-
-        // Configuración de la tabla
         configTable();
-
     }
 
     private void addData() {
 
         DefaultTableModel model = Columns();
 
-        ArrayList<Producto> products = new ArrayList<>();
-        products.add(new Producto(1, "El producto es muy ítil por que te lava la cara ca asd", "NombreUNO", "Laboratorio 1", 1.0, 1, "src/main/resources/img/productos/apositos.png", "SI"));
-        products.add(new Producto(2, "El producto es muy ítil por que te lava la cara ca asd", "NombreDOS", "Laboratorio 2", 2.0, 2, "src/main/resources/img/productos/aspirina.png", "NO"));
-        products.add(new Producto(3, "El producto es muy ítil por que te lava la cara ca asd", "NombreTRES", "Laboratorio 3", 3.0, 3, "src/main/resources/img/productos/bendaje.png", "SI"));
-        products.add(new Producto(4, "El producto es muy ítil por que te lava la cara ca asd", "NombreCUATRO", "Laboratorio 4", 4.0, 1, "src/main/resources/img/productos/cafeina.png", "NO"));
+        db = new PharmaSquareDB();
+        db.getAllProducts();
 
-        for (Producto product : products) {
+        for (Producto product : db.getAllProducts()) {
             model.addRow(new Object[]{
                     product.getUtilidad(),
                     product.getNombre(),
@@ -102,6 +98,7 @@ public class VSeeProducts extends JPanel {
         lblStock.setVisible(b);
         lblDesc.setVisible(b);
         btnComprar.setVisible(b);
+        btnExit.setVisible(b);
     }
 
     private void confiAnchoColumnas() {
@@ -133,6 +130,11 @@ public class VSeeProducts extends JPanel {
         return jtableProduct.getSelectedRow();
     }
 
+    public void setController(Controller controller) {
+        btnComprar.addActionListener(controller);
+        btnExit.addActionListener(controller);
+    }
+
     private class ImageRender extends DefaultTableCellRenderer {
 
         @Override
@@ -145,5 +147,7 @@ public class VSeeProducts extends JPanel {
         }
     }
 
-
+    public JButton getBtnExit() {
+        return btnExit;
+    }
 }

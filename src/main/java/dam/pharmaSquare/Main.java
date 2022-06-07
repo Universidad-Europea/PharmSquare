@@ -3,10 +3,11 @@ package dam.pharmaSquare;
 import com.formdev.flatlaf.FlatLightLaf;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
-import dam.pharmaSquare.view.VSeeProducts;
+import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.addPersonal.VAddPersonal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
+import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.window.VWindows;
 
@@ -27,24 +28,33 @@ public class Main {
                 VInicio vInicio = new VInicio();
                 VAddPersonal vAddPersonal = new VAddPersonal();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
-                VSeeProducts vSeeProducts = new VSeeProducts();
+                VSeeLoginProducts vSeeLoginProducts = new VSeeLoginProducts();
+                VSeeNoLogProducts vSeeNoLogProducts = new VSeeNoLogProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
 
                 //             PharmaDB db = new PharmaDB();
+                //     public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal
+                //     vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts
+                //     , ArrayList<Personal> listaPersonal, PharmaSquareDB pharmaSquareDB) {
 
                 Controller controller = new Controller(
                     vWindows,
                     vInicio,
                     vStaffLogin,
                     vCheckPersonal,
+                    vSeeNoLogProducts,
+                    vSeeLoginProducts,
                     pharmaSquareDB
                 );
+
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vCheckPersonal);
+                vWindows.loadPanel(vInicio);
                 vCheckPersonal.setController(controller);
                 vInicio.setController(controller);
                 vStaffLogin.setController(controller);
+                vSeeLoginProducts.setController(controller);
+                vSeeNoLogProducts.setController(controller);
             }
         });
     }

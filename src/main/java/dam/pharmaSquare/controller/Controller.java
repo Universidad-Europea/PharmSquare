@@ -4,6 +4,8 @@ import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
+import dam.pharmaSquare.view.products.VSeeLoginProducts;
+import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.window.VWindows;
 
@@ -19,17 +21,21 @@ public class Controller implements ActionListener {
     private VInicio vInicio;
     private VStaffLogin vStaffLogin;
     private VCheckPersonal vCheckPersonal;
+    private VSeeNoLogProducts vSeeNoLogProducts;
+    private VSeeLoginProducts vSeeLoginProducts;
     private ArrayList<Personal> listaPersonal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
         this.vCheckPersonal = vCheckPersonal;
+        this.vSeeNoLogProducts = vSeeNoLogProducts;
+        this.vSeeLoginProducts = vSeeLoginProducts;
         this.pharmaSquareDB = pharmaSquareDB;
     }
 
@@ -42,13 +48,20 @@ public class Controller implements ActionListener {
             if (button == vInicio.getBtnStaff()) {
                 vWindows.loadPanel(vStaffLogin);
                 vInicio.setDefault();
-            } else if (button == vStaffLogin.getBtnBack()) {
+            } else if (button == vSeeLoginProducts.getBtnExit()) {
+                vWindows.loadPanel(vInicio);
+                vStaffLogin.setDefault();
+            } else if (button == vSeeNoLogProducts.getBtnExit()) {
+                vWindows.loadPanel(vInicio);
+            } else if (button == vInicio.getBtnNoLogin()) {
+                vWindows.loadPanel(vSeeNoLogProducts);
+                vInicio.setDefault();
+            }else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
-
-               listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue());
-               vCheckPersonal.fillTable(listaPersonal);
+                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue());
+                vCheckPersonal.fillTable(listaPersonal);
 
             }
 

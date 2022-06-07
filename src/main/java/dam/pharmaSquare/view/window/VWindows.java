@@ -17,8 +17,6 @@ public class VWindows extends JFrame {
         configWindow();
         centerWindow();
         add(jpBody);
-        // add components to jpBody
-
     }
 
     public void loadPanel(JPanel panel) {

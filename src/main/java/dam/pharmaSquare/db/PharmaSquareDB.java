@@ -85,6 +85,17 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
+    // new method for get all products (by Alex)
+    public ArrayList<Producto> getAllProducts () throws InvalidDataException {
+
+        String query = String.format(
+                "SELECT * FROM %s;",
+                PProducto.TABLE_NAME
+        );
+
+        return sqlite2producto(SQLiteQuery.get(this, 8, query));
+    }
+
     // ADD
 
     /**
