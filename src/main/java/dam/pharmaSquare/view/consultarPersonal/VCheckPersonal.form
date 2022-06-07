@@ -56,7 +56,9 @@
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+            </properties>
             <border type="none"/>
             <children>
               <scrollpane id="81a23" binding="scrpTable">
@@ -69,7 +71,13 @@
                   <component id="72d9d" class="javax.swing.JTable" binding="tablePer">
                     <constraints/>
                     <properties>
+                      <foreground color="-16777216"/>
+                      <gridColor color="-1"/>
                       <preferredScrollableViewportSize width="400" height="300"/>
+                      <selectionBackground color="-1"/>
+                      <selectionForeground color="-16777216"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
                     </properties>
                   </component>
                 </children>
