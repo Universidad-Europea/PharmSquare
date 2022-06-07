@@ -1,5 +1,6 @@
 package dam.pharmaSquare.view.inicio;
 
+import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.MessagesConfig;
 
 import javax.swing.*;
@@ -60,5 +61,26 @@ public class VInicio extends JPanel {
         return hour + ":" + minutes + "h";
     }
 
+    public JButton getBtnStaff() {
+        return btnStaff;
+    }
 
+    public JButton getBtnSubmmit() {
+        return btnSubmmit;
+    }
+
+    public JButton getBtnNewCliente() {
+        return btnNewCliente;
+    }
+
+    public JButton getBtnNoLogin() {
+        return btnNoLogin;
+    }
+
+    public void setController(Controller controller) {
+        btnStaff.addActionListener(controller);
+        btnSubmmit.addActionListener(controller);
+        btnNewCliente.addActionListener(controller);
+        btnNoLogin.addActionListener(controller);
+    }
 }

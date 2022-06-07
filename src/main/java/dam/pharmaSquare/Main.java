@@ -6,6 +6,7 @@ import dam.pharmaSquare.view.VSeeProducts;
 import dam.pharmaSquare.view.addPersonal.VAddPersonal;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
+import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.window.VWindows;
 
 import javax.swing.*;
@@ -21,21 +22,25 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Starting application");
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
                 VAddPersonal vAddPersonal = new VAddPersonal();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeProducts vSeeProducts = new VSeeProducts();
+                VStaffLogin vStaffLogin = new VStaffLogin();
 
 //                PharmaDB db = new PharmaDB();
 
                 Controller controller = new Controller(
-                    vWindows
+                    vWindows,
+                    vInicio,
+                    vStaffLogin
                 );
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vCheckPersonal);
+                vWindows.loadPanel(vInicio);
                 vCheckPersonal.setController(controller);
+                vInicio.setController(controller);
+                vStaffLogin.setController(controller);
             }
         });
     }
