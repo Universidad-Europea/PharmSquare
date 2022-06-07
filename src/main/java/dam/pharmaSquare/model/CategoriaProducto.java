@@ -15,15 +15,34 @@ public class CategoriaProducto {
         this.setNombre(nombre);
     }
 
-    private void setId(Integer id) {
+    // CHECKERS
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param id
+     */
+    public static void isIdValid(Integer id) {
         if (!DataValidation.isNatural(id))
             throw new InvalidDataException("El id no es un natural.");
+    }
+
+    /**
+     * Lanza una InvalidDataException si el atributo introducido no es válido.
+     * @param nombre
+     */
+    public static void isNombreValid(String nombre) {
+        if (!DataValidation.isStringValid(nombre))
+            throw new InvalidDataException("El nombre de la categoría del producto no es válida.");
+    }
+
+    // SETTERS
+    private void setId(Integer id) {
+        isIdValid(id);
         this.id = id;
     }
 
     private void setNombre(String nombre) {
-        if (!DataValidation.isStringValid(nombre))
-            throw new InvalidDataException("El nombre de la categoría del producto no es válida.");
+        isNombreValid(nombre);
         this.nombre = nombre;
     }
 }
