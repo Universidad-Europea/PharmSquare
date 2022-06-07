@@ -80,4 +80,21 @@ public class Personal {
         isPasswdValid(passwd);
         this.passwd = passwd;
     }
+
+    // GETTERS
+    public String getDni() {
+        return dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
 }
