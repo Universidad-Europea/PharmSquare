@@ -79,4 +79,28 @@ public class Transaccion {
         isCantidadValid(cantidad);
         this.cantidad = cantidad;
     }
+
+    // GETTERS
+    public String getDni() {
+        return dni;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public String toString() {
+        return String.format(
+            "Transaccion:\n  dni cliente: %s,\n  producto id: %\n  fecha: %s\n  cantidad: %f",
+            this.getDni(), this.getIdProducto(), this.getFecha(), this.getCantidad()
+        );
+    }
 }
