@@ -281,11 +281,43 @@ let tablas = [
 		],
 		showEstructura: true,
 		datos: {
-			total: 0,
-			dni_cliente: [],
-			id_producto: [],
-			fecha: [],
-			cantidad: []
+			total: 7,
+			dni_cliente: [
+				"000000000A",
+				"000000000A",
+				"000000000A",
+				"000000000A",
+				"000000000A",
+				"000000000A",
+				"000000000A"
+			],
+			id_producto: [
+				2,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			],
+			fecha: [
+				"DATETIME('2022-02-01 12:42')",
+				"DATETIME('2022-02-01 13:42')",
+				"DATETIME('2022-02-01 11:42')",
+				"DATETIME('2022-02-01 10:42')",
+				"DATETIME('2022-02-01 14:42')",
+				"DATETIME('2022-02-01 15:42')",
+				"DATETIME('2022-02-01 16:42')"
+			],
+			cantidad: [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
 		}
 	},
 	{
@@ -356,7 +388,7 @@ function data2sql(data) {
 			}
 			else {
 				let border = "";
-				if (typeof data.datos[data.estructura[j]][i] == "string") {
+				if (typeof data.datos[data.estructura[j]][i] == "string" && data.estructura[j] != "fecha") {
 					border = "'";
 				}
 				elements.push(border + data.datos[data.estructura[j]][i] + border);
