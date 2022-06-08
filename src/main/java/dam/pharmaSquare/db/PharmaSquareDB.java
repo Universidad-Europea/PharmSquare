@@ -4,6 +4,7 @@ import dam.dataValidation.DataValidation;
 import dam.db.AccessDB;
 import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
+import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.Producto;
 import dam.pharmaSquare.model.persistencia.PCliente;
@@ -163,6 +164,38 @@ public class PharmaSquareDB extends AccessDB {
 
         return SQLiteQuery.execute(this, query, p.getDni(), p.getNombre(), p.getCategoria(), p.getPasswd());
     }
+
+    public int addCliente(Cliente p) {
+        String query = String.format(
+                "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                PCliente.TABLE_NAME,
+                PCliente.DNI,
+                PCliente.NOMBRE,
+                PCliente.F_ALTA,
+                PCliente.DIRECCION,
+                PCliente.NACIMIENTO,
+                PCliente.PASSWD,
+                PCliente.SEXO,
+                PCliente.TELEFONO,
+                PCliente.MAIL
+        );
+        System.out.println(query);
+        return SQLiteQuery.execute(
+        this,
+            query,
+            p.getDni(),
+            p.getNombre(),
+            p.getfAlta(),
+            p.getDireccion(),
+            p.getNacimiento(),
+            p.getPasswd(),
+            p.getSexo(),
+            p.getTelefono(),
+            p.getMail()
+        );
+    }
+
+
 
     // sqlite2model
 
