@@ -6,10 +6,12 @@ import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.Producto;
+import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import dam.pharmaSquare.model.persistencia.PProducto;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PharmaSquareDB extends AccessDB {
@@ -83,6 +85,42 @@ public class PharmaSquareDB extends AccessDB {
         );
 
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
+    }
+
+    public boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) {
+        String query = String.format(
+            "SELECT %s FROM %s WHERE %s = ?;",
+            passwdField,
+            table,
+            userField
+        );
+
+        ArrayList<Object[]> data = SQLiteQuery.get(this, 1, query, user);
+
+        if (data.size() == 0)
+            return false;
+        return passwd.equals((String) data.get(0)[0]);
+
+    }
+
+    public boolean validPasswdCliente(String user, String passwd) {
+        return validPasswd(
+            PCliente.TABLE_NAME,
+            PCliente.PASSWD,
+            PCliente.NOMBRE,
+            user,
+            passwd
+        );
+    }
+
+    public boolean validPasswdPersonal(String user, String passwd) {
+        return validPasswd(
+                PPersonal.TABLE_NAME,
+                PPersonal.PASSWD,
+                PPersonal.NOMBRE,
+                user,
+                passwd
+        );
     }
 
     // ADD
