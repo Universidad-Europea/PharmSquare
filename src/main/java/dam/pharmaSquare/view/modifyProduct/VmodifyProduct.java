@@ -1,8 +1,8 @@
-package dam.pharmaSquare.view.addProducto;
+package dam.pharmaSquare.view.modifyProduct;
 
 import javax.swing.*;
 
-public class VAddProduct {
+public class VmodifyProduct {
     private JPanel jpBody;
     private JButton btnBack;
     private JPanel jpTopElements;
@@ -28,7 +28,7 @@ public class VAddProduct {
     private JLabel lblUtilidad;
     private JLabel lblLogin;
 
-    public VAddProduct(){
+    public VmodifyProduct(){
         init();
     }
 
