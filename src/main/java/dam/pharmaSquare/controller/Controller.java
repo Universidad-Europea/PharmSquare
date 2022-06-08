@@ -108,7 +108,7 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.DELETE)) {
                 nombrePersonal = vCheckPersonal.getTableRowPerName();
-                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estas seguro que quieres eliminar el personal " + nombrePersonal + "?",
+                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres eliminar el personal " + nombrePersonal + "?",
                         "Error", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     pharmaSquareDB.delPersonal(nombrePersonal);
@@ -123,7 +123,7 @@ public class Controller implements ActionListener {
                   //TODO INSERT PERSONAL INTO BBDD
                 }
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
-                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estas seguro que quieres modificar los datos del personal?",
+                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los datos del personal?",
                         "Error", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     personal = vAddPersonal.getPersonal();
