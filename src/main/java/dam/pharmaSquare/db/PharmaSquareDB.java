@@ -30,22 +30,25 @@ public class PharmaSquareDB extends AccessDB {
     // GET
 
     /**
-     * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS
+     * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS en función
+     * de los dos parametros recibidos
      * @param type Filtro a aplicar.
+     * @param nombre Nombre del personal a buscar.
      * @return ArrayList con todos los empleados requeridos.
      * @throws InvalidDataException si el typo no está en el array.
      */
-    public ArrayList<Personal> getPersonal(String type) throws InvalidDataException {
+    public ArrayList<Personal> getPersonal(String type, String nombre) throws InvalidDataException {
         /**
          * Restricciones que aplicar según el tipo de selección indicado.
          * Los valores ya están definidos ya que este paso no genera una inyección de SQL.
          */
-        final String[] RESTRICTIONS = {
-                String.format("ORDER BY %s ASC;", PPersonal.NOMBRE),
-                String.format("ORDER BY %s DESC;", PPersonal.NOMBRE),
-                String.format("WHERE %s = '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0]),
-                String.format("WHERE %s = '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1])
+        final String[] RESTRICTIONCOMBOBOX = {
+                String.format("WHERE %s LIKE '%s' ORDER BY %s ASC;", PPersonal.NOMBRE, "%" + nombre + "%", PPersonal.NOMBRE),
+                String.format("WHERE %s LIKE '%s' ORDER BY %s DESC;", PPersonal.NOMBRE, "%" + nombre + "%", PPersonal.NOMBRE),
+                String.format("WHERE %s = '%s' AND %s LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0], PPersonal.NOMBRE, "%" + nombre + "%"),
+                String.format("WHERE %s = '%s' AND %s LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1], PPersonal.NOMBRE, "%" + nombre + "%")
         };
+
 
         if (!DataValidation.isStringIn(type, PERSONAL_FILTERS))
             throw new InvalidDataException("El criterio de búsqueda elegido no es conocido.");
@@ -58,18 +61,13 @@ public class PharmaSquareDB extends AccessDB {
         String query = String.format(
           "SELECT * FROM %s %s",
             PPersonal.TABLE_NAME,
-            RESTRICTIONS[index]
+            RESTRICTIONCOMBOBOX[index]
         );
 
         return sqlite2personal(SQLiteQuery.get(this, 4, query));
     }
 
-    /**
-     * Función que permite obtener una lista de productos siguiendo el criterio definido por el argumento.
-     * @param necesitaLogin Si el cliente está logeado o no.
-     * @return ArrayList con todos los productos requeridos.
-     * @throws InvalidDataException si algo falla.
-     */
+
     public ArrayList<Producto> getProductos(boolean necesitaLogin) throws InvalidDataException {
         String filter = "";
         if (!necesitaLogin)

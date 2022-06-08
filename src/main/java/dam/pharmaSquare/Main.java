@@ -47,7 +47,7 @@ public class Main {
                 );
 
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(vCheckPersonal);
                 vCheckPersonal.setController(controller);
                 vInicio.setController(controller);
                 vStaffLogin.setController(controller);

@@ -78,7 +78,7 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
-                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue());
+                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
             }
 
