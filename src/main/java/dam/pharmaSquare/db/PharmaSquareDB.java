@@ -165,7 +165,12 @@ public class PharmaSquareDB extends AccessDB {
         return SQLiteQuery.execute(this, query, p.getDni(), p.getNombre(), p.getCategoria(), p.getPasswd());
     }
 
-    public int addCliente(Cliente p) {
+    /**
+     * Añade un cliente a la base de datos.
+     * @param c Cliente a añadir.
+     * @return Código de resultado de la sentencia SQL
+     */
+    public int addCliente(Cliente c) {
         String query = String.format(
                 "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
                 PCliente.TABLE_NAME,
@@ -179,19 +184,19 @@ public class PharmaSquareDB extends AccessDB {
                 PCliente.TELEFONO,
                 PCliente.MAIL
         );
-        System.out.println(query);
+
         return SQLiteQuery.execute(
         this,
             query,
-            p.getDni(),
-            p.getNombre(),
-            p.getfAlta(),
-            p.getDireccion(),
-            p.getNacimiento(),
-            p.getPasswd(),
-            p.getSexo(),
-            p.getTelefono(),
-            p.getMail()
+            c.getDni(),
+            c.getNombre(),
+            c.getfAlta(),
+            c.getDireccion(),
+            c.getNacimiento(),
+            c.getPasswd(),
+            c.getSexo(),
+            c.getTelefono(),
+            c.getMail()
         );
     }
 
