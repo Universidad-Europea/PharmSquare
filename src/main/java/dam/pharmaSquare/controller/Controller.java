@@ -28,6 +28,7 @@ public class Controller implements ActionListener {
     private VAddCliente vAddCliente;
     private VAddPersonal vAddPersonal;
     private ArrayList<Personal> listaPersonal;
+    private  Personal personal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
@@ -83,8 +84,9 @@ public class Controller implements ActionListener {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
-                //System.out.println(vCheckPersonal.getTableRowPerName());
-                //vWindows.loadPanel(vAddPersonal);
+                personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
+                vAddPersonal.modPersonal(personal);
+                vWindows.loadPanel(vAddPersonal);
             }
 
         }

@@ -44,17 +44,15 @@ public class VAddPersonal extends JPanel {
 
     public  void modPersonal(Personal personal) {
         lblTitle.setText("Modificar Personal");
-        lblNombre.setText(personal.getNombre());
+        txtfNombre.setText(personal.getNombre());
         String categoria = personal.getCategoria();
         if (categoria == "EMPLEADO") {
-            rdbtEmpleado.setEnabled(true);
-            rdbtAdministrativo.setEnabled(false);
+            rdbtEmpleado.doClick();
         } else {
-            rdbtAdministrativo.setEnabled(true);
-            rdbtEmpleado.setEnabled(false);
+            rdbtAdministrativo.doClick();
         }
-        lblDni.setText(personal.getDni());
-        lblPassword.setText(personal.getPasswd());
+        txtFDni.setText(personal.getDni());
+        pwd.setText(personal.getPasswd());
 
     }
 

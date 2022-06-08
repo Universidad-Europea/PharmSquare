@@ -10,9 +10,7 @@ import dam.pharmaSquare.model.Producto;
 import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import dam.pharmaSquare.model.persistencia.PProducto;
-import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PharmaSquareDB extends AccessDB {
@@ -65,7 +63,28 @@ public class PharmaSquareDB extends AccessDB {
             RESTRICTIONCOMBOBOX[index]
 
         );
-        return sqlite2personal(SQLiteQuery.get(this, 4, query, "%" + nombre + "%"));
+        return sqlite2listapersonal(SQLiteQuery.get(this, 4, query, "%" + nombre + "%"));
+    }
+
+    /**
+     * Función que permite obtener un objeto Personal siguiendo el en función del nombre recibido como parámetro
+     * @param nombre Nombre del personal a buscar.
+     * @return Object Personal.
+     * @throws InvalidDataException si el typo no está en el array.
+     */
+    public Personal getPersonalbyName(String nombre) {
+
+        nombre = nombre.toUpperCase();
+        System.out.println(nombre);
+
+        String query = String.format(
+                "SELECT * FROM %s WHERE UPPER(%s) = ?;",
+                PPersonal.TABLE_NAME,
+                PPersonal.NOMBRE
+
+        );
+
+        return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
     }
 
 
@@ -203,7 +222,7 @@ public class PharmaSquareDB extends AccessDB {
 
     // sqlite2model
 
-    private static ArrayList<Personal> sqlite2personal(ArrayList<Object[]> data) {
+    private static ArrayList<Personal> sqlite2listapersonal(ArrayList<Object[]> data) {
         ArrayList<Personal> personal = new ArrayList<>();
         Personal p;
         for (Object[] r : data) {
@@ -216,6 +235,21 @@ public class PharmaSquareDB extends AccessDB {
             personal.add(p);
         }
         return personal;
+    }
+
+    private static Personal sqlite2personal(ArrayList<Object[]> data) {
+        System.out.println(data.size());
+         Object[] r =  data.get(0);
+         Personal p;
+            p = new Personal(
+                    (String) r[0], // DNI
+                    (String) r[1], // Nombre
+                    (String) r[2], // Categoria
+                    (String) r[3] // Passwd
+            );
+            
+
+        return p;
     }
 
     private static ArrayList<Producto> sqlite2producto(ArrayList<Object[]> data) {
