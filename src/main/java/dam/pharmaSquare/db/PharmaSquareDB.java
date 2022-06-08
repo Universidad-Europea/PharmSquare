@@ -7,9 +7,11 @@ import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.Producto;
+import dam.pharmaSquare.model.Transaccion;
 import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import dam.pharmaSquare.model.persistencia.PProducto;
+import dam.pharmaSquare.model.persistencia.PTransaccion;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
 import java.nio.charset.StandardCharsets;
@@ -87,6 +89,19 @@ public class PharmaSquareDB extends AccessDB {
 
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
+
+    public ArrayList<Transaccion> getTransacciones(String dni, String Producto, boolean cronologico) {
+        ArrayList<Transaccion> transacciones = new ArrayList<>();
+
+        String query = String.format(
+            "SELECT * FROM %s;",
+            PTransaccion.TABLE_NAME
+        );
+
+        return sqlite2transaccion(SQLiteQuery.get(this, 4, query));
+    }
+
+    // CHECKERS
 
     /**
      * Verifica si el usuario y la contraseña dadas son válidas.
@@ -236,6 +251,21 @@ public class PharmaSquareDB extends AccessDB {
             productos.add(p);
         }
         return productos;
+    }
+
+    private static ArrayList<Transaccion> sqlite2transaccion(ArrayList<Object[]> data) {
+        ArrayList<Transaccion> transaccions = new ArrayList<>();
+        Transaccion t;
+        for (Object[] r : data) {
+            t = new Transaccion(
+                    (String) r[1], // dni cliente
+                    (int) r[2], // producto id
+                    (String) r[3], // fecha
+                    (double) r[4] // cantidad
+            );
+            transaccions.add(t);
+        }
+        return transaccions;
     }
 
 }
