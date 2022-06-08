@@ -43,6 +43,7 @@ public class PersonalTest {
     @Test
     public void chkPasswd() {
         assertTrue(db.validPasswdPersonal("Maria", "seguro1234"));
+        assertFalse(db.validPasswdPersonal("Maria", "root"));
         assertFalse(db.validPasswdPersonal("root", "root"));
     }
 

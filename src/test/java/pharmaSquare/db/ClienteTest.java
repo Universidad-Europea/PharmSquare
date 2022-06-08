@@ -21,6 +21,7 @@ public class ClienteTest {
     @Test
     public void chkPasswd() {
         assertTrue(db.validPasswdCliente("Juan", "12ab34!!"));
+        assertFalse(db.validPasswdCliente("Juan", "casa"));
         assertFalse(db.validPasswdCliente("root", "root"));
     }
 }
