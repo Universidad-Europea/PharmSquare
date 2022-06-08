@@ -166,6 +166,22 @@ public class VCheckPersonal extends JPanel {
         return  type;
     }
 
+    public String getTextFieldValue() {
+        String name = txtSearchName.getText();
+        return  name;
+    }
+
+    public String getTableRowPerName() {
+        int filaSel = tablePer.getSelectedRow();
+
+        String nombre = (String) dtmPer.getValueAt(filaSel, 1);
+        String apellido = (String) dtmPer.getValueAt(filaSel, 2);
+        StringBuffer nombreCompleto = new StringBuffer(nombre);
+        nombreCompleto.insert(nombre.length(), " " +apellido);
+        nombre = nombreCompleto.toString();
+        return nombre;
+    }
+
     /**
      * This method fill the table adding rows
      * @return nothing
