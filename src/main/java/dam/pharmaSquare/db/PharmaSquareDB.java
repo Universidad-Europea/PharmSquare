@@ -177,13 +177,14 @@ public class PharmaSquareDB extends AccessDB {
     // ADD
 
     /**
-     * TODO en proceso.
-     * @param p
-     * @return
+     * Añade un usuario a la base de datos.
+     * @param p Personal a añadir.
+     * @return Código resultado al ejecutar la secuencia SQL.
+     * @throws InvalidDataException si el usuario ya existe o ha habido un error en la base de datos.
      */
-    public int addPersonal(Personal p) {
+    public int addPersonal(Personal p) throws InvalidDataException {
         String query = String.format(
-            "INSERT INTO $s (%s, %s, %s, %s) VALUES (?, ?, ?, ?);",
+            "INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?);",
             PPersonal.TABLE_NAME,
             PPersonal.DNI,
             PPersonal.NOMBRE,
@@ -198,8 +199,9 @@ public class PharmaSquareDB extends AccessDB {
      * Añade un cliente a la base de datos.
      * @param c Cliente a añadir.
      * @return Código de resultado de la sentencia SQL
+     * @throws InvalidDataException si el usuario ya existe o ha habido un error en la base de datos.
      */
-    public int addCliente(Cliente c) {
+    public int addCliente(Cliente c) throws InvalidDataException {
         String query = String.format(
                 "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
                 PCliente.TABLE_NAME,
@@ -230,6 +232,7 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     // MODIFY
+
     /**
      * Función que modifica el valor de un Personal  en función del objeto Personal recibido.
      * @param p Objeto de tipo personal.

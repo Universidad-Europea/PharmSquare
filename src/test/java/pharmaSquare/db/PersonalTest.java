@@ -41,12 +41,12 @@ public class PersonalTest {
 
     @Test
     public void addPersonal() {
-//        db.addPersonal(new Personal(
-//                "32213243N",
-//                "Jose Maria",
-//                PPersonal.CATEGORIAS_CHK[0],
-//                "estoEsUnaPassword123$"
-//        ));
+        db.addPersonal(new Personal(
+                "32213243N",
+                "Jose Maria",
+                PPersonal.CATEGORIAS_CHK[0],
+                "estoEsUnaPassword123$"
+        ));
     }
 
     @Test
