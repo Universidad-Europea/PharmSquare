@@ -43,10 +43,10 @@ public class PharmaSquareDB extends AccessDB {
          * Los valores ya están definidos ya que este paso no genera una inyección de SQL.
          */
         final String[] RESTRICTIONCOMBOBOX = {
-                String.format("WHERE %s LIKE '%s' ORDER BY %s ASC;", PPersonal.NOMBRE, "%" + nombre + "%", PPersonal.NOMBRE),
-                String.format("WHERE %s LIKE '%s' ORDER BY %s DESC;", PPersonal.NOMBRE, "%" + nombre + "%", PPersonal.NOMBRE),
-                String.format("WHERE %s = '%s' AND %s LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0], PPersonal.NOMBRE, "%" + nombre + "%"),
-                String.format("WHERE %s = '%s' AND %s LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1], PPersonal.NOMBRE, "%" + nombre + "%")
+                String.format("WHERE UPPER(%s) LIKE '%s' ORDER BY %s ASC;", PPersonal.NOMBRE, "%?%", PPersonal.NOMBRE),
+                String.format("WHERE UPPER(%s) LIKE '%s' ORDER BY %s DESC;", PPersonal.NOMBRE, "%?%", PPersonal.NOMBRE),
+                String.format("WHERE %s = '%s' AND UPPER(%s) LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0], PPersonal.NOMBRE, "%?%"),
+                String.format("WHERE %s = '%s' AND UPPER(%s) LIKE '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1], PPersonal.NOMBRE, "%?%")
         };
 
 
@@ -57,13 +57,15 @@ public class PharmaSquareDB extends AccessDB {
         for (index = 0; index < PERSONAL_FILTERS.length; index++)
             if (PERSONAL_FILTERS[index].equals(type))
                 break;
+        nombre = nombre.toUpperCase();
 
         String query = String.format(
           "SELECT * FROM %s %s",
             PPersonal.TABLE_NAME,
-            RESTRICTIONCOMBOBOX[index]
+            RESTRICTIONCOMBOBOX[index],
+            nombre
         );
-
+        System.out.println(query);
         return sqlite2personal(SQLiteQuery.get(this, 4, query));
     }
 
