@@ -4,13 +4,8 @@ import dam.dataValidation.DataValidation;
 import dam.db.AccessDB;
 import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
-import dam.pharmaSquare.model.Cliente;
-import dam.pharmaSquare.model.Personal;
-import dam.pharmaSquare.model.Producto;
-import dam.pharmaSquare.model.Transaccion;
-import dam.pharmaSquare.model.persistencia.PCliente;
-import dam.pharmaSquare.model.persistencia.PPersonal;
-import dam.pharmaSquare.model.persistencia.PProducto;
+import dam.pharmaSquare.model.*;
+import dam.pharmaSquare.model.persistencia.*;
 
 import java.util.ArrayList;
 
@@ -166,32 +161,32 @@ public class PharmaSquareDB extends AccessDB {
 
     /**
      * Verifica si el usuario y la contraseña dadas son válidas.
-     * @param user Nombre del cliente,
+     * @param userMail Nombre del cliente,
      * @param passwd Password del cliente.
      * @return True si ambos campos son correctos, false en caso contrario.
      */
-    public boolean validPasswdCliente(String user, String passwd) {
+    public boolean validPasswdCliente(String userMail, String passwd) {
         return validPasswd(
             PCliente.TABLE_NAME,
             PCliente.PASSWD,
             PCliente.MAIL, // hay que coger el mail
-            user,
+            userMail,
             passwd
         );
     }
 
     /**
      * Verifica si el usuario y la contraseña dadas son válidas.
-     * @param user Nombre del personal,
+     * @param userDni Dni del personal,
      * @param passwd Password del personal.
      * @return True si ambos campos son correctos, false en caso contrario.
      */
-    public boolean validPasswdPersonal(String user, String passwd) {
+    public boolean validPasswdPersonal(String userDni, String passwd) {
         return validPasswd(
                 PPersonal.TABLE_NAME,
                 PPersonal.PASSWD,
                 PPersonal.DNI,
-                user,
+                userDni,
                 passwd
         );
     }
