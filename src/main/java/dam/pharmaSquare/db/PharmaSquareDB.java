@@ -6,10 +6,12 @@ import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.Producto;
+import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import dam.pharmaSquare.model.persistencia.PProducto;
 import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PharmaSquareDB extends AccessDB {
@@ -85,15 +87,61 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
-    // new method for get all products (by Alex)
-    public ArrayList<Producto> getAllProducts () throws InvalidDataException {
-
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param table Tabla en uso.
+     * @param passwdField Nombre del campo contraseña.
+     * @param userField Nombre del campo usuario.
+     * @param user Usuario a verificar.
+     * @param passwd Password a verificar.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
+    private boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) {
         String query = String.format(
-                "SELECT * FROM %s;",
-                PProducto.TABLE_NAME
+            "SELECT %s FROM %s WHERE %s = ?;",
+            passwdField,
+            table,
+            userField
         );
 
-        return sqlite2producto(SQLiteQuery.get(this, 8, query));
+        ArrayList<Object[]> data = SQLiteQuery.get(this, 1, query, user);
+
+        if (data.size() == 0)
+            return false;
+        return passwd.equals((String) data.get(0)[0]);
+
+    }
+
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param user Nombre del cliente,
+     * @param passwd Password del cliente.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
+    public boolean validPasswdCliente(String user, String passwd) {
+        return validPasswd(
+            PCliente.TABLE_NAME,
+            PCliente.PASSWD,
+            PCliente.NOMBRE,
+            user,
+            passwd
+        );
+    }
+
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param user Nombre del personal,
+     * @param passwd Password del personal.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
+    public boolean validPasswdPersonal(String user, String passwd) {
+        return validPasswd(
+                PPersonal.TABLE_NAME,
+                PPersonal.PASSWD,
+                PPersonal.NOMBRE,
+                user,
+                passwd
+        );
     }
 
     // ADD
