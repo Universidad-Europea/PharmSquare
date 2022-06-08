@@ -337,12 +337,12 @@ let tablas = [
 				"123456789D",
 			],
 			nombre: [
-				"EMPLEADO 1",
-				"EMPLEADO 1",
-				"ADMINISTRADOR 1"
+				"EMPLEADO GENERICO UNO",
+				"EMPLEADO GENERICO DOS",
+				"ADMINISTRADOR DE FARMACIA",
 			],
 			passwd: [
-				"1234",
+				"aBc23!@",
 				"aBc23!@",
 				"pfSG$%@"
 			],
