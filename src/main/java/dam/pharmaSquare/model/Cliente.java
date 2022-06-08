@@ -137,7 +137,7 @@ public class Cliente {
     }
 
     public void setDireccion(String direccion) {
-        isDireccionValid(nacimiento);
+        isDireccionValid(direccion);
         this.direccion = direccion;
     }
 
@@ -164,5 +164,43 @@ public class Cliente {
     public void setMail(String mail) {
         isMailValid(mail);
         this.mail = mail;
+    }
+
+    // GETTERS
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getfAlta() {
+        return fAlta;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getNacimiento() {
+        return nacimiento;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getMail() {
+        return mail;
     }
 }
