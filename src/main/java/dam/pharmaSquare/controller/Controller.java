@@ -26,13 +26,14 @@ public class Controller implements ActionListener {
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
+    private VAddPersonal vAddPersonal;
     private ArrayList<Personal> listaPersonal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -40,6 +41,7 @@ public class Controller implements ActionListener {
         this.vSeeNoLogProducts = vSeeNoLogProducts;
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
+        this.vAddPersonal = vAddPersonal;
         this.pharmaSquareDB = pharmaSquareDB;
     }
 
@@ -80,6 +82,9 @@ public class Controller implements ActionListener {
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
+            } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
+                //System.out.println(vCheckPersonal.getTableRowPerName());
+                //vWindows.loadPanel(vAddPersonal);
             }
 
         }

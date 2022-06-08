@@ -1,5 +1,6 @@
 package dam.pharmaSquare.view.addPersonal;
 
+import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.inicio.VInicio;
 
 import javax.swing.*;
@@ -40,6 +41,23 @@ public class VAddPersonal extends JPanel {
         timer.start();
 
     }
+
+    public  void modPersonal(Personal personal) {
+        lblTitle.setText("Modificar Personal");
+        lblNombre.setText(personal.getNombre());
+        String categoria = personal.getCategoria();
+        if (categoria == "EMPLEADO") {
+            rdbtEmpleado.setEnabled(true);
+            rdbtAdministrativo.setEnabled(false);
+        } else {
+            rdbtAdministrativo.setEnabled(true);
+            rdbtEmpleado.setEnabled(false);
+        }
+        lblDni.setText(personal.getDni());
+        lblPassword.setText(personal.getPasswd());
+
+    }
+
 
     private String getCurrentHour() {
         //Get hour and minutes from the system

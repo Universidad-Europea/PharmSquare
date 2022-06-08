@@ -43,6 +43,7 @@ public class Main {
                     vSeeNoLogProducts,
                     vSeeLoginProducts,
                     vAddCliente,
+                    vAddPersonal,
                     pharmaSquareDB
                 );
 
