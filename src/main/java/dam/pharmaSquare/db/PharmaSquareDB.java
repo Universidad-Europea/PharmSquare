@@ -326,10 +326,10 @@ public class PharmaSquareDB extends AccessDB {
         Transaccion t;
         for (Object[] r : data) {
             t = new Transaccion(
-                    (String) r[1], // dni cliente
-                    (int) r[2], // producto id
-                    (String) r[3], // fecha
-                    (double) r[4] // cantidad
+                    (String) r[0], // dni cliente
+                    (int) r[1], // producto id
+                    (String) r[2], // fecha
+                    (int) r[3] // cantidad
             );
             transaccions.add(t);
         }
