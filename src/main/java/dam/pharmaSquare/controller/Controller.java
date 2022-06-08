@@ -10,6 +10,7 @@ import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.inicio.VWindows;
+import dam.pharmaSquare.view.staff.VStaffMenu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class Controller implements ActionListener {
     private VWindows vWindows;
     private VInicio vInicio;
     private VStaffLogin vStaffLogin;
+    private VStaffMenu  vStaffMenu;
     private VCheckPersonal vCheckPersonal;
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
@@ -29,15 +31,17 @@ public class Controller implements ActionListener {
     private VAddPersonal vAddPersonal;
     private ArrayList<Personal> listaPersonal;
     private  Personal personal;
+    private  String nombrePersonal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
+        this.vStaffMenu = vStaffMenu;
         this.vCheckPersonal = vCheckPersonal;
         this.vSeeNoLogProducts = vSeeNoLogProducts;
         this.vSeeLoginProducts = vSeeLoginProducts;
@@ -90,21 +94,43 @@ public class Controller implements ActionListener {
                 // TODO: Falta añadir la lógica de errores en caso de que no se pueda añadir el cliente
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
-                vCheckPersonal.fillTable(listaPersonal);
+                if (listaPersonal.size() < 1) {
+                    JOptionPane.showMessageDialog(vInicio, "No se ha encontrado ningún personal según el criterio de busqueda introducido", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    vCheckPersonal.fillTable(listaPersonal);
+                }
+            } else if (e.getActionCommand().equals(VCheckPersonal.ADD_PERSONAL)) {
+                vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
                 vAddPersonal.modPersonal(personal);
                 vWindows.loadPanel(vAddPersonal);
+            } else if (e.getActionCommand().equals(VCheckPersonal.DELETE)) {
+                nombrePersonal = vCheckPersonal.getTableRowPerName();
+                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estas seguro que quieres eliminar el personal " + nombrePersonal + "?",
+                        "Error", JOptionPane.YES_NO_OPTION);
+                if (resp == 0) {
+                    pharmaSquareDB.delPersonal(nombrePersonal);
+                    vCheckPersonal.btnSearch.doClick();
+                }
+            } else if (e.getActionCommand().equals(VCheckPersonal.EXIT)) {
+                vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
-                personal = vAddPersonal.getPersonal();
-                pharmaSquareDB.modPersonal(personal);
-                vAddPersonal.cleanForm();
+                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estas seguro que quieres modificar los datos del personal?",
+                        "Error", JOptionPane.YES_NO_OPTION);
+                if (resp == 0) {
+                    personal = vAddPersonal.getPersonal();
+                    pharmaSquareDB.modPersonal(personal);
+                    vCheckPersonal.btnSearch.doClick();
+                    vWindows.loadPanel(vCheckPersonal);
+                }
             } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
                 System.out.println("hola2");
             } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
                 vAddPersonal.cleanForm();
+            } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {
+                vWindows.loadPanel(vCheckPersonal);
             }
-
         }
     }
 }

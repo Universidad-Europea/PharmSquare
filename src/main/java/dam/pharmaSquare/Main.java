@@ -11,6 +11,7 @@ import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.products.VSeeNoLogProducts;
 import dam.pharmaSquare.view.staff.VStaffLogin;
 import dam.pharmaSquare.view.inicio.VWindows;
+import dam.pharmaSquare.view.staff.VStaffMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,12 +34,14 @@ public class Main {
                 VSeeLoginProducts vSeeLoginProducts = new VSeeLoginProducts();
                 VSeeNoLogProducts vSeeNoLogProducts = new VSeeNoLogProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
+                VStaffMenu vStaffMenu = new VStaffMenu();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
 
                 Controller controller = new Controller(
                     vWindows,
                     vInicio,
                     vStaffLogin,
+                    vStaffMenu,
                     vCheckPersonal,
                     vSeeNoLogProducts,
                     vSeeLoginProducts,

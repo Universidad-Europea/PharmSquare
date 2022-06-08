@@ -10,7 +10,7 @@ public class VAddPersonal extends JPanel {
     public static final String CONFIRM = "CONFIRMAR";
     public static final String MODIFY = "MODIFICAR";
     public static final String CLEAN = "LIMPIAR";
-    public static final String EXIT = "SALIR";
+    public static final String EXIT = "VOLVER A VCHECKPERSONAL";
 
     private  JPanel jpBody;
     private JPanel jpForm;
@@ -66,11 +66,12 @@ public class VAddPersonal extends JPanel {
         lblTitle.setText("Modificar Personal");
         txtfNombre.setText(personal.getNombre());
         String categoria = personal.getCategoria();
-        if (categoria == "EMPLEADO") {
-            rdbtEmpleado.doClick();
-        } else {
+        if (categoria.equals("EMPLEADO")) {
+            rdbtEmpleado .doClick();
+        }else {
             rdbtAdministrativo.doClick();
         }
+
         txtFDni.setText(personal.getDni());
         pwd.setText(personal.getPasswd());
         btnConfirmar.setText("Modificar");

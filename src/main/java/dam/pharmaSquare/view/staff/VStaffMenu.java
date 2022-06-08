@@ -1,4 +1,6 @@
 package dam.pharmaSquare.view.staff;
 
-public class VStaffMenu {
+import javax.swing.*;
+
+public class VStaffMenu extends JPanel {
 }

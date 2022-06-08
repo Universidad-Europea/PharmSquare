@@ -28,7 +28,7 @@ public class VCheckPersonal extends JPanel {
     public static final String EDIT = "EDITAR";
     public static final String DELETE = "BORRAR";
     public static final String SEARCH = "BUSCAR";
-    public static final String EXIT = "SALIR";
+    public static final String EXIT = "VOLVER A STAFFMENU";
     public static final String ADD_PERSONAL = "AÑADIR PERSONAL";
 
     private JPanel jpBody;
@@ -40,7 +40,7 @@ public class VCheckPersonal extends JPanel {
     private JComboBox cmbOrder;
     private JTextField txtSearchName;
     private JButton btnAddPer;
-    private JButton btnSearch;
+    public JButton btnSearch;
     private JButton btnClock;
     private DefaultTableModel dtmPer;
     private  ButtonRenderer btnEdit;
@@ -86,11 +86,11 @@ public class VCheckPersonal extends JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = tablePer.rowAtPoint(evt.getPoint());
                 int col = tablePer.columnAtPoint(evt.getPoint());
-               if (col == 3) {
-                   btnEdit.doClick();
-               } else if (col == 4) {
-                   btnDelt.doClick();
-               }
+                if (col == 3) {
+                    btnEdit.doClick();
+                } else if (col == 4) {
+                    btnDelt.doClick();
+                }
             }
         });
         // initialize DefaultTableCellRenderer
@@ -182,6 +182,7 @@ public class VCheckPersonal extends JPanel {
         return nombre;
     }
 
+
     /**
      * This method fill the table adding rows
      * @return nothing
@@ -189,6 +190,7 @@ public class VCheckPersonal extends JPanel {
     public void fillTable(ArrayList<Personal> listaPersonal) {
 
         Object[] fila = new Object[5];
+        dtmPer.setRowCount(0);
 
         for (Personal personal: listaPersonal) {
             fila[0] = personal.getCategoria();
