@@ -83,7 +83,7 @@ let tablas = [
 	{
 		nombreTabla: "PRODUCTO",
 		estructura: [
-			"id",
+			// "id",
 			"nombre",
 			"utilidad",
 			"laboratorio",
@@ -95,7 +95,7 @@ let tablas = [
 		showEstructura: true,
 		datos: {
 			total: 14,
-			id: "ID",
+			// id: "ID",
 			nombre: [
 				"Bendaje de piel",
 				"Ibuprofeno",
@@ -213,13 +213,13 @@ let tablas = [
 	{
 		nombreTabla: "CATEGORIA_PRODUCTO",
 		estructura: [
-			"id",
+			// "id",
 			"nombre",
 		],
-		showEstructura: false,
+		showEstructura: true,
 		datos: {
 			total: 4,
-			id: "ID",
+			// id: "ID",
 			nombre: [
 				"Suplementos",
 				"Higiene",
@@ -328,7 +328,7 @@ let tablas = [
 			"passwd",
 			"categoria"
 		],
-		showEstructura: false,
+		showEstructura: true,
 		datos: {
 			total: 3,
 			dni: [
@@ -369,10 +369,10 @@ function data2sql(data) {
 
 	let str = "-- Rellenar " + data.nombreTabla + "\n\n";
 
-	if (data.estructura[0].match("ID") && data.datos[data.estructura[0]] == "ID") {
-		str += `${TAB}CREATE SEQUENCE ${data.nombreTabla}_SEQ\n`;
-		str += `${TAB}START WITH ${firstId} INCREMENT BY 1\n${TAB}MINVALUE 1 MAXVALUE 9999 CACHE 4 ORDER;\n\n`;
-	}
+	// if (data.estructura[0].match("ID") || data.datos[data.estructura[0]] == "ID") {
+	// 	str += `${TAB}CREATE SEQUENCE ${data.nombreTabla}_SEQ\n`;
+	// 	str += `${TAB}START WITH ${firstId} INCREMENT BY 1\n${TAB}MINVALUE 1 MAXVALUE 9999 CACHE 4 ORDER;\n\n`;
+	// }
 
 	let elements, values;
 	for (let i = 0, j; i < data.datos.total; i++) {
