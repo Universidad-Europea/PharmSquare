@@ -1,5 +1,6 @@
 package pharmaSquare.db;
 
+import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 
@@ -8,8 +9,7 @@ import org.junit.*;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PersonalTest {
     private static PharmaSquareDB db;
@@ -31,6 +31,15 @@ public class PersonalTest {
     }
 
     @Test
+    public void getPersonalByNameTest() {
+        Personal p = db.getPersonalbyName("Empleado generico uno");
+        Personal p2 = db.getPersonalbyName("fasdfasdfasd");
+
+        assertNotNull(p);
+        assertNull(p2);
+    }
+
+    @Test
     public void addPersonal() {
 //        db.addPersonal(new Personal(
 //                "32213243N",
@@ -42,7 +51,7 @@ public class PersonalTest {
 
     @Test
     public void chkPasswd() {
-         assertTrue(db.validPasswdPersonal("123456789E", "1234"));
+         assertTrue(db.validPasswdPersonal("123456789E", "aBc23!@"));
          assertFalse(db.validPasswdPersonal("Maria", "root"));
          assertFalse(db.validPasswdPersonal("root", "root"));
     }

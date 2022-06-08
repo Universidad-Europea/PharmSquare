@@ -73,7 +73,7 @@ public class PharmaSquareDB extends AccessDB {
                 PPersonal.TABLE_NAME,
                 PPersonal.NOMBRE
         );
-        return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
+        return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre));
     }
 
     /**
@@ -243,7 +243,7 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
-    // sqlite2model
+    // sqlite2model: parser between sqlite output and model.
 
     private static ArrayList<Personal> sqlite2listapersonal(ArrayList<Object[]> data) {
         ArrayList<Personal> personal = new ArrayList<>();
@@ -261,17 +261,16 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     private static Personal sqlite2personal(ArrayList<Object[]> data) {
-        System.out.println(data.size());
-         Object[] r =  data.get(0);
-         Personal p;
-            p = new Personal(
-                    (String) r[0], // DNI
-                    (String) r[1], // Nombre
-                    (String) r[2], // Categoria
-                    (String) r[3] // Passwd
-            );
-            
-
+        if (data.size() == 0)
+            return null;
+        Object[] r =  data.get(0);
+        Personal p;
+        p = new Personal(
+            (String) r[0], // DNI
+            (String) r[1], // Nombre
+            (String) r[2], // Categoria
+            (String) r[3] // Passwd
+        );
         return p;
     }
 
