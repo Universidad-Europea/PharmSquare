@@ -1,4 +1,27 @@
-## Persistencia:
+# PharmaSquare Wiki:
+
+## Índice:
+- [UI/UX](#uiux)
+	- TODO
+- [Backend](#backend)
+	- [Base de datos](#base-de-datos)
+	- [Persistencia](#persistencia) 
+	- [](#)
+	- [](#)
+	- [](#)
+	- [](#)
+
+
+## UI/UX:
+Ups! Sección todavía en desarrollo.
+
+## Backend:
+Este apartado relata cómo se ha desarrollado toda la lógica que hay por detrás de la aplicación. Si bien es cierto que nuestra aplicación local no tiene un backend como tal, esta seción mostrará cómo se ha desarrollado cada parte para integrarse con la aplicación.
+
+### Base de datos:
+
+
+### Persistencia:
 
 [Ubicación](../src/main/java/dam/pharmaSquare/model/persistencia/)
 
@@ -7,7 +30,7 @@ Cada clase representa una tabla de la base de datos.
 Cada clase contine, además de los atributos de la clase, un atributo con el nombre de la tabla y otro con los atributos que conforman la clave primaria.
 
 
-## Modelos:
+### Modelos:
 
 [Ubicación](../src/main/java/dam/pharmaSquare/model/)
 
@@ -18,7 +41,7 @@ Si alguno no cumple las condiciones, se lanzan excepciones con el mensaje de err
 Estos están pensados para la verificación anterior y para verificar a priori los formularios.
 
 
-## Base de datos:
+### Base de datos:
 
 [Ubicación](../src/main/java/dam/pharmaSquare/db/)
 
