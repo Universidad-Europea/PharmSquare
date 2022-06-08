@@ -11,10 +11,7 @@ import dam.pharmaSquare.model.Transaccion;
 import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import dam.pharmaSquare.model.persistencia.PProducto;
-import dam.pharmaSquare.model.persistencia.PTransaccion;
-import dam.pharmaSquare.view.consultarPersonal.VCheckPersonal;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PharmaSquareDB extends AccessDB {
@@ -32,22 +29,25 @@ public class PharmaSquareDB extends AccessDB {
     // GET
 
     /**
-     * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS
+     * Función que permite obtener una lista de personal siguiendo el criterio definido por PERSONAL_FILTERS en función
+     * de los dos parametros recibidos
      * @param type Filtro a aplicar.
+     * @param nombre Nombre del personal a buscar.
      * @return ArrayList con todos los empleados requeridos.
      * @throws InvalidDataException si el typo no está en el array.
      */
-    public ArrayList<Personal> getPersonal(String type) throws InvalidDataException {
+    public ArrayList<Personal> getPersonal(String type, String nombre) throws InvalidDataException {
         /**
          * Restricciones que aplicar según el tipo de selección indicado.
          * Los valores ya están definidos ya que este paso no genera una inyección de SQL.
          */
-        final String[] RESTRICTIONS = {
-                String.format("ORDER BY %s ASC;", PPersonal.NOMBRE),
-                String.format("ORDER BY %s DESC;", PPersonal.NOMBRE),
-                String.format("WHERE %s = '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0]),
-                String.format("WHERE %s = '%s';", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1])
+        final String[] RESTRICTIONCOMBOBOX = {
+                String.format("WHERE UPPER(%s) LIKE ? ORDER BY %s ASC;", PPersonal.NOMBRE,  PPersonal.NOMBRE),
+                String.format("WHERE UPPER(%s) LIKE ? ORDER BY %s DESC;", PPersonal.NOMBRE,  PPersonal.NOMBRE),
+                String.format("WHERE %s = '%s' AND UPPER(%s) LIKE ?;", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[0], PPersonal.NOMBRE),
+                String.format("WHERE %s = '%s' AND UPPER(%s) LIKE ?;", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1], PPersonal.NOMBRE)
         };
+
 
         if (!DataValidation.isStringIn(type, PERSONAL_FILTERS))
             throw new InvalidDataException("El criterio de búsqueda elegido no es conocido.");
@@ -56,22 +56,58 @@ public class PharmaSquareDB extends AccessDB {
         for (index = 0; index < PERSONAL_FILTERS.length; index++)
             if (PERSONAL_FILTERS[index].equals(type))
                 break;
+        nombre = nombre.toUpperCase();
 
         String query = String.format(
           "SELECT * FROM %s %s",
             PPersonal.TABLE_NAME,
-            RESTRICTIONS[index]
-        );
+            RESTRICTIONCOMBOBOX[index]
 
-        return sqlite2personal(SQLiteQuery.get(this, 4, query));
+        );
+        return sqlite2listapersonal(SQLiteQuery.get(this, 4, query, "%" + nombre + "%"));
     }
 
     /**
-     * Función que permite obtener una lista de productos siguiendo el criterio definido por el argumento.
-     * @param necesitaLogin Si el cliente está logeado o no.
-     * @return ArrayList con todos los productos requeridos.
-     * @throws InvalidDataException si algo falla.
+     * Función que permite obtener un objeto Personal en función del nombre recibido como parámetro
+     * @param nombre Nombre del personal a buscar.
+     * @return Object Personal.
      */
+    public Personal getPersonalbyName(String nombre) {
+
+        nombre = nombre.toUpperCase();
+
+        String query = String.format(
+                "SELECT * FROM %s WHERE UPPER(%s) = ?;",
+                PPersonal.TABLE_NAME,
+                PPersonal.NOMBRE
+
+        );
+
+        return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
+    }
+
+    /**
+     * Función que modifica el valor de un Personal  en función del objeto Personal recibido
+     * @param p Objeto de tipo personal
+     * @return Object Personal.
+     */
+    public int modPersonal(Personal p) {
+        String nombre = p.getNombre();
+        String dni = p.getDni();
+        String categoria = p.getCategoria();
+        String passwd = p.getPasswd();
+
+
+        String query = String.format(
+                "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
+                PPersonal.TABLE_NAME
+
+        );
+
+        return (SQLiteQuery.execute(this, query,  dni, nombre, categoria, passwd));
+    }
+
+
     public ArrayList<Producto> getProductos(boolean necesitaLogin) throws InvalidDataException {
         String filter = "";
         if (!necesitaLogin)
@@ -219,7 +255,7 @@ public class PharmaSquareDB extends AccessDB {
 
     // sqlite2model
 
-    private static ArrayList<Personal> sqlite2personal(ArrayList<Object[]> data) {
+    private static ArrayList<Personal> sqlite2listapersonal(ArrayList<Object[]> data) {
         ArrayList<Personal> personal = new ArrayList<>();
         Personal p;
         for (Object[] r : data) {
@@ -232,6 +268,21 @@ public class PharmaSquareDB extends AccessDB {
             personal.add(p);
         }
         return personal;
+    }
+
+    private static Personal sqlite2personal(ArrayList<Object[]> data) {
+        System.out.println(data.size());
+         Object[] r =  data.get(0);
+         Personal p;
+            p = new Personal(
+                    (String) r[0], // DNI
+                    (String) r[1], // Nombre
+                    (String) r[2], // Categoria
+                    (String) r[3] // Passwd
+            );
+            
+
+        return p;
     }
 
     private static ArrayList<Producto> sqlite2producto(ArrayList<Object[]> data) {

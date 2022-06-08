@@ -26,13 +26,15 @@ public class Controller implements ActionListener {
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
+    private VAddPersonal vAddPersonal;
     private ArrayList<Personal> listaPersonal;
+    private  Personal personal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -40,6 +42,7 @@ public class Controller implements ActionListener {
         this.vSeeNoLogProducts = vSeeNoLogProducts;
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
+        this.vAddPersonal = vAddPersonal;
         this.pharmaSquareDB = pharmaSquareDB;
     }
 
@@ -74,12 +77,32 @@ public class Controller implements ActionListener {
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vStaffLogin.setDefault();
+            } else if (button == vAddCliente.getBtnCancel()) {
+                vWindows.loadPanel(vInicio);
+                vAddCliente.setDefault();
+            } else if (button == vAddCliente.getBtnBorrar()) {
+                vAddCliente.setDefault();
             } else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
+            } else if (button == vAddCliente.getBtnConfirmar()) {
+                vAddCliente.addCliente();
+                // TODO: Falta añadir la lógica de errores en caso de que no se pueda añadir el cliente
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
-                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue());
+                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
+            } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
+                personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
+                vAddPersonal.modPersonal(personal);
+                vWindows.loadPanel(vAddPersonal);
+            } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
+                personal = vAddPersonal.getPersonal();
+                pharmaSquareDB.modPersonal(personal);
+                vAddPersonal.cleanForm();
+            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
+                System.out.println("hola2");
+            } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
+                vAddPersonal.cleanForm();
             }
 
         }
