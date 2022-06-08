@@ -45,7 +45,7 @@ public class DataValidation {
      * @return Result of the analysis.
      */
     public static boolean isPhoneValid(String phone) {
-        return phone == null && phone.matches(PHONE_REGEX);
+        return phone != null && phone.matches(PHONE_REGEX);
     }
 
     /**
@@ -54,7 +54,7 @@ public class DataValidation {
      * @return Result of the analysis.
      */
     public static boolean isMailValid(String mail) {
-        return mail == null && mail.matches(MAIL_REGEX);
+        return mail != null && mail.matches(MAIL_REGEX);
     }
 
     /**

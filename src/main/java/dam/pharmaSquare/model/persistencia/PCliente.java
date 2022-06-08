@@ -11,7 +11,7 @@ public class PCliente {
     public static final String NACIMIENTO = "NACIMIENTO";
     public static final String PASSWD = "PASSWD";
     public static final String SEXO = "SEXO";
-    public static final String TELEFONO = "TELELEFONO";
+    public static final String TELEFONO = "TELEFONO";
     public static final String MAIL = "MAIL";
 
     public static final String PK = DNI;
