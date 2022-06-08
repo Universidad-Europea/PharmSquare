@@ -87,6 +87,14 @@ public class Controller implements ActionListener {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
                 vAddPersonal.modPersonal(personal);
                 vWindows.loadPanel(vAddPersonal);
+            } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
+                personal = vAddPersonal.getPersonal();
+                pharmaSquareDB.modPersonal(personal);
+                vAddPersonal.cleanForm();
+            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
+                System.out.println("hola2");
+            } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
+                vAddPersonal.cleanForm();
             }
 
         }

@@ -1,11 +1,16 @@
 package dam.pharmaSquare.view.addPersonal;
 
+import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.inicio.VInicio;
 
 import javax.swing.*;
 
 public class VAddPersonal extends JPanel {
+    public static final String CONFIRM = "CONFIRMAR";
+    public static final String MODIFY = "MODIFICAR";
+    public static final String CLEAN = "LIMPIAR";
+    public static final String EXIT = "SALIR";
 
     private  JPanel jpBody;
     private JPanel jpForm;
@@ -27,7 +32,22 @@ public class VAddPersonal extends JPanel {
 
     public VAddPersonal() {
         add(jpBody);
+        init();
         updateHour();
+    }
+
+    private void init() {
+        // add addActionCommand to the buttons to be able to control the button in the controller class
+        btnConfirmar.setActionCommand(CONFIRM);
+        btnBorrar.setActionCommand(CLEAN);
+        btnCancel.setActionCommand(EXIT);
+    }
+
+    public void setController(Controller c) {
+
+        btnConfirmar.addActionListener(c);
+        btnBorrar.addActionListener(c);
+        btnCancel.addActionListener(c);
     }
 
     public void updateHour() {
@@ -53,7 +73,30 @@ public class VAddPersonal extends JPanel {
         }
         txtFDni.setText(personal.getDni());
         pwd.setText(personal.getPasswd());
+        btnConfirmar.setText("Modificar");
+        btnConfirmar.setActionCommand(MODIFY);
 
+    }
+
+    public  Personal getPersonal() {
+        String dni = txtFDni.getText();
+        String nombre = txtfNombre.getText();
+        String categoria;
+        if (rdbtEmpleado.isSelected()) {
+            categoria = "EMPLEADO";
+        } else {
+            categoria = "ADMINISTRATIVO";
+        }
+        String password = pwd.getText();
+
+        Personal p = new Personal(dni, nombre, categoria, password);
+        return  p;
+    }
+
+    public void cleanForm() {
+        txtfNombre.setText("");
+        txtFDni.setText("");
+        pwd.setText("");
     }
 
 

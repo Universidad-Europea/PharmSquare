@@ -67,15 +67,13 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * Función que permite obtener un objeto Personal siguiendo el en función del nombre recibido como parámetro
+     * Función que permite obtener un objeto Personal en función del nombre recibido como parámetro
      * @param nombre Nombre del personal a buscar.
      * @return Object Personal.
-     * @throws InvalidDataException si el typo no está en el array.
      */
     public Personal getPersonalbyName(String nombre) {
 
         nombre = nombre.toUpperCase();
-        System.out.println(nombre);
 
         String query = String.format(
                 "SELECT * FROM %s WHERE UPPER(%s) = ?;",
@@ -85,6 +83,27 @@ public class PharmaSquareDB extends AccessDB {
         );
 
         return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
+    }
+
+    /**
+     * Función que modifica el valor de un Personal  en función del objeto Personal recibido
+     * @param p Objeto de tipo personal
+     * @return Object Personal.
+     */
+    public int modPersonal(Personal p) {
+        String nombre = p.getNombre();
+        String dni = p.getDni();
+        String categoria = p.getCategoria();
+        String passwd = p.getPasswd();
+
+
+        String query = String.format(
+                "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
+                PPersonal.TABLE_NAME
+
+        );
+
+        return (SQLiteQuery.execute(this, query,  dni, nombre, categoria, passwd));
     }
 
 
