@@ -100,6 +100,7 @@ public class Controller implements ActionListener {
                     vCheckPersonal.fillTable(listaPersonal);
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.ADD_PERSONAL)) {
+                vAddPersonal.refreshPanel();
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
@@ -115,6 +116,12 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
+            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
+                int resp = JOptionPane.showConfirmDialog(vInicio, "Se añadirá el personal a lista ¿Está seguro?",
+                        "Error", JOptionPane.YES_NO_OPTION);
+                if (resp == 0) {
+                  //TODO INSERT PERSONAL INTO BBDD
+                }
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estas seguro que quieres modificar los datos del personal?",
                         "Error", JOptionPane.YES_NO_OPTION);

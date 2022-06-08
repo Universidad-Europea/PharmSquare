@@ -79,6 +79,17 @@ public class VAddPersonal extends JPanel {
 
     }
 
+    public void refreshPanel() {
+        lblTitle.setText("Añadir Personal");
+        txtfNombre.setText("");
+        txtFDni.setText("");
+        pwd.setText("");
+        rdbtEmpleado.doClick();
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.setActionCommand(CONFIRM);
+    }
+
+
     public  Personal getPersonal() {
         String dni = txtFDni.getText();
         String nombre = txtfNombre.getText();
