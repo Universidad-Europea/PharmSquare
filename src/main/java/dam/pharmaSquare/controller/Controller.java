@@ -87,6 +87,7 @@ public class Controller implements ActionListener {
                 vStaffLogin.setDefault();
             } else if (button == vAddCliente.getBtnConfirmar()) {
                 vAddCliente.addCliente();
+                // TODO: Falta añadir la lógica de errores en caso de que no se pueda añadir el cliente
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
