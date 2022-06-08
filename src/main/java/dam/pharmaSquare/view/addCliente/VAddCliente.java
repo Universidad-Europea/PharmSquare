@@ -1,16 +1,12 @@
 package dam.pharmaSquare.view.addCliente;
 
-
 import dam.pharmaSquare.controller.Controller;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class VAddCliente extends JPanel {
     private JPanel jpBody;
     private JPanel jpElements;
-    private JButton btnExit;
-    private JButton btnAddPer;
     private JButton btnClock;
     private JButton btnCancel;
     private JLabel lblTitle;
@@ -35,11 +31,11 @@ public class VAddCliente extends JPanel {
 
     public VAddCliente() {
         add(jpBody);
-
     }
 
     public void setController(Controller controller) {
-        btnExit.addActionListener(controller);
-        btnAddPer.addActionListener(controller);
+        btnCancel.addActionListener(controller);
+        btnConfirmar.addActionListener(controller);
+        btnBorrar.addActionListener(controller);
     }
 }

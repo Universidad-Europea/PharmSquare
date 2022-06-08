@@ -10,25 +10,20 @@ public class VStaffLogin extends JPanel {
     private JPanel jpBody;
     private JPanel jpForm;
     private JPanel jpTopElements;
-    private JLabel lblTime;
     private JButton btnBack;
     private JLabel lblTitle;
     private JTextField txtDNI;
     private JPasswordField btnPassword;
     private JButton btnSubmmit;
-    private JButton btnNewCliente;
-    private JButton btnNoLogin;
     private JLabel lblUsuario;
     private JLabel lblPassword;
     private JButton btnClock;
     private static PharmaSquareDB db;
 
-
     public VStaffLogin() {
         add(jpBody);
         updateHour();
         configFields();
-
     }
 
     private void configFields() {
