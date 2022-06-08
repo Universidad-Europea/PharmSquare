@@ -10,9 +10,9 @@ public class Transaccion {
     private String dni;
     private int idProducto;
     private String fecha; // DateTime
-    private double cantidad;
+    private int cantidad;
 
-    public Transaccion(String dni, int idProducto, String fecha, double cantidad) {
+    public Transaccion(String dni, int idProducto, String fecha, int cantidad) {
         this.setDni(dni);
         this.setIdProducto(idProducto);
         this.setFecha(fecha);
@@ -75,7 +75,7 @@ public class Transaccion {
         this.fecha = fecha;
     }
 
-    public void setCantidad(double cantidad) {
+    public void setCantidad(int cantidad) {
         isCantidadValid(cantidad);
         this.cantidad = cantidad;
     }
@@ -93,13 +93,13 @@ public class Transaccion {
         return fecha;
     }
 
-    public double getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
     public String toString() {
         return String.format(
-            "Transaccion:\n  dni cliente: %s,\n  producto id: %\n  fecha: %s\n  cantidad: %f",
+            "Transaccion:\n  dni cliente: %s,\n  producto id: %d\n  fecha: %s\n  cantidad: %d",
             this.getDni(), this.getIdProducto(), this.getFecha(), this.getCantidad()
         );
     }
