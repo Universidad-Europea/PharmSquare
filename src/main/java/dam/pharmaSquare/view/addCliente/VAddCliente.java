@@ -11,23 +11,23 @@ public class VAddCliente extends JPanel {
     private JButton btnCancel;
     private JLabel lblTitle;
     private JPanel jpForm;
-    private JLabel lblDNI;
-    private JTextField txtDNI;
-    private JLabel lblNombre;
     private JTextField txtNombre;
-    private JLabel lblDireccion;
     private JTextField txtDireccion;
-    private JLabel lblFachaNac;
     private JTextField txtFechaNac;
-    private JLabel lblSexo;
-    private JLabel lblTelefono;
     private JTextField txtTelefono;
     private JTextField txtMail;
-    private JLabel lblMail;
     private JButton btnConfirmar;
     private JButton btnBorrar;
     private JRadioButton rdbtEmpleado;
     private JRadioButton rdbtAdministrativo;
+    private JLabel lblDNI;
+    private JTextField txtfMail;
+    private JLabel lblNombre;
+    private JLabel lblDirect;
+    private JLabel lblTelefono;
+    private JLabel lblSexo;
+    private JLabel lblFechaNac;
+    private JLabel lblMail;
 
     public VAddCliente() {
         add(jpBody);
