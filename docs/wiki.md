@@ -19,6 +19,13 @@ Ups! Sección todavía en desarrollo.
 Este apartado relata cómo se ha desarrollado toda la lógica que hay por detrás de la aplicación. Si bien es cierto que nuestra aplicación local no tiene un backend como tal, esta seción mostrará cómo se ha desarrollado cada parte para integrarse con la aplicación.
 
 ### Base de datos:
+[Ubicación](../db/)
+
+La base de datos de nuestro sistema es una base de datos SQL con SQLite3. Esta almacena toda la información necesaria por nuestra aplicación.
+
+Para acceder a esta fuente de datos, hacemos uso de la clase [PharmaSquareDB](../src/main/java/dam/pharmaSquare/db/PharmaSquareDB.java). Con la ayuda de la lógica lógica común para el manejo de BBDD que tenemos en el paquete [db](../src/main/java/dam/db/)
+
+![base de datos](../res/img/mer_fondoblanco.png)
 
 
 ### Persistencia:
