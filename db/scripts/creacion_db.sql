@@ -41,7 +41,7 @@ CREATE TABLE CATEGORIA_PRODUCTO(
 
 CREATE TABLE CATEGORIAS_PRODUCTO(
 	id_producto		INTEGER,
-	id_categoria	NUMBER(3),
+	id_categoria	INTEGER,
 
 	CONSTRAINT CAT_HIS_IDS_PK PRIMARY KEY (id_producto, id_categoria),
 	CONSTRAINT CAT_HIS_ID_HIS_FK FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id),
@@ -51,7 +51,7 @@ CREATE TABLE CATEGORIAS_PRODUCTO(
 -- Transacción
 CREATE TABLE TRANSACCION(
 	dni_cliente	VARCHAR2(9),
-	id_producto	NUMBER(5),
+	id_producto	INTEGER,
 	fecha		DATETIME,
 	cantidad	NUMBER(3),
 

@@ -10,11 +10,11 @@ public class PProducto {
     public static final String LABORATORIO = "LABORATORIO";
     public static final String PRECIO = "PRECIO";
     public static final String STOCK = "STOCK";
-    public static final String FOTO = "";
+    public static final String FOTO = "FOTO";
     public static final String NECESITA_LOGIN = "NECESITA_LOGIN";
 
     public static final String PK = ID;
-    public static final String TABLE_NAME = "PRODUCTOS";
+    public static final String TABLE_NAME = "PRODUCTO";
 
     public static final String[] NECESITA_LOGIN_CHK = {"S", "N"};
 
