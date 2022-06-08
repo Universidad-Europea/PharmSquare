@@ -62,13 +62,18 @@ public class Controller implements ActionListener {
                 vInicio.setDefault();
             } else if (button == vInicio.getBtnNewCliente()) {
                 vWindows.loadPanel(vAddCliente);
-            }else if (button == vStaffLogin.getBtnBack()) {
+            } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == true) {
+                vWindows.loadPanel(vSeeLoginProducts);
+                vInicio.setDefault();
+            } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == false) {
+                JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+                vInicio.setDefault();
+            } else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue());
                 vCheckPersonal.fillTable(listaPersonal);
-
             }
 
         }

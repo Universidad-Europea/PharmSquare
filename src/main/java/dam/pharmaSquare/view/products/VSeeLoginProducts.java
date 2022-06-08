@@ -32,9 +32,9 @@ public class VSeeLoginProducts extends JPanel {
         DefaultTableModel model = Columns();
 
         db = new PharmaSquareDB();
-        db.getAllProducts();
+        db.getProductos(true);
 
-        for (Producto product : db.getAllProducts()) {
+        for (Producto product : db.getProductos(true)) {
             model.addRow(new Object[]{
                     product.getUtilidad(),
                     product.getNombre(),

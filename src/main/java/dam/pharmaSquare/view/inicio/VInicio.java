@@ -1,6 +1,7 @@
 package dam.pharmaSquare.view.inicio;
 
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.MessagesConfig;
 
 import javax.swing.*;
@@ -20,13 +21,27 @@ public class VInicio extends JPanel {
     private JLabel lblUsuario;
     private JLabel lblPassword;
     private JButton btnClock;
-    private MessagesConfig msg;
+    private static PharmaSquareDB db;
 
     public VInicio() {
         add(jpBody);
         configFields();
         updateHour();
     }
+
+    public boolean validateLogin() {
+        db = new PharmaSquareDB();
+        boolean valid = false;
+
+        if (db.validPasswdCliente(txtfMail.getText(), passwfPassword.getText())) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+
+        return valid;
+    }
+
 
     private void configFields() {
         setDefault();
@@ -58,7 +73,6 @@ public class VInicio extends JPanel {
     }
 
     private String getCurrentHour() {
-        //Get hour and minutes from the system
         String hour = "";
         String minutes = "";
 
@@ -88,7 +102,7 @@ public class VInicio extends JPanel {
     }
 
     public void setDefault() {
-        txtfMail.setText("no-reply@uem.es");
+        txtfMail.setText("admin@uem.es");
         txtfMail.setForeground(new java.awt.Color(153, 153, 153));
         passwfPassword.setText("***********");
         passwfPassword.setForeground(new java.awt.Color(153, 153, 153));
@@ -104,5 +118,17 @@ public class VInicio extends JPanel {
 
     public JButton getBtnNewCliente() {
         return btnNewCliente;
+    }
+
+    public JLabel getLblUsuario() {
+        return lblUsuario;
+    }
+
+    public JLabel getLblPassword() {
+        return lblPassword;
+    }
+
+    public JButton getBtnSubmmit() {
+        return btnSubmmit;
     }
 }

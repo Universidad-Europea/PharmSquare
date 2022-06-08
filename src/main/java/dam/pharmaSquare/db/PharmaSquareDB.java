@@ -123,7 +123,7 @@ public class PharmaSquareDB extends AccessDB {
         return validPasswd(
             PCliente.TABLE_NAME,
             PCliente.PASSWD,
-            PCliente.NOMBRE,
+            PCliente.MAIL, // hay que coger el mail
             user,
             passwd
         );
