@@ -43,7 +43,6 @@ public class PharmaSquareDB extends AccessDB {
                 String.format("WHERE %s = '%s' AND UPPER(%s) LIKE ?;", PPersonal.CATEGORIA, PPersonal.CATEGORIAS_CHK[1], PPersonal.NOMBRE)
         };
 
-
         if (!DataValidation.isStringIn(type, PERSONAL_FILTERS))
             throw new InvalidDataException("El criterio de búsqueda elegido no es conocido.");
 
@@ -68,40 +67,14 @@ public class PharmaSquareDB extends AccessDB {
      * @return Object Personal.
      */
     public Personal getPersonalbyName(String nombre) {
-
         nombre = nombre.toUpperCase();
-
         String query = String.format(
                 "SELECT * FROM %s WHERE UPPER(%s) = ?;",
                 PPersonal.TABLE_NAME,
                 PPersonal.NOMBRE
-
         );
-
         return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
     }
-
-    /**
-     * Función que modifica el valor de un Personal  en función del objeto Personal recibido
-     * @param p Objeto de tipo personal
-     * @return Object Personal.
-     */
-    public int modPersonal(Personal p) {
-        String nombre = p.getNombre();
-        String dni = p.getDni();
-        String categoria = p.getCategoria();
-        String passwd = p.getPasswd();
-
-
-        String query = String.format(
-                "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
-                PPersonal.TABLE_NAME
-
-        );
-
-        return (SQLiteQuery.execute(this, query,  dni, nombre, categoria, passwd));
-    }
-
 
     public ArrayList<Producto> getProductos(boolean necesitaLogin) throws InvalidDataException {
         String filter = "";
@@ -122,13 +95,10 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     public ArrayList<Transaccion> getTransacciones(String dni, String Producto, boolean cronologico) {
-        ArrayList<Transaccion> transacciones = new ArrayList<>();
-
         String query = String.format(
             "SELECT * FROM %s;",
             PTransaccion.TABLE_NAME
         );
-
         return sqlite2transaccion(SQLiteQuery.get(this, 4, query));
     }
 
@@ -246,7 +216,26 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
-
+    // MODIFY
+    /**
+     * Función que modifica el valor de un Personal  en función del objeto Personal recibido.
+     * @param p Objeto de tipo personal.
+     * @return Object Personal.
+     */
+    public int modPersonal(Personal p) {
+        String query = String.format(
+                "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
+                PPersonal.TABLE_NAME
+        );
+        return SQLiteQuery.execute(
+                this,
+                query,
+                p.getDni(),
+                p.getNombre(),
+                p.getCategoria(),
+                p.getPasswd()
+        );
+    }
 
     // sqlite2model
 
