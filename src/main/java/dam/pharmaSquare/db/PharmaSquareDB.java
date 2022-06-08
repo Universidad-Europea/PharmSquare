@@ -76,9 +76,15 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre ));
     }
 
-    public ArrayList<Producto> getProductos(boolean necesitaLogin) throws InvalidDataException {
+    /**
+     * Obtiene los productos disponibles para el usuario.
+     * @param logged Si el usuario está loggeado o no.
+     * @return Lista con los productos disponibles.
+     * @throws InvalidDataException
+     */
+    public ArrayList<Producto> getProductos(boolean logged) throws InvalidDataException {
         String filter = "";
-        if (!necesitaLogin)
+        if (!logged)
             filter = String.format(
                 " WHERE %s = '%s'",
                     PProducto.NECESITA_LOGIN,
