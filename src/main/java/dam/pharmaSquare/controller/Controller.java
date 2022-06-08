@@ -68,6 +68,12 @@ public class Controller implements ActionListener {
             } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vInicio.setDefault();
+            } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
+                // TODO: Login correcto, panel de staff sin hacer
+                System.out.println("[LOG] Login correcto");
+            } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
+                JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+                vStaffLogin.setDefault();
             } else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();

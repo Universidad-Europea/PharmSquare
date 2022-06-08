@@ -139,7 +139,7 @@ public class PharmaSquareDB extends AccessDB {
         return validPasswd(
                 PPersonal.TABLE_NAME,
                 PPersonal.PASSWD,
-                PPersonal.NOMBRE,
+                PPersonal.DNI,
                 user,
                 passwd
         );

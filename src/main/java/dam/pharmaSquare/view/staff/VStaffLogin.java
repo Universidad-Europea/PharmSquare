@@ -1,6 +1,7 @@
 package dam.pharmaSquare.view.staff;
 
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.MessagesConfig;
 
 import javax.swing.*;
@@ -20,7 +21,8 @@ public class VStaffLogin extends JPanel {
     private JLabel lblUsuario;
     private JLabel lblPassword;
     private JButton btnClock;
-    private MessagesConfig msg;
+    private static PharmaSquareDB db;
+
 
     public VStaffLogin() {
         add(jpBody);
@@ -85,9 +87,26 @@ public class VStaffLogin extends JPanel {
         btnSubmmit.addActionListener(controller);
     }
 
+    public boolean validateLogin() {
+        db = new PharmaSquareDB();
+        boolean valid = false;
+
+        if (db.validPasswdPersonal(txtDNI.getText(), btnPassword.getText())) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+
+        return valid;
+    }
+
     // Geetters
     public JButton getBtnBack() {
         return btnBack;
+    }
+
+    public JButton getBtnSubmmit() {
+        return btnSubmmit;
     }
 
     public void setDefault() {
