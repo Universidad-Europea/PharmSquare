@@ -8,6 +8,9 @@ import org.junit.*;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class PersonalTest {
     private static PharmaSquareDB db;
 
@@ -29,12 +32,18 @@ public class PersonalTest {
 
     @Test
     public void addPersonal() {
-        db.addPersonal(new Personal(
-                "32213243N",
-                "Jose Maria",
-                PPersonal.CATEGORIAS_CHK[0],
-                "estoEsUnaPassword123$"
-        ));
+//        db.addPersonal(new Personal(
+//                "32213243N",
+//                "Jose Maria",
+//                PPersonal.CATEGORIAS_CHK[0],
+//                "estoEsUnaPassword123$"
+//        ));
+    }
+
+    @Test
+    public void chkPasswd() {
+        assertTrue(db.validPasswdPersonal("Maria", "seguro1234"));
+        assertFalse(db.validPasswdPersonal("root", "root"));
     }
 
     // TOOLS
