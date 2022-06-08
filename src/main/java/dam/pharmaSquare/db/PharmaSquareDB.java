@@ -65,18 +65,18 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * Función que permite obtener una lista de productos siguiendo el criterio definido por el argumento
-     * @param necesitaLogin Si lo necesita o no.
+     * Función que permite obtener una lista de productos siguiendo el criterio definido por el argumento.
+     * @param necesitaLogin Si el cliente está logeado o no.
      * @return ArrayList con todos los productos requeridos.
      * @throws InvalidDataException si algo falla.
      */
     public ArrayList<Producto> getProductos(boolean necesitaLogin) throws InvalidDataException {
         String filter = "";
-        if (necesitaLogin)
+        if (!necesitaLogin)
             filter = String.format(
                 " WHERE %s = '%s'",
                     PProducto.NECESITA_LOGIN,
-                    PProducto.NECESITA_LOGIN_CHK[0]
+                    PProducto.NECESITA_LOGIN_CHK[1]
             );
 
         String query = String.format(
