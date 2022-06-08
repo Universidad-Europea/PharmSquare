@@ -100,6 +100,13 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
+    /**
+     * TODO
+     * @param dni
+     * @param Producto
+     * @param cronologico
+     * @return
+     */
     public ArrayList<Transaccion> getTransacciones(String dni, String Producto, boolean cronologico) {
         String query = String.format(
             "SELECT * FROM %s;",

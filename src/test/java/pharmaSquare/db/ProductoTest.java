@@ -18,7 +18,7 @@ public class ProductoTest {
 
 
     @Test
-    public void getPersonalTest() {
+    public void getProductosTest() {
         System.out.println("-----------------------------------------");
         printProducto(db.getProductos(true));
         System.out.println("-----------------------------------------");
