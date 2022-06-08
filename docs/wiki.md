@@ -23,7 +23,7 @@ Este apartado relata cómo se ha desarrollado toda la lógica que hay por detrá
 
 La base de datos de nuestro sistema es una base de datos SQL con SQLite3. Esta almacena toda la información necesaria por nuestra aplicación.
 
-Para acceder a esta fuente de datos, hacemos uso de la clase [PharmaSquareDB](../src/main/java/dam/pharmaSquare/db/PharmaSquareDB.java). Con la ayuda de la lógica lógica común para el manejo de BBDD que tenemos en el paquete [db](../src/main/java/dam/db/)
+Para acceder a esta fuente de datos, hacemos uso de la clase [PharmaSquareDB](../src/main/java/dam/pharmaSquare/db/PharmaSquareDB.java). Con la ayuda de la lógica lógica común para el manejo de BBDD que tenemos en el paquete [db](../src/main/java/dam/db/).
 
 ![base de datos](../res/img/mer_fondoblanco.png)
 
@@ -41,14 +41,14 @@ Cada clase contine, además de los atributos de la clase, un atributo con el nom
 
 [Ubicación](../src/main/java/dam/pharmaSquare/model/)
 
-- Cuando se construye una instancia de una de estas clases, los atributos son verificados. 
+Cuando se construye una instancia de una de estas clases, los atributos son verificados. 
 Si alguno no cumple las condiciones, se lanzan excepciones con el mensaje de error correspondiente.
 
-- Para cada atributo, tienen un método `public static void isXxxValid(Object Xxx)` que lanza excepciones si el dato introducido es inválido. 
+Para cada atributo, tienen un método `public static void isXxxValid(Object Xxx)` que lanza excepciones si el dato introducido es inválido. 
 Estos están pensados para la verificación anterior y para verificar a priori los formularios.
 
 
-### Base de datos:
+### Control Base de datos:
 
 [Ubicación](../src/main/java/dam/pharmaSquare/db/)
 
