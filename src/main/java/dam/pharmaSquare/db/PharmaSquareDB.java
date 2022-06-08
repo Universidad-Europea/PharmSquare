@@ -87,7 +87,16 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
-    public boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) {
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param table Tabla en uso.
+     * @param passwdField Nombre del campo contraseña.
+     * @param userField Nombre del campo usuario.
+     * @param user Usuario a verificar.
+     * @param passwd Password a verificar.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
+    private boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) {
         String query = String.format(
             "SELECT %s FROM %s WHERE %s = ?;",
             passwdField,
@@ -103,6 +112,12 @@ public class PharmaSquareDB extends AccessDB {
 
     }
 
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param user Nombre del cliente,
+     * @param passwd Password del cliente.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
     public boolean validPasswdCliente(String user, String passwd) {
         return validPasswd(
             PCliente.TABLE_NAME,
@@ -113,6 +128,12 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
+    /**
+     * Verifica si el usuario y la contraseña dadas son válidas.
+     * @param user Nombre del personal,
+     * @param passwd Password del personal.
+     * @return True si ambos campos son correctos, false en caso contrario.
+     */
     public boolean validPasswdPersonal(String user, String passwd) {
         return validPasswd(
                 PPersonal.TABLE_NAME,
