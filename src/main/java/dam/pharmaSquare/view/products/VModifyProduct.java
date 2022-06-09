@@ -1,4 +1,4 @@
-package dam.pharmaSquare.view.modifyProduct;
+package dam.pharmaSquare.view.products;
 
 import javax.swing.*;
 
