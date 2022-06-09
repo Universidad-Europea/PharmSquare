@@ -98,8 +98,14 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             } else if (button == vAddCliente.getBtnConfirmar()) {
-                vAddCliente.addCliente();
-                // TODO: Falta añadir la lógica de errores en caso de que no se pueda añadir el cliente
+                try {
+                    vAddCliente.addCliente();
+                    JOptionPane.showMessageDialog(vAddCliente, "Cliente añadido correctamente", "Añadido", JOptionPane.INFORMATION_MESSAGE);
+                } catch (InvalidDataException ex) {
+                    error = ex.getMessage();
+                    JOptionPane.showMessageDialog(vAddCliente, error, "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 if (listaPersonal.size() < 1) {

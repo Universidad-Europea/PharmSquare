@@ -1,10 +1,12 @@
 package dam.pharmaSquare.view.addCliente;
 
+import dam.dataValidation.DataValidation;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -36,18 +38,6 @@ public class VAddCliente extends JPanel {
     private JLabel lblPassword;
     private static PharmaSquareDB db;
 
-    //         db.addCliente(new Cliente(
-    //                "21212121U",
-    //                "Maria",
-    //                "01/01/2022",
-    //                "c/ Luz, 2 Madrid",
-    //                "01/01/2000",
-    //                "holasQWEw231#@",
-    //                PCliente.SEXO_CHK[1],
-    //                "321 321 321",
-    //                "maria@gmail.com"
-    //        ));
-
     public VAddCliente() {
         add(jpBody);
         updateHour();
@@ -56,12 +46,13 @@ public class VAddCliente extends JPanel {
 
     public void addCliente() {
 
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     java.util.Date date = new java.util.Date();
+    db = new PharmaSquareDB();
 
     String dni = txtdni.getText();
     String nombre = txtNombre.getText();
-    String fAlta = dateFormat.format(date);
+    String fAlta = dateFormat.format(date); // Fecha de alta
     String direccion = txtDireccion.getText();
     String fechaNac = txtFechaNac.getText();
     String password = txtPassword.getText();
@@ -72,6 +63,7 @@ public class VAddCliente extends JPanel {
         sexo = "F";
     }
     String telefono = txtTelefono.getText();
+
     String mail = txtMail.getText();
 
         db.addCliente(new Cliente(
