@@ -108,11 +108,11 @@ public class Controller implements ActionListener {
                     vCheckPersonal.fillTable(listaPersonal);
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.ADD_PERSONAL)) {
-                vAddPersonal.refreshPanel();
+                vAddPersonal.layoutAddPersonal();
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
-                vAddPersonal.modPersonal(personal);
+                vAddPersonal.layoutModPersonal(personal);
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.DELETE)) {
                 nombrePersonal = vCheckPersonal.getTableRowPerName();
@@ -128,7 +128,17 @@ public class Controller implements ActionListener {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "Se añadirá el personal a lista ¿Está seguro?",
                         "Error", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                    //TODO INSERT PERSONAL INTO BBDD
+                    try {
+                        personal = vAddPersonal.getPersonal();
+                        policy.validate(personal.getPasswd(), personal.getNombre());
+                        pharmaSquareDB.addPersonal(personal);
+                        vCheckPersonal.btnSearch.doClick();
+                        vWindows.loadPanel(vCheckPersonal);
+                    } catch (InvalidDataException ex) {
+                        error = ex.getMessage();
+                        JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los datos del personal?",
@@ -145,8 +155,6 @@ public class Controller implements ActionListener {
                         JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
-                System.out.println("hola2");
             } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
                 vAddPersonal.cleanForm();
             } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {

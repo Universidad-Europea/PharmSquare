@@ -14,14 +14,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * <h1>VconsultarPersonal</h1>
- * The VconsultarPersonal  implements a JPanel that
- * display the staff and can delete and edit them,
- * this JPanel is composed of swing elements
+ * <h1>VCheckPersonal</h1>
+ * The VCheckPersonal  implements a JPanel that
+ * display the staff and allows delete and edit them,
+ * this JPanel is composed of Swing elements
  */
 public class VCheckPersonal extends JPanel {
     /**
-     * Import Swing elements of VconsultarPersonal.form and declares them,
+     * Import Swing elements of VCheckPersonal.form and declares them,
      * also initialize some final String used in bellow methods
      */
     private static final String LASTNAME = "APELLIDO";
@@ -46,21 +46,22 @@ public class VCheckPersonal extends JPanel {
     private  ButtonRenderer btnEdit;
     private  ButtonRenderer btnDelt;
 
+    /**
+     * method calling private methods
+     *
+     * - add(jpBody)
+     * @param jpBody This is the Jpanel how contains all the swing elements
+     * @return the component argument
+     */
     public VCheckPersonal() {
-        /**
-         * method calling private methods
-         *
-         * - add(jpBody)
-         * @param jpBody This is the Jpanel how contains all the swing elements
-         * @return the component argument
-         */
+
         init();
         add(jpBody);
         updateHour();
     }
 
     /**
-     * method that initializes the swing components
+     * method that initializes the Swing components
      */
     private void init() {
 
@@ -147,6 +148,7 @@ public class VCheckPersonal extends JPanel {
 
     /**
      * method that receives a controller and applies it to the elements to be heard
+     * @param  c The controller to listen to the buttons
      */
     public void setController(Controller c) {
 
@@ -159,23 +161,33 @@ public class VCheckPersonal extends JPanel {
 
     /**
      * method that return a String with the value of the JComboBox
+     * @return type JComboBox value
      */
-
     public String getComboBoxValue(){
         String type = (String) cmbOrder.getSelectedItem();
         return  type;
     }
 
+    /**
+     * method that return the text value of the JTextField
+     * @return name JtextField text
+     */
     public String getTextFieldValue() {
         String name = txtSearchName.getText();
         return  name;
     }
 
+    /**
+     * method that return a String according to the name showed in selected row of the JTable
+     * @return  nombre JTable row value
+     */
     public String getTableRowPerName() {
         int filaSel = tablePer.getSelectedRow();
 
         String nombre = (String) dtmPer.getValueAt(filaSel, 1);
         String apellido = (String) dtmPer.getValueAt(filaSel, 2);
+        // check if the row shows a surname
+        // and insert or not in the same String depending on the result
         if (!apellido.isEmpty()) {
             StringBuffer nombreCompleto = new StringBuffer(nombre);
             nombreCompleto.insert(nombre.length(), " " + apellido);
@@ -187,6 +199,7 @@ public class VCheckPersonal extends JPanel {
 
     /**
      * This method fill the table adding rows
+     * @param listaPersonal ArrayList with the personal object to display
      * @return nothing
      */
     public void fillTable(ArrayList<Personal> listaPersonal) {
@@ -199,6 +212,8 @@ public class VCheckPersonal extends JPanel {
             int idx = personal.getNombre().indexOf(' ');
             String nombre;
             String apellido;
+            // check if the given personal object have surname
+            // and displays it or not depending on the result
             if (idx > 1) {
                 nombre = personal.getNombre().substring(0, idx);
                  apellido = personal.getNombre().substring(idx + 1);
@@ -228,6 +243,7 @@ public class VCheckPersonal extends JPanel {
         /**
          * this method edits the layout of the button and applies an icon to it
          * @return nothing
+         * @param icon String with the type of the button icon to display
          * @exception Exception is trowed if the image is not founded in the resource folder
          */
         public ButtonRenderer(String icon) {
