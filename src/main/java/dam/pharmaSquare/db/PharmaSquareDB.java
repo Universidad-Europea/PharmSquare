@@ -108,31 +108,27 @@ public class PharmaSquareDB extends AccessDB {
      * @return
      */
     public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) {
-        String condition = "";
-//        if (dni != null && producto != null)
-//            condition = String.format(
-//                "%s = ? AND %s = ?",
-//                PTransaccion.DNI,
-//                PTransaccion.ID_PRODUCTO
-//            );
-//        else {
-            if (dni != null)
-                condition = String.format("WHERE %s = ?", PTransaccion.DNI);
-//            if (producto != null)
-//                condition = String.format("%s = ?", PTransaccion.ID_PRODUCTO);
-//        }
+        ArrayList<Object> condValues = new ArrayList<>();
+        ArrayList<String> condQuery = new ArrayList<>();
+
+        if (dni != null) {
+            condValues.add(dni);
+            condQuery.add(PTransaccion.DNI + " = ?");
+        }
+
+        if (condQuery.size() > 0)
+            condQuery.set(0, "WHERE " + condQuery.get(0));
 
 
         String query = String.format(
             "SELECT * FROM %s %s ORDER BY %s %s;",
             PTransaccion.TABLE_NAME,
-            condition,
+            String.join(" AND ", condQuery),
             PTransaccion.FECHA,
             (cronologico) ? "ASC" : "DESC"
         );
-        if (dni != null)
-            return sqlite2transaccion(SQLiteQuery.get(this, 4, query, dni));
-        return sqlite2transaccion(SQLiteQuery.get(this, 4, query));
+
+        return sqlite2transaccion(SQLiteQuery.get(this, 4, query, condValues.toArray()));
     }
 
     // CHECKERS
