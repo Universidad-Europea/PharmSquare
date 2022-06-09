@@ -1,5 +1,6 @@
 package dam.pharmaSquare.controller;
 
+import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
@@ -35,6 +36,8 @@ public class Controller implements ActionListener {
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
+
+    private  String error = "";
 
 
     public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
@@ -120,16 +123,21 @@ public class Controller implements ActionListener {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "Se añadirá el personal a lista ¿Está seguro?",
                         "Error", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                  //TODO INSERT PERSONAL INTO BBDD
+                    //TODO INSERT PERSONAL INTO BBDD
                 }
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los datos del personal?",
                         "Error", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                    personal = vAddPersonal.getPersonal();
-                    pharmaSquareDB.modPersonal(personal);
-                    vCheckPersonal.btnSearch.doClick();
-                    vWindows.loadPanel(vCheckPersonal);
+                    try {
+                        personal = vAddPersonal.getPersonal();
+                        pharmaSquareDB.modPersonal(personal);
+                        vCheckPersonal.btnSearch.doClick();
+                        vWindows.loadPanel(vCheckPersonal);
+                    } catch (InvalidDataException ex) {
+                        error = ex.getMessage();
+                        JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
                 System.out.println("hola2");

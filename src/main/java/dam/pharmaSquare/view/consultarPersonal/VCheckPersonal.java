@@ -176,9 +176,11 @@ public class VCheckPersonal extends JPanel {
 
         String nombre = (String) dtmPer.getValueAt(filaSel, 1);
         String apellido = (String) dtmPer.getValueAt(filaSel, 2);
-        StringBuffer nombreCompleto = new StringBuffer(nombre);
-        nombreCompleto.insert(nombre.length(), " " +apellido);
-        nombre = nombreCompleto.toString();
+        if (!apellido.isEmpty()) {
+            StringBuffer nombreCompleto = new StringBuffer(nombre);
+            nombreCompleto.insert(nombre.length(), " " + apellido);
+            nombre = nombreCompleto.toString();
+        }
         return nombre;
     }
 
@@ -195,8 +197,15 @@ public class VCheckPersonal extends JPanel {
         for (Personal personal: listaPersonal) {
             fila[0] = personal.getCategoria();
             int idx = personal.getNombre().indexOf(' ');
-            String nombre = personal.getNombre().substring(0, idx);
-            String apellido  = personal.getNombre().substring(idx + 1);
+            String nombre;
+            String apellido;
+            if (idx > 1) {
+                nombre = personal.getNombre().substring(0, idx);
+                 apellido = personal.getNombre().substring(idx + 1);
+            } else {
+                 nombre = personal.getNombre();
+                 apellido = "";
+            }
             fila[1] = nombre;
             fila[2] = apellido;
 

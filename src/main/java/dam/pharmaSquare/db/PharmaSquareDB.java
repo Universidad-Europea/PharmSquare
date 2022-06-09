@@ -256,7 +256,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param p Objeto de tipo personal.
      * @return Object Personal.
      */
-    public int modPersonal(Personal p) {
+    public int modPersonal(Personal p)  {
         String query = String.format(
                 "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
                 PPersonal.TABLE_NAME

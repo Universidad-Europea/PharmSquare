@@ -51,7 +51,7 @@ public class Main {
                 );
 
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vStaffMenu);
+                vWindows.loadPanel(vCheckPersonal);
                 vCheckPersonal.setController(controller);
                 vAddPersonal.setController(controller);
                 vInicio.setController(controller);
