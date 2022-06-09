@@ -1,6 +1,7 @@
 package dam.pharmaSquare;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
@@ -36,6 +37,7 @@ public class Main {
                 VStaffLogin vStaffLogin = new VStaffLogin();
                 VStaffMenu vStaffMenu = new VStaffMenu();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
+                BasicPasswordPolicy policy = new BasicPasswordPolicy();
 
                 Controller controller = new Controller(
                     vWindows,
@@ -47,7 +49,8 @@ public class Main {
                     vSeeLoginProducts,
                     vAddCliente,
                     vAddPersonal,
-                    pharmaSquareDB
+                    pharmaSquareDB,
+                    policy
                 );
 
                 vWindows.setVisible(true);
