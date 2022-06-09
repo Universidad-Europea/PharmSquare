@@ -131,7 +131,7 @@ public class PasswordPolicy {
         for (i = 0; i < containsAtLeast.size(); i++)
             all += containsAtLeast.get(i);
         if (!password.matches(String.format("[%s]*", all)))
-            throw new InvalidDataException("Password can only contain the following chars: " + all);
+            throw new InvalidDataException("La contraseña sólo puede contener los siguientes caracteres: " + all);
     }
 
     /**
@@ -162,7 +162,7 @@ public class PasswordPolicy {
     public void validate(String password, String user) {
         this.validate(password);
         if (stringsAlike(user, password))
-            throw new InvalidDataException("Password cannot be similar to the user name");
+            throw new InvalidDataException("La contraseña no puede ser parecida que el usuario.");
     }
 
     // SETTERS
