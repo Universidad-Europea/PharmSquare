@@ -1,6 +1,7 @@
 package dam.pharmaSquare.controller;
 
 import dam.exception.InvalidDataException;
+import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
@@ -37,10 +38,13 @@ public class Controller implements ActionListener {
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
+    // Validación de datos
+    private  BasicPasswordPolicy policy;
+
     private  String error = "";
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -51,6 +55,7 @@ public class Controller implements ActionListener {
         this.vAddCliente = vAddCliente;
         this.vAddPersonal = vAddPersonal;
         this.pharmaSquareDB = pharmaSquareDB;
+        this.policy = policy;
     }
 
     @Override
@@ -131,6 +136,7 @@ public class Controller implements ActionListener {
                 if (resp == 0) {
                     try {
                         personal = vAddPersonal.getPersonal();
+                        policy.validate(personal.getPasswd(), personal.getNombre());
                         pharmaSquareDB.modPersonal(personal);
                         vCheckPersonal.btnSearch.doClick();
                         vWindows.loadPanel(vCheckPersonal);
