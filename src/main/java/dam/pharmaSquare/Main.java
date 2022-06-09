@@ -65,6 +65,7 @@ public class Main {
                 vSeeLoginProducts.setController(controller);
                 vSeeNoLogProducts.setController(controller);
                 vAddCliente.setController(controller);
+                vModifyProducts.setController(controller);
             }
         });
     }

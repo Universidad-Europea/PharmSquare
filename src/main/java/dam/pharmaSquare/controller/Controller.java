@@ -32,6 +32,7 @@ public class Controller implements ActionListener {
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
     private VAddPersonal vAddPersonal;
+    private VModifyProducts vModifyProducts;
     private ArrayList<Personal> listaPersonal;
     private  Personal personal;
     private  String nombrePersonal;
@@ -55,6 +56,7 @@ public class Controller implements ActionListener {
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
         this.vAddPersonal = vAddPersonal;
+        this.vModifyProducts = vModifyProducts;
         this.pharmaSquareDB = pharmaSquareDB;
         this.policy = policy;
     }
@@ -98,6 +100,9 @@ public class Controller implements ActionListener {
             } else if (button == vStaffLogin.getBtnBack()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
+            } else if (button == vModifyProducts.getBtnEliminar()) {
+                vModifyProducts.eliminarSeleccion();
+                System.out.println("[LOG] Eliminar producto");
             } else if (button == vAddCliente.getBtnConfirmar()) {
                 try {
                     vAddCliente.addCliente();
@@ -105,7 +110,6 @@ public class Controller implements ActionListener {
                 } catch (InvalidDataException ex) {
                     error = ex.getMessage();
                     JOptionPane.showMessageDialog(vAddCliente, error, "Error", JOptionPane.ERROR_MESSAGE);
-
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());

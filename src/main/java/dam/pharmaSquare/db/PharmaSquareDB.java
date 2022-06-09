@@ -118,6 +118,19 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
+    //Metodo borrado de producto por nombre de producto
+
+    public int delProducto(String nombre) {
+        String query = String.format(
+                "DELETE FROM %s WHERE %s = ?;",
+                PProducto.TABLE_NAME,
+                PProducto.NOMBRE
+
+        );
+
+        return (SQLiteQuery.execute(this, query,  nombre));
+    }
+
     /**
      * Busca todas las transacciones que cumplan estos criterios.
      * @param dni DNI del cliente. Si es null, cualquier cliente.

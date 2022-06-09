@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="dam.pharmaSquare.view.products.VModifyProducts">
-  <grid id="27dc6" binding="jpBody" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="jpBody" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -19,27 +19,11 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="af63b" class="javax.swing.JButton" binding="btnBack">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Button"/>
-            </properties>
-          </component>
           <hspacer id="a6c1c">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="53487" class="javax.swing.JLabel" binding="lblTime">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="10:10 a.m"/>
-            </properties>
-          </component>
           <grid id="e1d4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
@@ -59,6 +43,25 @@
               </component>
             </children>
           </grid>
+          <component id="4e04d" class="javax.swing.JButton" binding="btnClock">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="2"/>
+              <icon value="img/buttons/clock.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="5853e" class="javax.swing.JButton" binding="btnStaff">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <icon value="img/buttons/atras.png"/>
+              <text value="Atras"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="b879c" binding="jpForm" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -150,7 +153,10 @@
                 <preferred-size width="250" height="50"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1246977"/>
+              <foreground color="-1"/>
+            </properties>
           </component>
           <component id="7acae" class="javax.swing.JLabel" binding="lblLogin">
             <constraints>
@@ -178,15 +184,15 @@
               <text value="No"/>
             </properties>
           </component>
-          <component id="3f600" class="javax.swing.JButton" binding="btnGuardar">
+          <component id="3f600" class="javax.swing.JButton" binding="btnEliminar">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="35"/>
               </grid>
             </constraints>
             <properties>
-              <icon value="img/buttons/ok.png"/>
-              <text value="Guardar"/>
+              <icon value="img/buttons/editv2.png"/>
+              <text value="Eliminar"/>
             </properties>
           </component>
           <component id="c5294" class="javax.swing.JLabel" binding="lblNumProd">
@@ -214,7 +220,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="655ea" class="javax.swing.JButton" binding="btnNewSearch">
+          <component id="52e46" class="javax.swing.JButton" binding="btnModificar">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="35"/>
@@ -222,24 +228,24 @@
             </constraints>
             <properties>
               <icon value="img/buttons/find.png"/>
-              <text value="Nueva búsqueda"/>
+              <text value="Modificar"/>
             </properties>
           </component>
         </children>
       </grid>
       <hspacer id="c66ef">
         <constraints>
-          <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="3" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <hspacer id="37732">
         <constraints>
-          <grid row="2" column="2" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="3" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <vspacer id="b55a7">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <vspacer id="2b860">
@@ -247,6 +253,17 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="7c037" class="javax.swing.JButton" binding="btnGuardar">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="35"/>
+          </grid>
+        </constraints>
+        <properties>
+          <icon value="img/buttons/ok.png"/>
+          <text value="Guardar"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
