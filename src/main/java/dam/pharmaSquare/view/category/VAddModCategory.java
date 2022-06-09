@@ -1,8 +1,11 @@
 package dam.pharmaSquare.view.category;
 
+import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
-import dam.pharmaSquare.model.*;
+import dam.pharmaSquare.model.persistencia.PCategoriaProducto;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * <h1>VAddModCategory</h1>
@@ -29,7 +32,6 @@ public class VAddModCategory extends JPanel {
     private JButton btnBack;
     private JButton btnClock;
     private JPanel jpComponents;
-    private JTable tblCtg;
     private JTextField txtNewCtgName;
     private JLabel lblNewCtg;
     private JLabel lblNewCtgNm;
@@ -37,15 +39,51 @@ public class VAddModCategory extends JPanel {
     private JTextField textField1;
     private JLabel lblModCtgNm;
     private JButton btnSave;
-    private static PharmaSquareDB db;
+    private JTable tblCtg;
+    private JScrollPane scrpTable;
+    private DefaultTableModel dtmCtg;
 
+    /**
+     * method calling private methods
+     * - add(jpBody)
+     * @param jpBody is the Jpanel that contains all the swing elements
+     * @return the component argument
+     */
 
     public void VAddModCategory(){
+        init();
         add(jpBody);
-        loadDataTbl();
         updateHour();
     }
 
+    /**
+     * initializes the Swing components
+     */
+    private void init(){
+        scrpTable.setViewportView(tblCtg);
+
+        configTable();
+    }
+
+    private void configTable() {
+        tblCtg.setModel(dtmCtg);
+
+        //adding and setting the columns
+        dtmCtg.addColumn(PCategoriaProducto.NOMBRE);
+        tblCtg.getColumn(PCategoriaProducto.NOMBRE).setPreferredWidth(150);
+
+        tblCtg.setRowHeight(30);
+    }
+
+    /**
+     * method that receives a controller and applies it to the elements to be heard
+     * @param  c The controller to listen to the buttons
+     */
+
+    public void setController(Controller c){
+        btnSave.addActionListener(c);
+    }
+    
     public void updateHour() {
 
         btnClock.setText("00:00h");
@@ -55,10 +93,6 @@ public class VAddModCategory extends JPanel {
             }
         });
         timer.start();
-
-    }
-
-    private void loadDataTbl() {
 
     }
 
