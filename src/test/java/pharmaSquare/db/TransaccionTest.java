@@ -15,8 +15,13 @@ public class TransaccionTest {
     private static PharmaSquareDB db;
 
     private static final Object[][] tests = {
+        {"123456789A", null, true},
+        {null, "Paracetamol", true},
+        {"123456789A", "Paracetamol", true},
+        {"123456789A", "hola", true},
+        {"123456789N", "Paracetamol", true},
         {null, null, true},
-        {null, null, true}
+        {null, null, false}
     };
 
     @BeforeClass

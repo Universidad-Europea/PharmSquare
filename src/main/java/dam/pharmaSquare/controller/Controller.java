@@ -1,5 +1,7 @@
 package dam.pharmaSquare.controller;
 
+import dam.exception.InvalidDataException;
+import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
@@ -36,8 +38,13 @@ public class Controller implements ActionListener {
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
+    // Validación de datos
+    private  BasicPasswordPolicy policy;
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB) {
+    private  String error = "";
+
+
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente,VAddPersonal vAddPersonal, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -48,6 +55,7 @@ public class Controller implements ActionListener {
         this.vAddCliente = vAddCliente;
         this.vAddPersonal = vAddPersonal;
         this.pharmaSquareDB = pharmaSquareDB;
+        this.policy = policy;
     }
 
     @Override
@@ -90,8 +98,14 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
             } else if (button == vAddCliente.getBtnConfirmar()) {
-                vAddCliente.addCliente();
-                // TODO: Falta añadir la lógica de errores en caso de que no se pueda añadir el cliente
+                try {
+                    vAddCliente.addCliente();
+                    JOptionPane.showMessageDialog(vAddCliente, "Cliente añadido correctamente", "Añadido", JOptionPane.INFORMATION_MESSAGE);
+                } catch (InvalidDataException ex) {
+                    error = ex.getMessage();
+                    JOptionPane.showMessageDialog(vAddCliente, error, "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
             } else if (e.getActionCommand().equals(VCheckPersonal.SEARCH)) {
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 if (listaPersonal.size() < 1) {
@@ -100,16 +114,16 @@ public class Controller implements ActionListener {
                     vCheckPersonal.fillTable(listaPersonal);
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.ADD_PERSONAL)) {
-                vAddPersonal.refreshPanel();
+                vAddPersonal.layoutAddPersonal();
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
-                vAddPersonal.modPersonal(personal);
+                vAddPersonal.layoutModPersonal(personal);
                 vWindows.loadPanel(vAddPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.DELETE)) {
                 nombrePersonal = vCheckPersonal.getTableRowPerName();
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres eliminar el personal " + nombrePersonal + "?",
-                        "Error", JOptionPane.YES_NO_OPTION);
+                        "Confirmar borrado", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     pharmaSquareDB.delPersonal(nombrePersonal);
                     vCheckPersonal.btnSearch.doClick();
@@ -118,21 +132,35 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "Se añadirá el personal a lista ¿Está seguro?",
-                        "Error", JOptionPane.YES_NO_OPTION);
+                        "Confirmar añadir personal", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                  //TODO INSERT PERSONAL INTO BBDD
+                    try {
+                        personal = vAddPersonal.getPersonal();
+                        policy.validate(personal.getPasswd(), personal.getNombre());
+                        pharmaSquareDB.addPersonal(personal);
+                        vCheckPersonal.btnSearch.doClick();
+                        vWindows.loadPanel(vCheckPersonal);
+                    } catch (InvalidDataException ex) {
+                        error = ex.getMessage();
+                        JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
             } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los datos del personal?",
-                        "Error", JOptionPane.YES_NO_OPTION);
+                        "Confirmar modificar personal", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                    personal = vAddPersonal.getPersonal();
-                    pharmaSquareDB.modPersonal(personal);
-                    vCheckPersonal.btnSearch.doClick();
-                    vWindows.loadPanel(vCheckPersonal);
+                    try {
+                        personal = vAddPersonal.getPersonal();
+                        policy.validate(personal.getPasswd(), personal.getNombre());
+                        pharmaSquareDB.modPersonal(personal);
+                        vCheckPersonal.btnSearch.doClick();
+                        vWindows.loadPanel(vCheckPersonal);
+                    } catch (InvalidDataException ex) {
+                        error = ex.getMessage();
+                        JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
-            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
-                System.out.println("hola2");
             } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
                 vAddPersonal.cleanForm();
             } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {

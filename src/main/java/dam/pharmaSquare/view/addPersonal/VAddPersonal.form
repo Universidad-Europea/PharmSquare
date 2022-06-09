@@ -88,12 +88,12 @@
               <text value="Contraseña:"/>
             </properties>
           </component>
-          <component id="e4fb6" class="javax.swing.JRadioButton" binding="rdbtAdministrativo">
+          <component id="e4fb6" class="javax.swing.JRadioButton" binding="rdbtAdministrador">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Administrativo"/>
+              <text value="Administrador"/>
             </properties>
           </component>
           <component id="4a2cf" class="javax.swing.JTextField" binding="txtFDni">

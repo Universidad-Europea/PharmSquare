@@ -119,18 +119,45 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * TODO
-     * @param dni
-     * @param Producto
-     * @param cronologico
+     * Busca todas las transacciones que cumplan estos criterios.
+     * @param dni DNI del cliente. Si es null, cualquier cliente.
+     * @param producto Nombre del producto. Si null, cualquier producto.
+     * @param cronologico Si true, los resultados más antiguos saldrán antes. Else de manera contraria.
      * @return
      */
-    public ArrayList<Transaccion> getTransacciones(String dni, String Producto, boolean cronologico) {
+    public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) {
+        ArrayList<Object> condValues = new ArrayList<>();
+        ArrayList<String> condQuery = new ArrayList<>();
+
+        if (producto != null) {
+            condValues.add(producto);
+            condQuery.add(String.format(
+                ", %s P WHERE P.%s = %s and P.%s = ?",
+                PProducto.TABLE_NAME,
+                PProducto.PK,
+                PTransaccion.ID_PRODUCTO,
+                PProducto.NOMBRE
+            ));
+        }
+
+        if (dni != null) {
+            condValues.add(dni);
+            condQuery.add(String.format(
+                "%s%s = ?",
+                (condQuery.size() == 0) ? " WHERE " : "",
+                PTransaccion.DNI
+            ));
+        }
+
         String query = String.format(
-            "SELECT * FROM %s;",
-            PTransaccion.TABLE_NAME
+            "SELECT T.* FROM %s T%s ORDER BY %s %s;",
+            PTransaccion.TABLE_NAME,
+            String.join(" AND ", condQuery),
+            PTransaccion.FECHA,
+            (cronologico) ? "ASC" : "DESC"
         );
-        return sqlite2transaccion(SQLiteQuery.get(this, 4, query));
+
+        return sqlite2transaccion(SQLiteQuery.get(this, 4, query, condValues.toArray()));
     }
 
     // CHECKERS
@@ -256,7 +283,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param p Objeto de tipo personal.
      * @return Object Personal.
      */
-    public int modPersonal(Personal p) {
+    public int modPersonal(Personal p)  {
         String query = String.format(
                 "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
                 PPersonal.TABLE_NAME

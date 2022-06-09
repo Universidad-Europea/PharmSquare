@@ -2,11 +2,20 @@ package dam.pharmaSquare.view.addPersonal;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.Personal;
-import dam.pharmaSquare.view.inicio.VInicio;
 
 import javax.swing.*;
 
+/**
+ * <h1>VAddPersonal</h1>
+ * The VAddPersonal  implements a JPanel that
+ * display a form and allows insert staff
+ * this JPanel is composed of Swing elements
+ */
 public class VAddPersonal extends JPanel {
+    /**
+     * Import Swing elements of VAddPersonal.form and declares them,
+     * also initialize some final String used in bellow methods
+     */
     public static final String CONFIRM = "CONFIRMAR";
     public static final String MODIFY = "MODIFICAR";
     public static final String CLEAN = "LIMPIAR";
@@ -23,19 +32,28 @@ public class VAddPersonal extends JPanel {
     private JRadioButton rdbtEmpleado;
     private  JPasswordField pwd;
     private  JButton btnConfirmar;
-    private  JRadioButton rdbtAdministrativo;
+    private  JRadioButton rdbtAdministrador;
     private JPanel jpElements;
     private  JButton btnCancel;
     private  JLabel lblTitle;
     private JButton btnBorrar;
     private JButton btnClock;
 
+    /**
+     * method calling private methods
+     *
+     * - add(jpBody)
+     * @param jpBody This is the Jpanel how contains all the swing elements
+     * @return the component argument
+     */
     public VAddPersonal() {
         add(jpBody);
         init();
         updateHour();
     }
-
+    /**
+     * method that initializes the Swing components
+     */
     private void init() {
         // add addActionCommand to the buttons to be able to control the button in the controller class
         btnConfirmar.setActionCommand(CONFIRM);
@@ -43,6 +61,10 @@ public class VAddPersonal extends JPanel {
         btnCancel.setActionCommand(EXIT);
     }
 
+    /**
+     * method that receives a controller and applies it to the elements to be heard
+     * @param  c The controller to listen to the buttons
+     */
     public void setController(Controller c) {
 
         btnConfirmar.addActionListener(c);
@@ -61,15 +83,19 @@ public class VAddPersonal extends JPanel {
         timer.start();
 
     }
-
-    public  void modPersonal(Personal personal) {
+    /**
+     * method that receives a Personal object and show it into the form
+     * also change the JPanel layout
+     * @param  personal The Personal objecto to display
+     */
+    public  void layoutModPersonal(Personal personal) {
         lblTitle.setText("Modificar Personal");
         txtfNombre.setText(personal.getNombre());
         String categoria = personal.getCategoria();
         if (categoria.equals("EMPLEADO")) {
             rdbtEmpleado .doClick();
         }else {
-            rdbtAdministrativo.doClick();
+            rdbtAdministrador.doClick();
         }
 
         txtFDni.setText(personal.getDni());
@@ -79,7 +105,10 @@ public class VAddPersonal extends JPanel {
 
     }
 
-    public void refreshPanel() {
+    /**
+     Change the JPanel layout
+     */
+    public void layoutAddPersonal() {
         lblTitle.setText("Añadir Personal");
         txtfNombre.setText("");
         txtFDni.setText("");
@@ -89,7 +118,11 @@ public class VAddPersonal extends JPanel {
         btnConfirmar.setActionCommand(CONFIRM);
     }
 
-
+    /**
+     *  method that return a Personal object according to the values
+     *  written in the form
+     *  @return  nombre JTable row value
+     */
     public  Personal getPersonal() {
         String dni = txtFDni.getText();
         String nombre = txtfNombre.getText();
@@ -105,6 +138,9 @@ public class VAddPersonal extends JPanel {
         return  p;
     }
 
+    /**
+     * methot that empties the form fields
+     */
     public void cleanForm() {
         txtfNombre.setText("");
         txtFDni.setText("");

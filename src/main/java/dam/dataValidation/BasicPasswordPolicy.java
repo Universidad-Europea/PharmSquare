@@ -23,16 +23,16 @@ public class BasicPasswordPolicy extends PasswordPolicy {
     }
 
     private void addDefaultTests() {
-        addTest(FT_NN, "Password cannot be null");
-        addTest(FT_MIN_L, "Password must be at least " + MIN_LENGTH + " characters");
-        addTest(FT_MAX_L, "Password must be at most " + MAX_LENGTH + " characters");
+        addTest(FT_NN, "La contraseña no puede ser nula.");
+        addTest(FT_MIN_L, "La contraseña tiene que tener al menos " + MIN_LENGTH + " caracteres.");
+        addTest(FT_MAX_L, "La contraseña tiene que tener como mucho " + MAX_LENGTH + " caracteres.");
 
-        addContainsAtLeast(SPECIAL_CHARACTERS, "Password must contain at least 1 special character (" + SPECIAL_CHARACTERS + ")");
-        addContainsAtLeast(NUMBERS, "Password must contain at least 1 number");
-        addContainsAtLeast(LOWER_LETTERS, "Password must contain at least 1 lowercase letter");
-        addContainsAtLeast(UPPER_LETTERS, "Password must contain at least 1 uppercase letter");
+        addContainsAtLeast(SPECIAL_CHARACTERS, "La contraseña tiene que tener al menos un caracter especial (" + SPECIAL_CHARACTERS + ").");
+        addContainsAtLeast(NUMBERS, "La contraseña tiene que tener al menos un número.");
+        addContainsAtLeast(LOWER_LETTERS, "La contraseña tiene que contener una minúscula.");
+        addContainsAtLeast(UPPER_LETTERS, "La contraseña tiene que contener una mayúscula.");
 
-        String errorDis = "Really? Password in 2022 with this type of logic?";
+        String errorDis = "¿Enserio? ¿Una constraseña en 2022 así?";
         addDistinctString("1234", errorDis);
         addDistinctString("password", errorDis);
         addDistinctString("constaseña", errorDis);
