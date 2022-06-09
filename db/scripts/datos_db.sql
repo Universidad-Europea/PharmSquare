@@ -132,19 +132,19 @@ INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
 VALUES ('000000000A', 2, DATETIME('2022-02-01 12:42'), 1);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
-VALUES ('000000000A', 1, DATETIME('2022-02-01 13:42'), 2);
+VALUES ('123456789A', 1, DATETIME('2022-02-01 13:42'), 2);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
 VALUES ('000000000A', 2, DATETIME('2022-02-01 11:42'), 3);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
-VALUES ('000000000A', 3, DATETIME('2022-02-01 10:42'), 4);
+VALUES ('123456789A', 3, DATETIME('2022-02-01 10:42'), 4);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
-VALUES ('000000000A', 4, DATETIME('2022-02-01 14:42'), 5);
+VALUES ('987654321B', 4, DATETIME('2022-02-01 14:42'), 5);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
-VALUES ('000000000A', 5, DATETIME('2022-02-01 15:42'), 6);
+VALUES ('987654321B', 5, DATETIME('2022-02-01 15:42'), 6);
 
 INSERT INTO TRANSACCION (dni_cliente, id_producto, fecha, cantidad)
 VALUES ('000000000A', 6, DATETIME('2022-02-01 16:42'), 7);
