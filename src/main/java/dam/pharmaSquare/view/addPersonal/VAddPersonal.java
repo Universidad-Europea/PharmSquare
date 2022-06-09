@@ -2,7 +2,6 @@ package dam.pharmaSquare.view.addPersonal;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.Personal;
-import dam.pharmaSquare.view.inicio.VInicio;
 
 import javax.swing.*;
 
@@ -33,7 +32,7 @@ public class VAddPersonal extends JPanel {
     private JRadioButton rdbtEmpleado;
     private  JPasswordField pwd;
     private  JButton btnConfirmar;
-    private  JRadioButton rdbtAdministrativo;
+    private  JRadioButton rdbtAdministrador;
     private JPanel jpElements;
     private  JButton btnCancel;
     private  JLabel lblTitle;
@@ -96,7 +95,7 @@ public class VAddPersonal extends JPanel {
         if (categoria.equals("EMPLEADO")) {
             rdbtEmpleado .doClick();
         }else {
-            rdbtAdministrativo.doClick();
+            rdbtAdministrador.doClick();
         }
 
         txtFDni.setText(personal.getDni());
