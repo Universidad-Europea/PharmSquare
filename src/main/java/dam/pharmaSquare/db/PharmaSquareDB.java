@@ -101,9 +101,9 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * TODO
-     * @param dni
-     * @param producto
+     * Busca todas las transacciones que cumplan estos criterios.
+     * @param dni DNI del cliente. Si es null, cualquier cliente.
+     * @param producto Nombre del producto. Si null, cualquier producto.
      * @param cronologico Si true, los resultados más antiguos saldrán antes. Else de manera contraria.
      * @return
      */
@@ -111,17 +111,28 @@ public class PharmaSquareDB extends AccessDB {
         ArrayList<Object> condValues = new ArrayList<>();
         ArrayList<String> condQuery = new ArrayList<>();
 
-        if (dni != null) {
-            condValues.add(dni);
-            condQuery.add(PTransaccion.DNI + " = ?");
+        if (producto != null) {
+            condValues.add(producto);
+            condQuery.add(String.format(
+                ", %s P WHERE P.%s = %s and P.%s = ?",
+                PProducto.TABLE_NAME,
+                PProducto.PK,
+                PTransaccion.ID_PRODUCTO,
+                PProducto.NOMBRE
+            ));
         }
 
-        if (condQuery.size() > 0)
-            condQuery.set(0, "WHERE " + condQuery.get(0));
-
+        if (dni != null) {
+            condValues.add(dni);
+            condQuery.add(String.format(
+                "%s%s = ?",
+                (condQuery.size() == 0) ? " WHERE " : "",
+                PTransaccion.DNI
+            ));
+        }
 
         String query = String.format(
-            "SELECT * FROM %s %s ORDER BY %s %s;",
+            "SELECT T.* FROM %s T%s ORDER BY %s %s;",
             PTransaccion.TABLE_NAME,
             String.join(" AND ", condQuery),
             PTransaccion.FECHA,
