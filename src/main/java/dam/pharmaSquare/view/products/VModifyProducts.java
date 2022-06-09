@@ -78,7 +78,6 @@ public class VModifyProducts extends JPanel {
         rdbSi.setEnabled(true);
         rdbNo.setEnabled(true);
         txtLaboratorio.setEnabled(true);
-        cmbCategoria.setEnabled(true);
     }
 
     private void disableAllExeptCmbx() {
