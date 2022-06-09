@@ -5,6 +5,7 @@ import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
+import dam.pharmaSquare.view.category.VAddModCategory;
 import dam.pharmaSquare.view.personal.VAddPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
@@ -32,7 +33,11 @@ public class Controller implements ActionListener {
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
     private VAddPersonal vAddPersonal;
+<<<<<<< Updated upstream
     private VModifyProducts vModifyProducts;
+=======
+    private VAddModCategory vAddModCategory;
+>>>>>>> Stashed changes
     private ArrayList<Personal> listaPersonal;
     private  Personal personal;
     private  String nombrePersonal;
@@ -46,7 +51,7 @@ public class Controller implements ActionListener {
     private  String error = "";
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -56,7 +61,11 @@ public class Controller implements ActionListener {
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
         this.vAddPersonal = vAddPersonal;
+<<<<<<< Updated upstream
         this.vModifyProducts = vModifyProducts;
+=======
+        this.vAddModCategory = vAddModCategory;
+>>>>>>> Stashed changes
         this.pharmaSquareDB = pharmaSquareDB;
         this.policy = policy;
     }
