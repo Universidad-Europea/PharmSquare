@@ -16,7 +16,7 @@ public class TransaccionTest {
 
     private static final Object[][] tests = {
         {null, null, true},
-        {null, null, true}
+        {null, null, false}
     };
 
     @BeforeClass
