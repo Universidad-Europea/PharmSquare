@@ -24,10 +24,10 @@ let tablas = [
 			],
 			nombre: [
 				"no registrado",
-				"Juan",
-				"Pedro",
-				"Maria",
-				"Ana"
+				"Juan Garcia",
+				"Pedro Perez",
+				"Maria Perez",
+				"Ana Lopez"
 			],
 			fecha_alta: [
 				null,
@@ -45,17 +45,17 @@ let tablas = [
 			],
 			nacimiento: [
 				null,
-				"1990-01-01",
-				"1990-01-01",
-				"1990-01-01",
-				"1990-01-01"
+				"1995-02-01",
+				"1980-01-04",
+				"1970-05-08",
+				"1999-07-04"
 			],
 			passwd: [
 				null,
-				"12ab34!!",
-				"12ab34!!",
-				"12ab34!!",
-				"12ab34!!"
+				"12a!DSAb34!",
+				"@@134daSA",
+				"12abfCS!!",
+				"34!FDSsa!"
 			],
 			sexo: [
 				'O',
@@ -66,10 +66,10 @@ let tablas = [
 			],
 			telefono: [
 				null,
-				"666666666",
-				"666666666",
-				"666666666",
-				"666666666"
+				"635 456 789",
+				"635 45 67 43",
+				"735456789",
+				"743545359"
 			],
 			mail: [
 				null,
