@@ -21,7 +21,7 @@ public class SQLiteQuery {
      * @return Arraylist con filas en forma de Array[Object] con el resultado.
      * @throws SQLiteQueryException
      */
-    private static ArrayList<Object[]> getFromDB(AccessDB db, int outputLength, String query, Object[] input) throws SQLiteQueryException {
+    public static ArrayList<Object[]> getFromDB(AccessDB db, int outputLength, String query, Object[] input) throws SQLiteQueryException {
         ArrayList<Object[]> output = new ArrayList<>();
 
         Connection con = null;
