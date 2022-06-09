@@ -5,6 +5,7 @@ import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.view.addCliente.VAddCliente;
+import dam.pharmaSquare.view.products.VModifyProducts;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.personal.VAddPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
@@ -36,6 +37,7 @@ public class Main {
                 VSeeNoLogProducts vSeeNoLogProducts = new VSeeNoLogProducts();
                 VStaffLogin vStaffLogin = new VStaffLogin();
                 VStaffMenu vStaffMenu = new VStaffMenu();
+                VModifyProducts vModifyProducts = new VModifyProducts();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
                 BasicPasswordPolicy policy = new BasicPasswordPolicy();
 
@@ -49,12 +51,13 @@ public class Main {
                     vSeeLoginProducts,
                     vAddCliente,
                     vAddPersonal,
+                    vModifyProducts,
                     pharmaSquareDB,
                     policy
                 );
 
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(vModifyProducts);
                 vCheckPersonal.setController(controller);
                 vAddPersonal.setController(controller);
                 vInicio.setController(controller);
