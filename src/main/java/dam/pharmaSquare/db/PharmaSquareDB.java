@@ -103,17 +103,35 @@ public class PharmaSquareDB extends AccessDB {
     /**
      * TODO
      * @param dni
-     * @param Producto
+     * @param producto
      * @param cronologico Si true, los resultados más antiguos saldrán antes. Else de manera contraria.
      * @return
      */
-    public ArrayList<Transaccion> getTransacciones(String dni, String Producto, boolean cronologico) {
+    public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) {
+        String condition = "";
+//        if (dni != null && producto != null)
+//            condition = String.format(
+//                "%s = ? AND %s = ?",
+//                PTransaccion.DNI,
+//                PTransaccion.ID_PRODUCTO
+//            );
+//        else {
+            if (dni != null)
+                condition = String.format("WHERE %s = ?", PTransaccion.DNI);
+//            if (producto != null)
+//                condition = String.format("%s = ?", PTransaccion.ID_PRODUCTO);
+//        }
+
+
         String query = String.format(
-            "SELECT * FROM %s ORDER BY %s %s;",
+            "SELECT * FROM %s %s ORDER BY %s %s;",
             PTransaccion.TABLE_NAME,
+            condition,
             PTransaccion.FECHA,
             (cronologico) ? "ASC" : "DESC"
         );
+        if (dni != null)
+            return sqlite2transaccion(SQLiteQuery.get(this, 4, query, dni));
         return sqlite2transaccion(SQLiteQuery.get(this, 4, query));
     }
 

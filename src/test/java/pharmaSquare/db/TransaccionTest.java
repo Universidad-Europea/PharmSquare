@@ -15,6 +15,7 @@ public class TransaccionTest {
     private static PharmaSquareDB db;
 
     private static final Object[][] tests = {
+        {"123456789A", null, true},
         {null, null, true},
         {null, null, false}
     };
