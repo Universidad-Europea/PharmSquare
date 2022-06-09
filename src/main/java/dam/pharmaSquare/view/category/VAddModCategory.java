@@ -1,7 +1,6 @@
 package dam.pharmaSquare.view.category;
 
 import dam.pharmaSquare.controller.Controller;
-import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.persistencia.PCategoriaProducto;
 
 import javax.swing.*;
@@ -24,7 +23,8 @@ public class VAddModCategory extends JPanel {
      * the following methods
      */
     private static final String CATEGORY_NAME = "NOMBRE";
-    private static final String SAVE = "GUADAR DATOS";
+    private static final String SAVE_NEW_C = "GUADAR ";
+    private static final String SAVE_CHANGES = "GUADAR CAMBIOS";
     private static final String DELETE = "BORRAR";
 
     private JPanel jpBody;
@@ -38,9 +38,11 @@ public class VAddModCategory extends JPanel {
     private JLabel lblModCtg;
     private JTextField textField1;
     private JLabel lblModCtgNm;
-    private JButton btnSave;
+    private JButton btnSaveChanges;
     private JTable tblCtg;
     private JScrollPane scrpTable;
+    private JButton btnSaveNewCtg;
+    private JButton btnDelete;
     private DefaultTableModel dtmCtg;
 
     /**
@@ -81,9 +83,40 @@ public class VAddModCategory extends JPanel {
      */
 
     public void setController(Controller c){
-        btnSave.addActionListener(c);
+        btnSaveChanges.addActionListener(c);
+        btnSaveNewCtg.addActionListener(c);
+        btnDelete.addActionListener(c);
     }
-    
+
+    /**
+     * method that return the text value of the JTextField
+     * @return name JtextField text
+     */
+    public String getTextFieldValueNewC() {
+        String name = txtNewCtgName.getText();
+        return  name;
+    }
+
+    //ANYONE KNOWS HOW CAN I REFACTOR THIS ???
+    /**
+     * method that return the text value of the JTextField
+     * @return name JtextField text
+     */
+    public String getTextFieldValueModC() {
+        String name = txtNewCtgName.getText();
+        return  name;
+    }
+
+    /**
+     * method that return a String with value of the selected row in the table
+     * @return type JTable row value
+     */
+    public String getSelectedItem(){
+        int column = 0;
+        int row = tblCtg.getSelectedRow();
+        return  tblCtg.getModel().getValueAt(row, column).toString();
+    }
+
     public void updateHour() {
 
         btnClock.setText("00:00h");
