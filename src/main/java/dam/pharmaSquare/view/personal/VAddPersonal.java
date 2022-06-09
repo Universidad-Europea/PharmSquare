@@ -1,4 +1,4 @@
-package dam.pharmaSquare.view.addPersonal;
+package dam.pharmaSquare.view.personal;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.Personal;
