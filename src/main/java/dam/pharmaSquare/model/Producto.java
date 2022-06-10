@@ -17,18 +17,20 @@ public class Producto {
     private String foto;
     private boolean necesitaLogin;
 
-    public Producto(Integer id, String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
-        this.id = id;
-        this.utilidad = utilidad;
-        this.nombre = nombre;
-        this.laboratorio = laboratorio;
-        this.precio = precio;
-        this.stock = stock;
-        this.foto = foto;
+    public Producto(Integer id, String utilidad, String nombre, String laboratorio, double precio, int stock,
+                    String foto, String necesitaLogin) throws InvalidDataException {
+        this.setId(id);
+        this.setUtilidad(utilidad);
+        this.setNombre(nombre);
+        this.setLaboratorio(laboratorio);
+        this.setPrecio(precio);
+        this.setStock(stock);
+        this.setFoto(foto);
         this.setNecesitaLogin(necesitaLogin);
     }
 
-    public Producto(String utilidad, String nombre, String laboratorio, double precio, int stock, String foto, String necesitaLogin) {
+    public Producto(String utilidad, String nombre, String laboratorio, double precio, int stock,
+                    String foto, String necesitaLogin) throws InvalidDataException {
         this.id = -1; // Invalid ID
         this.setUtilidad(utilidad);
         this.setNombre(nombre);
@@ -193,6 +195,10 @@ public class Producto {
 
     public String getFoto() {
         return foto;
+    }
+
+    public String getNecesitaLogin() {
+        return PProducto.NECESITA_LOGIN_CHK[(necesitaLogin) ? 0 : 1];
     }
 
     public boolean isNecesitaLogin() {
