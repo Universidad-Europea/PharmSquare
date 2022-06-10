@@ -51,19 +51,19 @@ INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesi
 VALUES ('Suplemento alimenticio bebes', 'Sabor crema de frutas y verduras.', 'Dalsy Corporated', 19.99, 10, './res/img/productos/suplemento_bebes.jpg', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suplemento alimenticio adultos', 'Nuevo sabor Fabada con natillas.', 'Dalsy Corporated', 19.99, 10, './res/img/productos/suplemento_adultos.jpg', 'N');
+VALUES ('Suplemento alimenticio adultos', 'Nuevo sabor Fabada con natillas.', 'Fharma Labs S.A.', 19.99, 10, './res/img/productos/suplemento_adultos.jpg', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suplemento alimenticio niños', 'Sabor vainilla.', 'Dalsy Corporated', 19.99, 10, './res/img/productos/suplemento_ninos.jpg', 'N');
+VALUES ('Suplemento alimenticio niños', 'Sabor vainilla.', 'Fharma Labs S.A.', 19.99, 10, './res/img/productos/suplemento_ninos.jpg', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
 VALUES ('Crema hidratante', 'Especialmente diseñada para su absorción cutánea.', 'Dalsy Corporated', 9.99, 10, './res/img/productos/crema_hidratante.jpg', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Tiritas', 'Apósitos de tamaño reducido.', NULL, 3.99, 10, './res/img/productos/tiritas.jpg', 'N');
+VALUES ('Tiritas', 'Apósitos de tamaño reducido.', 'Dalsy Corporated', 3.99, 10, './res/img/productos/tiritas.jpg', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Apósitos de nitrato de plata', 'Tiritas grandes.', NULL, 3.99, 10, './res/img/productos/apositos.jpg', 'N');
+VALUES ('Apósitos de nitrato de plata', 'Tiritas grandes.', 'Dalsy Corporated', 3.99, 10, './res/img/productos/apositos.jpg', 'N');
 
 
 -- Rellenar CATEGORIA_PRODUCTO

@@ -72,7 +72,7 @@ public class Producto {
      * @throws InvalidDataException
      */
     public static void isNombreValid(String nombre) {
-        if (!DataValidation.isNameValid(nombre))
+        if (!DataValidation.isStringValid(nombre))
             throw new InvalidDataException("Este nombre introducido no es válido.");
     }
 

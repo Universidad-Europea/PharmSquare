@@ -18,6 +18,6 @@ public class PProducto {
 
     public static final String[] NECESITA_LOGIN_CHK = {"S", "N"};
 
-    public static final int MIN_UTILIDAD = 30;
+    public static final int MIN_UTILIDAD = 10;
     public static final int MAX_UTILIDAD = 200; // TODO verificar con DB que es válido.
 }

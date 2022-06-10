@@ -138,6 +138,8 @@ let tablas = [
 				"Dalsy Corporated",
 				"Dalsy Corporated",
 				"Dalsy Corporated",
+				"Fharma Labs S.A.",
+				"Fharma Labs S.A.",
 				"Dalsy Corporated",
 				"Dalsy Corporated",
 				"Dalsy Corporated"
