@@ -67,6 +67,9 @@ public class VModClient extends JPanel {
         init();
     }
 
+    /**
+     * initializes the Swing components
+     */
     public void init(){
         disableAllExceptTxtId();
     }
@@ -122,6 +125,10 @@ public class VModClient extends JPanel {
         txtMail.setEnabled(true);
     }
 
+    /**
+     * method that only allows to edit text area of the first JTextField
+     * for the search and cleans the rest of the components
+     */
     private void disableAllExceptTxtId() {
         txtIdClt.setEnabled(true);
 
