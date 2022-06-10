@@ -299,31 +299,59 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     public int modProducto(Producto p) {
-        String query = String.format(
-            "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?;",
-            PProducto.TABLE_NAME,
-            PProducto.UTILIDAD,
-            PProducto.NOMBRE,
-            PProducto.LABORATORIO,
-            PProducto.PRECIO,
-            PProducto.STOCK,
-            PProducto.FOTO,
-            PProducto.NECESITA_LOGIN,
-            PProducto.PK // Condición de búsqueda.
-        );
+        String query;
+        if (p.getId() != PProducto.INVALID_ID) {
+            query = String.format(
+                    "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?;",
+                    PProducto.TABLE_NAME,
+                    PProducto.UTILIDAD,
+                    PProducto.NOMBRE,
+                    PProducto.LABORATORIO,
+                    PProducto.PRECIO,
+                    PProducto.STOCK,
+                    PProducto.FOTO,
+                    PProducto.NECESITA_LOGIN,
+                    PProducto.PK // Condición de búsqueda.
+            );
 
-        return SQLiteQuery.execute(
-            this,
-            query,
-            p.getUtilidad(),
-            p.getNombre(),
-            p.getLaboratorio(),
-            p.getPrecio(),
-            p.getStock(),
-            p.getFoto(),
-            p.getNecesitaLogin(),
-            p.getId() // Condición de búsqueda.
-        );
+            return SQLiteQuery.execute(
+                    this,
+                    query,
+                    p.getUtilidad(),
+                    p.getNombre(),
+                    p.getLaboratorio(),
+                    p.getPrecio(),
+                    p.getStock(),
+                    p.getFoto(),
+                    p.getNecesitaLogin(),
+                    p.getId() // Condición de búsqueda.
+            );
+        }
+        else {
+            query = String.format(
+                    "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?;",
+                    PProducto.TABLE_NAME,
+                    PProducto.UTILIDAD,
+                    PProducto.LABORATORIO,
+                    PProducto.PRECIO,
+                    PProducto.STOCK,
+                    PProducto.FOTO,
+                    PProducto.NECESITA_LOGIN,
+                    PProducto.NOMBRE // Condición de búsqueda.
+            );
+
+            return SQLiteQuery.execute(
+                    this,
+                    query,
+                    p.getUtilidad(),
+                    p.getLaboratorio(),
+                    p.getPrecio(),
+                    p.getStock(),
+                    p.getFoto(),
+                    p.getNecesitaLogin(),
+                    p.getNombre() // Condición de búsqueda.
+            );
+        }
     }
 
     // Remove
