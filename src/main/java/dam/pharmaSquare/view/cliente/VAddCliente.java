@@ -1,12 +1,10 @@
-package dam.pharmaSquare.view.addCliente;
+package dam.pharmaSquare.view.cliente;
 
-import dam.dataValidation.DataValidation;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 

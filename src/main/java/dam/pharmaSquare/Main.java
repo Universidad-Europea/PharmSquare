@@ -4,7 +4,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
-import dam.pharmaSquare.view.addCliente.VAddCliente;
+import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
 import dam.pharmaSquare.view.products.VModifyProducts;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;

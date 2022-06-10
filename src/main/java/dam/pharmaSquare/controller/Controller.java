@@ -4,7 +4,7 @@ import dam.exception.InvalidDataException;
 import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
-import dam.pharmaSquare.view.addCliente.VAddCliente;
+import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
 import dam.pharmaSquare.view.personal.VAddPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
