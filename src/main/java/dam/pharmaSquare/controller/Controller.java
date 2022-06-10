@@ -33,11 +33,8 @@ public class Controller implements ActionListener {
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
     private VAddPersonal vAddPersonal;
-<<<<<<< Updated upstream
     private VModifyProducts vModifyProducts;
-=======
     private VAddModCategory vAddModCategory;
->>>>>>> Stashed changes
     private ArrayList<Personal> listaPersonal;
     private  Personal personal;
     private  String nombrePersonal;
@@ -61,11 +58,8 @@ public class Controller implements ActionListener {
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
         this.vAddPersonal = vAddPersonal;
-<<<<<<< Updated upstream
         this.vModifyProducts = vModifyProducts;
-=======
         this.vAddModCategory = vAddModCategory;
->>>>>>> Stashed changes
         this.pharmaSquareDB = pharmaSquareDB;
         this.policy = policy;
     }
