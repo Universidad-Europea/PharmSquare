@@ -23,8 +23,8 @@ public class VAddModCategory extends JPanel {
      * the following methods
      */
     private static final String CATEGORY_NAME = "NOMBRE";
-    private static final String SAVE_NEW_C = "GUADAR ";
-    private static final String SAVE_CHANGES = "GUADAR CAMBIOS";
+    private static final String SAVE_NEW_C = "GUARDAR ";
+    private static final String SAVE_CHANGES = "GUARDAR CAMBIOS";
     private static final String DELETE = "BORRAR";
 
     private JPanel jpBody;
