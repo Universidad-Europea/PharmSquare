@@ -118,25 +118,12 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
-    //Metodo borrado de producto por nombre de producto
-
-    public int delProducto(String nombre) {
-        String query = String.format(
-                "DELETE FROM %s WHERE %s = ?;",
-                PProducto.TABLE_NAME,
-                PProducto.NOMBRE
-
-        );
-
-        return (SQLiteQuery.execute(this, query,  nombre));
-    }
-
     /**
      * Busca todas las transacciones que cumplan estos criterios.
      * @param dni DNI del cliente. Si es null, cualquier cliente.
      * @param producto Nombre del producto. Si null, cualquier producto.
      * @param cronologico Si true, los resultados más antiguos saldrán antes. Else de manera contraria.
-     * @return
+     * @return Lista con las transacciones requeridas.
      */
     public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) {
         ArrayList<Object> condValues = new ArrayList<>();
@@ -292,7 +279,7 @@ public class PharmaSquareDB extends AccessDB {
     // MODIFY
 
     /**
-     * Función que modifica el valor de un Personal  en función del objeto Personal recibido.
+     * Función que modifica el valor de un Personal en función del objeto Personal recibido.
      * @param p Objeto de tipo personal.
      * @return Object Personal.
      */
@@ -309,6 +296,51 @@ public class PharmaSquareDB extends AccessDB {
                 p.getCategoria(),
                 p.getPasswd()
         );
+    }
+
+    public int modProducto(Producto p) {
+        String query = String.format(
+            "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?;",
+            PProducto.TABLE_NAME,
+            PProducto.UTILIDAD,
+            PProducto.NOMBRE,
+            PProducto.LABORATORIO,
+            PProducto.PRECIO,
+            PProducto.STOCK,
+            PProducto.FOTO,
+            PProducto.NECESITA_LOGIN,
+            PProducto.PK // Condición de búsqueda.
+        );
+
+        return SQLiteQuery.execute(
+            this,
+            query,
+            p.getUtilidad(),
+            p.getNombre(),
+            p.getLaboratorio(),
+            p.getPrecio(),
+            p.getStock(),
+            p.getFoto(),
+            p.getNecesitaLogin(),
+            p.getId() // Condición de búsqueda.
+        );
+    }
+
+    // Remove
+
+    /**
+     * TODO Testear
+     * Intenta borrar un producto.
+     * @param nombre nombre del producto.
+     * @return Código resultado al ejecutar la sentencia.
+     */
+    public int delProducto(String nombre) {
+        String query = String.format(
+                "DELETE FROM %s WHERE %s = ?;",
+                PProducto.TABLE_NAME,
+                PProducto.NOMBRE
+        );
+        return (SQLiteQuery.execute(this, query,  nombre));
     }
 
     // sqlite2model: parser between sqlite output and model.
