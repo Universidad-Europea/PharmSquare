@@ -44,30 +44,20 @@ public class VModifyProducts extends JPanel {
         loadDataCmbx();
     }
 
-    public void modoEdicion(boolean b) {
-        boolean modoEdicion = b;
-        System.out.println("modoEdicion: " + modoEdicion);
-
-        if (modoEdicion == true) {
-            JOptionPane.showMessageDialog(null, "Modo edición activado");
-            btnEliminar.setEnabled(false);
-        }
-    }
-
     public void eliminarSeleccion() {
         int selectedRow = cmbxData.getSelectedIndex();
         if (selectedRow != -1) {
             String product = cmbxData.getSelectedItem().toString();
             db.delProducto(product);
-            loadDataCmbx();
+            cmbxData.removeItemAt(selectedRow);
         }
     }
 
     private void loadDataCmbx() {
-
         db = new PharmaSquareDB();
 
         ArrayList<Producto> list = db.getProductos(true);
+
         for (Producto p : list) {
             cmbxData.addItem(p.getNombre());
         }
@@ -88,7 +78,9 @@ public class VModifyProducts extends JPanel {
                 rdbNo.setSelected(true);
             }
             txtLaboratorio.setText(p.getLaboratorio());
+
         });
+
 
     }
 
