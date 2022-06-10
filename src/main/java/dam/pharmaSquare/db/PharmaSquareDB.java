@@ -298,6 +298,19 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
+    /**
+     * Modifica el producto dado en la base de datos.
+     * <br>
+     * Tiene dos maneras de uso:
+     * <li>Todos los parámetros correctamente definidos</li>
+     *  Utiliza el ID del producto para poder modificar TODOS los demás atributos (incluído el nombre).
+     *
+     * <li>El ID no está definido</li>
+     *  Usa el nombre del producto para poder modificar el resto de atributos. El ID no se modifica al ser PK.
+     *
+     * @param p producto modificado que actualizar en la base de datos.
+     * @return Código resultante el la ejecución SQL.
+     */
     public int modProducto(Producto p) {
         String query;
         if (p.getId() != PProducto.INVALID_ID) {
