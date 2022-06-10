@@ -31,7 +31,7 @@ public class Producto {
 
     public Producto(String utilidad, String nombre, String laboratorio, double precio, int stock,
                     String foto, String necesitaLogin) throws InvalidDataException {
-        this.id = -1; // Invalid ID
+        this.id = PProducto.INVALID_ID;
         this.setUtilidad(utilidad);
         this.setNombre(nombre);
         this.setLaboratorio(laboratorio);
