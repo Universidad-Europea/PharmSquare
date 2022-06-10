@@ -46,6 +46,7 @@ public class Controller implements ActionListener {
     private  BasicPasswordPolicy policy;
 
     private  String error = "";
+    private int editMode = 0;
 
 
     public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
@@ -105,7 +106,11 @@ public class Controller implements ActionListener {
                 vStaffLogin.setDefault();
             } else if (button == vModifyProducts.getBtnEliminar()) {
                 vModifyProducts.eliminarSeleccion();
-                System.out.println("[LOG] Eliminar producto");
+            } else if (button == vModifyProducts.getBtnModificar()) {
+                editMode ++;
+                vModifyProducts.editMode(editMode);
+            } else if (button == vModifyProducts.getBtnGuardar()) {
+                vModifyProducts.updateProductDB();
             } else if (button == vAddCliente.getBtnConfirmar()) {
                 try {
                     vAddCliente.addCliente();

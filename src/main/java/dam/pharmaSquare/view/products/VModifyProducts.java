@@ -6,7 +6,6 @@ import dam.pharmaSquare.model.Producto;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class VModifyProducts extends JPanel {
     private JPanel jpBody;
@@ -39,9 +38,47 @@ public class VModifyProducts extends JPanel {
     private JButton btnModificar;
     private static PharmaSquareDB db;
 
-    public VModifyProducts(){
+    public VModifyProducts() {
         add(jpBody);
         loadDataCmbx();
+    }
+
+    //edit mode
+    public void editMode(int type) {
+
+        System.out.println(type);
+
+        if (type % 2 == 0) {
+            JOptionPane.showMessageDialog(null, "Modo edicion: deshabilitado");
+            enableAll();
+        } else if (type % 2 == 1) {
+            JOptionPane.showMessageDialog(null, "Modo edicion: habilitado");
+            enableAll();
+            btnEliminar.setEnabled(false);
+            txtIDProduct.setEnabled(false); // La ID no es modificable
+        }
+
+    }
+
+    public void updateProductDB() {
+        String nombre = txtNombre.getText();
+        double precio = Double.parseDouble(spnPrecio.getValue().toString());
+        int stock = Integer.parseInt(spnStock.getValue().toString());
+        String utilidad = txtUtilidad.getText();
+        String laboratorio = txtLaboratorio.getText();
+        String necesitaLogin = String.valueOf(rdbSi.isSelected());
+        if (necesitaLogin.equals("true")) {
+            necesitaLogin = "S";
+        } else {
+            necesitaLogin = "N";
+        }
+        int idProduc = Integer.parseInt(txtIDProduct.getText());
+        //     public int updateProducto(String nombre, String precio, String stock, String utilidad, String login, String laboratorio, String id) {
+
+        //db.updateProducto(nombre, precio, stock, utilidad, necesitaLogin, laboratorio, idProduc);
+        System.out.println("Producto actualizado");
+        //System.out.println(db.updateProducto(nombre, precio, stock, utilidad, necesitaLogin, laboratorio, idProduc));
+
     }
 
     public void eliminarSeleccion() {
@@ -64,8 +101,9 @@ public class VModifyProducts extends JPanel {
 
         disableAllExeptCmbx();
 
+
         cmbxData.addActionListener(e -> {
-            enableAll();
+           // enableAll();
             Producto p = db.getProductos(true).get(cmbxData.getSelectedIndex());
             txtNombre.setText(p.getNombre());
             spnPrecio.setValue(p.getPrecio());
@@ -81,7 +119,6 @@ public class VModifyProducts extends JPanel {
 
         });
 
-
     }
 
     private void enableAll() {
@@ -94,6 +131,9 @@ public class VModifyProducts extends JPanel {
         rdbNo.setEnabled(true);
         txtLaboratorio.setEnabled(true);
         txtIDProduct.setEnabled(true);
+        btnEliminar.setEnabled(true);
+        btnGuardar.setEnabled(true);
+        btnModificar.setEnabled(true);
     }
 
     private void disableAllExeptCmbx() {
