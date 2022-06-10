@@ -5,6 +5,7 @@ import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  * <h1>VModClient</h1>
@@ -24,6 +25,7 @@ public class VModClient extends JPanel {
     private static final String SEARCH = "BUSCAR";
     private static final String SAVE = "GUARDAR CAMBIOS";
     private static final String DELETE = "BORRAR";
+    private static final String[] GENDER_LIST = {"Femenino", "Masculino", "Otro"};
 
     private JPanel jpBody;
     private JButton btnBack;
@@ -43,15 +45,16 @@ public class VModClient extends JPanel {
     private JTextField txtMail;
     private JButton btnSave;
     private JLabel lblName;
-    private JLabel lblSurname;
     private JLabel lblDni;
     private JLabel lblFecNac;
     private JLabel lblGender;
     private JLabel lblNumber;
     private JLabel lblAddress;
-    private JLabel lblTown;
     private JLabel lblMail;
+    private JPanel jpTopElements;
+    private JPanel jpForm;
     private static PharmaSquareDB db;
+    private DefaultComboBoxModel<String> dcbGender;
 
 
     /**
@@ -72,6 +75,18 @@ public class VModClient extends JPanel {
      */
     public void init(){
         disableAllExceptTxtId();
+        loadCmbx();
+
+        btnSave.setActionCommand(SAVE);
+        btnDelete.setActionCommand(DELETE);
+        btnSearch.setActionCommand(SEARCH);
+
+    }
+
+    private void loadCmbx() {
+        dcbGender.removeAllElements();
+        dcbGender.addElement("Género");
+        dcbGender.addAll(List.of(GENDER_LIST));
     }
 
     /**
