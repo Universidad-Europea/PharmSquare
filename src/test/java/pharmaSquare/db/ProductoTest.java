@@ -8,6 +8,8 @@ import org.junit.*;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 public class ProductoTest {
     private static PharmaSquareDB db;
 
@@ -24,6 +26,46 @@ public class ProductoTest {
         System.out.println("-----------------------------------------");
         printProducto(db.getProductos(false));
         System.out.println("-----------------------------------------");
+    }
+
+    @Test
+    public void modProductos() {
+        ArrayList<Producto> lst = db.getProductos(true);
+
+        Producto p = lst.get(0);
+
+        Producto t = new Producto(
+                p.getId(),
+                "Manolo lopez",
+                "Esta utilidad no es nada util.",
+                "laboratorio test",
+                32.43,
+                42,
+                "hola/dev/null",
+                "N"
+        );
+
+        db.modProducto(t);
+
+        lst = db.getProductos(true);
+
+        Producto p2 = lst.get(0);
+
+        assertEquals(p2.getNombre(), t.getNombre());
+        assertEquals(p2.getUtilidad(), t.getUtilidad());
+        assertEquals(p2.getLaboratorio(), t.getLaboratorio());
+        assertEquals(p2.getPrecio(), t.getPrecio(), 0.01);
+        assertEquals(p2.getStock(), t.getStock());
+        assertEquals(p2.getFoto(), t.getFoto());
+        assertEquals(p2.getNecesitaLogin(), t.getNecesitaLogin());
+
+        assertNotEquals(p2.getNombre(), p.getNombre());
+        assertNotEquals(p2.getUtilidad(), p.getUtilidad());
+        assertNotEquals(p2.getLaboratorio(), p.getLaboratorio());
+        assertNotEquals(p2.getPrecio(), p.getPrecio(), 0.01);
+        assertNotEquals(p2.getStock(), p.getStock());
+        assertNotEquals(p2.getFoto(), p.getFoto());
+        assertNotEquals(p2.getNecesitaLogin(), p.getNecesitaLogin());
     }
 
     // TOOLS
