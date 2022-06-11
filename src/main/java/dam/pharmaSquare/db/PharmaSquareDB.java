@@ -4,6 +4,7 @@ import dam.dataValidation.DataValidation;
 import dam.db.AccessDB;
 import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
+import dam.exception.SQLiteQueryException;
 import dam.pharmaSquare.model.*;
 import dam.pharmaSquare.model.persistencia.*;
 
@@ -329,6 +330,16 @@ public class PharmaSquareDB extends AccessDB {
             c.getTelefono(),
             c.getMail()
         );
+    }
+
+    public int addCategoria(String categoria) throws InvalidDataException {
+        CategoriaProducto.isNombreValid(categoria);
+        String query = String.format(
+            "INSERT INTO %s (%s) VALUES (?)",
+            PCategoriaProducto.TABLE_NAME,
+            PCategoriaProducto.NOMBRE
+        );
+        return SQLiteQuery.execute(this, query, categoria);
     }
 
     // MODIFY
