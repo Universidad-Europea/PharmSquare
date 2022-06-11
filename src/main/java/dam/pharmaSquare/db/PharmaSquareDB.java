@@ -422,6 +422,35 @@ public class PharmaSquareDB extends AccessDB {
         }
     }
 
+    public int modCliente(Cliente c) {
+        String query = String.format(
+            "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",
+            PCliente.TABLE_NAME,
+            PCliente.NOMBRE,
+            PCliente.F_ALTA,
+            PCliente.DIRECCION,
+            PCliente.NACIMIENTO,
+            PCliente.PASSWD,
+            PCliente.SEXO,
+            PCliente.TELEFONO,
+            PCliente.MAIL,
+            PCliente.DNI
+        );
+        return SQLiteQuery.execute(
+            this,
+            query,
+            c.getNombre(),
+            c.getfAlta(),
+            c.getDireccion(),
+            c.getNacimiento(),
+            c.getPasswd(),
+            c.getSexo(),
+            c.getTelefono(),
+            c.getMail(),
+            c.getDni()
+        );
+    }
+
     // Remove
 
     /**
