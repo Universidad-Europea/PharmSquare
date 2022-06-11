@@ -7,12 +7,13 @@ public class VClientsRecords {
     private JPanel jpTopElements;
     private JButton btnAtrás;
     private JButton btnClock;
-    private JTextField txtDate;
+    private JLabel lblTitle;
+    private JPanel jpComponents;
+    private JLabel lblFiltro;
+    private JComboBox cmbDate;
     private JComboBox cmbProd;
     private JTextField txtDniClt;
     private JButton btnSearch;
-    private JTable tblPurchases;
-    private JLabel lblFilter;
-    private JPanel jpComponents;
-    private JScrollPane scrpTbl;
+    private JTable tblRecords;
+    private JScrollPane srpTable;
 }
