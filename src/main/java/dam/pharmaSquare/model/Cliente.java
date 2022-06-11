@@ -203,4 +203,19 @@ public class Cliente {
     public String getMail() {
         return mail;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", fAlta='" + fAlta + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", nacimiento='" + nacimiento + '\'' +
+                ", passwd='" + passwd + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", mail='" + mail + '\'' +
+                '}';
+    }
 }
