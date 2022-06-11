@@ -439,6 +439,12 @@ public class PharmaSquareDB extends AccessDB {
         return (SQLiteQuery.execute(this, query,  nombre));
     }
 
+    /**
+     * Borra un cliente de la base de datos.
+     * @param field Campo que usar para identificar al cliente. Tiene que ser PCliente.DNI o PCliente.NOMBRE.
+     * @param fieldValue Valor del campo especificado.
+     * @return Código resultante de borrar el cliente.
+     */
     public int delCliente(String field, String fieldValue) {
         if (field != PCliente.DNI && field != PCliente.NOMBRE)
             throw new InvalidDataException("El campo field tiene que ser PCliente.DNI o PCliente.NOMBRE");
