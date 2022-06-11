@@ -76,7 +76,6 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2personal(SQLiteQuery.get(this, 4, query,  nombre));
     }
 
-
     /**
      * Función que elimina un personal en función del parametro recibido
      * @param nombre Dni del  personal a eliminar
@@ -158,6 +157,15 @@ public class PharmaSquareDB extends AccessDB {
         );
 
         return sqlite2transaccion(SQLiteQuery.get(this, 4, query, condValues.toArray()));
+    }
+
+    public ArrayList<CategoriaProducto> getCategorias() {
+        String query = String.format(
+            "SELECT * FROM %s ORDER BY %s DESC;",
+            PCategoriaProducto.TABLE_NAME,
+            PCategoriaProducto.NOMBRE
+        );
+        return sqlite2categoria(SQLiteQuery.get(this, 2, query));
     }
 
     // CHECKERS
@@ -447,6 +455,16 @@ public class PharmaSquareDB extends AccessDB {
             transaccions.add(t);
         }
         return transaccions;
+    }
+
+    private static ArrayList<CategoriaProducto> sqlite2categoria(ArrayList<Object[]> data) {
+        ArrayList<CategoriaProducto> categorias = new ArrayList<>();
+        CategoriaProducto c;
+        for (Object[] r : data) {
+            c = new CategoriaProducto((int) r[0], (String) r[1]);
+            categorias.add(c);
+        }
+        return categorias;
     }
 
 }
