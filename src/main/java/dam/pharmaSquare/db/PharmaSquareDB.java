@@ -159,9 +159,13 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2transaccion(SQLiteQuery.get(this, 4, query, condValues.toArray()));
     }
 
+    /**
+     * Obtiene todas las categorías para un producto por orden alfabético.
+     * @return Arraylist con las categorias.
+     */
     public ArrayList<CategoriaProducto> getCategorias() {
         String query = String.format(
-            "SELECT * FROM %s ORDER BY %s DESC;",
+            "SELECT * FROM %s ORDER BY %s ASC;",
             PCategoriaProducto.TABLE_NAME,
             PCategoriaProducto.NOMBRE
         );
