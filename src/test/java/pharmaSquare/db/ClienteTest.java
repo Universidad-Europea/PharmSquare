@@ -66,4 +66,45 @@ public class ClienteTest {
         assertEquals(1, db.delCliente(PCliente.DNI, "123456789A"));
         assertEquals(1, db.delCliente(PCliente.NOMBRE, "Maria"));
     }
+
+   @Test
+   public void modCliente() {
+        Cliente p = db.getCliente(PCliente.NOMBRE, "Juan Garcia");
+
+        Cliente p2 = new Cliente(
+            p.getDni(),
+            "Minombre Eseste",
+            "1919-01-01",
+            "cajlk fadjdf lakdjfkla jdlkf",
+            "1919-01-01",
+            "fadSF321@",
+            PCliente.SEXO_CHK[1],
+            "123 12 21 21",
+            "holaquetal@gmail.com"
+        );
+
+        db.modCliente(p2);
+
+        Cliente p3 = db.getCliente(PCliente.DNI, p.getDni());
+
+       assertEquals(p3.getDni(), p.getDni());
+       assertNotEquals(p3.getNombre(), p.getNombre());
+       assertNotEquals(p3.getfAlta(), p.getfAlta());
+       assertNotEquals(p3.getDireccion(), p.getDireccion());
+       assertNotEquals(p3.getNacimiento(), p.getNacimiento());
+       assertNotEquals(p3.getPasswd(), p.getPasswd());
+       assertNotEquals(p3.getSexo(), p.getSexo());
+       assertNotEquals(p3.getTelefono(), p.getTelefono());
+       assertNotEquals(p3.getMail(), p.getMail());
+
+       assertEquals(p2.getDni(), p3.getDni());
+       assertEquals(p2.getNombre(), p3.getNombre());
+       assertEquals(p2.getfAlta(), p3.getfAlta());
+       assertEquals(p2.getDireccion(), p3.getDireccion());
+       assertEquals(p2.getNacimiento(), p3.getNacimiento());
+       assertEquals(p2.getPasswd(), p3.getPasswd());
+       assertEquals(p2.getSexo(), p3.getSexo());
+       assertEquals(p2.getTelefono(), p3.getTelefono());
+       assertEquals(p2.getMail(), p3.getMail());
+   }
 }
