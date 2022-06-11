@@ -22,10 +22,11 @@ public class VAddModCategory extends JPanel {
      * with some final String that we are going to work with in
      * the following methods
      */
-    private static final String CATEGORY_NAME = "NOMBRE";
-    private static final String SAVE_NEW_C = "GUARDAR ";
-    private static final String SAVE_CHANGES = "GUARDAR CAMBIOS";
-    private static final String DELETE = "BORRAR";
+
+    public static final String SAVE_NEW_C = "GUARDAR ";
+    public static final String SAVE_CHANGES = "GUARDAR CAMBIOS";
+    public static final String DELETE = "BORRAR";
+    public static final String EXIT = "VOLVER A STAFFMENU";
 
     private JPanel jpBody;
     private JPanel jpTopElements;
@@ -64,6 +65,11 @@ public class VAddModCategory extends JPanel {
     private void init(){
         scrpTable.setViewportView(tblCtg);
         configTable();
+
+        btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
+        btnDelete.setActionCommand(DELETE);
+        btnSaveChanges.setActionCommand(SAVE_CHANGES);
+        btnBack.setActionCommand(EXIT);
     }
 
     private void configTable() {
@@ -85,6 +91,7 @@ public class VAddModCategory extends JPanel {
         btnSaveChanges.addActionListener(c);
         btnSaveNewCtg.addActionListener(c);
         btnDelete.addActionListener(c);
+        btnBack.addActionListener(c);
     }
 
     /**
@@ -96,7 +103,6 @@ public class VAddModCategory extends JPanel {
         return  name;
     }
 
-    //ANYONE KNOWS HOW CAN I REFACTOR THIS ???
     /**
      * method that return the text value of the JTextField
      * @return name JtextField text

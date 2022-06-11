@@ -6,6 +6,7 @@ import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
+import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
 import dam.pharmaSquare.view.cliente.VModClient;
@@ -23,6 +24,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Controller implements ActionListener {
 
@@ -30,7 +32,7 @@ public class Controller implements ActionListener {
     private VWindows vWindows;
     private VInicio vInicio;
     private VStaffLogin vStaffLogin;
-    private VStaffMenu  vStaffMenu;
+    private VStaffMenu vStaffMenu;
     private VCheckPersonal vCheckPersonal;
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
@@ -40,16 +42,16 @@ public class Controller implements ActionListener {
     private VAddModCategory vAddModCategory;
     private VModClient vModClient;
     private ArrayList<Personal> listaPersonal;
-    private  Personal personal;
-    private  String nombrePersonal;
+    private Personal personal;
+    private String nombrePersonal;
 
     // Base de datos
     private PharmaSquareDB pharmaSquareDB;
 
     // Validación de datos
-    private  BasicPasswordPolicy policy;
+    private BasicPasswordPolicy policy;
 
-    private  String error = "";
+    private String error = "";
     private int editMode = 0;
 
 
@@ -112,7 +114,7 @@ public class Controller implements ActionListener {
             } else if (button == vModifyProducts.getBtnEliminar()) {
                 vModifyProducts.eliminarSeleccion();
             } else if (button == vModifyProducts.getBtnModificar()) {
-                editMode ++;
+                editMode++;
                 vModifyProducts.editMode(editMode);
             } else if (button == vModifyProducts.getBtnGuardar()) {
                 vModifyProducts.updateProductDB();
@@ -184,13 +186,13 @@ public class Controller implements ActionListener {
             } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {
                 vWindows.loadPanel(vCheckPersonal);
             } else if (e.getActionCommand().equals(VModClient.SEARCH)) {
-                vModClient.loadData(pharmaSquareDB.getCliente(vModClient.,vModClient.getTextFieldValue()));
+                vModClient.loadData(pharmaSquareDB.getCliente(PCliente.DNI, vModClient.getTextFieldValue()));
             } else if (e.getActionCommand().equals(VModClient.DELETE)) {
                 int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar a este cliente?",
                         "Confirmar borrado", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
-                    int res = pharmaSquareDB.delCliente(vModClient.,vModClient.getTextFieldValue());
-                    if (res > 1){
+                    int res = pharmaSquareDB.delCliente(PCliente.DNI, vModClient.getTextFieldValue());
+                    if (res > 1) {
                         JOptionPane.showMessageDialog(vModClient, "Se ha eliminado al cliente",
                                 "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                         vModClient.disableAllExceptTxtId();
@@ -202,7 +204,7 @@ public class Controller implements ActionListener {
 
             } else if (e.getActionCommand().equals(VModClient.SAVE)) {
                 Cliente cliente = vModClient.getClientInfo();
-                if(cliente != null) {
+                if (cliente != null) {
                     int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modificar la" +
                                     " información de este cliente?",
                             "Confirmar modificar ciente", JOptionPane.YES_NO_OPTION);
@@ -219,7 +221,63 @@ public class Controller implements ActionListener {
                         }
                     }
                 }
-            }  else if (e.getActionCommand().equals(VModClient.EXIT)) {
+            } else if (e.getActionCommand().equals(VModClient.EXIT)) {
+                vWindows.loadPanel(vStaffMenu);
+            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
+                String catg = vAddModCategory.getTextFieldValueNewC().trim();
+                if (catg != null) {
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres añadir la" +
+                                    " categoria " + catg.toUpperCase() +" ?",
+                            "Nueva categoría", JOptionPane.YES_NO_OPTION);
+                    if (resp == 0) {
+                        int res = pharmaSquareDB.addCategoria(catg);
+                        if (res > 1) {
+                            JOptionPane.showMessageDialog(vModClient, "Nueva categoría añadida",
+                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                            vModClient.disableAllExceptTxtId();
+                        } else {
+                            JOptionPane.showMessageDialog(vModClient, "No se ha podido añadir la categoria" + catg.toUpperCase(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
+                /*String catg = vAddModCategory.getTextFieldValueModC().trim();
+                if (catg != null) {
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modificar la" +
+                                    " categoría " + catg.toUpperCase() +" ?",
+                            "Modificar categoría", JOptionPane.YES_NO_OPTION);
+                    if (resp == 0) {
+                        int res = pharmaSquareDB.modCategoria(catg);
+                        if (res > 1) {
+                            JOptionPane.showMessageDialog(vModClient, "Categoría modificada",
+                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                            vModClient.disableAllExceptTxtId();
+                        } else {
+                            JOptionPane.showMessageDialog(vModClient, "No se ha podido modficar la categoría" + catg.toUpperCase(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }*/
+            } else if (e.getActionCommand().equals(VAddModCategory.DELETE)){
+                /*String catg = vAddModCategory.getTextFieldValueModC().trim();
+                if (catg != null) {
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar la" +
+                                    " categoría " + catg.toUpperCase() +" ?",
+                            "Borrar categoría", JOptionPane.YES_NO_OPTION);
+                    if (resp == 0) {
+                        int res = pharmaSquareDB.modCategoria(catg);
+                        if (res > 1) {
+                            JOptionPane.showMessageDialog(vModClient, "Categoría eliminada",
+                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                            vModClient.disableAllExceptTxtId();
+                        } else {
+                            JOptionPane.showMessageDialog(vModClient, "No se ha podido eliminar la categoría" + catg.toUpperCase(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }*/
+            }else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
             }
         }

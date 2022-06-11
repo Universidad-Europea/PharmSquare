@@ -152,6 +152,7 @@ public class VModClient extends JPanel {
         btnSave.addActionListener(c);
         btnDelete.addActionListener(c);
         btnSearch.addActionListener(c);
+        btnBack.addActionListener(c);
     }
 
     /**
@@ -162,6 +163,12 @@ public class VModClient extends JPanel {
         String name = txtIdClt.getText();
         return  name;
     }
+
+    /**
+     * method that return a Cliente object according to the values
+     * written in the form
+     * @return
+     */
 
     public Cliente getClientInfo() {
         String nombre = txtName.getText();
@@ -194,7 +201,7 @@ public class VModClient extends JPanel {
     private void enableAll() {
         txtIdClt.setEnabled(false);
         txtName.setEnabled(true);
-        txtDni.setEnabled(true);
+        txtDni.setEnabled(false);
         txtFecNac.setEnabled(true);
         cmbGender.setEnabled(true);
         txtNumber.setEnabled(true);
