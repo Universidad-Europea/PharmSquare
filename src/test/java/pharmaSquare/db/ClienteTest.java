@@ -52,6 +52,18 @@ public class ClienteTest {
         System.out.println(db.getCliente(PCliente.DNI, "123456789A"));
         System.out.println(db.getCliente(PCliente.NOMBRE, "Juan Garcia"));
         System.out.println(db.getCliente(PCliente.NOMBRE, "juan garcia"));
+    }
 
+    @Test
+    public void delCliente() {
+        assertThrows(InvalidDataException.class, () -> {db.delCliente("invalidField", "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.DNI, "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.NOMBRE, "ho321a");});
+
+        assertEquals(0, db.delCliente(PCliente.DNI, "12341234R"));
+        assertEquals(0, db.delCliente(PCliente.NOMBRE, "estenombrenoesvalido"));
+
+        assertEquals(1, db.delCliente(PCliente.DNI, "123456789A"));
+        assertEquals(1, db.delCliente(PCliente.NOMBRE, "Maria"));
     }
 }
