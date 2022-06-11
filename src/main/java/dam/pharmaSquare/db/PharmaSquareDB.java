@@ -172,6 +172,42 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2categoria(SQLiteQuery.get(this, 2, query));
     }
 
+    public Cliente getCliente(String field, String fieldValue) throws InvalidDataException {
+        if (field != PCliente.DNI && field != PCliente.NOMBRE)
+            throw new InvalidDataException("El campo field tiene que ser PCliente.DNI o PCliente.NOMBRE");
+        // Verificación valor dado
+        if (field == PCliente.DNI)
+            Cliente.isDniValid(fieldValue);
+        else
+            Cliente.isNombreValid(fieldValue);
+
+        String query = String.format(
+            "SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s FROM %s WHERE UPPER(%s) = UPPER(?)",
+                PCliente.DNI,
+                PCliente.NOMBRE,
+                PCliente.F_ALTA,
+                PCliente.DIRECCION,
+                PCliente.NACIMIENTO,
+                PCliente.PASSWD,
+                PCliente.SEXO,
+                PCliente.TELEFONO,
+                PCliente.MAIL,
+                PCliente.TABLE_NAME,
+                field
+        );
+
+        ArrayList<Cliente> result = sqlite2cliente(SQLiteQuery.get(this, 9, query, fieldValue));
+
+        if (result.size() == 0)
+            throw new InvalidDataException(String.format(
+                "No se ha encontrado ningún cliente con %s %s",
+                field.toLowerCase(),
+                fieldValue
+            ));
+
+        return result.get(0);
+    }
+
     // CHECKERS
 
     /**
@@ -469,6 +505,26 @@ public class PharmaSquareDB extends AccessDB {
             categorias.add(c);
         }
         return categorias;
+    }
+
+    private static ArrayList<Cliente> sqlite2cliente(ArrayList<Object[]> data) {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        Cliente c;
+        for (Object[] r : data) {
+            c = new Cliente(
+                    (String) r[0],
+                    (String) r[1],
+                    (String) r[2],
+                    (String) r[3],
+                    (String) r[4],
+                    (String) r[5],
+                    (String) r[6],
+                    (String) r[7],
+                    (String) r[8]
+            );
+            clientes.add(c);
+        }
+        return clientes;
     }
 
 }
