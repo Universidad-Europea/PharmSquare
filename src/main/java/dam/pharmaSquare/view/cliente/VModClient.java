@@ -5,6 +5,8 @@ import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 
 import javax.swing.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.List;
 
 /**
@@ -57,6 +59,58 @@ public class VModClient extends JPanel {
     private DefaultComboBoxModel<String> dcbGender;
 
 
+    public VModClient() {
+        txtIdClt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtIdClt.setText("Id");
+            }
+        });
+        txtName.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtName.setText("Nombre completo");
+            }
+        });
+        txtDni.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtDni.setText("12345678A");
+            }
+        });
+        txtFecNac.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtFecNac.setText("00/00/0000");
+            }
+        });
+        txtNumber.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtNumber.setText("123456789");
+            }
+        });
+        txtAddress.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtAddress.setText("Calle, Avenida ...");
+            }
+        });
+        txtMail.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                txtMail.setText("ejemplo@mail.com");
+            }
+        });
+    }
+
     /**
      * method calling private methods
      * - add(jpBody)
@@ -75,7 +129,7 @@ public class VModClient extends JPanel {
      */
     public void init(){
         disableAllExceptTxtId();
-        loadCmbx();
+        loadCmb();
 
         btnSave.setActionCommand(SAVE);
         btnDelete.setActionCommand(DELETE);
@@ -83,7 +137,7 @@ public class VModClient extends JPanel {
 
     }
 
-    private void loadCmbx() {
+    private void loadCmb() {
         dcbGender.removeAllElements();
         dcbGender.addElement("Género");
         dcbGender.addAll(List.of(GENDER_LIST));
