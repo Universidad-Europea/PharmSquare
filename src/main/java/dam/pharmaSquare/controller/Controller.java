@@ -1,11 +1,14 @@
 package dam.pharmaSquare.controller;
 
+import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
+import dam.pharmaSquare.view.cliente.VModClient;
 import dam.pharmaSquare.view.personal.VAddPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
@@ -35,6 +38,7 @@ public class Controller implements ActionListener {
     private VAddPersonal vAddPersonal;
     private VModifyProducts vModifyProducts;
     private VAddModCategory vAddModCategory;
+    private VModClient vModClient;
     private ArrayList<Personal> listaPersonal;
     private  Personal personal;
     private  String nombrePersonal;
@@ -49,7 +53,7 @@ public class Controller implements ActionListener {
     private int editMode = 0;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory, VModClient vModClient, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -61,6 +65,7 @@ public class Controller implements ActionListener {
         this.vAddPersonal = vAddPersonal;
         this.vModifyProducts = vModifyProducts;
         this.vAddModCategory = vAddModCategory;
+        this.vModClient = vModClient;
         this.pharmaSquareDB = pharmaSquareDB;
         this.policy = policy;
     }
@@ -178,6 +183,60 @@ public class Controller implements ActionListener {
                 vAddPersonal.cleanForm();
             } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {
                 vWindows.loadPanel(vCheckPersonal);
+            } else if (e.getActionCommand().equals(VModClient.SEARCH)) {
+                /* String user = vModClient.getTextFieldValue();
+                if(user != null) {
+                Cliente cliente = pharmaSquareDB.getClient(user)
+                    if(cliente != null) {
+                    vModClient.loadData(cliente);
+                    } else {
+                        JOptionPane.showMessageDialog(vModClient, "No se han encontrado datos para el usuario introducido",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vModClient, "No se han introducido datos",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                */
+            } else if (e.getActionCommand().equals(VModClient.DELETE)) {
+                /* String user = vModClient.getTextFieldValue();
+                if(user != null) {
+                     int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar a este cliente?",
+                        "Confirmar borrado", JOptionPane.YES_NO_OPTION);
+                     if (resp == 0) {
+                        if (res > 1){
+                           JOptionPane.showMessageDialog(vModClient, "Se ha eliminado al cliente",
+                                   "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                           vModClient.disableAllExceptTxtId();
+                       } else {
+                           JOptionPane.showMessageDialog(vModClient, "No se han podido eliminar al cliente",
+                                   "Error", JOptionPane.ERROR_MESSAGE);
+                       }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vModClient, "No se han introducido datos",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                */
+            } else if (e.getActionCommand().equals(VModClient.SAVE)) {
+                /*Cliente cliente = vModClient.getClientInfo();
+                if(user != null) {
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modificar la" +
+                                    " información de este cliente?",
+                            "Confirmar modificar ciente", JOptionPane.YES_NO_OPTION);
+                    if (resp == 0) {
+                       int res = pharmaSquareDB.updateCliente(cliente);
+
+                       if (res > 1){
+                           JOptionPane.showMessageDialog(vModClient, "Se han modificado los datos del cliente",
+                                   "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                           vModClient.disableAllExceptTxtId();
+                       } else {
+                           JOptionPane.showMessageDialog(vModClient, "No se han podido modificar los datos del cliente",
+                                   "Error", JOptionPane.ERROR_MESSAGE);
+                       }
+                    }
+               */
+            }  else if (e.getActionCommand().equals(VModClient.EXIT)) {
+                vWindows.loadPanel(vStaffMenu);
             }
         }
     }

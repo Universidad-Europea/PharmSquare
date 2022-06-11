@@ -6,6 +6,7 @@ import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
+import dam.pharmaSquare.view.cliente.VModClient;
 import dam.pharmaSquare.view.products.VModifyProducts;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;
 import dam.pharmaSquare.view.personal.VAddPersonal;
@@ -40,6 +41,7 @@ public class Main {
                 VStaffMenu vStaffMenu = new VStaffMenu();
                 VModifyProducts vModifyProducts = new VModifyProducts();
                 VAddModCategory vAddModCategory = new VAddModCategory();
+                VModClient vModClient = new VModClient();
                 PharmaSquareDB pharmaSquareDB = new PharmaSquareDB();
                 BasicPasswordPolicy policy = new BasicPasswordPolicy();
 
@@ -55,6 +57,7 @@ public class Main {
                     vAddPersonal,
                     vModifyProducts,
                     vAddModCategory,
+                    vModClient,
                     pharmaSquareDB,
                     policy
                 );
@@ -70,6 +73,7 @@ public class Main {
                 vAddCliente.setController(controller);
                 vModifyProducts.setController(controller);
                 vAddModCategory.setController(controller);
+                vModClient.setController(controller);
             }
         });
     }
