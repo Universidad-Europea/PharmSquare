@@ -425,7 +425,6 @@ public class PharmaSquareDB extends AccessDB {
     // Remove
 
     /**
-     * TODO Testear
      * Intenta borrar un producto.
      * @param nombre nombre del producto.
      * @return Código resultado al ejecutar la sentencia.

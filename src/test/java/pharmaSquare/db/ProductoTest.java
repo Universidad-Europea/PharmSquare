@@ -1,5 +1,6 @@
 package pharmaSquare.db;
 
+import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Producto;
 
@@ -109,6 +110,14 @@ public class ProductoTest {
         assertNotEquals(p2.getStock(), p.getStock());
         assertNotEquals(p2.getFoto(), p.getFoto());
         assertNotEquals(p2.getNecesitaLogin(), p.getNecesitaLogin());
+    }
+
+    @Test
+    public void delProducto() {
+        assertThrows(InvalidDataException.class, () -> {db.delProducto("");});
+        assertThrows(InvalidDataException.class, () -> {db.delProducto(null);});
+
+        db.delProducto("Tiritas");
     }
 
     // TOOLS
