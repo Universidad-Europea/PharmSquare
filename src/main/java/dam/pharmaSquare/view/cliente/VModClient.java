@@ -2,7 +2,6 @@ package dam.pharmaSquare.view.cliente;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.model.Cliente;
-import dam.dataValidation.DataValidation;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -57,7 +56,6 @@ public class VModClient extends JPanel {
     private JLabel lblMail;
     private JPanel jpTopElements;
     private JPanel jpForm;
-    private static DataValidation dv;
     private DefaultComboBoxModel<String> dcbGender;
 
 
@@ -166,54 +164,14 @@ public class VModClient extends JPanel {
     }
 
     public Cliente getClientInfo() {
-        dv = new DataValidation();
-
-        Cliente c = null;
-
         String nombre = txtName.getText();
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debes introducir un nombre",
-                    "Error de datos", JOptionPane.ERROR_MESSAGE);
-        }else {
-            String dni = txtDni.getText();
-            if (dni.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Debes introducir el DNI del cliente",
-                        "Error de datos", JOptionPane.ERROR_MESSAGE);
-            }else{
-                String fecNac = txtFecNac.getText();
-                if (fecNac.isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Debes introducir la Fecha de nacimiento",
-                            "Error de datos", JOptionPane.ERROR_MESSAGE);
-                }else {
-                    String sexo = (String) cmbGender.getSelectedItem();
-                    if(sexo.equals("Género")){
-                        JOptionPane.showMessageDialog(this, "Debes introducir el género",
-                                "Error de datos", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        String tfl = txtNumber.getText();
-                        if(tfl.isEmpty()){
-                            JOptionPane.showMessageDialog(this, "Debes introducir un número de teléfono",
-                                    "Error de datos", JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            String dir = txtAddress.getText();
-                            if ( dir.isEmpty()){
-                                JOptionPane.showMessageDialog(this, "Debes introducir una dirección",
-                                        "Error de datos", JOptionPane.ERROR_MESSAGE);
-                            } else {
-                                String mail = txtMail.getText();
-                                if (mail.isEmpty()) {
-                                    JOptionPane.showMessageDialog(this, "Debes introducir correo electrónico",
-                                            "Error de datos", JOptionPane.ERROR_MESSAGE);
-                                } else {
-                                    c = new Cliente(dni, nombre, dir, fecNac, sexo, tfl, mail);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
+        String dni = txtDni.getText();
+        String fecNac = txtFecNac.getText();
+        String sexo = (String) cmbGender.getSelectedItem();
+        String tfl = txtNumber.getText();
+        String dir = txtAddress.getText();
+        String mail = txtMail.getText();
+        Cliente c = new Cliente(dni, nombre, dir, fecNac, sexo, tfl, mail);
         return c;
     }
 
@@ -231,7 +189,6 @@ public class VModClient extends JPanel {
         txtNumber.setText(c.getTelefono());
         txtAddress.setText(c.getDireccion());
         txtMail.setText(c.getMail());
-
     }
 
     private void enableAll() {
