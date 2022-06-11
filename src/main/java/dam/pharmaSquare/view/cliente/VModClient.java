@@ -1,12 +1,15 @@
 package dam.pharmaSquare.view.cliente;
 
 import dam.pharmaSquare.controller.Controller;
-import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
+import dam.dataValidation.DataValidation;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -24,9 +27,10 @@ public class VModClient extends JPanel {
      * the following methods
      */
 
-    private static final String SEARCH = "BUSCAR";
-    private static final String SAVE = "GUARDAR CAMBIOS";
-    private static final String DELETE = "BORRAR";
+    public static final String SEARCH = "BUSCAR";
+    public static final String SAVE = "GUARDAR CAMBIOS";
+    public static final String DELETE = "BORRAR";
+    public static final String EXIT = "VOLVER A STAFFMENU";
     private static final String[] GENDER_LIST = {"Femenino", "Masculino", "Otro"};
 
     private JPanel jpBody;
@@ -37,13 +41,11 @@ public class VModClient extends JPanel {
     private JButton btnDelete;
     private JLabel lblId;
     private JTextField txtName;
-    private JTextField txtSurname;
     private JTextField txtDni;
     private JTextField txtFecNac;
     private JComboBox cmbGender;
     private JTextField txtNumber;
     private JTextField txtAddress;
-    private JComboBox cmbTown;
     private JTextField txtMail;
     private JButton btnSave;
     private JLabel lblName;
@@ -55,18 +57,18 @@ public class VModClient extends JPanel {
     private JLabel lblMail;
     private JPanel jpTopElements;
     private JPanel jpForm;
-    private static PharmaSquareDB db;
+    private static DataValidation dv;
     private DefaultComboBoxModel<String> dcbGender;
 
 
     public VModClient() {
-        txtIdClt.addFocusListener(new FocusAdapter() {
+        /*txtIdClt.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
                 super.focusGained(e);
                 txtIdClt.setText("Id");
             }
-        });
+        });*/
         txtName.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -134,6 +136,7 @@ public class VModClient extends JPanel {
         btnSave.setActionCommand(SAVE);
         btnDelete.setActionCommand(DELETE);
         btnSearch.setActionCommand(SEARCH);
+        btnBack.setActionCommand(EXIT);
 
     }
 
@@ -162,6 +165,58 @@ public class VModClient extends JPanel {
         return  name;
     }
 
+    public Cliente getClientInfo() {
+        dv = new DataValidation();
+
+        Cliente c = null;
+
+        String nombre = txtName.getText();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debes introducir un nombre",
+                    "Error de datos", JOptionPane.ERROR_MESSAGE);
+        }else {
+            String dni = txtDni.getText();
+            if (dni.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Debes introducir el DNI del cliente",
+                        "Error de datos", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String fecNac = txtFecNac.getText();
+                if (fecNac.isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Debes introducir la Fecha de nacimiento",
+                            "Error de datos", JOptionPane.ERROR_MESSAGE);
+                }else {
+                    String sexo = (String) cmbGender.getSelectedItem();
+                    if(sexo.equals("Género")){
+                        JOptionPane.showMessageDialog(this, "Debes introducir el género",
+                                "Error de datos", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        String tfl = txtNumber.getText();
+                        if(tfl.isEmpty()){
+                            JOptionPane.showMessageDialog(this, "Debes introducir un número de teléfono",
+                                    "Error de datos", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            String dir = txtAddress.getText();
+                            if ( dir.isEmpty()){
+                                JOptionPane.showMessageDialog(this, "Debes introducir una dirección",
+                                        "Error de datos", JOptionPane.ERROR_MESSAGE);
+                            } else {
+                                String mail = txtMail.getText();
+                                if (mail.isEmpty()) {
+                                    JOptionPane.showMessageDialog(this, "Debes introducir correo electrónico",
+                                            "Error de datos", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                    c = new Cliente(dni, nombre, dir, fecNac, sexo, tfl, mail);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return c;
+    }
+
     /**
      * method that receives the complete information of a client
      * and display it
@@ -170,13 +225,11 @@ public class VModClient extends JPanel {
     public void loadData(Cliente c){
         enableAll();
         txtName.setText(c.getNombre());
-        //txtSurname.setText(c.get);
         txtDni.setText(c.getDni());
         txtFecNac.setText(c.getNacimiento());
         cmbGender.setSelectedItem(c.getSexo());
         txtNumber.setText(c.getTelefono());
         txtAddress.setText(c.getDireccion());
-        //cmbTown.setSelectedItem(c.get);
         txtMail.setText(c.getMail());
 
     }
@@ -184,13 +237,11 @@ public class VModClient extends JPanel {
     private void enableAll() {
         txtIdClt.setEnabled(false);
         txtName.setEnabled(true);
-        txtSurname.setEnabled(true);
         txtDni.setEnabled(true);
         txtFecNac.setEnabled(true);
         cmbGender.setEnabled(true);
         txtNumber.setEnabled(true);
         txtAddress.setEnabled(true);
-        cmbTown.setEnabled(true);
         txtMail.setEnabled(true);
     }
 
@@ -198,34 +249,30 @@ public class VModClient extends JPanel {
      * method that only allows to edit text area of the first JTextField
      * for the search and cleans the rest of the components
      */
-    private void disableAllExceptTxtId() {
+    public void disableAllExceptTxtId() {
         txtIdClt.setEnabled(true);
 
         txtName.setText("");
-        txtSurname.setText("");
         txtDni.setText("");
         txtFecNac.setText("");
         cmbGender.setSelectedIndex(0);
         txtNumber.setText("");
         txtAddress.setText("");
-        cmbTown.setSelectedIndex(0);
         txtMail.setText("");
 
         txtName.setEnabled(false);
-        txtSurname.setEnabled(false);
         txtDni.setEnabled(false);
         txtFecNac.setEnabled(false);
         cmbGender.setEnabled(false);
         txtNumber.setEnabled(false);
         txtAddress.setEnabled(false);
-        cmbTown.setEnabled(false);
         txtMail.setEnabled(false);
     }
 
     public void updateHour() {
         btnClock.setText("00:00h");
-        Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Timer timer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnClock.setText(getCurrentHour());
             }
         });
@@ -237,8 +284,8 @@ public class VModClient extends JPanel {
         String hour = "";
         String minutes = "";
 
-        hour = String.valueOf(java.time.LocalTime.now().getHour());
-        minutes = String.valueOf(java.time.LocalTime.now().getMinute());
+        hour = String.valueOf(LocalTime.now().getHour());
+        minutes = String.valueOf(LocalTime.now().getMinute());
 
         if (hour.length() == 1) {
             hour = "0" + hour;
@@ -254,4 +301,5 @@ public class VModClient extends JPanel {
 
         return hour + ":" + minutes + "h";
     }
+
 }

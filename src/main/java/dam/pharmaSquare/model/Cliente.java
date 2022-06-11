@@ -31,6 +31,15 @@ public class Cliente {
         this.setTelefono(telefono);
         this.setMail(mail);
     }
+    public Cliente(String dni, String nombre, String direccion, String nacimiento,
+                   String sexo, String telefono, String mail) {
+        this.setNombre(nombre);
+        this.setDireccion(direccion);
+        this.setNacimiento(nacimiento);
+        this.setSexo(sexo);
+        this.setTelefono(telefono);
+        this.setMail(mail);
+    }
 
     // CHECKERS
     /**
