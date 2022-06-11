@@ -422,6 +422,11 @@ public class PharmaSquareDB extends AccessDB {
         }
     }
 
+    /**
+     * Modifica los valores del cliente dado. Se pueden modificar todos los campos menos el DNI.
+     * @param c Cliente con los valores actualizados.
+     * @return Código resultado al realizar la ejecución.
+     */
     public int modCliente(Cliente c) {
         String query = String.format(
             "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",
