@@ -1,11 +1,14 @@
 package pharmaSquare.db;
 
+import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.CategoriaProducto;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertThrows;
 
 public class CategoriaProductoTest {
     private static PharmaSquareDB db;
@@ -21,6 +24,13 @@ public class CategoriaProductoTest {
         System.out.println("--------------------------");
         printCategorias(db.getCategorias());
         System.out.println("--------------------------");
+    }
+
+    @Test
+    public void addCategoria() {
+        assertThrows(InvalidDataException.class, () -> {db.addCategoria(null);});
+
+        db.addCategoria("Homeopatía");
     }
 
     // TOOLS
