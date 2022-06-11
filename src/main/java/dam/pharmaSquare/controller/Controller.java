@@ -184,57 +184,41 @@ public class Controller implements ActionListener {
             } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {
                 vWindows.loadPanel(vCheckPersonal);
             } else if (e.getActionCommand().equals(VModClient.SEARCH)) {
-                /* String user = vModClient.getTextFieldValue();
-                if(user != null) {
-                Cliente cliente = pharmaSquareDB.getClient(user)
-                    if(cliente != null) {
-                    vModClient.loadData(cliente);
-                    } else {
-                        JOptionPane.showMessageDialog(vModClient, "No se han encontrado datos para el usuario introducido",
-                                "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(vModClient, "No se han introducido datos",
-                                "Error", JOptionPane.ERROR_MESSAGE);
-                */
+                vModClient.loadData(pharmaSquareDB.getCliente(vModClient.,vModClient.getTextFieldValue()));
             } else if (e.getActionCommand().equals(VModClient.DELETE)) {
-                /* String user = vModClient.getTextFieldValue();
-                if(user != null) {
-                     int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar a este cliente?",
+                int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar a este cliente?",
                         "Confirmar borrado", JOptionPane.YES_NO_OPTION);
-                     if (resp == 0) {
-                        if (res > 1){
-                           JOptionPane.showMessageDialog(vModClient, "Se ha eliminado al cliente",
-                                   "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                           vModClient.disableAllExceptTxtId();
-                       } else {
-                           JOptionPane.showMessageDialog(vModClient, "No se han podido eliminar al cliente",
-                                   "Error", JOptionPane.ERROR_MESSAGE);
-                       }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(vModClient, "No se han introducido datos",
+                if (resp == 0) {
+                    int res = pharmaSquareDB.delCliente(vModClient.,vModClient.getTextFieldValue());
+                    if (res > 1){
+                        JOptionPane.showMessageDialog(vModClient, "Se ha eliminado al cliente",
+                                "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                        vModClient.disableAllExceptTxtId();
+                    } else {
+                        JOptionPane.showMessageDialog(vModClient, "No se han podido eliminar al cliente",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                */
+                    }
+                }
+
             } else if (e.getActionCommand().equals(VModClient.SAVE)) {
-                /*Cliente cliente = vModClient.getClientInfo();
-                if(user != null) {
+                Cliente cliente = vModClient.getClientInfo();
+                if(cliente != null) {
                     int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modificar la" +
                                     " información de este cliente?",
                             "Confirmar modificar ciente", JOptionPane.YES_NO_OPTION);
                     if (resp == 0) {
-                       int res = pharmaSquareDB.updateCliente(cliente);
+                        int res = pharmaSquareDB.modCliente(cliente);
 
-                       if (res > 1){
-                           JOptionPane.showMessageDialog(vModClient, "Se han modificado los datos del cliente",
-                                   "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                           vModClient.disableAllExceptTxtId();
-                       } else {
-                           JOptionPane.showMessageDialog(vModClient, "No se han podido modificar los datos del cliente",
-                                   "Error", JOptionPane.ERROR_MESSAGE);
-                       }
+                        if (res > 1) {
+                            JOptionPane.showMessageDialog(vModClient, "Se han modificado los datos del cliente",
+                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                            vModClient.disableAllExceptTxtId();
+                        } else {
+                            JOptionPane.showMessageDialog(vModClient, "No se han podido modificar los datos del cliente",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
-               */
+                }
             }  else if (e.getActionCommand().equals(VModClient.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
             }

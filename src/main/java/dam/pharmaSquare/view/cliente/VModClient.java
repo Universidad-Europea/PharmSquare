@@ -231,7 +231,6 @@ public class VModClient extends JPanel {
         txtNumber.setText(c.getTelefono());
         txtAddress.setText(c.getDireccion());
         txtMail.setText(c.getMail());
-
     }
 
     private void enableAll() {
