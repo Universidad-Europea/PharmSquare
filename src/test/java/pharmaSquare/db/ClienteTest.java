@@ -1,16 +1,14 @@
 package pharmaSquare.db;
 
+import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
-import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.persistencia.PCliente;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class ClienteTest {
     private static PharmaSquareDB db;
@@ -40,5 +38,20 @@ public class ClienteTest {
                 "321 321 321",
                 "maria@gmail.com"
         ));
+    }
+
+    @Test
+    public void getCliente() {
+        assertThrows(InvalidDataException.class, () -> {db.getCliente("invalidField", "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.DNI, "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.NOMBRE, "ho321a");});
+
+        assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.DNI, "12341234R");});
+        assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.NOMBRE, "estenombrenoesvalido");});
+
+        System.out.println(db.getCliente(PCliente.DNI, "123456789A"));
+        System.out.println(db.getCliente(PCliente.NOMBRE, "Juan Garcia"));
+        System.out.println(db.getCliente(PCliente.NOMBRE, "juan garcia"));
+
     }
 }
