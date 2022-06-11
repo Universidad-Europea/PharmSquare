@@ -47,4 +47,21 @@ public class CategoriaProducto {
         isNombreValid(nombre);
         this.nombre = nombre;
     }
+
+    // GETTERS
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String toString() {
+        return String.format(
+            "Categoría producto:\n  - ID: %s\n  - Nombre: %s\n",
+            getId(), getNombre()
+        );
+    }
 }
