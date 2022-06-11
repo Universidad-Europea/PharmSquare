@@ -172,6 +172,13 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2categoria(SQLiteQuery.get(this, 2, query));
     }
 
+    /**
+     * Obtiene el cliente usando el campo y el valor dado. Si algo no es correcto, una excepción es lanzada.
+     * @param field Tiene que ser PCliente.DNI o PCliente.NOMBRE.
+     * @param fieldValue El valor que tiene el campo dado. Este tiene que ser válido.
+     * @return El cliente solicitado.
+     * @throws InvalidDataException
+     */
     public Cliente getCliente(String field, String fieldValue) throws InvalidDataException {
         if (field != PCliente.DNI && field != PCliente.NOMBRE)
             throw new InvalidDataException("El campo field tiene que ser PCliente.DNI o PCliente.NOMBRE");
