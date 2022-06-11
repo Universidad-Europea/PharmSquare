@@ -63,7 +63,6 @@ public class VAddModCategory extends JPanel {
      */
     private void init(){
         scrpTable.setViewportView(tblCtg);
-
         configTable();
     }
 
