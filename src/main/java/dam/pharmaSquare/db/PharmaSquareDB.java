@@ -431,10 +431,11 @@ public class PharmaSquareDB extends AccessDB {
      * @return Código resultado al ejecutar la sentencia.
      */
     public int delProducto(String nombre) {
+        Producto.isNombreValid(nombre);
         String query = String.format(
-                "DELETE FROM %s WHERE %s = ?;",
-                PProducto.TABLE_NAME,
-                PProducto.NOMBRE
+            "DELETE FROM %s WHERE UPPER(%s) = UPPER(?);",
+            PProducto.TABLE_NAME,
+            PProducto.NOMBRE
         );
         return (SQLiteQuery.execute(this, query,  nombre));
     }
