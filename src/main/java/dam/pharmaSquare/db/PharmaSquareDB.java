@@ -332,6 +332,12 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
+    /**
+     * Añade una nueva categoría a la base de datos.
+     * @param categoria Nueva categoría que añadir.
+     * @return Resultado al ejecutar la sentencia.
+     * @throws InvalidDataException
+     */
     public int addCategoria(String categoria) throws InvalidDataException {
         CategoriaProducto.isNombreValid(categoria);
         String query = String.format(
