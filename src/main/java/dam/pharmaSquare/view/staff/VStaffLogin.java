@@ -55,7 +55,6 @@ public class VStaffLogin extends JPanel {
     }
 
     private String getCurrentHour() {
-        //Get hour and minutes from the system
         String hour = "";
         String minutes = "";
 
@@ -95,7 +94,6 @@ public class VStaffLogin extends JPanel {
         return valid;
     }
 
-    // Geetters
     public JButton getBtnBack() {
         return btnBack;
     }

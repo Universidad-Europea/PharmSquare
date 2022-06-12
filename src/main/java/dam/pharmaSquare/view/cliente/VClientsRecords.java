@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VClientsRecords extends JPanel {
-    public static final String SEARCH = "BUSCAR";
-    public static final String EXIT = "VOLVER A STAFFMENU";
-
     private JPanel jpBody;
     private JPanel jpTopElements;
     private JButton btnBack;
@@ -49,13 +46,10 @@ public class VClientsRecords extends JPanel {
 
         cmbDate.setModel(new DefaultComboBoxModel<String> (PharmaSquareDB.DATE));
 
-
         db = new PharmaSquareDB();
         ArrayList<Transaccion> list = db.getTransacciones(null, null, false);
         loadTable(list);
 
-        btnSearch.setActionCommand(SEARCH);
-        btnBack.setActionCommand(EXIT);
     }
 
 
@@ -64,13 +58,49 @@ public class VClientsRecords extends JPanel {
 
         ArrayList<Producto> list = db.getProductos(true);
 
+        cmbProd.addItem("Todos");
         for (Producto p : list) {
             cmbProd.addItem(p.getNombre());
         }
     }
 
+    public void checkSearch() {
+            String dni = txtDniClt.getText();
+            String prod = (String) cmbProd.getSelectedItem();
+            boolean cmbdDate;
+
+            if (cmbDate.getSelectedItem() == "MÁS ANTIGUO") {
+                cmbdDate = false;
+            } else {
+                cmbdDate = true;
+            }
+
+            if (dni.equals("") && prod.equals("")) {
+                System.out.println("No se ha introducido ningun parametro");
+                ArrayList<Transaccion> list = db.getTransacciones(null, null, cmbdDate);
+                loadTable(list);
+            } else if (!dni.equals("") || prod.contains("Todos")) {
+                System.out.println("Todos");
+                ArrayList<Transaccion> list = db.getTransacciones(null, null, cmbdDate);
+                loadTable(list);
+            } else if (dni.equals("") && !prod.equals("")) {
+                System.out.println("Producto");
+                ArrayList<Transaccion> list = db.getTransacciones(null, prod, cmbdDate);
+                loadTable(list);
+            } else if (!dni.equals("") && prod.equals("")) {
+                System.out.println("DNI");
+                ArrayList<Transaccion> list = db.getTransacciones(dni, null, cmbdDate);
+                loadTable(list);
+                // else if todos prod
+            } else {
+                System.out.println("DNI y Producto");
+                ArrayList<Transaccion> list = db.getTransacciones(dni, prod, cmbdDate);
+                loadTable(list);
+            }
+
+    }
+
     private void configTable() {
-        // declare DefaultTableModel and disable cell editing
         dtmRecords = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -105,23 +135,7 @@ public class VClientsRecords extends JPanel {
             fila[2] = t.getIdProducto();
             fila[3] = t.getCantidad();
             dtmRecords.addRow(fila);
-            }
-    }
-
-    /**
-     * method that return a String with the value of the JComboBox
-     * @return type JComboBox value
-     */
-    public boolean getComboBoxDValue(){
-        String type = (String) cmbDate.getSelectedItem();
-        if (type.equals(PharmaSquareDB.DATE[0]))return true;
-
-        return  false;
-    }
-
-    public String getComboBoxPValue(){
-        String type = (String) cmbProd.getSelectedItem();
-        return  type;
+        }
     }
 
     /**
@@ -139,7 +153,7 @@ public class VClientsRecords extends JPanel {
     }
 
     private void configFields() {
-        setDefault();
+        defaultAll();
 
         txtDniClt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -147,11 +161,6 @@ public class VClientsRecords extends JPanel {
                 txtDniClt.setForeground(new java.awt.Color(0, 0, 0));
             }
         });
-    }
-
-    private void setDefault() {
-        txtDniClt.setText("Id Cliente");
-        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
     }
 
     public void updateHour() {
@@ -187,5 +196,16 @@ public class VClientsRecords extends JPanel {
         return hour + ":" + minutes + "h";
     }
 
+    public JButton getBtnBack() {
+        return btnBack;
+    }
 
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void defaultAll() {
+        cmbDate.setSelectedIndex(0);
+        cmbProd.setSelectedIndex(0);
+    }
 }

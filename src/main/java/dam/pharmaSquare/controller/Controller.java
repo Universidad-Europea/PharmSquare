@@ -106,7 +106,7 @@ public class Controller implements ActionListener {
                 vInicio.setDefault();
 // ***** STAFF *****
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
-               vInicio.setDefault();
+                vInicio.setDefault();
                 vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(vStaffMenu.EXIT)){
                 vWindows.loadPanel(vInicio);
@@ -116,9 +116,13 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
+
             }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
+               // vWindows.loadPanel();
+
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
                 vWindows.loadPanel(vClientsRecords);
-            }else if (e.getActionCommand().equals(vStaffMenu.MANAGE_EMP)){
+            }else if (e.getActionCommand().equals(vStaffMenu.MNG_PERSONAL)){
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
                 vWindows.loadPanel(vCheckPersonal);
@@ -257,6 +261,12 @@ public class Controller implements ActionListener {
             } else if (button == vAddModCategory.getBtnBack()) {
                 vAddModCategory.cleanComponents();
                 vWindows.loadPanel(vStaffMenu);
+                // Transacciones asdas
+            } else if (button == vClientsRecords.getBtnBack()) {
+                vClientsRecords.defaultAll();
+                vWindows.loadPanel(vStaffMenu);
+            } else if (button == vClientsRecords.getBtnSearch()) {
+                vClientsRecords.checkSearch();
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
                 CategoriaProducto catg = vAddModCategory.getTextFieldValueModC();
                 if (catg != null) {
@@ -277,10 +287,10 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            } else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
-                vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
-            }else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
-                vWindows.loadPanel(vStaffMenu);
+                //} else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
+                //    vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
+                //}else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
+                //    vWindows.loadPanel(vStaffMenu);
             }
         }
     }
