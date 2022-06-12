@@ -473,6 +473,21 @@ public class PharmaSquareDB extends AccessDB {
         );
     }
 
+    /**
+     * Renombra la categoría introduccida por argumento con el nombre dado.
+     * @param c Categoría con el nuevo nombre.
+     * @return Código resultado de ejutar la secuencia SQL.
+     */
+    public int modCategoria(CategoriaProducto c) {
+        String query = String.format(
+            "UPDATE %s SET %s = ? WHERE %s = ?",
+            PCategoriaProducto.TABLE_NAME,
+            PCategoriaProducto.NOMBRE,
+            PCategoriaProducto.PK
+        );
+        return SQLiteQuery.execute(this, query, c.getNombre(), c.getId());
+    }
+
     // Remove
 
     /**
