@@ -2,6 +2,8 @@ package dam.pharmaSquare.model.persistencia;
 
 /**
  * Representación de la conexión entre productos y categorías en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class PCategoriasProducto {
     public static final String ID_PRODUCTO = "ID_PRODUCTO";

@@ -4,6 +4,7 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.CategoriaProducto;
 import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.persistencia.PCliente;
@@ -120,9 +121,7 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vAddPersonal);
             }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
                 vWindows.loadPanel(vCheckPersonal);
-            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
-                //TODO: Ver clientes
-            } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
+            }else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vStaffLogin.setDefault();
             } else if (button == vAddCliente.getBtnCancel()) {
@@ -245,42 +244,44 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VModClient.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
-                String catg = vAddModCategory.getTextFieldValueNewC().trim();
+            } else if (e.getActionCommand().equals(VAddModCategory.MODIFY)){
+                CategoriaProducto catg = vAddModCategory.getTextFieldValueNewC();
                 if (catg != null) {
-                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres añadir la" +
-                                    " categoria " + catg.toUpperCase() +" ?",
-                            "Nueva categoría", JOptionPane.YES_NO_OPTION);
-                    if (resp == 0) {
-                        int res = pharmaSquareDB.addCategoria(catg);
-                        if (res > 1) {
-                            JOptionPane.showMessageDialog(vModClient, "Nueva categoría añadida",
-                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                            vModClient.disableAllExceptTxtId();
-                        } else {
-                            JOptionPane.showMessageDialog(vModClient, "No se ha podido añadir la categoria" + catg.toUpperCase(),
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                }
-            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
-                /*String catg = vAddModCategory.getTextFieldValueModC().trim();
-                if (catg != null) {
-                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modificar la" +
-                                    " categoría " + catg.toUpperCase() +" ?",
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres modicar la" +
+                                    " categoría " + catg.getNombre().toUpperCase() +" ?",
                             "Modificar categoría", JOptionPane.YES_NO_OPTION);
                     if (resp == 0) {
                         int res = pharmaSquareDB.modCategoria(catg);
                         if (res > 1) {
                             JOptionPane.showMessageDialog(vModClient, "Categoría modificada",
                                     "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                            vModClient.disableAllExceptTxtId();
+                            vAddModCategory.cleanComponents();
                         } else {
-                            JOptionPane.showMessageDialog(vModClient, "No se ha podido modficar la categoría" + catg.toUpperCase(),
+                            JOptionPane.showMessageDialog(vModClient, "No se ha podido modificar la categoria" + catg.getNombre().toUpperCase(),
                                     "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
-                }*/
+                }
+            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
+                vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
+            }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
+                String catg = vAddModCategory.getTextFieldValueModC();
+                if (catg != null) {
+                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres anadir la" +
+                                    " categoría " + catg.toUpperCase() +" ?",
+                            "Nueva categoría", JOptionPane.YES_NO_OPTION);
+                    if (resp == 0) {
+                        int res = pharmaSquareDB.addCategoria(catg);
+                        if (res > 1) {
+                            JOptionPane.showMessageDialog(vModClient, "Categoría añadida",
+                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                            vAddModCategory.cleanComponents();
+                        } else {
+                            JOptionPane.showMessageDialog(vModClient, "No se ha podido añadir la categoría" + catg.toUpperCase(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
             } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
