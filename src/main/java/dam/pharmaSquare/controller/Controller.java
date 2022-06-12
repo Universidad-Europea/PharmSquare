@@ -249,12 +249,11 @@ public class Controller implements ActionListener {
                 // TOCAAAAR COSAS. MARIA TE MATO
             } else if (button == vAddModCategory.getBtnSaveNewCtg()) {
                 vAddModCategory.addCategory();
-                System.out.println("Se ha añadido una nueva categoría");
             } else if (button == vAddModCategory.getBtnModifyCtg()) {
                 vAddModCategory.modCategory();
-                System.out.println("Se ha modificado una categoría");
-            //} else if (e.getActionCommand().equals(VAddModCategory.MODIFICAR)){
-             //   vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
+            } else if (button == vAddModCategory.getBtnBack()) {
+                vAddModCategory.cleanComponents();
+                vWindows.loadPanel(vStaffMenu);
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
                 CategoriaProducto catg = vAddModCategory.getTextFieldValueModC();
                 if (catg != null) {

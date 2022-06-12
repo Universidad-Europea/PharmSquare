@@ -152,6 +152,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font style="1"/>
               <text value="Seleccione una categoría"/>
             </properties>
           </component>
@@ -182,7 +183,7 @@
               <grid row="5" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <icon value="img/buttons/guardar.png"/>
+              <icon value="img/buttons/savev2.png"/>
               <text value="Guardar"/>
             </properties>
           </component>
@@ -191,7 +192,7 @@
               <grid row="10" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <icon value="img/buttons/edit.png"/>
+              <icon value="img/buttons/editv2.png"/>
               <text value="Modificar"/>
             </properties>
           </component>

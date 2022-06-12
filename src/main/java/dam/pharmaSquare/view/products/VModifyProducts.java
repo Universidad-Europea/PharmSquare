@@ -173,7 +173,6 @@ public class VModifyProducts extends JPanel {
         btnGuardar.addActionListener(controller);
         btnModificar.addActionListener(controller);
     }
-
 }
 
 

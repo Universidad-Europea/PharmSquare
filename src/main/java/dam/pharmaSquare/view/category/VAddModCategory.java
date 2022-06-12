@@ -179,6 +179,7 @@ public class VAddModCategory extends JPanel {
         txtNewCtgName.setText("");
         txtCtgMod.setText("");
         lblId.setText("");
+
     }
 
     public void updateHour () {
@@ -222,6 +223,10 @@ public class VAddModCategory extends JPanel {
 
     public JButton getBtnModifyCtg() {
         return btnModifyCtg;
+    }
+
+    public JButton getBtnBack() {
+        return btnBack;
     }
 
     public void modCategory() {
