@@ -19,7 +19,7 @@ public class Producto {
     private String foto;
     private boolean necesitaLogin;
 
-    public Producto(Integer id, String utilidad, String nombre, String laboratorio, double precio, int stock,
+    public Producto(int id, String utilidad, String nombre, String laboratorio, double precio, int stock,
                     String foto, String necesitaLogin) throws InvalidDataException {
         this.setId(id);
         this.setUtilidad(utilidad);
