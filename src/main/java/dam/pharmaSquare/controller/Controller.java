@@ -106,7 +106,7 @@ public class Controller implements ActionListener {
                 vInicio.setDefault();
 // ***** STAFF *****
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
-               vInicio.setDefault();
+                vInicio.setDefault();
                 vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(vStaffMenu.EXIT)){
                 vWindows.loadPanel(vInicio);
@@ -285,10 +285,10 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            //} else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
-            //    vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
-            //}else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
-            //    vWindows.loadPanel(vStaffMenu);
+                //} else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
+                //    vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
+                //}else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
+                //    vWindows.loadPanel(vStaffMenu);
             }
         }
     }

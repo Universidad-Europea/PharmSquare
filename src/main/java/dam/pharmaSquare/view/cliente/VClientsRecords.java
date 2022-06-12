@@ -63,17 +63,15 @@ public class VClientsRecords extends JPanel {
 
         ArrayList<Producto> list = db.getProductos(true);
 
+        cmbProd.addItem("Todos");
         for (Producto p : list) {
             cmbProd.addItem(p.getNombre());
         }
     }
 
     public void checkSearch() {
-
-        if (txtDniClt.getText().matches("\\d+")) {
             String dni = txtDniClt.getText();
             String prod = (String) cmbProd.getSelectedItem();
-            //String cmbdDate = (String) cmbDate.getSelectedItem();
             boolean cmbdDate;
 
             if (cmbDate.getSelectedItem() == "MÁS ANTIGUO") {
@@ -82,18 +80,28 @@ public class VClientsRecords extends JPanel {
                 cmbdDate = true;
             }
 
-            ArrayList<Transaccion> list = db.getTransacciones(dni, prod, cmbdDate);
-
-            for (Transaccion t : list) {
-                System.out.println(t.toString());
+            if (dni.equals("") && prod.equals("")) {
+                System.out.println("No se ha introducido ningun parametro");
+                ArrayList<Transaccion> list = db.getTransacciones(null, null, cmbdDate);
+                loadTable(list);
+            } else if (!dni.equals("") || prod.contains("Todos")) {
+                System.out.println("Todos");
+                ArrayList<Transaccion> list = db.getTransacciones(null, null, cmbdDate);
+                loadTable(list);
+            } else if (dni.equals("") && !prod.equals("")) {
+                System.out.println("Producto");
+                ArrayList<Transaccion> list = db.getTransacciones(null, prod, cmbdDate);
+                loadTable(list);
+            } else if (!dni.equals("") && prod.equals("")) {
+                System.out.println("DNI");
+                ArrayList<Transaccion> list = db.getTransacciones(dni, null, cmbdDate);
+                loadTable(list);
+                // else if todos prod
+            } else {
+                System.out.println("DNI y Producto");
+                ArrayList<Transaccion> list = db.getTransacciones(dni, prod, cmbdDate);
+                loadTable(list);
             }
-
-            loadTable(list);
-        }else {
-            JOptionPane.showMessageDialog(null, "El ID debe ser un número");
-        }
-
-
 
     }
 
@@ -219,8 +227,6 @@ public class VClientsRecords extends JPanel {
     }
 
     public void defaultAll() {
-        txtDniClt.setText("Id Cliente");
-        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
         cmbDate.setSelectedIndex(0);
         cmbProd.setSelectedIndex(0);
     }
