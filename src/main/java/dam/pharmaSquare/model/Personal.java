@@ -6,6 +6,8 @@ import dam.pharmaSquare.model.persistencia.PPersonal;
 
 /**
  * Personal de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class Personal {
     private String dni;

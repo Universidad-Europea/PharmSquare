@@ -5,6 +5,8 @@ import dam.exception.InvalidDataException;
 
 /**
  * Transacción de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class Transaccion {
     private String dni;

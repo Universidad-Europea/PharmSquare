@@ -6,6 +6,8 @@ import dam.pharmaSquare.model.persistencia.PCliente;
 
 /**
  * Cliente de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class Cliente {
 

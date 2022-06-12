@@ -5,6 +5,8 @@ import dam.exception.InvalidDataException;
 
 /**
  * Categoria de un producto de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class CategoriaProducto {
     private Integer id;

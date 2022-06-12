@@ -2,6 +2,8 @@ package dam.pharmaSquare.model.persistencia;
 
 /**
  * Representación de una transacción en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class PTransaccion {
     public static final String DNI = "DNI_CLIENTE";
