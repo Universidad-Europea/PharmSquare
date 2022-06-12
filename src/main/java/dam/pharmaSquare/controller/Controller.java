@@ -116,9 +116,17 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
+<<<<<<< HEAD
             }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
                // vWindows.loadPanel();
             }else if (e.getActionCommand().equals(vStaffMenu.MANAGE_EMP)){
+=======
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
+                vWindows.loadPanel(vClientsRecords);
+            }else if (e.getActionCommand().equals(vStaffMenu.ADD_EMPLOYEE)){
+                vWindows.loadPanel(vAddPersonal);
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
+>>>>>>> 7dd94503d386c519dc04e8176094fd9dd64fb2ec
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
                 vWindows.loadPanel(vCheckPersonal);
@@ -257,6 +265,12 @@ public class Controller implements ActionListener {
             } else if (button == vAddModCategory.getBtnBack()) {
                 vAddModCategory.cleanComponents();
                 vWindows.loadPanel(vStaffMenu);
+                // Transacciones asdas
+            } else if (button == vClientsRecords.getBtnBack()) {
+                vClientsRecords.defaultAll();
+                vWindows.loadPanel(vStaffMenu);
+            } else if (button == vClientsRecords.getBtnSearch()) {
+                vClientsRecords.checkSearch();
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
                 CategoriaProducto catg = vAddModCategory.getTextFieldValueModC();
                 if (catg != null) {
@@ -277,10 +291,10 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            } else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
-                vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
-            }else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
-                vWindows.loadPanel(vStaffMenu);
+            //} else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
+            //    vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
+            //}else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
+            //    vWindows.loadPanel(vStaffMenu);
             }
         }
     }
