@@ -1,13 +1,12 @@
 package dam.pharmaSquare.view.cliente;
 
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Cliente;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class VModClient extends JPanel {
      * @return the component argument
      */
 
-    public void VAddModCategory(){
+    public VModClient(){
         add(jpBody);
         updateHour();
         init();
@@ -76,9 +75,10 @@ public class VModClient extends JPanel {
      * initializes the Swing components
      */
     public void init(){
-        configFields();
+        //configFields();
         disableAllExceptTxtId();
-        loadCmb();
+
+        cmbGender.setModel(new DefaultComboBoxModel<String> (PharmaSquareDB.GENDER));
 
         btnSave.setActionCommand(SAVE);
         btnDelete.setActionCommand(DELETE);
@@ -91,8 +91,8 @@ public class VModClient extends JPanel {
      * method that configures prompt text to the Swing components
      */
 
-    private void configFields() {
-        setDefaul();
+   /* private void configFields() {
+        setDefault();
 
         txtName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -138,7 +138,7 @@ public class VModClient extends JPanel {
 
     }
 
-    private void setDefaul() {
+    private void setDefault() {
         txtIdClt.setText("Id");
         txtName.setText("Nombre completo");
         txtDni.setText("12345678A");
@@ -146,13 +146,7 @@ public class VModClient extends JPanel {
         txtNumber.setText("123456789");
         txtAddress.setText("Calle, Avenida ...");
     }
-
-    private void loadCmb() {
-        cmbGender.setModel(dcbGender);
-        dcbGender.removeAllElements();
-        dcbGender.addElement("Género");
-        dcbGender.addAll(List.of(GENDER_LIST));
-    }
+*/
 
     /**
      * method that receives a controller and applies it to the elements to be heard
@@ -208,7 +202,7 @@ public class VModClient extends JPanel {
         txtMail.setText(c.getMail());
     }
 
-    private void enableAll() {
+    public void enableAll() {
         txtIdClt.setEnabled(false);
         txtName.setEnabled(true);
         txtDni.setEnabled(false);
@@ -229,7 +223,7 @@ public class VModClient extends JPanel {
         txtName.setText("");
         txtDni.setText("");
         txtFecNac.setText("");
-        cmbGender.setSelectedIndex(0);
+        //cmbGender.setSelectedIndex(1);
         txtNumber.setText("");
         txtAddress.setText("");
         txtMail.setText("");

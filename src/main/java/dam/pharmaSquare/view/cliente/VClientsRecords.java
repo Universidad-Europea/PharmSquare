@@ -17,7 +17,6 @@ import java.util.List;
 public class VClientsRecords extends JPanel {
     public static final String SEARCH = "BUSCAR";
     public static final String EXIT = "VOLVER A STAFFMENU";
-    private static final String[] DATE = {"Más antiguo", "Más reciente"};
 
     private JPanel jpBody;
     private JPanel jpTopElements;
@@ -36,18 +35,20 @@ public class VClientsRecords extends JPanel {
     private static PharmaSquareDB db;
     private DefaultComboBoxModel<String> dcbDate;
 
-    public void VClientsRecords(){
+    public VClientsRecords(){
         add(jpBody);
         updateHour();
         init();
-
+        configFields();
     }
 
     public void init(){
         srpTable.setViewportView(tblRecords);
         configTable();
         loadDataCmbxP();
-        loadDataCmbxD();
+
+        cmbDate.setModel(new DefaultComboBoxModel<String> (PharmaSquareDB.DATE));
+
 
         db = new PharmaSquareDB();
         ArrayList<Transaccion> list = db.getTransacciones(null, null, false);
@@ -57,12 +58,6 @@ public class VClientsRecords extends JPanel {
         btnBack.setActionCommand(EXIT);
     }
 
-    private void loadDataCmbxD() {
-
-        dcbDate.removeAllElements();
-        dcbDate.addElement("Ordenar por:");
-        dcbDate.addAll(List.of(DATE));
-    }
 
     private void loadDataCmbxP() {
         db = new PharmaSquareDB();
@@ -119,7 +114,7 @@ public class VClientsRecords extends JPanel {
      */
     public boolean getComboBoxDValue(){
         String type = (String) cmbDate.getSelectedItem();
-        if (type.equals(DATE[0]))return true;
+        if (type.equals(PharmaSquareDB.DATE[0]))return true;
 
         return  false;
     }
@@ -143,6 +138,21 @@ public class VClientsRecords extends JPanel {
         btnSearch.addActionListener(c);
     }
 
+    private void configFields() {
+        setDefault();
+
+        txtDniClt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDniClt.setText("");
+                txtDniClt.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+    }
+
+    private void setDefault() {
+        txtDniClt.setText("Id Cliente");
+        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
+    }
 
     public void updateHour() {
         btnClock.setText("00:00h");

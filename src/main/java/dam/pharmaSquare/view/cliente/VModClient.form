@@ -167,7 +167,7 @@
             </constraints>
             <properties>
               <icon value="img/buttons/guardar.png"/>
-              <text value="Button"/>
+              <text value="Guardar"/>
             </properties>
           </component>
           <component id="a11c0" class="javax.swing.JTextField" binding="txtMail">

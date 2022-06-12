@@ -21,6 +21,8 @@ public class PharmaSquareDB extends AccessDB {
      * Criterios de ordenación que pueden tener los empleados en el menu VCheckPersonal
      */
     public static final String[] PERSONAL_FILTERS = {"A-Z", "Z-A", "EMPLEADO", "ADMINISTRATIVO"};
+    public static final String[] GENDER = {"FEMENINO", "MASCULINO", "OTROS"};
+    public static final String[] DATE = {"MÁS ANTIGUO", "MÁS RECIENTE"};
 
     public PharmaSquareDB() {
         super(FILE_PATH);

@@ -28,7 +28,7 @@ public class VAddModCategory extends JPanel {
 
     public static final String SAVE_NEW_C = "GUARDAR ";
     public static final String SAVE_CHANGES = "GUARDAR CAMBIOS";
-    public static final String MODIFY = "MODIFICAR";
+    public static final String MODIFICAR = "MODIFICAR";
     public static final String EXIT = "VOLVER A STAFFMENU";
 
     private JPanel jpBody;
@@ -46,7 +46,7 @@ public class VAddModCategory extends JPanel {
     private JTable tblCtg;
     private JScrollPane scrpTable;
     private JButton btnSaveNewCtg;
-    private JButton btnMod;
+    private JButton btnModifyCtg;
     private JLabel lblId;
     private DefaultTableModel dtmCtg;
     private static PharmaSquareDB db;
@@ -59,7 +59,7 @@ public class VAddModCategory extends JPanel {
      * @return the component argument
      */
 
-    public void VAddModCategory() {
+    public VAddModCategory() {
         init();
         add(jpBody);
         updateHour();
@@ -72,11 +72,25 @@ public class VAddModCategory extends JPanel {
         scrpTable.setViewportView(tblCtg);
         configTable();
         loadTable();
+        addCategory();
+        cleanComponents();
 
-        btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
-        btnMod.setActionCommand(MODIFY);
-        btnSaveChanges.setActionCommand(SAVE_CHANGES);
-        btnBack.setActionCommand(EXIT);
+        //btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
+        //btnModifyCtg.setActionCommand(MODIFICAR);
+        //btnSaveChanges.setActionCommand(SAVE_CHANGES);
+        //btnBack.setActionCommand(EXIT);
+    }
+
+    public void addCategory() {
+        btnSaveNewCtg.addActionListener(e -> {
+            String name = txtNewCtgName.getText();
+            if (name.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El nombre de la categoria no puede estar vacio");
+            } else {
+                db.addCategoria(name);
+                loadTable();
+            }
+        });
     }
 
     private void loadTable() {
@@ -94,8 +108,6 @@ public class VAddModCategory extends JPanel {
     }
 
     private void configTable() {
-        tblCtg.setModel(dtmCtg);
-
         // declare DefaultTableModel and disable cell editing
         dtmCtg = new DefaultTableModel() {
             @Override
@@ -104,6 +116,8 @@ public class VAddModCategory extends JPanel {
                 return false;
             }
         };
+
+        tblCtg.setModel(dtmCtg);
 
         //adding and setting the columns
         dtmCtg.addColumn(PCategoriaProducto.NOMBRE);
@@ -121,7 +135,7 @@ public class VAddModCategory extends JPanel {
     public void setController(Controller c) {
         btnSaveChanges.addActionListener(c);
         btnSaveNewCtg.addActionListener(c);
-        btnMod.addActionListener(c);
+        btnModifyCtg.addActionListener(c);
         btnBack.addActionListener(c);
     }
 
@@ -130,8 +144,8 @@ public class VAddModCategory extends JPanel {
      *
      * @return name JtextField text
      */
-    public CategoriaProducto getTextFieldValueNewC() {
-       return new CategoriaProducto(Integer. parseInt(lblId.getText()),txtNewCtgName.getText());
+    public CategoriaProducto getTextFieldValueModC() {
+       return new CategoriaProducto(Integer. parseInt(lblId.getText()),txtCtgMod.getText());
     }
 
     /**
@@ -139,9 +153,8 @@ public class VAddModCategory extends JPanel {
      *
      * @return name JtextField text
      */
-    public String getTextFieldValueModC() {
-        String name = txtNewCtgName.getText();
-        return name;
+    public String getTextFieldValueNewC() {
+        return txtNewCtgName.getText();
     }
 
     /**
@@ -205,5 +218,21 @@ public class VAddModCategory extends JPanel {
 
             return hour + ":" + minutes + "h";
         }
+
+    public JButton getBtnBack() {
+        return btnBack;
     }
+
+    public JButton getBtnSaveChanges() {
+        return btnSaveChanges;
+    }
+
+    public JButton getBtnSaveNewCtg() {
+        return btnSaveNewCtg;
+    }
+
+    public JButton getBtnModifyCtg() {
+        return btnModifyCtg;
+    }
+}
 

@@ -121,7 +121,9 @@
                 <preferred-size width="250" height="25"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value=""/>
+            </properties>
           </component>
           <component id="41350" class="javax.swing.JLabel" binding="lblModCtgNm">
             <constraints>
@@ -195,7 +197,7 @@
               <text value="Guardar cambios"/>
             </properties>
           </component>
-          <component id="f4318" class="javax.swing.JButton" binding="btnMod">
+          <component id="f4318" class="javax.swing.JButton" binding="btnModifyCtg">
             <constraints>
               <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -211,6 +213,7 @@
             <properties>
               <enabled value="false"/>
               <text value=""/>
+              <visible value="false"/>
             </properties>
           </component>
         </children>
