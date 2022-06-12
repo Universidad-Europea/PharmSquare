@@ -1,6 +1,5 @@
 package dam.pharmaSquare.controller;
 
-import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.dataValidation.BasicPasswordPolicy;
 import dam.pharmaSquare.db.PharmaSquareDB;
@@ -12,7 +11,7 @@ import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
 import dam.pharmaSquare.view.cliente.VClientsRecords;
 import dam.pharmaSquare.view.cliente.VModClient;
-import dam.pharmaSquare.view.personal.VAddPersonal;
+import dam.pharmaSquare.view.personal.VAddModPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.products.VModifyProducts;
@@ -26,7 +25,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Controller implements ActionListener {
 
@@ -39,7 +37,7 @@ public class Controller implements ActionListener {
     private VSeeNoLogProducts vSeeNoLogProducts;
     private VSeeLoginProducts vSeeLoginProducts;
     private VAddCliente vAddCliente;
-    private VAddPersonal vAddPersonal;
+    private VAddModPersonal vAddModPersonal;
     private VModifyProducts vModifyProducts;
     private VAddModCategory vAddModCategory;
     private VModClient vModClient;
@@ -60,8 +58,8 @@ public class Controller implements ActionListener {
 
     public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu,
                       VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts,
-                      VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory,
-                      VModClient vModClient, VClientsRecords vClientsRecords ,PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
+                      VAddCliente vAddCliente, VAddModPersonal vAddModPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory,
+                      VModClient vModClient, VClientsRecords vClientsRecords , PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -70,7 +68,7 @@ public class Controller implements ActionListener {
         this.vSeeNoLogProducts = vSeeNoLogProducts;
         this.vSeeLoginProducts = vSeeLoginProducts;
         this.vAddCliente = vAddCliente;
-        this.vAddPersonal = vAddPersonal;
+        this.vAddModPersonal = vAddModPersonal;
         this.vModifyProducts = vModifyProducts;
         this.vAddModCategory = vAddModCategory;
         this.vModClient = vModClient;
@@ -161,12 +159,12 @@ public class Controller implements ActionListener {
                     vCheckPersonal.fillTable(listaPersonal);
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.ADD_PERSONAL)) {
-                vAddPersonal.layoutAddPersonal();
-                vWindows.loadPanel(vAddPersonal);
+                vAddModPersonal.layoutAddPersonal();
+                vWindows.loadPanel(vAddModPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.EDIT)) {
                 personal = pharmaSquareDB.getPersonalbyName(vCheckPersonal.getTableRowPerName());
-                vAddPersonal.layoutModPersonal(personal);
-                vWindows.loadPanel(vAddPersonal);
+                vAddModPersonal.layoutModPersonal(personal);
+                vWindows.loadPanel(vAddModPersonal);
             } else if (e.getActionCommand().equals(VCheckPersonal.DELETE)) {
                 nombrePersonal = vCheckPersonal.getTableRowPerName();
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres eliminar el personal " + nombrePersonal + "?",
@@ -177,12 +175,12 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VCheckPersonal.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            } else if (e.getActionCommand().equals(VAddPersonal.CONFIRM)) {
+            } else if (e.getActionCommand().equals(VAddModPersonal.CONFIRM)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "Se añadirá el personal a lista ¿Está seguro?",
                         "Confirmar añadir personal", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     try {
-                        personal = vAddPersonal.getPersonal();
+                        personal = vAddModPersonal.getPersonal();
                         policy.validate(personal.getPasswd(), personal.getNombre());
                         pharmaSquareDB.addPersonal(personal);
                         vCheckPersonal.btnSearch.doClick();
@@ -193,12 +191,12 @@ public class Controller implements ActionListener {
 
                     }
                 }
-            } else if (e.getActionCommand().equals(VAddPersonal.MODIFY)) {
+            } else if (e.getActionCommand().equals(VAddModPersonal.MODIFY)) {
                 int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los datos del personal?",
                         "Confirmar modificar personal", JOptionPane.YES_NO_OPTION);
                 if (resp == 0) {
                     try {
-                        personal = vAddPersonal.getPersonal();
+                        personal = vAddModPersonal.getPersonal();
                         policy.validate(personal.getPasswd(), personal.getNombre());
                         pharmaSquareDB.modPersonal(personal);
                         vCheckPersonal.btnSearch.doClick();
@@ -208,9 +206,9 @@ public class Controller implements ActionListener {
                         JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            } else if (e.getActionCommand().equals(VAddPersonal.CLEAN)) {
-                vAddPersonal.cleanForm();
-            } else if (e.getActionCommand().equals(VAddPersonal.EXIT)) {
+            } else if (e.getActionCommand().equals(VAddModPersonal.CLEAN)) {
+                vAddModPersonal.cleanForm();
+            } else if (e.getActionCommand().equals(VAddModPersonal.EXIT)) {
                 vWindows.loadPanel(vCheckPersonal);
             } else if (e.getActionCommand().equals(VModClient.SEARCH)) {
                 vModClient.loadData(pharmaSquareDB.getCliente(PCliente.DNI, vModClient.getTextFieldValue()));

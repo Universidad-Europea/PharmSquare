@@ -116,8 +116,8 @@ public class VClientsRecords extends JPanel {
         dtmRecords.addColumn(PTransaccion.ID_PRODUCTO);
         dtmRecords.addColumn(PTransaccion.CANTIDAD);
 
-        tblRecords.getColumn(PTransaccion.FECHA).setPreferredWidth(120);
-        tblRecords.getColumn(PTransaccion.DNI).setPreferredWidth(100);
+        tblRecords.getColumn(PTransaccion.FECHA).setPreferredWidth(100);
+        tblRecords.getColumn(PTransaccion.DNI).setPreferredWidth(80);
         tblRecords.getColumn(PTransaccion.ID_PRODUCTO).setPreferredWidth(80);
         tblRecords.getColumn(PTransaccion.CANTIDAD).setPreferredWidth(40);
 

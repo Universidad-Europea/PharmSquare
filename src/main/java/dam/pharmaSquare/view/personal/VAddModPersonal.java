@@ -11,7 +11,7 @@ import javax.swing.*;
  * display a form and allows insert staff
  * this JPanel is composed of Swing elements
  */
-public class VAddPersonal extends JPanel {
+public class VAddModPersonal extends JPanel {
     /**
      * Import Swing elements of VAddPersonal.form and declares them,
      * also initialize some final String used in bellow methods
@@ -46,7 +46,7 @@ public class VAddPersonal extends JPanel {
      * @param jpBody This is the Jpanel how contains all the swing elements
      * @return the component argument
      */
-    public VAddPersonal() {
+    public VAddModPersonal() {
         add(jpBody);
         init();
         updateHour();
@@ -130,7 +130,7 @@ public class VAddPersonal extends JPanel {
         if (rdbtEmpleado.isSelected()) {
             categoria = "EMPLEADO";
         } else {
-            categoria = "ADMINISTRATIVO";
+            categoria = "ADMINISTRADOR";
         }
         String password = pwd.getText();
 
