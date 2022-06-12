@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="c6e06" binding="panelProducts" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c6e06" binding="panelProducts" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="0" right="10"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -22,7 +22,7 @@
         <children>
           <component id="69de3" class="javax.swing.JLabel" binding="lblTitleProductos">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16777216"/>
@@ -33,52 +33,32 @@
           </component>
           <vspacer id="3db3b">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="11f4c" class="javax.swing.JButton" binding="btnAddCategoria">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="45"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Añadir Categoria"/>
-            </properties>
-          </component>
-          <component id="574cc" class="javax.swing.JButton" binding="btnModCategoria">
+          <component id="11f4c" class="javax.swing.JButton" binding="btnAddModCategoria">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="45"/>
               </grid>
             </constraints>
             <properties>
-              <text value="Modificar Categoria"/>
+              <text value="Añadir / Modifcar Categorías"/>
             </properties>
           </component>
-          <component id="b9adb" class="javax.swing.JButton" binding="btnModificarProducts">
+          <component id="bc06" class="javax.swing.JButton" binding="btnAddModProducts">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="45"/>
               </grid>
             </constraints>
             <properties>
-              <text value="Modificar productos"/>
-            </properties>
-          </component>
-          <component id="bc06" class="javax.swing.JButton" binding="btnAddProducts">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="45"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Añadir productos"/>
+              <text value="Añadir / Modifcar productos"/>
             </properties>
           </component>
           <vspacer id="f3aa7">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
         </children>
@@ -201,14 +181,14 @@
               <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="cb94" class="javax.swing.JButton" binding="btnModificarClient">
+          <component id="cb94" class="javax.swing.JButton" binding="btnModDeltClient">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="45"/>
               </grid>
             </constraints>
             <properties>
-              <text value="Modificar cliente"/>
+              <text value="Modificar / Eliminar cliente"/>
             </properties>
           </component>
           <vspacer id="bb164">
@@ -218,22 +198,12 @@
           </vspacer>
           <component id="963d6" class="javax.swing.JButton" binding="btnHistorialClientes">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="45"/>
               </grid>
             </constraints>
             <properties>
               <text value="Historial de transacciones"/>
-            </properties>
-          </component>
-          <component id="63738" class="javax.swing.JButton" binding="btnEliminarCliente">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="45"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Eliminar cliente"/>
             </properties>
           </component>
         </children>

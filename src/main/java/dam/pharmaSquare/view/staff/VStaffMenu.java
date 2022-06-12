@@ -11,14 +11,11 @@ public class VStaffMenu extends JPanel {
     private JButton btnStaff;
     private JButton btnClock;
     private JLabel lblTitleProductos;
-    private JButton btnAddCategoria;
-    private JButton btnAddProducts;
-    private JButton btnModificarProducts;
-    private JButton btnModCategoria;
+    private JButton btnAddModCategoria;
+    private JButton btnAddModProducts;
     private JLabel lblClientesTitle;
     private JButton btnHistorialClientes;
-    private JButton btnModificarClient;
-    private JButton btnEliminarCliente;
+    private JButton btnModDeltClient;
     private JLabel lblEmpleados;
     private JButton btnAddEmple;
     private JButton btnModfEmple;
