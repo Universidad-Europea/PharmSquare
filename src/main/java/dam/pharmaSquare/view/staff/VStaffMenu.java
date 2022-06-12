@@ -18,8 +18,6 @@ public class VStaffMenu extends JPanel {
     private JButton btnModDeltClient;
     private JLabel lblEmpleados;
     private JButton btnAddEmple;
-    private JButton btnModfEmple;
-    private JButton btnEliminarEmple;
     private JButton btnVerClientes;
     private JButton btnVerPersonal;
 
