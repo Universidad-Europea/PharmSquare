@@ -174,7 +174,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param field Tiene que ser PCliente.DNI o PCliente.NOMBRE.
      * @param fieldValue El valor que tiene el campo dado. Este tiene que ser válido.
      * @return El cliente solicitado.
-     * @throws InvalidDataException
+     * @throws InvalidDataException Con el mensaje describiendo el error ocasionado.
      */
     public Cliente getCliente(String field, String fieldValue) throws InvalidDataException {
         if (field != PCliente.DNI && field != PCliente.NOMBRE)
@@ -209,6 +209,23 @@ public class PharmaSquareDB extends AccessDB {
             ));
 
         return result.get(0);
+    }
+
+    /**
+     * Obtiene todos los productos con sus correspondientes categorías.
+     * @return Arraylist con los datos pedidos
+     * @throws InvalidDataException Con el mensaje de error si algo falla.
+     */
+    public ArrayList<CategoriasProductos> getProductosCategorias() throws InvalidDataException {
+        String query = String.format(
+            "SELECT %s, %s FROM %s ORDER BY %s",
+            PCategoriasProducto.ID_PRODUCTO,
+            PCategoriasProducto.ID_CATEGORIA,
+            PCategoriasProducto.TABLE_NAME,
+            PCategoriasProducto.ID_PRODUCTO
+        );
+
+        return sqlite2categoriasProductos(SQLiteQuery.get(this, 2, query));
     }
 
     // CHECKERS
@@ -526,7 +543,7 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * Renombra la categoría introduccida por argumento con el nombre dado.
+     * Renombra la categoría introducida por argumento con el nombre dado.
      * @param c Categoría con el nuevo nombre.
      * @return Código resultado de ejutar la secuencia SQL.
      */
@@ -713,4 +730,39 @@ public class PharmaSquareDB extends AccessDB {
         return clientes;
     }
 
+    private ArrayList<CategoriasProductos> sqlite2categoriasProductos(ArrayList<Object[]> data) {
+        ArrayList<Producto> productos = getProductos(true);
+        ArrayList<CategoriaProducto> categorias = getCategorias();
+
+        ArrayList<CategoriasProductos> result = new ArrayList<>();
+
+        Object[] r;
+        boolean addit;
+        for (int i = 0; i < data.size(); i++) {
+            r = data.get(i);
+            addit = false;
+            if (i == 0)
+                addit = true;
+            else if ((int) r[0] != result.get(result.size() - 1).getProducto().getId())
+                addit = true;
+
+            if (addit) {
+                for (Producto p : productos) {
+                    if (p.getId() == (int) r[0]) {
+                        result.add(new CategoriasProductos(p, new ArrayList<CategoriaProducto>()));
+                        break;
+                    }
+                }
+            }
+
+            for (CategoriaProducto c : categorias) {
+                if (c.getId() == (int) r[1]) {
+                    result.get(result.size() - 1).getCategorias().add(c);
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
 }
