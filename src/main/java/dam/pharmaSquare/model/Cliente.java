@@ -1,6 +1,8 @@
 package dam.pharmaSquare.model;
 
+import dam.dataValidation.BasicPasswordPolicy;
 import dam.dataValidation.DataValidation;
+import dam.dataValidation.PasswordPolicy;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PCliente;
 
@@ -101,7 +103,12 @@ public class Cliente {
      * @throws InvalidDataException
      */
     public static void isPasswdValid(String passwd) {
-        // TODO verificar password? O mejor en el formulario para poder hacer cuentas con contraseñas malas?
+        if (!DataValidation.isStringValid(passwd))
+            throw new InvalidDataException("La contraseña introducida no es válida");
+        // Validación hecha en los formularios para permitir que si se introducen contraseñas malas intencionadamente
+        // el sistema lo permita.
+//        BasicPasswordPolicy pp = new BasicPasswordPolicy();
+//        pp.validate(passwd);
     }
 
     /**

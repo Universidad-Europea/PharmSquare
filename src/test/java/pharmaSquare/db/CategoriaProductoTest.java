@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertThrows;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento de las Categorias de los productos en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class CategoriaProductoTest {
     private static PharmaSquareDB db;
 

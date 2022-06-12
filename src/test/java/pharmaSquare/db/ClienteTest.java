@@ -9,7 +9,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * Serie de tests para verificar el correcto fucionamiento de los Clientes en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class ClienteTest {
     private static PharmaSquareDB db;
 

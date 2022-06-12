@@ -59,7 +59,12 @@ public class Personal {
      * @throws InvalidDataException
      */
     public static void isPasswdValid(String passwd) {
-        // TODO validar password?
+        if (!DataValidation.isStringValid(passwd))
+            throw new InvalidDataException("La contraseña introducida no es válida");
+        // Validación hecha en los formularios para permitir que si se introducen contraseñas malas intencionadamente
+        // el sistema lo permita.
+//        BasicPasswordPolicy pp = new BasicPasswordPolicy();
+//        pp.validate(passwd);
     }
 
     // SETTERS
