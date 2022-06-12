@@ -115,7 +115,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="Gestionar personal"/>
+              <text value="Gestión personal"/>
             </properties>
           </component>
         </children>
