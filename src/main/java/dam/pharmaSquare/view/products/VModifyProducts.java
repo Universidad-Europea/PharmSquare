@@ -100,9 +100,8 @@ public class VModifyProducts extends JPanel {
 
         disableAllExeptCmbx();
 
-
         cmbxData.addActionListener(e -> {
-           // enableAll();
+
             Producto p = db.getProductos(true).get(cmbxData.getSelectedIndex());
             txtNombre.setText(p.getNombre());
             spnPrecio.setValue(p.getPrecio());
@@ -139,7 +138,7 @@ public class VModifyProducts extends JPanel {
         cmbxData.setEnabled(true);
 
         txtNombre.setText("");
-        spnPrecio.setModel( new SpinnerNumberModel(1, 1, 100, 1));
+        spnPrecio.setModel( new SpinnerNumberModel(1, 1, 100, 0.1));
         spnStock.setModel( new SpinnerNumberModel(1, 1, 100, 1));
         txtUtilidad.setText("");
         rdbSi.setSelected(false);
