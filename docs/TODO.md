@@ -51,9 +51,7 @@
 - [x] Integración de todos los elementos. Pruebas de integración.
   - [x] Realizados de manera manual.
 - [ ] Generación del archivo ejecutable.
-- [ ] Realización del manual de usuario y de la wiki.
-  - [x] Wiki.
-  - [ ] Manual de usuario.
+- [x] Realización del manual de usuario y de la wiki.
 - [x] Realización del video de presentación
 
 
