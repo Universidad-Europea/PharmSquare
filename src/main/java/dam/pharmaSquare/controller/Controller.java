@@ -116,11 +116,11 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
-            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
                 vWindows.loadPanel(vClientsRecords);
-            }else if (e.getActionCommand().equals(vStaffMenu.ADD_EMPLOYEE)){
-                vWindows.loadPanel(vAddPersonal);
-            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
+            }else if (e.getActionCommand().equals(vStaffMenu.MANAGE_EMP)){
+                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
+                vCheckPersonal.fillTable(listaPersonal);
                 vWindows.loadPanel(vCheckPersonal);
             }else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -251,6 +251,9 @@ public class Controller implements ActionListener {
                 vAddModCategory.addCategory();
             } else if (button == vAddModCategory.getBtnModifyCtg()) {
                 vAddModCategory.modCategory();
+                // MODO MODF PRODUC
+            } else if (button == vModifyProducts.getBtnStaff()) {
+                vWindows.loadPanel(vStaffMenu);
             } else if (button == vAddModCategory.getBtnBack()) {
                 vAddModCategory.cleanComponents();
                 vWindows.loadPanel(vStaffMenu);

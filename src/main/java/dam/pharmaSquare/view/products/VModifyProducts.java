@@ -40,10 +40,10 @@ public class VModifyProducts extends JPanel {
 
     public VModifyProducts() {
         add(jpBody);
+        updateHour();
         loadDataCmbx();
     }
 
-    //edit mode
     public void editMode(int type) {
 
         System.out.println(type);
@@ -100,9 +100,8 @@ public class VModifyProducts extends JPanel {
 
         disableAllExeptCmbx();
 
-
         cmbxData.addActionListener(e -> {
-           // enableAll();
+
             Producto p = db.getProductos(true).get(cmbxData.getSelectedIndex());
             txtNombre.setText(p.getNombre());
             spnPrecio.setValue(p.getPrecio());
@@ -139,7 +138,7 @@ public class VModifyProducts extends JPanel {
         cmbxData.setEnabled(true);
 
         txtNombre.setText("");
-        spnPrecio.setModel( new SpinnerNumberModel(1, 1, 100, 1));
+        spnPrecio.setModel( new SpinnerNumberModel(1, 1, 100, 0.1));
         spnStock.setModel( new SpinnerNumberModel(1, 1, 100, 1));
         txtUtilidad.setText("");
         rdbSi.setSelected(false);
@@ -168,11 +167,52 @@ public class VModifyProducts extends JPanel {
         return btnModificar;
     }
 
+    public JButton getBtnStaff() {
+        return btnStaff;
+    }
+
     public void setController(Controller controller) {
+        btnStaff.addActionListener(controller);
         btnEliminar.addActionListener(controller);
         btnGuardar.addActionListener(controller);
         btnModificar.addActionListener(controller);
     }
+
+    public void updateHour () {
+
+        btnClock.setText("00:00h");
+        Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClock.setText(getCurrentHour());
+            }
+        });
+        timer.start();
+
+    }
+
+    private String getCurrentHour () {
+        //Get hour and minutes from the system
+        String hour = "";
+        String minutes = "";
+
+        hour = String.valueOf(java.time.LocalTime.now().getHour());
+        minutes = String.valueOf(java.time.LocalTime.now().getMinute());
+
+        if (hour.length() == 1) {
+            hour = "0" + hour;
+        } else {
+            hour = hour;
+        }
+
+        if (minutes.length() == 1) {
+            minutes = "0" + minutes;
+        } else {
+            minutes = minutes;
+        }
+
+        return hour + ":" + minutes + "h";
+    }
+
 }
 
 

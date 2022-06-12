@@ -84,7 +84,7 @@
             </constraints>
             <properties>
               <icon value="img/buttons/ok.png"/>
-              <text value="Añadir nuevo empleado"/>
+              <text value="Añadir nuevo personal"/>
             </properties>
           </component>
           <vspacer id="3241">

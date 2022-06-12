@@ -58,6 +58,7 @@
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <foreground color="-16777216"/>
               <icon value="img/buttons/atras.png"/>
               <text value="Atras"/>
             </properties>
@@ -147,17 +148,6 @@
               <text value="Utilidad"/>
             </properties>
           </component>
-          <component id="6afd5" class="javax.swing.JTextArea" binding="txtUtilidad">
-            <constraints>
-              <grid row="6" column="1" row-span="2" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="250" height="50"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-1246977"/>
-              <foreground color="-1"/>
-            </properties>
-          </component>
           <component id="7acae" class="javax.swing.JLabel" binding="lblLogin">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
@@ -230,6 +220,14 @@
               <icon value="img/buttons/find.png"/>
               <text value="Modificar"/>
             </properties>
+          </component>
+          <component id="466e6" class="javax.swing.JTextArea" binding="txtUtilidad">
+            <constraints>
+              <grid row="6" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="250" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>
