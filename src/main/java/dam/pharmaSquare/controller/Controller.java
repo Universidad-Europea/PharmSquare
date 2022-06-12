@@ -250,29 +250,11 @@ public class Controller implements ActionListener {
             } else if (button == vAddModCategory.getBtnSaveNewCtg()) {
                 vAddModCategory.addCategory();
                 System.out.println("Se ha añadido una nueva categoría");
-
-
-            /* } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
-                vAddModCategory.cleanComponents();
-                String catg = vAddModCategory.getTextFieldValueNewC();
-                if (!catg.equals("")) {
-                    int resp = JOptionPane.showConfirmDialog(vAddModCategory, "¿Estás seguro que quieres añadir la" +
-                                    " categoría " +catg.toUpperCase() +" ?",
-                            "Añadir categoría", JOptionPane.YES_NO_OPTION);
-                    if (resp == 0) {
-                        int res = pharmaSquareDB.addCategoria(catg);
-                        if (res > 1) {
-                            JOptionPane.showMessageDialog(vInicio, "Categoría añadida",
-                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                            vAddModCategory.cleanComponents();
-                        } else {
-                            JOptionPane.showMessageDialog(vInicio, "No se ha podido añadir la categoria" + catg.toUpperCase(),
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                } */
-            } else if (e.getActionCommand().equals(VAddModCategory.MODIFICAR)){
-                vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
+            } else if (button == vAddModCategory.getBtnModifyCtg()) {
+                vAddModCategory.modCategory();
+                System.out.println("Se ha modificado una categoría");
+            //} else if (e.getActionCommand().equals(VAddModCategory.MODIFICAR)){
+             //   vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
                 CategoriaProducto catg = vAddModCategory.getTextFieldValueModC();
                 if (catg != null) {

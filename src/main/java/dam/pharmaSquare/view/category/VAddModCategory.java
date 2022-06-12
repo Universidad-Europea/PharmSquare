@@ -75,11 +75,8 @@ public class VAddModCategory extends JPanel {
         addCategory();
         cleanComponents();
 
-        //btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
-        //btnModifyCtg.setActionCommand(MODIFICAR);
-        //btnSaveChanges.setActionCommand(SAVE_CHANGES);
-        //btnBack.setActionCommand(EXIT);
     }
+
 
     public void addCategory() {
         btnSaveNewCtg.addActionListener(e -> {
@@ -104,6 +101,12 @@ public class VAddModCategory extends JPanel {
             fila[0] = c.getNombre();
             dtmCtg.addRow(fila);
         }
+
+        tblCtg.getSelectionModel().addListSelectionListener(e -> {
+            if (tblCtg.getSelectedRow() != -1) {
+                txtCtgMod.setText(tblCtg.getValueAt(tblCtg.getSelectedRow(), 0).toString());
+            }
+        });
 
     }
 
@@ -133,7 +136,6 @@ public class VAddModCategory extends JPanel {
      */
 
     public void setController(Controller c) {
-        btnSaveChanges.addActionListener(c);
         btnSaveNewCtg.addActionListener(c);
         btnModifyCtg.addActionListener(c);
         btnBack.addActionListener(c);
@@ -171,11 +173,6 @@ public class VAddModCategory extends JPanel {
             }
         }
         return null;
-    }
-
-    public void loadSelectedItem(CategoriaProducto c) {
-        txtCtgMod.setText(c.getNombre());
-        lblId.setText(c.getId() + "");
     }
 
     public void cleanComponents() {
@@ -219,20 +216,31 @@ public class VAddModCategory extends JPanel {
             return hour + ":" + minutes + "h";
         }
 
-    public JButton getBtnBack() {
-        return btnBack;
-    }
-
-    public JButton getBtnSaveChanges() {
-        return btnSaveChanges;
-    }
-
     public JButton getBtnSaveNewCtg() {
         return btnSaveNewCtg;
     }
 
     public JButton getBtnModifyCtg() {
         return btnModifyCtg;
+    }
+
+    public void modCategory() {
+        String name = txtCtgMod.getText();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre de la categoria no puede estar vacio");
+        } else {
+
+            ArrayList<CategoriaProducto> list = db.getCategorias();
+
+            for (CategoriaProducto c : list) {
+                if (c.getNombre().equals(tblCtg.getValueAt(tblCtg.getSelectedRow(), 0))) {
+                    System.out.println(" Id categoria " + c.getId());
+                    db.modCategoria(new CategoriaProducto(c.getId(), name));
+                }
+            }
+
+            loadTable();
+        }
     }
 }
 
