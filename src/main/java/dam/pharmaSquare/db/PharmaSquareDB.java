@@ -8,6 +8,7 @@ import dam.exception.SQLiteQueryException;
 import dam.pharmaSquare.model.*;
 import dam.pharmaSquare.model.persistencia.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PharmaSquareDB extends AccessDB {
@@ -361,6 +362,31 @@ public class PharmaSquareDB extends AccessDB {
             PCategoriaProducto.NOMBRE
         );
         return SQLiteQuery.execute(this, query, categoria);
+    }
+
+    /**
+     * Añade una nueva transación a la base de datos.
+     * @param t Nueva transacción a añadir.
+     * @return Código resultado de ejecutar la sentencia.
+     */
+    public int addTransaccion(Transaccion t) {
+        String query = String.format(
+            "INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?);",
+            PTransaccion.TABLE_NAME,
+            PTransaccion.DNI,
+            PTransaccion.ID_PRODUCTO,
+            PTransaccion.FECHA,
+            PTransaccion.CANTIDAD
+        );
+
+        return SQLiteQuery.execute(
+            this,
+            query,
+            t.getDni(),
+            t.getIdProducto(),
+            t.getFecha(),
+            t.getCantidad()
+        );
     }
 
     // MODIFY
