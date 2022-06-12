@@ -56,7 +56,7 @@ public class Main {
                     vSeeNoLogProducts,
                     vSeeLoginProducts,
                     vAddCliente,
-                        vAddModPersonal,
+                    vAddModPersonal,
                     vModifyProducts,
                     vAddModCategory,
                     vModClient,
@@ -66,7 +66,7 @@ public class Main {
                 );
 
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vStaffMenu);
+                vWindows.loadPanel(vInicio);
                 vCheckPersonal.setController(controller);
                 vAddModPersonal.setController(controller);
                 vInicio.setController(controller);

@@ -28,6 +28,8 @@ public class VClientsRecords extends JPanel {
     private JButton btnSearch;
     private JTable tblRecords;
     private JScrollPane srpTable;
+    private JLabel lblProducto;
+    private JLabel lblDNICliente;
     private DefaultTableModel dtmRecords;
     private static PharmaSquareDB db;
     private DefaultComboBoxModel<String> dcbDate;
@@ -205,6 +207,7 @@ public class VClientsRecords extends JPanel {
     }
 
     public void defaultAll() {
+        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
         cmbDate.setSelectedIndex(0);
         cmbProd.setSelectedIndex(0);
     }

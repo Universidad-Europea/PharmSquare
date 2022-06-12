@@ -46,7 +46,6 @@ public class VStaffMenu extends JPanel {
         btnModDeltClient.setActionCommand(MOD_DELT_CLIENT);
         btnHistorialClientes.setActionCommand(VIEW_TRANSACTIONS);
         btnGestionPersonal.setActionCommand(MNG_PERSONAL);
-        //btnVerClientes.setActionCommand(VIEW_CLIENTS);
 
     }
 
@@ -57,7 +56,6 @@ public class VStaffMenu extends JPanel {
         btnModDeltClient.addActionListener(c);
         btnHistorialClientes.addActionListener(c);
         btnGestionPersonal.addActionListener(c);
-        //btnVerClientes.addActionListener(c);
     }
 
     public void updateHour() {
