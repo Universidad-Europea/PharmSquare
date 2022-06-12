@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VClientsRecords extends JPanel {
-    public static final String SEARCH = "BUSCAR";
-    public static final String EXIT = "VOLVER A STAFFMENU";
+    //public static final String SEARCH = "BUSCAR";
+    //public static final String EXIT = "VOLVER A STAFFMENU";
 
     private JPanel jpBody;
     private JPanel jpTopElements;
@@ -49,13 +49,12 @@ public class VClientsRecords extends JPanel {
 
         cmbDate.setModel(new DefaultComboBoxModel<String> (PharmaSquareDB.DATE));
 
-
         db = new PharmaSquareDB();
         ArrayList<Transaccion> list = db.getTransacciones(null, null, false);
         loadTable(list);
 
-        btnSearch.setActionCommand(SEARCH);
-        btnBack.setActionCommand(EXIT);
+        //btnSearch.setActionCommand(SEARCH);
+        //btnBack.setActionCommand(EXIT);
     }
 
 
@@ -67,6 +66,35 @@ public class VClientsRecords extends JPanel {
         for (Producto p : list) {
             cmbProd.addItem(p.getNombre());
         }
+    }
+
+    public void checkSearch() {
+
+        if (txtDniClt.getText().matches("\\d+")) {
+            String dni = txtDniClt.getText();
+            String prod = (String) cmbProd.getSelectedItem();
+            //String cmbdDate = (String) cmbDate.getSelectedItem();
+            boolean cmbdDate;
+
+            if (cmbDate.getSelectedItem() == "MÁS ANTIGUO") {
+                cmbdDate = false;
+            } else {
+                cmbdDate = true;
+            }
+
+            ArrayList<Transaccion> list = db.getTransacciones(dni, prod, cmbdDate);
+
+            for (Transaccion t : list) {
+                System.out.println(t.toString());
+            }
+
+            loadTable(list);
+        }else {
+            JOptionPane.showMessageDialog(null, "El ID debe ser un número");
+        }
+
+
+
     }
 
     private void configTable() {
@@ -105,7 +133,7 @@ public class VClientsRecords extends JPanel {
             fila[2] = t.getIdProducto();
             fila[3] = t.getCantidad();
             dtmRecords.addRow(fila);
-            }
+        }
     }
 
     /**
@@ -116,12 +144,12 @@ public class VClientsRecords extends JPanel {
         String type = (String) cmbDate.getSelectedItem();
         if (type.equals(PharmaSquareDB.DATE[0]))return true;
 
-        return  false;
+        return false;
     }
 
     public String getComboBoxPValue(){
         String type = (String) cmbProd.getSelectedItem();
-        return  type;
+        return type;
     }
 
     /**
@@ -139,7 +167,7 @@ public class VClientsRecords extends JPanel {
     }
 
     private void configFields() {
-        setDefault();
+        defaultAll();
 
         txtDniClt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -147,11 +175,6 @@ public class VClientsRecords extends JPanel {
                 txtDniClt.setForeground(new java.awt.Color(0, 0, 0));
             }
         });
-    }
-
-    private void setDefault() {
-        txtDniClt.setText("Id Cliente");
-        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
     }
 
     public void updateHour() {
@@ -187,5 +210,18 @@ public class VClientsRecords extends JPanel {
         return hour + ":" + minutes + "h";
     }
 
+    public JButton getBtnBack() {
+        return btnBack;
+    }
 
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void defaultAll() {
+        txtDniClt.setText("Id Cliente");
+        txtDniClt.setForeground(new java.awt.Color(153, 153, 153));
+        cmbDate.setSelectedIndex(0);
+        cmbProd.setSelectedIndex(0);
+    }
 }

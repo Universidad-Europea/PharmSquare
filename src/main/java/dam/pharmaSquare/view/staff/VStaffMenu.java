@@ -44,7 +44,7 @@ public class VStaffMenu extends JPanel {
         btnAddModProducts.setActionCommand(ADD_MOD_PROD);
         btnModDeltClient.setActionCommand(MOD_DELT_CLIENT);
         btnHistorialClientes.setActionCommand(VIEW_TRANSACTIONS);
-        btnVerClientes.setActionCommand(VIEW_CLIENTS);
+        //btnVerClientes.setActionCommand(VIEW_CLIENTS);
         btnVerPersonal.setActionCommand(VIEW_EMPLOYEES);
     }
 
@@ -54,7 +54,7 @@ public class VStaffMenu extends JPanel {
         btnAddModProducts.addActionListener(c);
         btnModDeltClient.addActionListener(c);
         btnHistorialClientes.addActionListener(c);
-        btnVerClientes.addActionListener(c);
+        //btnVerClientes.addActionListener(c);
         btnVerPersonal.addActionListener(c);
     }
 

@@ -78,7 +78,9 @@
                 <preferred-size width="180" height="23"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <model/>
+            </properties>
           </component>
           <component id="79ccf" class="javax.swing.JComboBox" binding="cmbProd">
             <constraints>

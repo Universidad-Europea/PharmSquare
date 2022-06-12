@@ -74,6 +74,7 @@ public class Main {
                 vStaffMenu.setController(controller);
                 vSeeLoginProducts.setController(controller);
                 vSeeNoLogProducts.setController(controller);
+                vClientsRecords.setController(controller);
                 vAddCliente.setController(controller);
                 vModifyProducts.setController(controller);
                 vAddModCategory.setController(controller);
