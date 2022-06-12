@@ -139,6 +139,7 @@ public class VModClient extends JPanel {
     }
 
     private void loadCmb() {
+        cmbGender.setModel(dcbGender);
         dcbGender.removeAllElements();
         dcbGender.addElement("Género");
         dcbGender.addAll(List.of(GENDER_LIST));
