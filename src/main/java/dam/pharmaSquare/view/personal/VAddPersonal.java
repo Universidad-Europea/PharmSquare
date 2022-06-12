@@ -130,7 +130,7 @@ public class VAddPersonal extends JPanel {
         if (rdbtEmpleado.isSelected()) {
             categoria = "EMPLEADO";
         } else {
-            categoria = "ADMINISTRATIVO";
+            categoria = "ADMINISTRADOR";
         }
         String password = pwd.getText();
 
