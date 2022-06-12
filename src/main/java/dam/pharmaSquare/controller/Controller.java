@@ -104,8 +104,23 @@ public class Controller implements ActionListener {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vInicio.setDefault();
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
-                // TODO: Login correcto, panel de staff sin hacer
-                System.out.println("[LOG] Login correcto");
+               System.out.println("[LOG] Login correcto");
+            } else if (e.getActionCommand().equals(vStaffMenu.EXIT)){
+                vWindows.loadPanel(vInicio);
+            }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_CATEGORY)){
+                vWindows.loadPanel(vAddModCategory);
+            }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_PROD)){
+                vWindows.loadPanel(vModifyProducts);
+            } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
+                vWindows.loadPanel(vModClient);
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
+                vWindows.loadPanel(vClientsRecords);
+            }else if (e.getActionCommand().equals(vStaffMenu.ADD_EMPLOYEE)){
+                vWindows.loadPanel(vAddPersonal);
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
+                vWindows.loadPanel(vCheckPersonal);
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
+                //TODO: Ver clientes
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vStaffLogin.setDefault();
