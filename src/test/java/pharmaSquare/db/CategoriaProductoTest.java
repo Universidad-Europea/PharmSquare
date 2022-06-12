@@ -33,6 +33,11 @@ public class CategoriaProductoTest {
         db.addCategoria("Homeopatía");
     }
 
+    @Test
+    public void modCategoria() {
+        db.modCategoria(new CategoriaProducto(4, "ya no es belleza"));
+    }
+
     // TOOLS
     private static void printCategorias(ArrayList<CategoriaProducto> categorias) {
         for (CategoriaProducto c : categorias) {
