@@ -10,7 +10,7 @@ import dam.pharmaSquare.view.cliente.VClientsRecords;
 import dam.pharmaSquare.view.cliente.VModClient;
 import dam.pharmaSquare.view.products.VModifyProducts;
 import dam.pharmaSquare.view.products.VSeeLoginProducts;
-import dam.pharmaSquare.view.personal.VAddPersonal;
+import dam.pharmaSquare.view.personal.VAddModPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
 import dam.pharmaSquare.view.inicio.VInicio;
 import dam.pharmaSquare.view.products.VSeeNoLogProducts;
@@ -33,7 +33,7 @@ public class Main {
             public void run() {
                 VWindows vWindows = new VWindows();
                 VInicio vInicio = new VInicio();
-                VAddPersonal vAddPersonal = new VAddPersonal();
+                VAddModPersonal vAddModPersonal = new VAddModPersonal();
                 VAddCliente vAddCliente = new VAddCliente();
                 VCheckPersonal vCheckPersonal = new VCheckPersonal();
                 VSeeLoginProducts vSeeLoginProducts = new VSeeLoginProducts();
@@ -56,7 +56,7 @@ public class Main {
                     vSeeNoLogProducts,
                     vSeeLoginProducts,
                     vAddCliente,
-                    vAddPersonal,
+                        vAddModPersonal,
                     vModifyProducts,
                     vAddModCategory,
                     vModClient,
@@ -68,7 +68,7 @@ public class Main {
                 vWindows.setVisible(true);
                 vWindows.loadPanel(vStaffMenu);
                 vCheckPersonal.setController(controller);
-                vAddPersonal.setController(controller);
+                vAddModPersonal.setController(controller);
                 vInicio.setController(controller);
                 vStaffLogin.setController(controller);
                 vStaffMenu.setController(controller);
