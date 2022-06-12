@@ -72,7 +72,7 @@ public class Cliente {
      */
     public static void isFAltaValid(String fAlta) {
         if (!DataValidation.isDateValid(fAlta))
-            throw new InvalidDataException("La fecha introducida no es válida.");
+            throw new InvalidDataException("La fecha de alta introducida no es válida.");
     }
 
     /**
@@ -91,7 +91,8 @@ public class Cliente {
      * @throws InvalidDataException
      */
     public static void isNacimientoValid(String nacimiento) {
-        // TODO verificar fecha?
+        if (!DataValidation.isDateValid(nacimiento))
+            throw new InvalidDataException("La fecha de nacimiento introducida no es válida.");
     }
 
     /**

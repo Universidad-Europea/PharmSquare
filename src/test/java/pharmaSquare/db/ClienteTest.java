@@ -32,7 +32,7 @@ public class ClienteTest {
                 "Maria",
                 "2022-01-01",
                 "c/ Luz, 2 Madrid",
-                "01/01/2000",
+                "2000-01-01",
                 "holasQWEw231#@",
                 PCliente.SEXO_CHK[1],
                 "321 321 321",
@@ -55,7 +55,7 @@ public class ClienteTest {
     }
 
     @Test
-    public void delClienteTest() {
+    public void delClienteTest() { // Tiene que ser ejecutado después de addTest
         assertThrows(InvalidDataException.class, () -> {db.delCliente("invalidField", "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.DNI, "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.NOMBRE, "ho321a");});
