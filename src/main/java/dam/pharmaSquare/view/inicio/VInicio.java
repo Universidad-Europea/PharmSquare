@@ -31,15 +31,7 @@ public class VInicio extends JPanel {
 
     public boolean validateLogin() {
         db = new PharmaSquareDB();
-        boolean valid = false;
-
-        if (db.validPasswdCliente(txtfMail.getText(), passwfPassword.getText())) {
-            valid = true;
-        } else {
-            valid = false;
-        }
-
-        return valid;
+        return db.validPasswdCliente(txtfMail.getText(), new String(passwfPassword.getPassword()));
     }
 
 
