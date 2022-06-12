@@ -130,11 +130,11 @@ public class VCheckPersonal extends JPanel {
         dtmPer.addColumn(DELETE);
 
         //Setting table columns
-        tablePer.getColumn(PPersonal.CATEGORIA).setPreferredWidth(30);
+        tablePer.getColumn(PPersonal.CATEGORIA).setPreferredWidth(60);
         tablePer.getColumn(PPersonal.CATEGORIA).setCellRenderer(centerRenderer);
-        tablePer.getColumn(PPersonal.NOMBRE).setPreferredWidth(20);
+        tablePer.getColumn(PPersonal.NOMBRE).setPreferredWidth(60);
         tablePer.getColumn(PPersonal.NOMBRE).setCellRenderer(centerRenderer);
-        tablePer.getColumn(LASTNAME).setPreferredWidth(200);
+        tablePer.getColumn(LASTNAME).setPreferredWidth(100);
         tablePer.getColumn(LASTNAME).setCellRenderer(centerRenderer);
 
         // Setting table columns implementing the created ButtonRenderer
