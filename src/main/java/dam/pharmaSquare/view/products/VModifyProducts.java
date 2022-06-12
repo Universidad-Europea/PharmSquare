@@ -50,7 +50,7 @@ public class VModifyProducts extends JPanel {
 
         if (type % 2 == 0) {
             JOptionPane.showMessageDialog(null, "Modo edicion: deshabilitado");
-            enableAll();
+            disableAllExeptCmbx();
         } else if (type % 2 == 1) {
             JOptionPane.showMessageDialog(null, "Modo edicion: habilitado");
             enableAll();
