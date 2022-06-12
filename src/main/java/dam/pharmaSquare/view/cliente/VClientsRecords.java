@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VClientsRecords extends JPanel {
-    //public static final String SEARCH = "BUSCAR";
-    //public static final String EXIT = "VOLVER A STAFFMENU";
-
     private JPanel jpBody;
     private JPanel jpTopElements;
     private JButton btnBack;
@@ -53,8 +50,6 @@ public class VClientsRecords extends JPanel {
         ArrayList<Transaccion> list = db.getTransacciones(null, null, false);
         loadTable(list);
 
-        //btnSearch.setActionCommand(SEARCH);
-        //btnBack.setActionCommand(EXIT);
     }
 
 
@@ -106,7 +101,6 @@ public class VClientsRecords extends JPanel {
     }
 
     private void configTable() {
-        // declare DefaultTableModel and disable cell editing
         dtmRecords = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -142,22 +136,6 @@ public class VClientsRecords extends JPanel {
             fila[3] = t.getCantidad();
             dtmRecords.addRow(fila);
         }
-    }
-
-    /**
-     * method that return a String with the value of the JComboBox
-     * @return type JComboBox value
-     */
-    public boolean getComboBoxDValue(){
-        String type = (String) cmbDate.getSelectedItem();
-        if (type.equals(PharmaSquareDB.DATE[0]))return true;
-
-        return false;
-    }
-
-    public String getComboBoxPValue(){
-        String type = (String) cmbProd.getSelectedItem();
-        return type;
     }
 
     /**

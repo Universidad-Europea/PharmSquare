@@ -122,7 +122,6 @@ public class VAddModCategory extends JPanel {
 
         tblCtg.setModel(dtmCtg);
 
-        //adding and setting the columns
         dtmCtg.addColumn(PCategoriaProducto.NOMBRE);
         tblCtg.getColumn(PCategoriaProducto.NOMBRE).setPreferredWidth(150);
 
