@@ -116,9 +116,11 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
-            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
                 vWindows.loadPanel(vClientsRecords);
-            }else if (e.getActionCommand().equals(vStaffMenu.MANAGE_EMP)){
+            }else if (e.getActionCommand().equals(vStaffMenu.ADD_EMPLOYEE)){
+                vWindows.loadPanel(vAddPersonal);
+            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
                 listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
                 vCheckPersonal.fillTable(listaPersonal);
                 vWindows.loadPanel(vCheckPersonal);
