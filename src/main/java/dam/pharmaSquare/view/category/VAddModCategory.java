@@ -75,6 +75,15 @@ public class VAddModCategory extends JPanel {
     private void configTable() {
         tblCtg.setModel(dtmCtg);
 
+        // declare DefaultTableModel and disable cell editing
+        dtmCtg = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+
+                return false;
+            }
+        } ;
+
         //adding and setting the columns
         dtmCtg.addColumn(PCategoriaProducto.NOMBRE);
         tblCtg.getColumn(PCategoriaProducto.NOMBRE).setPreferredWidth(150);
