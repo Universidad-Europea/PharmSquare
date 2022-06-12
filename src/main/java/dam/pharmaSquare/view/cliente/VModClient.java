@@ -59,58 +59,6 @@ public class VModClient extends JPanel {
     private DefaultComboBoxModel<String> dcbGender;
 
 
-    public VModClient() {
-        /*txtIdClt.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtIdClt.setText("Id");
-            }
-        });*/
-        txtName.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtName.setText("Nombre completo");
-            }
-        });
-        txtDni.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtDni.setText("12345678A");
-            }
-        });
-        txtFecNac.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtFecNac.setText("00/00/0000");
-            }
-        });
-        txtNumber.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtNumber.setText("123456789");
-            }
-        });
-        txtAddress.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtAddress.setText("Calle, Avenida ...");
-            }
-        });
-        txtMail.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                txtMail.setText("ejemplo@mail.com");
-            }
-        });
-    }
-
     /**
      * method calling private methods
      * - add(jpBody)
@@ -128,6 +76,7 @@ public class VModClient extends JPanel {
      * initializes the Swing components
      */
     public void init(){
+        configFields();
         disableAllExceptTxtId();
         loadCmb();
 
@@ -136,6 +85,66 @@ public class VModClient extends JPanel {
         btnSearch.setActionCommand(SEARCH);
         btnBack.setActionCommand(EXIT);
 
+    }
+
+    /**
+     * method that configures prompt text to the Swing components
+     */
+
+    private void configFields() {
+        setDefaul();
+
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtName.setText("");
+                txtName.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        txtDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDni.setText("");
+                txtDni.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        txtFecNac.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFecNac.setText("");
+                txtFecNac.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        txtNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNumber.setText("");
+                txtNumber.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        txtAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAddress.setText("");
+                txtAddress.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+        txtMail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMail.setText("");
+                txtMail.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
+    }
+
+    private void setDefaul() {
+        txtIdClt.setText("Id");
+        txtName.setText("Nombre completo");
+        txtDni.setText("12345678A");
+        txtFecNac.setText("00/00/0000");
+        txtNumber.setText("123456789");
+        txtAddress.setText("Calle, Avenida ...");
     }
 
     private void loadCmb() {
@@ -168,7 +177,7 @@ public class VModClient extends JPanel {
     /**
      * method that return a Cliente object according to the values
      * written in the form
-     * @return
+     * @return Cliente object
      */
 
     public Cliente getClientInfo() {
