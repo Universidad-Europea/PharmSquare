@@ -76,7 +76,6 @@ public class VModifyProducts extends JPanel {
 
         Producto producto = new Producto(id, utilidad, nombre, laboratorio, precio, stock, "img/productos/apositos.png", necesitaLogin);
 
-
         db.modProducto(producto);
 
     }
@@ -174,6 +173,7 @@ public class VModifyProducts extends JPanel {
         btnGuardar.addActionListener(controller);
         btnModificar.addActionListener(controller);
     }
+
 }
 
 

@@ -72,12 +72,25 @@ public class VAddModCategory extends JPanel {
         scrpTable.setViewportView(tblCtg);
         configTable();
         loadTable();
+        addCategory();
         cleanComponents();
 
-        btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
-        btnModifyCtg.setActionCommand(MODIFICAR);
-        btnSaveChanges.setActionCommand(SAVE_CHANGES);
-        btnBack.setActionCommand(EXIT);
+        //btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
+        //btnModifyCtg.setActionCommand(MODIFICAR);
+        //btnSaveChanges.setActionCommand(SAVE_CHANGES);
+        //btnBack.setActionCommand(EXIT);
+    }
+
+    public void addCategory() {
+        btnSaveNewCtg.addActionListener(e -> {
+            String name = txtNewCtgName.getText();
+            if (name.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El nombre de la categoria no puede estar vacio");
+            } else {
+                db.addCategoria(name);
+                loadTable();
+            }
+        });
     }
 
     private void loadTable() {
@@ -205,5 +218,21 @@ public class VAddModCategory extends JPanel {
 
             return hour + ":" + minutes + "h";
         }
+
+    public JButton getBtnBack() {
+        return btnBack;
     }
+
+    public JButton getBtnSaveChanges() {
+        return btnSaveChanges;
+    }
+
+    public JButton getBtnSaveNewCtg() {
+        return btnSaveNewCtg;
+    }
+
+    public JButton getBtnModifyCtg() {
+        return btnModifyCtg;
+    }
+}
 

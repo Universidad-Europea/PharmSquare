@@ -104,6 +104,7 @@ public class Controller implements ActionListener {
             } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vInicio.setDefault();
+// ***** STAFF *****
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
                vInicio.setDefault();
                 vWindows.loadPanel(vStaffMenu);
@@ -124,6 +125,7 @@ public class Controller implements ActionListener {
             }else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vStaffLogin.setDefault();
+// ***** CLIENTES *****
             } else if (button == vAddCliente.getBtnCancel()) {
                 vWindows.loadPanel(vInicio);
                 vAddCliente.setDefault();
@@ -244,7 +246,13 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VModClient.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-            } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
+                // TOCAAAAR COSAS. MARIA TE MATO
+            } else if (button == vAddModCategory.getBtnSaveNewCtg()) {
+                vAddModCategory.addCategory();
+                System.out.println("Se ha añadido una nueva categoría");
+
+
+            /* } else if (e.getActionCommand().equals(VAddModCategory.SAVE_NEW_C)){
                 vAddModCategory.cleanComponents();
                 String catg = vAddModCategory.getTextFieldValueNewC();
                 if (!catg.equals("")) {
@@ -262,7 +270,7 @@ public class Controller implements ActionListener {
                                     "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
-                }
+                } */
             } else if (e.getActionCommand().equals(VAddModCategory.MODIFICAR)){
                 vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
