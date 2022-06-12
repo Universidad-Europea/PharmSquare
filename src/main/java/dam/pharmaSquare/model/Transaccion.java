@@ -39,7 +39,7 @@ public class Transaccion {
      */
     public static void isIdProductoValid(Integer idProducto) {
         if (!DataValidation.isNatural(idProducto))
-            throw new IllegalArgumentException("El ID del producto no es válido.");
+            throw new InvalidDataException("El ID del producto no es válido.");
     }
 
     /**
@@ -59,7 +59,7 @@ public class Transaccion {
      */
     public static void isCantidadValid(double cantidad) {
         if (!DataValidation.isPositive(cantidad))
-            throw new IllegalArgumentException("La cantidad no es válida.");
+            throw new InvalidDataException("La cantidad no es válida.");
     }
 
     // SETTERS

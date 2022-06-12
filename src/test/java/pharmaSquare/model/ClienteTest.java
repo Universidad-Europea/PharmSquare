@@ -6,6 +6,11 @@ import dam.pharmaSquare.model.persistencia.PCliente;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento del modelo Cliente.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class ClienteTest {
 
     private static Cliente o;
