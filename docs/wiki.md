@@ -2,11 +2,11 @@
 
 ## Índice:
 - [UI/UX](#uiux)
-	- TODO
 - [Backend](#backend)
-	- [Base de datos](#base-de-datos)
-	- [Persistencia](#persistencia) 
-	- [Control base de datos](#control-base-de-datos)
+    - [Base de datos](#base-de-datos)
+    - [Persistencia](#persistencia) 
+    - [Control base de datos](#control-base-de-datos)
+- [Tests unitarios](#tests-unitarios)
 
 
 ## UI/UX:
@@ -52,3 +52,11 @@ Estos están pensados para la verificación anterior y para verificar a priori l
 [Ubicación](../src/main/java/dam/pharmaSquare/db/)
 
 La lógica de la base de datos está formada por una serie de clases y métodos que simplifican la consulta y modificación de esta de manera que resulte sencillo su implementación en el proyecto.
+
+## Tests unitarios:
+A la hora de verificar cada uno de los módulos usados en el código, se ha utilizado tests unitarios JUnit5.
+Estos verifican de manera individual cada una de las funcionalidades.
+
+*Nota*: Nos hubiera gustado crear tests automáticos de uso-implementación. Sin embargo, el currículo del curso
+no plantea que seamos capaces de realizar este tipo de tests. Por este motivo, toda la parte propia de la
+aplicación no contiene tests más de los que ya tienen los módulos que usan.
