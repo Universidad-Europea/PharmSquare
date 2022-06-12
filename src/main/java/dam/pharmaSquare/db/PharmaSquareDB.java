@@ -529,6 +529,8 @@ public class PharmaSquareDB extends AccessDB {
         return SQLiteQuery.execute(this, query, c.getNombre(), c.getId());
     }
 
+    // Las transacciones no se pueden modificar por seguridad/integridad de los ingresos.
+
     // Remove
 
     /**
@@ -602,6 +604,8 @@ public class PharmaSquareDB extends AccessDB {
 
         return SQLiteQuery.execute(this, query, fieldValue);
     }
+
+    // Las transacciones no se pueden eliminar por motivos de seguridad.
 
     // sqlite2model: parser between sqlite output and model.
 
