@@ -61,6 +61,7 @@ public class VModifyProducts extends JPanel {
     }
 
     public void updateProductDB() {
+        int id = Integer.parseInt(txtIDProduct.getText());
         String nombre = txtNombre.getText();
         double precio = Double.parseDouble(spnPrecio.getValue().toString());
         int stock = Integer.parseInt(spnStock.getValue().toString());
@@ -72,12 +73,11 @@ public class VModifyProducts extends JPanel {
         } else {
             necesitaLogin = "N";
         }
-        int idProduc = Integer.parseInt(txtIDProduct.getText());
-        //     public int updateProducto(String nombre, String precio, String stock, String utilidad, String login, String laboratorio, String id) {
 
-        //db.updateProducto(nombre, precio, stock, utilidad, necesitaLogin, laboratorio, idProduc);
-        System.out.println("Producto actualizado");
-        //System.out.println(db.updateProducto(nombre, precio, stock, utilidad, necesitaLogin, laboratorio, idProduc));
+        Producto producto = new Producto(id, utilidad, nombre, laboratorio, precio, stock, "img/productos/apositos.png", necesitaLogin);
+
+
+        db.modProducto(producto);
 
     }
 

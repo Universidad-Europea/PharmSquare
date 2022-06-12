@@ -66,11 +66,12 @@ public class Main {
                 );
 
                 vWindows.setVisible(true);
-                vWindows.loadPanel(vInicio);
+                vWindows.loadPanel(vStaffMenu);
                 vCheckPersonal.setController(controller);
                 vAddPersonal.setController(controller);
                 vInicio.setController(controller);
                 vStaffLogin.setController(controller);
+                vStaffMenu.setController(controller);
                 vSeeLoginProducts.setController(controller);
                 vSeeNoLogProducts.setController(controller);
                 vAddCliente.setController(controller);
