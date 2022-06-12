@@ -4,6 +4,8 @@ package dam.dataValidation;
  * Class with multiple methods to validate information.
  * <br>
  * This way, just by calling a method from this class, the whole validation of the field can be done.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class DataValidation {
 
@@ -26,6 +28,16 @@ public class DataValidation {
      * Regex expression to verify a valid human name.
      */
     private static final String NOMBRE_REGEX = "^[A-Za-zñÑñáÁéÉíÍóÓúÚ]+( ?[A-Za-zñÑáÁéÉíÍóÓúÚ]+){0,2}$";
+
+    /**
+     * Regex expresion to verify a valid date.
+     */
+    private static final String DATE_REGEX = "\\d{4}-[0-3]?\\d-[0-3]?\\d";
+
+    /**
+     * Regex expresion to verify a valid date time.
+     */
+    private static final String DATETIME_REGEX = "\\d{4}-[0-3]?\\d-[0-3]?\\d( \\d{1,2}:\\d{1,2}(:\\d{1,2})?)?";
 
 
     // Personal information
@@ -64,6 +76,26 @@ public class DataValidation {
      */
     public static boolean isNameValid(String name) {
         return name != null && name.matches(NOMBRE_REGEX);
+    }
+
+    /**
+     * Verifies if the given date is valid.
+     * It does not take into account if a date is on format YYYY-MM-DD or YYYY-DD-MM (or a invalid mix of both).
+     * @param date Date to verify.
+     * @return Result of the analysis.
+     */
+    public static boolean isDateValid(String date) {
+        return date != null && date.matches(DATE_REGEX);
+    }
+
+    /**
+     * Verifies if the given datetime is valid.
+     * It does not take into account if a date is on format YYYY-MM-DD or YYYY-DD-MM (or a invalid mix of both).
+     * @param datetime Datetime to verify.
+     * @return Result of the analysis.
+     */
+    public static boolean isDateTimeValid(String datetime) {
+        return datetime != null && datetime.matches(DATETIME_REGEX);
     }
 
 

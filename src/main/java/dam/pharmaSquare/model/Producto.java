@@ -6,6 +6,8 @@ import dam.pharmaSquare.model.persistencia.PProducto;
 
 /**
  * Producto de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class Producto {
     private Integer id;

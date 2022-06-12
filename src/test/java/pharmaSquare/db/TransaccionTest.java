@@ -1,8 +1,10 @@
 package pharmaSquare.db;
 
 import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.Transaccion;
+import dam.pharmaSquare.model.persistencia.PCliente;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -31,7 +33,7 @@ public class TransaccionTest {
 
 
     @Test
-    public void getPersonalTest() {
+    public void getTransaccionesTest() {
         for (Object[] r : tests) {
             System.out.println("--------------------------");
             System.out.println("--------------------------");
@@ -41,6 +43,16 @@ public class TransaccionTest {
             System.out.println("--------------------------");
             System.out.println("--------------------------");
         }
+    }
+
+    @Test
+    public void addTransaccion() {
+        db.addTransaccion(new Transaccion(
+            "123456789A",
+            2,
+            "2021-12-12",
+            6
+        ));
     }
 
     // TOOLS

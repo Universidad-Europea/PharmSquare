@@ -5,6 +5,8 @@ import dam.exception.InvalidDataException;
 
 /**
  * Transacción de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class Transaccion {
     private String dni;
@@ -46,7 +48,8 @@ public class Transaccion {
      * @throws InvalidDataException
      */
     public static void isFechaValid(String fecha) {
-        // TODO Validar fecha
+        if (!DataValidation.isDateTimeValid(fecha))
+            throw new InvalidDataException("La fecha introducida no es válida.");
     }
 
     /**

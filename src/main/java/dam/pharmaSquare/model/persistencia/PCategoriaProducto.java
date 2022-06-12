@@ -2,6 +2,8 @@ package dam.pharmaSquare.model.persistencia;
 
 /**
  * Representación de una categoría de producto en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class PCategoriaProducto {
     public static final String ID = "ID";

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 /**
  * Clase con lógica para simplificar la consulta y modificación de una base de datos SQLite.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class SQLiteQuery {
     /**
