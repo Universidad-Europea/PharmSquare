@@ -26,6 +26,9 @@ Este apartado relata cómo se ha desarrollado toda la lógica que hay por detrá
 
 La base de datos de nuestro sistema es una base de datos SQL con SQLite3. Esta almacena toda la información necesaria por nuestra aplicación.
 
+La creación de esta así como su carga inicial se puede encontrar [aquí](../db/scripts/). Cabe destacar que la carga
+inicial se genera a partir de un script nodejs (esto permite modificar todas las sentencias de manera uniforme y automática).
+
 Para acceder a esta fuente de datos, hacemos uso de la clase [PharmaSquareDB](../src/main/java/dam/pharmaSquare/db/PharmaSquareDB.java).
 Con la ayuda de la lógica lógica común para el manejo de BBDD que tenemos en el paquete [db](../src/main/java/dam/db/),
 somos capaces de crear de una manera sencilla toda la lógica entre la aplicación y la base de datos.
