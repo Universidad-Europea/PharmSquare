@@ -1,10 +1,16 @@
 package dam.pharmaSquare.view.category;
 
 import dam.pharmaSquare.controller.Controller;
+import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.CategoriaProducto;
+import dam.pharmaSquare.model.CategoriasProductos;
+import dam.pharmaSquare.model.Producto;
+import dam.pharmaSquare.model.Transaccion;
 import dam.pharmaSquare.model.persistencia.PCategoriaProducto;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  * <h1>VAddModCategory</h1>
@@ -45,6 +51,7 @@ public class VAddModCategory extends JPanel {
     private JButton btnSaveNewCtg;
     private JButton btnDelete;
     private DefaultTableModel dtmCtg;
+    private static PharmaSquareDB db;
 
     /**
      * method calling private methods
@@ -65,11 +72,26 @@ public class VAddModCategory extends JPanel {
     private void init(){
         scrpTable.setViewportView(tblCtg);
         configTable();
+        loadTable();
 
         btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
         btnDelete.setActionCommand(DELETE);
         btnSaveChanges.setActionCommand(SAVE_CHANGES);
         btnBack.setActionCommand(EXIT);
+    }
+
+    private void loadTable() {
+        db = new PharmaSquareDB();
+
+        ArrayList<CategoriaProducto> list = db.getCategorias();
+        Object[] fila = new Object[4];
+        dtmCtg.setRowCount(0);
+
+        for(CategoriaProducto c :list) {
+            fila[0] = c.getNombre();
+            dtmCtg.addRow(fila);
+        }
+
     }
 
     private void configTable() {
