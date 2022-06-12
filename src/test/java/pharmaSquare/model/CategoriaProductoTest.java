@@ -5,6 +5,11 @@ import dam.pharmaSquare.model.CategoriaProducto;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento del modelo CategoriaProducto.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class CategoriaProductoTest {
 
     private static CategoriaProducto o;

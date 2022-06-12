@@ -5,6 +5,11 @@ import dam.pharmaSquare.model.Producto;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento del modelo Producto.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class ProductoTest {
     private static Producto o;
 

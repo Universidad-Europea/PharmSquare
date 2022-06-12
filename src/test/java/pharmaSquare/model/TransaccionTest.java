@@ -2,10 +2,14 @@ package pharmaSquare.model;
 
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.Transaccion;
-import dam.pharmaSquare.model.persistencia.PPersonal;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento del modelo Transacción.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class TransaccionTest {
     private static Transaccion o;
 
