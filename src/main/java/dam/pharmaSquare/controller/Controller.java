@@ -251,6 +251,9 @@ public class Controller implements ActionListener {
                 vAddModCategory.addCategory();
             } else if (button == vAddModCategory.getBtnModifyCtg()) {
                 vAddModCategory.modCategory();
+                // MODO MODF PRODUC
+            } else if (button == vModifyProducts.getBtnStaff()) {
+                vWindows.loadPanel(vStaffMenu);
             } else if (button == vAddModCategory.getBtnBack()) {
                 vAddModCategory.cleanComponents();
                 vWindows.loadPanel(vStaffMenu);
