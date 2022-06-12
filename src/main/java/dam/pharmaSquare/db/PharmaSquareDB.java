@@ -97,11 +97,18 @@ public class PharmaSquareDB extends AccessDB {
             );
 
         String query = String.format(
-            "SELECT * FROM %s%s;",
+            "SELECT %s, %s, %s, %s, %s, %s, %s, %s FROM %s%s;",
+            PProducto.ID,
+            PProducto.UTILIDAD,
+            PProducto.NOMBRE,
+            PProducto.LABORATORIO,
+            PProducto.PRECIO,
+            PProducto.STOCK,
+            PProducto.FOTO,
+            PProducto.NECESITA_LOGIN,
             PProducto.TABLE_NAME,
             filter
         );
-
         return sqlite2producto(SQLiteQuery.get(this, 8, query));
     }
 
@@ -190,7 +197,6 @@ public class PharmaSquareDB extends AccessDB {
                 PCliente.TABLE_NAME,
                 field
         );
-
         ArrayList<Cliente> result = sqlite2cliente(SQLiteQuery.get(this, 9, query, fieldValue));
 
         if (result.size() == 0)
