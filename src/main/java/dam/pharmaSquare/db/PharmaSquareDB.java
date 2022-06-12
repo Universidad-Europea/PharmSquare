@@ -280,6 +280,38 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
+     * Añade el producto especificado a la base de datos.
+     * @param p Producto a añadir.
+     * @return Código resultado al ejecutar la sentencia.
+     * @throws InvalidDataException Con el mensaje de error de lo que ha salido mal.
+     */
+    public int addProducto(Producto p) throws InvalidDataException {
+        String query = String.format(
+            "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?, ?, ?);",
+            PProducto.TABLE_NAME,
+            PProducto.UTILIDAD,
+            PProducto.NOMBRE,
+            PProducto.LABORATORIO,
+            PProducto.PRECIO,
+            PProducto.STOCK,
+            PProducto.FOTO,
+            PProducto.NECESITA_LOGIN
+        );
+
+        return SQLiteQuery.execute(
+        this,
+            query,
+            p.getUtilidad(),
+            p.getNombre(),
+            p.getLaboratorio(),
+            p.getPrecio(),
+            p.getStock(),
+            p.getFoto(),
+            p.getNecesitaLogin()
+        );
+    }
+
+    /**
      * Añade un cliente a la base de datos.
      * @param c Cliente a añadir.
      * @return Código de resultado de la sentencia SQL
