@@ -10,8 +10,8 @@ public class VStaffMenu extends JPanel {
     public static final String ADD_MOD_CATEGORY = "AÑADIR/MODIFICAR CATEGORIAS";
     public static final String MOD_DELT_CLIENT = "MODIFICAR/ELIMINAR CLIENTES";
     public static final String VIEW_TRANSACTIONS = "VER TRANSACCIONES";
-    public static final String ADD_EMPLOYEE = "AÑADIR EMPLEADO";
-    public static final String VIEW_EMPLOYEES = "VER EMPLEADOS";
+    public static final String MNG_PERSONAL = "GESTIONAR PERSONAL";
+
     public static final String VIEW_CLIENTS = "VER CLIENTES";
 
     private JPanel mainPanel;
@@ -27,10 +27,11 @@ public class VStaffMenu extends JPanel {
     private JLabel lblClientesTitle;
     private JButton btnHistorialClientes;
     private JButton btnModDeltClient;
+    private JButton btnGestionPersonal;
     private JLabel lblEmpleados;
 
     private JButton btnVerClientes;
-    private JButton btnVerPersonal;
+
 
     public VStaffMenu() {
         add(mainPanel);
@@ -44,8 +45,9 @@ public class VStaffMenu extends JPanel {
         btnAddModProducts.setActionCommand(ADD_MOD_PROD);
         btnModDeltClient.setActionCommand(MOD_DELT_CLIENT);
         btnHistorialClientes.setActionCommand(VIEW_TRANSACTIONS);
+        btnGestionPersonal.setActionCommand(MNG_PERSONAL);
         //btnVerClientes.setActionCommand(VIEW_CLIENTS);
-        btnVerPersonal.setActionCommand(VIEW_EMPLOYEES);
+
     }
 
     public void setController(Controller c) {
@@ -54,8 +56,8 @@ public class VStaffMenu extends JPanel {
         btnAddModProducts.addActionListener(c);
         btnModDeltClient.addActionListener(c);
         btnHistorialClientes.addActionListener(c);
+        btnGestionPersonal.addActionListener(c);
         //btnVerClientes.addActionListener(c);
-        btnVerPersonal.addActionListener(c);
     }
 
     public void updateHour() {
