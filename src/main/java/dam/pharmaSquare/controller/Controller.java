@@ -265,25 +265,7 @@ public class Controller implements ActionListener {
                         }
                     }
                 }*/
-            } else if (e.getActionCommand().equals(VAddModCategory.DELETE)){
-                /*String catg = vAddModCategory.getTextFieldValueModC().trim();
-                if (catg != null) {
-                    int resp = JOptionPane.showConfirmDialog(vModClient, "¿Estás seguro que quieres eliminar la" +
-                                    " categoría " + catg.toUpperCase() +" ?",
-                            "Borrar categoría", JOptionPane.YES_NO_OPTION);
-                    if (resp == 0) {
-                        int res = pharmaSquareDB.modCategoria(catg);
-                        if (res > 1) {
-                            JOptionPane.showMessageDialog(vModClient, "Categoría eliminada",
-                                    "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                            vModClient.disableAllExceptTxtId();
-                        } else {
-                            JOptionPane.showMessageDialog(vModClient, "No se ha podido eliminar la categoría" + catg.toUpperCase(),
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                }*/
-            }else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
+            } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
                 vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
