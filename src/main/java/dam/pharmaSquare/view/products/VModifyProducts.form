@@ -227,7 +227,9 @@
                 <preferred-size width="250" height="50"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <lineWrap value="true"/>
+            </properties>
           </component>
         </children>
       </grid>
