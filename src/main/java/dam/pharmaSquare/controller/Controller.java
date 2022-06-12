@@ -9,6 +9,7 @@ import dam.pharmaSquare.model.Personal;
 import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.view.cliente.VAddCliente;
 import dam.pharmaSquare.view.category.VAddModCategory;
+import dam.pharmaSquare.view.cliente.VClientsRecords;
 import dam.pharmaSquare.view.cliente.VModClient;
 import dam.pharmaSquare.view.personal.VAddPersonal;
 import dam.pharmaSquare.view.personal.VCheckPersonal;
@@ -41,6 +42,7 @@ public class Controller implements ActionListener {
     private VModifyProducts vModifyProducts;
     private VAddModCategory vAddModCategory;
     private VModClient vModClient;
+    private VClientsRecords vClientsRecords;
     private ArrayList<Personal> listaPersonal;
     private Personal personal;
     private String nombrePersonal;
@@ -55,7 +57,10 @@ public class Controller implements ActionListener {
     private int editMode = 0;
 
 
-    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu, VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts, VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory, VModClient vModClient, PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
+    public Controller(VWindows vWindows, VInicio vInicio, VStaffLogin vStaffLogin, VStaffMenu vStaffMenu,
+                      VCheckPersonal vCheckPersonal, VSeeNoLogProducts vSeeNoLogProducts, VSeeLoginProducts vSeeLoginProducts,
+                      VAddCliente vAddCliente, VAddPersonal vAddPersonal, VModifyProducts vModifyProducts, VAddModCategory vAddModCategory,
+                      VModClient vModClient, VClientsRecords vClientsRecords ,PharmaSquareDB pharmaSquareDB, BasicPasswordPolicy policy) {
         this.vWindows = vWindows;
         this.vInicio = vInicio;
         this.vStaffLogin = vStaffLogin;
@@ -68,6 +73,7 @@ public class Controller implements ActionListener {
         this.vModifyProducts = vModifyProducts;
         this.vAddModCategory = vAddModCategory;
         this.vModClient = vModClient;
+        this.vClientsRecords = vClientsRecords;
         this.pharmaSquareDB = pharmaSquareDB;
         this.policy = policy;
     }
@@ -278,6 +284,10 @@ public class Controller implements ActionListener {
                     }
                 }*/
             }else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
+                vWindows.loadPanel(vStaffMenu);
+            } else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
+                vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
+            }else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
             }
         }
