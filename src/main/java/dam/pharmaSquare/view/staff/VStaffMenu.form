@@ -105,7 +105,11 @@
               </grid>
             </constraints>
             <properties>
+<<<<<<< HEAD
+              <text value="Gestión personal"/>
+=======
               <text value="Listado empleados"/>
+>>>>>>> 7dd94503d386c519dc04e8176094fd9dd64fb2ec
             </properties>
           </component>
         </children>
