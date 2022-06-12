@@ -67,7 +67,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param nombre Nombre del personal a buscar.
      * @return Object Personal.
      */
-    public Personal getPersonalbyName(String nombre) {
+    public Personal getPersonalbyName(String nombre) throws InvalidDataException {
         nombre = nombre.toUpperCase();
         String query = String.format(
                 "SELECT * FROM %s WHERE UPPER(%s) = ?;",
@@ -82,7 +82,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param nombre Dni del  personal a eliminar
      * @return Object Personal.
      */
-    public int delPersonal(String nombre) {
+    public int delPersonal(String nombre) throws InvalidDataException {
 
         String query = String.format(
                 "DELETE FROM %s WHERE %s = ?;",
@@ -125,7 +125,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param cronologico Si true, los resultados más antiguos saldrán antes. Else de manera contraria.
      * @return Lista con las transacciones requeridas.
      */
-    public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) {
+    public ArrayList<Transaccion> getTransacciones(String dni, String producto, boolean cronologico) throws InvalidDataException {
         ArrayList<Object> condValues = new ArrayList<>();
         ArrayList<String> condQuery = new ArrayList<>();
 
@@ -164,7 +164,7 @@ public class PharmaSquareDB extends AccessDB {
      * Obtiene todas las categorías para un producto por orden alfabético.
      * @return Arraylist con las categorias.
      */
-    public ArrayList<CategoriaProducto> getCategorias() {
+    public ArrayList<CategoriaProducto> getCategorias() throws InvalidDataException {
         String query = String.format(
             "SELECT * FROM %s ORDER BY %s ASC;",
             PCategoriaProducto.TABLE_NAME,
@@ -227,7 +227,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param passwd Password a verificar.
      * @return True si ambos campos son correctos, false en caso contrario.
      */
-    private boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) {
+    private boolean validPasswd(String table, String passwdField, String userField, String user, String passwd) throws InvalidDataException {
         String query = String.format(
             "SELECT %s FROM %s WHERE %s = ?;",
             passwdField,
@@ -249,7 +249,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param passwd Password del cliente.
      * @return True si ambos campos son correctos, false en caso contrario.
      */
-    public boolean validPasswdCliente(String userMail, String passwd) {
+    public boolean validPasswdCliente(String userMail, String passwd) throws InvalidDataException {
         return validPasswd(
             PCliente.TABLE_NAME,
             PCliente.PASSWD,
@@ -265,7 +265,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param passwd Password del personal.
      * @return True si ambos campos son correctos, false en caso contrario.
      */
-    public boolean validPasswdPersonal(String userDni, String passwd) {
+    public boolean validPasswdPersonal(String userDni, String passwd) throws InvalidDataException {
         return validPasswd(
                 PPersonal.TABLE_NAME,
                 PPersonal.PASSWD,
@@ -336,7 +336,7 @@ public class PharmaSquareDB extends AccessDB {
      * Añade una nueva categoría a la base de datos.
      * @param categoria Nueva categoría que añadir.
      * @return Resultado al ejecutar la sentencia.
-     * @throws InvalidDataException
+     * @throws InvalidDataException si hay algún error.
      */
     public int addCategoria(String categoria) throws InvalidDataException {
         CategoriaProducto.isNombreValid(categoria);
@@ -355,7 +355,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param p Objeto de tipo personal.
      * @return Object Personal.
      */
-    public int modPersonal(Personal p)  {
+    public int modPersonal(Personal p) throws InvalidDataException {
         String query = String.format(
                 "REPLACE INTO %s VALUES  (?, ?, ?, ?);",
                 PPersonal.TABLE_NAME
@@ -383,7 +383,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param p producto modificado que actualizar en la base de datos.
      * @return Código resultante el la ejecución SQL.
      */
-    public int modProducto(Producto p) {
+    public int modProducto(Producto p) throws InvalidDataException {
         String query;
         if (p.getId() != PProducto.INVALID_ID) {
             query = String.format(
@@ -444,7 +444,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param c Cliente con los valores actualizados.
      * @return Código resultado al realizar la ejecución.
      */
-    public int modCliente(Cliente c) {
+    public int modCliente(Cliente c) throws InvalidDataException {
         String query = String.format(
             "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",
             PCliente.TABLE_NAME,
@@ -478,7 +478,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param c Categoría con el nuevo nombre.
      * @return Código resultado de ejutar la secuencia SQL.
      */
-    public int modCategoria(CategoriaProducto c) {
+    public int modCategoria(CategoriaProducto c) throws InvalidDataException {
         String query = String.format(
             "UPDATE %s SET %s = ? WHERE %s = ?",
             PCategoriaProducto.TABLE_NAME,
@@ -495,7 +495,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param nombre nombre del producto.
      * @return Código resultado al ejecutar la sentencia.
      */
-    public int delProducto(String nombre) {
+    public int delProducto(String nombre) throws InvalidDataException {
         Producto.isNombreValid(nombre);
         String query = String.format(
             "DELETE FROM %s WHERE UPPER(%s) = UPPER(?);",
@@ -511,7 +511,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param fieldValue Valor del campo especificado.
      * @return Código resultante de borrar el cliente.
      */
-    public int delCliente(String field, String fieldValue) {
+    public int delCliente(String field, String fieldValue) throws InvalidDataException {
         if (field != PCliente.DNI && field != PCliente.NOMBRE)
             throw new InvalidDataException("El campo field tiene que ser PCliente.DNI o PCliente.NOMBRE");
         // Verificación valor dado
@@ -535,7 +535,7 @@ public class PharmaSquareDB extends AccessDB {
      * @param fieldValue Valor del campo especificado.
      * @return Código resultante de borrar el personal.
      */
-    public int delPersonal(String field, String fieldValue) {
+    public int delPersonal(String field, String fieldValue) throws InvalidDataException {
         if (field != PPersonal.DNI && field != PPersonal.NOMBRE)
             throw new InvalidDataException("El campo field tiene que ser PPersonal.DNI o PPersonal.NOMBRE");
         // Verificación valor dado
