@@ -529,6 +529,30 @@ public class PharmaSquareDB extends AccessDB {
         return SQLiteQuery.execute(this, query, fieldValue);
     }
 
+    /**
+     * Intenta borrar el personal del la base de datos.
+     * @param field Campo que usar para identificar al personal. Tiene que ser PPersonal.DNI o PPersonal.NOMBRE.
+     * @param fieldValue Valor del campo especificado.
+     * @return Código resultante de borrar el personal.
+     */
+    public int delPersonal(String field, String fieldValue) {
+        if (field != PPersonal.DNI && field != PPersonal.NOMBRE)
+            throw new InvalidDataException("El campo field tiene que ser PPersonal.DNI o PPersonal.NOMBRE");
+        // Verificación valor dado
+        if (field == PPersonal.DNI)
+            Cliente.isDniValid(fieldValue);
+        else
+            Cliente.isNombreValid(fieldValue);
+
+        String query = String.format(
+                "DELETE FROM %s WHERE UPPER(%s) = UPPER(?);",
+                PPersonal.TABLE_NAME,
+                field
+        );
+
+        return SQLiteQuery.execute(this, query, fieldValue);
+    }
+
     // sqlite2model: parser between sqlite output and model.
 
     private static ArrayList<Personal> sqlite2listapersonal(ArrayList<Object[]> data) {

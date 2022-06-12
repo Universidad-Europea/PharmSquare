@@ -4,6 +4,7 @@ import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Personal;
 
+import dam.pharmaSquare.model.persistencia.PCliente;
 import dam.pharmaSquare.model.persistencia.PPersonal;
 import org.junit.*;
 
@@ -25,7 +26,7 @@ public class PersonalTest {
         for (String type : PharmaSquareDB.PERSONAL_FILTERS) {
             System.out.println("--------------------------");
             System.out.println(type);
-            printPersonal(db.getPersonal(type, "U"));
+            printPersonal(db.getPersonal(type, "E"));
             System.out.println("--------------------------");
         }
     }
@@ -56,10 +57,23 @@ public class PersonalTest {
          assertFalse(db.validPasswdPersonal("root", "root"));
     }
 
+    @Test
+    public void delPersonal() {
+        assertThrows(InvalidDataException.class, () -> {db.delPersonal("invalidField", "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.delPersonal(PCliente.DNI, "hoa");});
+        assertThrows(InvalidDataException.class, () -> {db.delPersonal(PCliente.NOMBRE, "ho321a");});
+
+        assertEquals(0, db.delPersonal(PCliente.DNI, "12341234R"));
+        assertEquals(0, db.delPersonal(PCliente.NOMBRE, "estenombrenoesvalido"));
+
+        assertEquals(1, db.delPersonal(PCliente.DNI, "123456789E")); // EMPLEADO GENERICO UNO
+        assertEquals(1, db.delPersonal(PCliente.NOMBRE, "ADMINISTRADOR DE FARMACIA"));
+    }
+
     // TOOLS
     private static void printPersonal(ArrayList<Personal> personal) {
         for (Personal p : personal) {
-            System.out.println(p.getNombre() + "   es     " + p.getCategoria());
+            System.out.println(p.getNombre() + "   es     " + p.getCategoria() + " y tiene DNI " + p.getDni());
         }
     }
 }
