@@ -48,7 +48,8 @@ public class Transaccion {
      * @throws InvalidDataException
      */
     public static void isFechaValid(String fecha) {
-        // TODO Validar fecha
+        if (!DataValidation.isDateTimeValid(fecha))
+            throw new InvalidDataException("La fecha introducida no es válida.");
     }
 
     /**
