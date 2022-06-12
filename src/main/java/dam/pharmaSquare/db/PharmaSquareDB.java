@@ -78,23 +78,6 @@ public class PharmaSquareDB extends AccessDB {
     }
 
     /**
-     * Función que elimina un personal en función del parametro recibido
-     * @param nombre Dni del  personal a eliminar
-     * @return Object Personal.
-     */
-    public int delPersonal(String nombre) throws InvalidDataException {
-
-        String query = String.format(
-                "DELETE FROM %s WHERE %s = ?;",
-                PPersonal.TABLE_NAME,
-                PPersonal.NOMBRE
-
-        );
-
-        return (SQLiteQuery.execute(this, query,  nombre));
-    }
-
-    /**
      * Obtiene los productos disponibles para el usuario.
      * @param logged Si el usuario está loggeado o no.
      * @return Lista con los productos disponibles.
@@ -527,6 +510,15 @@ public class PharmaSquareDB extends AccessDB {
         );
 
         return SQLiteQuery.execute(this, query, fieldValue);
+    }
+
+    /**
+     * Función que elimina un personal en función del parametro recibido
+     * @param nombre Dni del  personal a eliminar
+     * @return Object Personal.
+     */
+    public int delPersonal(String nombre) throws InvalidDataException {
+        return delPersonal(PPersonal.NOMBRE, nombre);
     }
 
     /**
