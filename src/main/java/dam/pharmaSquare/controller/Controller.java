@@ -121,6 +121,8 @@ public class Controller implements ActionListener {
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_EMPLOYEE)){
                 vWindows.loadPanel(vAddPersonal);
             }else if (e.getActionCommand().equals(vStaffMenu.VIEW_EMPLOYEES)){
+                listaPersonal = pharmaSquareDB.getPersonal(vCheckPersonal.getComboBoxValue(), vCheckPersonal.getTextFieldValue());
+                vCheckPersonal.fillTable(listaPersonal);
                 vWindows.loadPanel(vCheckPersonal);
             }else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
