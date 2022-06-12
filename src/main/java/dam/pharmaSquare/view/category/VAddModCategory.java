@@ -28,7 +28,7 @@ public class VAddModCategory extends JPanel {
 
     public static final String SAVE_NEW_C = "GUARDAR ";
     public static final String SAVE_CHANGES = "GUARDAR CAMBIOS";
-    public static final String MODIFY = "MODIFICAR";
+    public static final String MODIFICAR = "MODIFICAR";
     public static final String EXIT = "VOLVER A STAFFMENU";
 
     private JPanel jpBody;
@@ -46,7 +46,7 @@ public class VAddModCategory extends JPanel {
     private JTable tblCtg;
     private JScrollPane scrpTable;
     private JButton btnSaveNewCtg;
-    private JButton btnMod;
+    private JButton btnModifyCtg;
     private JLabel lblId;
     private DefaultTableModel dtmCtg;
     private static PharmaSquareDB db;
@@ -75,7 +75,7 @@ public class VAddModCategory extends JPanel {
         cleanComponents();
 
         btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
-        btnMod.setActionCommand(MODIFY);
+        btnModifyCtg.setActionCommand(MODIFICAR);
         btnSaveChanges.setActionCommand(SAVE_CHANGES);
         btnBack.setActionCommand(EXIT);
     }
@@ -122,7 +122,7 @@ public class VAddModCategory extends JPanel {
     public void setController(Controller c) {
         btnSaveChanges.addActionListener(c);
         btnSaveNewCtg.addActionListener(c);
-        btnMod.addActionListener(c);
+        btnModifyCtg.addActionListener(c);
         btnBack.addActionListener(c);
     }
 

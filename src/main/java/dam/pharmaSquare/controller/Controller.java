@@ -263,7 +263,7 @@ public class Controller implements ActionListener {
                         }
                     }
                 }
-            } else if (e.getActionCommand().equals(VAddModCategory.MODIFY)){
+            } else if (e.getActionCommand().equals(VAddModCategory.MODIFICAR)){
                 vAddModCategory.loadSelectedItem(vAddModCategory.getSelectedItem());
             }else if (e.getActionCommand().equals(VAddModCategory.SAVE_CHANGES)){
                 CategoriaProducto catg = vAddModCategory.getTextFieldValueModC();
