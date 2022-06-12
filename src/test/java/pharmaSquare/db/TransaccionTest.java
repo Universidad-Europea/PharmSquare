@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento de las Transacciones en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class TransaccionTest {
     private static PharmaSquareDB db;
 

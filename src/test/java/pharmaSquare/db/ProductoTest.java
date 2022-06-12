@@ -4,14 +4,17 @@ import dam.exception.InvalidDataException;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Producto;
 
-import dam.pharmaSquare.model.persistencia.PPersonal;
-import dam.pharmaSquare.model.persistencia.PProducto;
 import org.junit.*;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento de los Productos en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class ProductoTest {
     private static PharmaSquareDB db;
 

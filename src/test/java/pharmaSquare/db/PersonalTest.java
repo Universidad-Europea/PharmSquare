@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Serie de tests para verificar el correcto fucionamiento del Personal en la base de datos.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class PersonalTest {
     private static PharmaSquareDB db;
 
