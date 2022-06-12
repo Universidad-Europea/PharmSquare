@@ -30,7 +30,7 @@ INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesi
 VALUES ('Ibuprofeno', 'Ibuprofeno 600mg.', 'Jhonson & Johnson', 5.99, 10, './res/img/productos/ibuprofeno.jpg', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Paracetamol', 'Paracetamol pack ahorro 40 monodosis.', 'Fharma Labs S.A.', 4.99, 10, './res/img/productos/paracetamol.jpg', 'S');
+VALUES ('Paracetamol', 'Paracetamol pack ahorro 40 monodosis.', 'Fharma Labs S.A.', 4.5, 10, './res/img/productos/paracetamol.jpg', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
 VALUES ('Aspirina', 'Ahora el doble de burbujas.', 'Fharma Labs S.A.', 3.99, 10, './res/img/productos/aspirina.jpg', 'S');
