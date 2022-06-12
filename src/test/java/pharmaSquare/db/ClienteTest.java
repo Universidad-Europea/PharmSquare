@@ -30,7 +30,7 @@ public class ClienteTest {
         db.addCliente(new Cliente(
                 "21212121U",
                 "Maria",
-                "01/01/2022",
+                "2022-01-01",
                 "c/ Luz, 2 Madrid",
                 "01/01/2000",
                 "holasQWEw231#@",
@@ -41,7 +41,7 @@ public class ClienteTest {
     }
 
     @Test
-    public void getCliente() {
+    public void getCliente() { // No ejecutar directamente, tiene que ser ejecutado sin que se ejecute delClienteTest
         assertThrows(InvalidDataException.class, () -> {db.getCliente("invalidField", "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.DNI, "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.getCliente(PCliente.NOMBRE, "ho321a");});
@@ -55,7 +55,7 @@ public class ClienteTest {
     }
 
     @Test
-    public void delCliente() {
+    public void delClienteTest() {
         assertThrows(InvalidDataException.class, () -> {db.delCliente("invalidField", "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.DNI, "hoa");});
         assertThrows(InvalidDataException.class, () -> {db.delCliente(PCliente.NOMBRE, "ho321a");});
@@ -68,7 +68,7 @@ public class ClienteTest {
     }
 
    @Test
-   public void modCliente() {
+   public void modCliente() { // No ejecutar directamente, tiene que ser ejecutado sin que se ejecute delClienteTest
         Cliente p = db.getCliente(PCliente.NOMBRE, "Juan Garcia");
 
         Cliente p2 = new Cliente(

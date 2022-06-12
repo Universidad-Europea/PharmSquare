@@ -4,6 +4,7 @@ import dam.dataValidation.DataValidation;
 import dam.exception.InvalidDataException;
 import dam.pharmaSquare.model.persistencia.PCliente;
 
+
 /**
  * Cliente de la aplicación PharmaSquare.
  *
@@ -13,9 +14,9 @@ public class Cliente {
 
     private String dni;
     private String nombre;
-    private String fAlta; // TODO Date?
+    private String fAlta;
     private String direccion;
-    private String nacimiento; // TODO Date?
+    private String nacimiento;
     private String passwd;
     private String sexo;
     private String telefono;
@@ -70,7 +71,8 @@ public class Cliente {
      * @throws InvalidDataException
      */
     public static void isFAltaValid(String fAlta) {
-        // TODO verificar fecha?
+        if (!DataValidation.isDateValid(fAlta))
+            throw new InvalidDataException("La fecha introducida no es válida.");
     }
 
     /**
