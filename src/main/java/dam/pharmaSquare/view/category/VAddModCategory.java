@@ -59,7 +59,7 @@ public class VAddModCategory extends JPanel {
      * @return the component argument
      */
 
-    public void VAddModCategory() {
+    public VAddModCategory() {
         init();
         add(jpBody);
         updateHour();
@@ -72,6 +72,7 @@ public class VAddModCategory extends JPanel {
         scrpTable.setViewportView(tblCtg);
         configTable();
         loadTable();
+        cleanComponents();
 
         btnSaveNewCtg.setActionCommand(SAVE_NEW_C);
         btnMod.setActionCommand(MODIFY);
@@ -94,8 +95,6 @@ public class VAddModCategory extends JPanel {
     }
 
     private void configTable() {
-        tblCtg.setModel(dtmCtg);
-
         // declare DefaultTableModel and disable cell editing
         dtmCtg = new DefaultTableModel() {
             @Override
@@ -104,6 +103,8 @@ public class VAddModCategory extends JPanel {
                 return false;
             }
         };
+
+        tblCtg.setModel(dtmCtg);
 
         //adding and setting the columns
         dtmCtg.addColumn(PCategoriaProducto.NOMBRE);
@@ -130,8 +131,8 @@ public class VAddModCategory extends JPanel {
      *
      * @return name JtextField text
      */
-    public CategoriaProducto getTextFieldValueNewC() {
-       return new CategoriaProducto(Integer. parseInt(lblId.getText()),txtNewCtgName.getText());
+    public CategoriaProducto getTextFieldValueModC() {
+       return new CategoriaProducto(Integer. parseInt(lblId.getText()),txtCtgMod.getText());
     }
 
     /**
@@ -139,9 +140,8 @@ public class VAddModCategory extends JPanel {
      *
      * @return name JtextField text
      */
-    public String getTextFieldValueModC() {
-        String name = txtNewCtgName.getText();
-        return name;
+    public String getTextFieldValueNewC() {
+        return txtNewCtgName.getText();
     }
 
     /**
