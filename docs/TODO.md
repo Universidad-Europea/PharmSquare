@@ -4,7 +4,7 @@
 
 - [x] Acta de reunión para conformación de equipo, asignación de roles.
 - [x] Elección del nombre de la empresa que desarrolla (nombre del equipo), logo y nombre de la aplicación.
-- [ ] Documento de análisis con los requisitos que cumplirá el sistema.
+- [x] Documento de análisis con los requisitos que cumplirá el sistema.
 
 ## Sprint 2. (04-02-2022 - 24-02-2022)
 
@@ -32,7 +32,7 @@
 
 ## Sprint 5. (08-04-2022 - 24-04-2022)
 
-- [ ] Creación de las clases que representan la interfaz gráfica. (Depende de Sprint3)
+- [x] Creación de las clases que representan la interfaz gráfica. (Depende de Sprint3)
 - [x] Planteamiento de las clases que representan el control de la interfaz gráfica. (Depende de Sprint3)
 
 
@@ -48,12 +48,13 @@
 
 ## Sprint 7. (15-05-2021 - 04-06-2021)
 
-- [ ] Integración de todos los elementos. Pruebas de integración.
+- [x] Integración de todos los elementos. Pruebas de integración.
+  - [x] Realizados de manera manual.
 - [ ] Generación del archivo ejecutable.
 - [ ] Realización del manual de usuario y de la wiki.
   - [x] Wiki.
   - [ ] Manual de usuario.
-- [ ] Realización del video de presentación
+- [x] Realización del video de presentación
 
 
 - Release y defensa del PI
