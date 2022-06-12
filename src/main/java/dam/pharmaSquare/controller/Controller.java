@@ -104,7 +104,8 @@ public class Controller implements ActionListener {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vInicio.setDefault();
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
-               System.out.println("[LOG] Login correcto");
+               vInicio.setDefault();
+                vWindows.loadPanel(vStaffMenu);
             } else if (e.getActionCommand().equals(vStaffMenu.EXIT)){
                 vWindows.loadPanel(vInicio);
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_CATEGORY)){
