@@ -66,11 +66,22 @@ public class AccessDB {
             throw new InvalidDataException(error);
     }
 
+    /**
+     * Obtiene la conexión con la base de datos.
+     * @return Connection object con la conexión.
+     * @throws ClassNotFoundException Si no se encontró la clase con el driver especificado.
+     * @throws SQLException Si la base de datos tiene algún problema obteniendo la conexión.
+     */
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(driver);
         return DriverManager.getConnection(url);
     }
 
+    /**
+     * Verifica que todos los campos necesarios para la clase se encuentran en el archivo.properties.
+     * @param properties Archivo properties ya listo para su lectura.
+     * @return True si es válido, false en caso contrario.
+     */
     private static boolean validPropertiesFile(Properties properties) {
         final String[] requiredFields = {"DRIVER", "URL_TYPE", "DB_NAME", "PATHS"};
         for (String s : requiredFields)
@@ -80,6 +91,12 @@ public class AccessDB {
     }
 
     // Help functions
+
+    /**
+     * Verifica que el archivo dado como URL existe.
+     * @param path Localización del archivo.
+     * @return El resultado de la comprobación.
+     */
     private static boolean fileExist(String path) {
         Path pathFile = Path.of(path);
         return Files.exists(pathFile);
