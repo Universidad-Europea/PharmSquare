@@ -31,6 +31,21 @@ public class ProductoTest {
     }
 
     @Test
+    public void addProductoTest() {
+        Producto p = new Producto(
+            "esta es la utilidad que tiene el producto.",
+            "Nombre producto",
+            "Labs SL",
+            23.43,
+            23,
+            "res/img/foto.png",
+            "S"
+        );
+
+        db.addProducto(p);
+    }
+
+    @Test
     public void modProductosID() {
         ArrayList<Producto> lst = db.getProductos(true);
 

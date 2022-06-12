@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 /**
- * @author Jkutkut
+ * Class with the basic logic to implement a Password policy by extending this class.
+ *
+ * Because of the design of this class, it can also be used to verify any string pattern.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class PasswordPolicy {
 

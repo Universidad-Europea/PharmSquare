@@ -3,9 +3,9 @@ package dam.dataValidation;
 import java.util.function.Predicate;
 
 /**
- * Basic password policy with some rules.
+ * Política básica para las contraseñas.
  *
- * @author jkutkut
+ * @author Jorge Re - Jkutkut
  */
 public class BasicPasswordPolicy extends PasswordPolicy {
     private static final int MIN_LENGTH = 8;

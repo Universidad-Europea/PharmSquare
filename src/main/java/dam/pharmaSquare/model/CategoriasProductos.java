@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Clase que contiene un producto, así como todas sus categorías.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class CategoriasProductos {
     private Producto producto;
