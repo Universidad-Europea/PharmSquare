@@ -4,6 +4,8 @@ package dam.dataValidation;
  * Class with multiple methods to validate information.
  * <br>
  * This way, just by calling a method from this class, the whole validation of the field can be done.
+ *
+ * @author Jorge Re - Jkutkut
  */
 public class DataValidation {
 

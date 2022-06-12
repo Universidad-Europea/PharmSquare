@@ -4,13 +4,16 @@ import dam.dataValidation.DataValidation;
 import dam.db.AccessDB;
 import dam.db.SQLiteQuery;
 import dam.exception.InvalidDataException;
-import dam.exception.SQLiteQueryException;
 import dam.pharmaSquare.model.*;
 import dam.pharmaSquare.model.persistencia.*;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+/**
+ * Clase con todos la lógica necesaria para el uso de la base de datos de la aplicación PharmaSquare.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class PharmaSquareDB extends AccessDB {
     private static final String FILE_PATH = "pharmaSquareDB.properties";
 
