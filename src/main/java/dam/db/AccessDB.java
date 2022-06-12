@@ -13,6 +13,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Clase con la lógica necesaria para poder acceder a una base de datos SQL.
+ *
+ * @author Jorge Re - Jkutkut
+ */
 public class AccessDB {
     private String driver;
     private String url;
@@ -102,69 +107,3 @@ public class AccessDB {
         return Files.exists(pathFile);
     }
 }
-
-/*
-
-package dam.db;
-
-import dam.exception.InvalidDataException;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
-
-public class AccessDB {
-    private static final String DRIVER = "org.sqlite.JDBC";
-    private static final String URL_TYPE = "jdbc:sqlite:";
-    private String url;
-
-    public AccessDB(String dbFile) {
-        String db;
-        Properties properties = new Properties();
-        InputStream is = null;
-
-        try {
-            is = new FileInputStream(dbFile);
-            properties.load(is);
-
-            if (!DRIVER.equals(properties.getProperty("DRIVER")))
-                throw new InvalidDataException("Invalid database: driver not valid.");
-            if (!URL_TYPE.equals(properties.getProperty("URL_TYPE")))
-                throw new InvalidDataException("Invalid database: url type not valid.");
-            if (properties.getProperty("PATH") == null)
-                throw new InvalidDataException("Invalid database: path not valid.");
-            String[] path = properties.getProperty("PATH").split(":");
-            for (String s : path)
-
-            db = properties.getProperty("DB");
-            url = URL_TYPE + db;
-        }
-        catch (FileNotFoundException e) {
-            throw new InvalidDataException("File not found: " + dbFile);
-        }
-        catch (IOException e) {
-            throw new InvalidDataException("Error reading file: " + dbFile);
-        }
-        finally {
-            try {
-                if (is != null) is.close();
-            }
-            catch (IOException e) {
-                throw new InvalidDataException("Error closing file: " + dbFile);
-            }
-        }
-
-    }
-
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName(DRIVER);
-        return DriverManager.getConnection(url);
-    }
-}
-
- */
