@@ -24,46 +24,46 @@ VALUES ('987654321B', 'Ana Lopez', '2019-01-01', 'C/Calle m nº 4', '1999-07-04'
 -- Rellenar PRODUCTO
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Vendaje de piel', 'Vendaje de 30 unidades para la piel.', 'Jhonson & Johnson', 8.69, 10, './res/img/productos/bendaje.jpg', 'S');
+VALUES ('Vendaje de piel', 'Vendaje de 30 unidades para la piel.', 'Jhonson & Johnson', 8.69, 10, 'src/main/resources/img/productos/ventaje.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Ibuprofeno', 'Ibuprofeno 600mg.', 'Jhonson & Johnson', 5.99, 10, './res/img/productos/ibuprofeno.jpg', 'S');
+VALUES ('Ibuprofeno', 'Ibuprofeno 600mg.', 'Jhonson & Johnson', 5.99, 10, 'src/main/resources/img/productos/ibuprofeno.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Paracetamol', 'Paracetamol pack ahorro 40 monodosis.', 'Fharma Labs S.A.', 4.5, 10, './res/img/productos/paracetamol.jpg', 'S');
+VALUES ('Paracetamol', 'Paracetamol pack ahorro 40 monodosis.', 'Fharma Labs S.A.', 4.5, 10, 'src/main/resources/img/productos/paracetamol.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Aspirina', 'Ahora el doble de burbujas.', 'Fharma Labs S.A.', 3.99, 10, './res/img/productos/aspirina.jpg', 'S');
+VALUES ('Aspirina', 'Ahora el doble de burbujas.', 'Fharma Labs S.A.', 3.99, 10, 'src/main/resources/img/productos/aspirina.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Ebastel', 'Ebastel monodosis. Pack de 40 dosis.', 'Fharma Labs S.A.', 9.99, 10, './res/img/productos/ebastel.jpg', 'S');
+VALUES ('Ebastel', 'Ebastel monodosis. Pack de 40 dosis.', 'Fharma Labs S.A.', 9.99, 10, 'src/main/resources/img/productos/ebastel.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Crema solar', 'Protección 80.', 'Fharma Labs S.A.', 29.99, 10, './res/img/productos/crema_solar.jpg', 'N');
+VALUES ('Crema solar', 'Protección 80.', 'Fharma Labs S.A.', 29.99, 10, 'src/main/resources/img/productos/crema_solar.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suero', 'Suero fisiológico', 'Dalsy Corporated', 9.99, 10, './res/img/productos/suero.jpg', 'S');
+VALUES ('Suero', 'Suero fisiológico', 'Dalsy Corporated', 9.99, 10, 'src/main/resources/img/productos/suero.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Cafeina', 'Este producto suele desaparecer de nuestros almacenes por razones misteriosas.', 'Dalsy Corporated', 24.54, 10, './res/img/productos/cafeina.jpg', 'S');
+VALUES ('Cafeina', 'Este producto suele desaparecer de nuestros almacenes por razones misteriosas.', 'Dalsy Corporated', 24.54, 10, 'src/main/resources/img/productos/cafeina.png', 'S');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suplemento alimenticio bebes', 'Sabor crema de frutas y verduras.', 'Dalsy Corporated', 19.99, 10, './res/img/productos/suplemento_bebes.jpg', 'N');
+VALUES ('Suplemento alimenticio bebes', 'Sabor crema de frutas y verduras.', 'Dalsy Corporated', 19.99, 10, 'src/main/resources/img/productos/suplemento_bebes.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suplemento alimenticio adultos', 'Nuevo sabor Fabada con natillas.', 'Fharma Labs S.A.', 19.99, 10, './res/img/productos/suplemento_adultos.jpg', 'N');
+VALUES ('Suplemento alimenticio adultos', 'Nuevo sabor Fabada con natillas.', 'Fharma Labs S.A.', 19.99, 10, 'src/main/resources/img/productos/suplemento_adultos.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Suplemento alimenticio niños', 'Sabor vainilla.', 'Fharma Labs S.A.', 19.99, 10, './res/img/productos/suplemento_ninos.jpg', 'N');
+VALUES ('Suplemento alimenticio niños', 'Sabor vainilla.', 'Fharma Labs S.A.', 19.99, 10, 'src/main/resources/img/productos/suplemento_ninos.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Crema hidratante', 'Especialmente diseñada para su absorción cutánea.', 'Dalsy Corporated', 9.99, 10, './res/img/productos/crema_hidratante.jpg', 'N');
+VALUES ('Crema hidratante', 'Especialmente diseñada para su absorción cutánea.', 'Dalsy Corporated', 9.99, 10, 'src/main/resources/img/productos/crema_hidratante.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Tiritas', 'Apósitos de tamaño reducido.', 'Dalsy Corporated', 3.99, 10, './res/img/productos/tiritas.jpg', 'N');
+VALUES ('Tiritas', 'Apósitos de tamaño reducido.', 'Dalsy Corporated', 3.99, 10, 'src/main/resources/img/productos/tiritas.png', 'N');
 
 INSERT INTO PRODUCTO (nombre, utilidad, laboratorio, precio, stock, foto, necesita_login)
-VALUES ('Apósitos de nitrato de plata', 'Tiritas grandes.', 'Dalsy Corporated', 3.99, 10, './res/img/productos/apositos.jpg', 'N');
+VALUES ('Apósitos de nitrato de plata', 'Tiritas grandes.', 'Dalsy Corporated', 3.99, 10, 'src/main/resources/img/productos/apositos.png', 'N');
 
 
 -- Rellenar CATEGORIA_PRODUCTO
