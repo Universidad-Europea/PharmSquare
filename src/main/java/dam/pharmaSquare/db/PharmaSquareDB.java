@@ -416,6 +416,21 @@ public class PharmaSquareDB extends AccessDB {
      * @return Código resultado de ejecutar la sentencia.
      */
     public int addTransaccion(Transaccion t) {
+
+        ArrayList<Producto> productos = getProductos(true);
+        Producto p = null;
+
+        for (Producto pp : productos) {
+            if (pp.getId() == t.getIdProducto()) {
+                p = pp;
+                break;
+            }
+        }
+        if (p == null)
+            throw new InvalidDataException("Producto no encontrado.");
+        if (t.getCantidad() > p.getStock())
+            throw new InvalidDataException("No hay suficiente stock para realizar el pedido.");
+
         String query = String.format(
             "INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?);",
             PTransaccion.TABLE_NAME,
@@ -425,7 +440,7 @@ public class PharmaSquareDB extends AccessDB {
             PTransaccion.CANTIDAD
         );
 
-        return SQLiteQuery.execute(
+        int r = SQLiteQuery.execute(
             this,
             query,
             t.getDni(),
@@ -433,6 +448,20 @@ public class PharmaSquareDB extends AccessDB {
             t.getFecha(),
             t.getCantidad()
         );
+
+        p = new Producto(
+                p.getId(),
+                p.getUtilidad(),
+                p.getNombre(),
+                p.getLaboratorio(),
+                p.getPrecio(),
+                p.getStock() - t.getCantidad(),
+                p.getFoto(),
+                p.getNecesitaLogin()
+        );
+        modProducto(p);
+
+        return r;
     }
 
     // MODIFY
