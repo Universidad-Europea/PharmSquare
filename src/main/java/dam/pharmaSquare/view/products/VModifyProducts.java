@@ -29,7 +29,7 @@ public class VModifyProducts extends JPanel {
     private JTextField txtLaboratorio;
     private JLabel lblUtilidad;
     private JLabel lblLogin;
-    private JComboBox cmbxData;
+    public JComboBox cmbxData;
     private JTextField txtIDProduct;
     private JButton btnNewSearch;
     private JButton btnClock;
@@ -54,7 +54,6 @@ public class VModifyProducts extends JPanel {
         } else if (type % 2 == 1) {
             JOptionPane.showMessageDialog(null, "Modo edicion: habilitado");
             enableAll();
-            btnEliminar.setEnabled(false);
             txtIDProduct.setEnabled(false); // La ID no es modificable
         }
 
@@ -89,11 +88,11 @@ public class VModifyProducts extends JPanel {
         }
     }
 
-    private void loadDataCmbx() {
+    public void loadDataCmbx() {
         db = new PharmaSquareDB();
 
         ArrayList<Producto> list = db.getProductos(true);
-
+        System.out.println(cmbxData.getSelectedIndex());
         for (Producto p : list) {
             cmbxData.addItem(p.getNombre());
         }
@@ -153,6 +152,8 @@ public class VModifyProducts extends JPanel {
         rdbNo.setEnabled(false);
         txtLaboratorio.setEnabled(false);
         txtIDProduct.setEnabled(false);
+        btnEliminar.setEnabled(true);
+        btnGuardar.setEnabled(false);
     }
 
     public JButton getBtnEliminar() {

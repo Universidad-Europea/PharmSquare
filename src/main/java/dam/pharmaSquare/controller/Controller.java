@@ -111,6 +111,10 @@ public class Controller implements ActionListener {
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_CATEGORY)){
                 vWindows.loadPanel(vAddModCategory);
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_PROD)){
+
+                vModifyProducts.loadDataCmbx();
+                vModifyProducts.cmbxData.setSelectedIndex(1);
+
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
