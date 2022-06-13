@@ -14,8 +14,8 @@ CREATE TABLE CLIENTE (
 	nacimiento 	DATE,
 	passwd 		VARCHAR2(50),
 	sexo 		VARCHAR2(1),
-	telefono 	VARCHAR2(9),
-	mail 		VARCHAR2(50),
+	telefono 	VARCHAR2(9) UNIQUE,
+	mail 		VARCHAR2(50) UNIQUE,
 
 	CONSTRAINT CLIENTE_SEXO_CHK CHECK (sexo in ('H', 'M', 'O'))
 );
