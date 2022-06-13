@@ -111,10 +111,8 @@ public class Controller implements ActionListener {
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_CATEGORY)){
                 vWindows.loadPanel(vAddModCategory);
             }else if (e.getActionCommand().equals(vStaffMenu.ADD_MOD_PROD)){
-
                 vModifyProducts.loadDataCmbx();
                 vModifyProducts.cmbxData.setSelectedIndex(1);
-
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
@@ -146,7 +144,17 @@ public class Controller implements ActionListener {
                 editMode++;
                 vModifyProducts.editMode(editMode);
             } else if (button == vModifyProducts.getBtnGuardar()) {
-                vModifyProducts.updateProductDB();
+                int resp = JOptionPane.showConfirmDialog(vInicio, "¿Estás seguro que quieres modificar los valores del producto?",
+                        "Confirmar modificar producto", JOptionPane.YES_NO_OPTION);
+                if (resp == 0) {
+                    try {
+                        vModifyProducts.updateProductDB();
+                    } catch (InvalidDataException ex) {
+                        error = ex.getMessage();
+                        JOptionPane.showMessageDialog(vInicio, error, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
             } else if (button == vAddCliente.getBtnConfirmar()) {
                 try {
                     vAddCliente.addCliente();
