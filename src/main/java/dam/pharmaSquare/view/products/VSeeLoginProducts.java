@@ -3,6 +3,8 @@ package dam.pharmaSquare.view.products;
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
 import dam.pharmaSquare.model.Producto;
+import dam.pharmaSquare.model.Transaccion;
+import dam.pharmaSquare.view.inicio.VInicio;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,11 +22,46 @@ public class VSeeLoginProducts extends JPanel {
     private JButton btnComprar;
     private JButton btnExit;
     private static PharmaSquareDB db;
+    private VInicio vInicio;
+
 
     public VSeeLoginProducts() {
         add(panel1);
         addData();
         configTable();
+    }
+
+    public String getDateToday() {
+        String date = "";
+
+         // formar la fecha actual
+        java.util.Date fecha = new java.util.Date();
+        java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("yyy-MM-dd");
+        date = formato.format(fecha);
+
+        return date;
+    }
+
+    //get id producto seleccionado
+    public int getIdProductoSeleccionado() {
+        int idProducto = 0;
+        int row = jtableProduct.getSelectedRow();
+        if (row >= 0) {
+            idProducto = Integer.parseInt(jtableProduct.getValueAt(row, 0).toString());
+        }
+        return idProducto;
+    }
+
+
+    public void addTransaccion() {
+
+        db.addTransaccion(new Transaccion(
+                vInicio.getUserLogin(), // DNI user
+                getIdProductoSeleccionado(), // id producto
+                getDateToday(),
+                1
+        ));
+
     }
 
     private void addData() {
@@ -149,5 +186,9 @@ public class VSeeLoginProducts extends JPanel {
 
     public JButton getBtnExit() {
         return btnExit;
+    }
+
+    public JButton getBtnComprar() {
+        return btnComprar;
     }
 }

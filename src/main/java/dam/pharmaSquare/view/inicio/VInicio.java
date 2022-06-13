@@ -2,9 +2,12 @@ package dam.pharmaSquare.view.inicio;
 
 import dam.pharmaSquare.controller.Controller;
 import dam.pharmaSquare.db.PharmaSquareDB;
+import dam.pharmaSquare.model.Cliente;
 import dam.pharmaSquare.model.MessagesConfig;
+import dam.pharmaSquare.model.persistencia.PCliente;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class VInicio extends JPanel {
     private JPanel jpBody;
@@ -22,12 +25,27 @@ public class VInicio extends JPanel {
     private JLabel lblPassword;
     private JButton btnClock;
     private static PharmaSquareDB db;
+    public String userMail;
+    public String userLogin;
 
     public VInicio() {
         add(jpBody);
         configFields();
         updateHour();
     }
+
+    public String getUserLogin() {
+        String userMail = txtfMail.getText();
+
+        Cliente p = db.getClientebyMail(userMail);
+
+        System.out.println("userMail: " + userMail);
+        System.out.println("userDNI: " + p.getDni());
+
+        return p.getDni();
+
+    }
+
 
     public boolean validateLogin() {
         db = new PharmaSquareDB();

@@ -56,6 +56,8 @@ public class ClienteTest {
         System.out.println(db.getCliente(PCliente.DNI, "123456789A"));
         System.out.println(db.getCliente(PCliente.NOMBRE, "Juan Garcia"));
         System.out.println(db.getCliente(PCliente.NOMBRE, "juan garcia"));
+        System.out.println("asd");
+        System.out.println(db.getCliente(PCliente.MAIL,  "pedro@gmail.com"));
     }
 
     @Test

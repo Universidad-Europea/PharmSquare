@@ -169,6 +169,24 @@ public class PharmaSquareDB extends AccessDB {
         return sqlite2categoria(SQLiteQuery.get(this, 2, query));
     }
 
+    public Cliente getClientebyMail(String mail) throws InvalidDataException {
+        mail = mail.toLowerCase();
+        String query = String.format(
+                "SELECT * FROM %s WHERE %s = ?;",
+                PCliente.TABLE_NAME,
+                PCliente.MAIL
+        );
+
+        ArrayList<Cliente> result = sqlite2cliente(SQLiteQuery.get(this, 9, query, mail));
+
+        if (result.size() == 0)
+            throw new InvalidDataException("No se ha encontrado ningún cliente con ese mail.");
+        else if (result.size() > 1)
+            throw new InvalidDataException("Se ha encontrado más de un cliente con ese mail.");
+        else
+            return result.get(0);
+    }
+
     /**
      * Obtiene el cliente usando el campo y el valor dado. Si algo no es correcto, una excepción es lanzada.
      * @param field Tiene que ser PCliente.DNI o PCliente.NOMBRE.

@@ -89,6 +89,8 @@ public class Controller implements ActionListener {
             } else if (button == vSeeLoginProducts.getBtnExit()) {
                 vWindows.loadPanel(vInicio);
                 vStaffLogin.setDefault();
+            } else if (button == vSeeLoginProducts.getBtnComprar()) {
+                vSeeLoginProducts.addTransaccion();
             } else if (button == vSeeNoLogProducts.getBtnExit()) {
                 vWindows.loadPanel(vInicio);
             } else if (button == vInicio.getBtnNoLogin()) {
@@ -98,11 +100,11 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vAddCliente);
             } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == true) {
                 vWindows.loadPanel(vSeeLoginProducts);
+                //vInicio.getUserLogin(); shop
                 vInicio.setDefault();
             } else if (button == vInicio.getBtnSubmmit() && vInicio.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vInicio.setDefault();
-// ***** STAFF *****
             } else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == true) {
                 vInicio.setDefault();
                 vWindows.loadPanel(vStaffMenu);
@@ -116,10 +118,6 @@ public class Controller implements ActionListener {
                 vWindows.loadPanel(vModifyProducts);
             } else if (e.getActionCommand().equals(vStaffMenu.MOD_DELT_CLIENT)){
                 vWindows.loadPanel(vModClient);
-
-            }else if (e.getActionCommand().equals(vStaffMenu.VIEW_CLIENTS)){
-               // vWindows.loadPanel();
-
             }else if (e.getActionCommand().equals(vStaffMenu.VIEW_TRANSACTIONS)){
                 vWindows.loadPanel(vClientsRecords);
             }else if (e.getActionCommand().equals(vStaffMenu.MNG_PERSONAL)){
@@ -129,7 +127,6 @@ public class Controller implements ActionListener {
             }else if (button == vStaffLogin.getBtnSubmmit() && vStaffLogin.validateLogin() == false) {
                 JOptionPane.showMessageDialog(vInicio, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 vStaffLogin.setDefault();
-// ***** CLIENTES *****
             } else if (button == vAddCliente.getBtnCancel()) {
                 vWindows.loadPanel(vInicio);
                 vAddCliente.setDefault();
@@ -297,10 +294,6 @@ public class Controller implements ActionListener {
                 }
             } else if (e.getActionCommand().equals(VAddModCategory.EXIT)) {
                 vWindows.loadPanel(vStaffMenu);
-                //} else if (e.getActionCommand().equals(VClientsRecords.SEARCH)) {
-                //    vClientsRecords.loadTable(pharmaSquareDB.getTransacciones(vClientsRecords.getTextFieldValue(), vClientsRecords.getComboBoxPValue(), vClientsRecords.getComboBoxDValue()));
-                //}else if (e.getActionCommand().equals(VClientsRecords.EXIT)) {
-                //    vWindows.loadPanel(vStaffMenu);
             }
         }
     }
